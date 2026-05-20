@@ -1,0 +1,46 @@
+# Branched extraction — tuning knobs.
+# All defaults below are overridden by values found in this file.
+
+batching:
+  batch_max_chars: 10000         # fits inside rag-llm's 4096-token context (4096-1024 out-200 framing)*4 chars/tok ≈ 11k
+  scan_chunk_preview_chars: 0  # 0 = full chunk text in scan pass; set >0 (e.g. 80) for abbreviated directory mode
+  max_candidate_chunks: 500       # hard cap on retrieval pool per branch
+  synthesis_max_chars: 10000     # same budget as scan — keeps synthesis inside context window
+  synthesis_overlap: true         # run multiple synthesis passes if context exceeds limit
+  id_prefix: ""                   # prefix for short IDs (e.g. "B1-") — leave blank for plain numbers
+
+retrieval:
+  top_k_per_branch: 500           # retrieve this many chunks before keyword filtering
+  keyword_score_boost: 0.05       # score boost per keyword match (capped at 5 matches)
+  use_hyde_in_semantic_mode: true # HyDE passage generation for semantic branches
+  bm25_weight_in_extraction: 0.40 # BM25 RRF blend weight (vs 0.32 in Q&A)
+
+deduplication:
+  item_jaccard_threshold: 0.85       # items above this Jaccard similarity are duplicates
+  cross_branch_flag_threshold: 0.80  # threshold for cross-branch duplicate warning
+
+llm:
+  scan_pass_temperature: 0.05       # near-deterministic — scan is a binary yes/no task
+  synthesis_pass_temperature: 0.15  # slightly warmer for bullet generation
+  scan_pass_timeout_seconds: 60
+  synthesis_pass_timeout_seconds: 120
+  max_retries: 2                    # retry failed LLM calls before failing branch
+
+suggest:
+  sample_chunks: 30                 # chunks sampled for branch suggestion
+  sample_strategy: "uniform"        # "uniform" | "top_body" | "every_nth"
+
+report:
+  include_page_citations: true      # append "(p. X, filename.pdf)" to each item
+  include_branch_stats: true        # item count, mode, status in summary table
+  addendum_marker: "⚑"              # marker for high-priority-source items
+  cross_branch_marker: "⚠"          # marker for items flagged in multiple branches
+
+flag_library:
+  path: data/flag_library/default_flags.json
+  projects_dir: data/flag_library/projects
+  auto_load_on_new_project: true    # pre-populate branch configurator with flag library
+
+verbose:
+  enabled: false                        # set true to dump every pipeline step to disk for review
+  output_dir: data/extraction_verbose   # layout: <output_dir>/<slug>_<run_id>/<branch_name>/

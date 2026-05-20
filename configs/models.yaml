@@ -1,0 +1,35 @@
+models:
+  deberta+crossencoder:
+    assigned_to: http://10.0.0.5:8100
+    loaded_mb: 916
+    notes: Loaded by inference_service at startup. Measured via /health VRAM fields.
+    role: DeBERTa intent classifier + CrossEncoder reranker
+    type: huggingface
+    vram_mb: 916
+  hyde-model:latest:
+    assigned_to: http://10.0.0.5:11434
+    disk_gb: 1.0
+    loaded_mb: 2198
+    notes: Pinned in VRAM by inference_service warmup.
+    role: HyDE / search-rewrite (0.8B)
+    type: ollama
+    vram_mb: 2198
+  qwen3-embedding:latest:
+    assigned_to: http://localhost:11434
+    disk_gb: 4.7
+    loaded_mb: 4813
+    notes: Fits cleanly. Swapped out when LLM loads.
+    role: Embedding
+    swap_group: local_main
+    type: ollama
+    vram_mb: 4813
+  rag-llm:
+    assigned_to: http://localhost:11434
+    disk_gb: 6.6
+    loaded_mb: 8359
+    notes: 8.77 GB total (ollama ps shows decimal GB; /api/ps bytes / 1024^2 = 8359 MiB).
+      2372 MiB overflows to CPU RAM. Values verified from raw /api/ps bytes.
+    role: LLM (answer generation)
+    swap_group: local_main
+    type: ollama
+    vram_mb: 5987

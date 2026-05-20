@@ -1,0 +1,128 @@
+paths:
+  db_dsn: postgresql://postgres:postgres@localhost/rag
+  diagnostics_dir: data/diagnostics
+  query_trace: data/diagnostics/query_trace.jsonl
+  routing_trace: data/diagnostics/routing_trace.jsonl
+  book_registry: data/metadata/book_registry.json
+
+conversations:
+  retention_days: 90  # conversations older than this are archived/pruned on server startup
+
+embedding:
+  backend: ollama
+  model_name: qwen3-embedding:latest
+  dimension: 4096
+  ollama_base_url: http://localhost:11434
+  ollama_timeout_seconds: 60.0
+
+llm:
+  model: rag-llm
+  base_url: http://localhost:11434
+  timeout_seconds: 220.0
+  temperature: 0.05  # HyDE hypothesis generation — near-deterministic so hypotheses are consistent; NOT the answer-generation temperature (see configs/llm.yaml)
+
+retrieval:
+  top_k: 5
+  rerank_candidate_k: 80
+  alpha_vector: 0.68
+  alpha_lexical: 0.24  # Grid search (72 configs × 20q): 0.24 → 65% pass; old 0.32 was outside sweet spot
+  low_confidence_gap_threshold: 0.03
+  internet_fallback_enabled: true
+  internet_trigger_on_low_confidence: true
+  internet_trigger_top_score: 0.55  # trigger if best local score < this; below typical relevant-ML-query scores
+  internet_trigger_gap: 0.03
+  internet_max_results: 3
+  internet_max_chunks: 6
+  internet_timeout_seconds: 8.0
+  internet_score_weight: 0.72
+  internet_override_guard_threshold: 0.62
+  internet_min_relevance_score: 0.42
+  cross_encoder_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+hyde:
+  enabled: true
+  temperature: 0.4
+  timeout_seconds: 90.0
+  model: hyde-model
+  base_url: http://10.0.0.5:11434
+
+stepback:
+  enabled: true         # broader abstract query merged with original candidates
+  timeout_seconds: 15.0 # uses warm-model routing — no cold load if LLM or HyDE model already loaded
+
+two_stage:
+  enabled: true
+  alpha: 0.6
+
+chunking:
+  max_tokens: 400
+  overlap_tokens: 60
+  min_chunk_tokens: 40
+  merge_max_tokens_after: 520
+  max_chars: 4000
+  overlap_chars: 200
+  chars_per_page: 3500
+
+gpu:
+  # Ollama models at or below this VRAM footprint are preferred candidates for
+  # remote offload (they fit comfortably on a mid-range card alongside the
+  # HuggingFace models already resident there).
+  small_model_vram_mb: 3000
+
+launcher:
+  autostart_server: false  # start the server automatically when the launcher opens
+  oversized_segment_chars: 6000
+  include_heading_in_chunk: true
+
+logging:
+  query_trace_max_mb: 20
+  query_trace_backups: 3
+
+welcome_chips:
+  - label: "Supervised vs unsupervised learning"
+    prompt: "What's the difference between supervised and unsupervised learning?"
+  - label: "Explain reinforcement learning"
+    prompt: "Explain reinforcement learning in simple terms."
+  - label: "Attention in transformers"
+    prompt: "What is the attention mechanism in transformers?"
+  - label: "How does backpropagation work?"
+    prompt: "How does backpropagation work?"
+
+# Remote HuggingFace inference service (Ubuntu box).
+# Leave blank to run models locally on this machine.
+inference_service:
+  url: "http://10.0.0.5:8100"
+  timeout_seconds: 2.0
+  nli_model: "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
+  ce_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  routing_trace_max_mb: 20
+  routing_trace_backups: 3
+
+index:
+  # Glob pattern used when scanning for pre-built chunk files to embed.
+  source_pattern: "*.chunks.merged.json"
+
+routing_llm:
+  enabled: false
+  model: qwen3.5:9b
+  base_url: http://localhost:11434
+  timeout_seconds: 8.0
+  temperature: 0.0
+
+provenance:
+  document_path_mode: full  # full | relative | basename | redact
+
+prf:
+  enabled: false   # pseudo-relevance feedback: expand lexical query with top terms from initial hits
+  top_k_source: 3  # how many top-scored candidates to mine for expansion terms
+  top_terms: 5     # how many new terms to add to the BM25 query
+
+contextual_compression:
+  enabled: true       # LLM-based compression of top chunks to query-relevant sentences
+  top_n: 3            # compress only the top-N chunks after final ranking
+  timeout_seconds: 10.0
+
+hyp_questions:
+  enabled: false  # second ANN pass over chunk_questions table (requires generate_chunk_questions.py)
+  top_k: 10       # how many question-embedding hits to retrieve per query
+

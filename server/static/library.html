@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Library — Personal AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/library.css" />
+</head>
+<body>
+
+<!-- ═══════════════════ TOPBAR ═══════════════════ -->
+<header class="lib-topbar">
+  <div class="lib-topbar-left">
+    <button class="lib-btn-icon sidebar-toggle" id="sidebarToggle" aria-label="Toggle collections">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <a href="/" class="back-link" title="Back to chat">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      <span class="btn-label">Chat</span>
+    </a>
+    <div class="lib-logo">
+      <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="13" stroke="url(#grad2)" stroke-width="2"/>
+        <circle cx="14" cy="14" r="6" fill="url(#grad2)" opacity="0.8"/>
+        <defs>
+          <linearGradient id="grad2" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#818cf8"/><stop offset="1" stop-color="#38bdf8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span>Library</span>
+    </div>
+  </div>
+  <div class="lib-topbar-right">
+    <button class="lib-btn lib-btn-secondary" id="refreshBtn" title="Refresh">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+      </svg>
+      <span class="btn-label">Refresh</span>
+    </button>
+    <button class="lib-btn lib-btn-secondary" id="newCollectionBtn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      <span class="btn-label">New Collection</span>
+    </button>
+    <button class="lib-btn lib-btn-primary" id="uploadBtn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
+        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+      </svg>
+      <span class="btn-label">Upload</span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══════════════════ LAYOUT ═══════════════════ -->
+<div class="lib-layout">
+
+  <!-- Sidebar backdrop (mobile only) -->
+  <div class="sidebar-backdrop hidden" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+
+  <!-- ─── LEFT SIDEBAR: collection tree ─── -->
+  <aside class="lib-sidebar" id="libSidebar">
+    <div class="lib-sidebar-inner">
+      <p class="lib-sidebar-label">Collections</p>
+
+      <!-- Unassigned (always first) -->
+      <div class="tree-item tree-item--unassigned selected" data-id="__unassigned__"
+           ondragover="onTreeDragOver(event)" ondragleave="onTreeDragLeave(event)"
+           ondrop="onTreeDrop(event, '__unassigned__')">
+        <span class="tree-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+        </span>
+        <span class="tree-label">Unassigned</span>
+        <span class="tree-badge" id="unassignedBadge">0</span>
+      </div>
+
+      <!-- Dynamic collection tree -->
+      <div id="collectionTree"></div>
+    </div>
+  </aside>
+
+  <!-- ─── MAIN: document grid ─── -->
+  <main class="lib-main"
+        ondragover="onMainDragOver(event)"
+        ondrop="onMainDrop(event)">
+
+    <!-- Content header -->
+    <div class="lib-content-header">
+      <div class="lib-content-title-row">
+        <h2 id="viewTitle">Unassigned Files</h2>
+        <span class="doc-count" id="docCount">0 files</span>
+      </div>
+      <div id="viewDescription" class="view-description" style="display:none"></div>
+      <div class="lib-filter-row">
+        <input type="search" id="docFilter" class="form-input lib-filter-input"
+               placeholder="Filter documents…"
+               oninput="renderDocGrid()" autocomplete="off" />
+      </div>
+    </div>
+
+    <!-- Drop hint overlay (shown while dragging over main area for current collection) -->
+    <div id="mainDropHint" class="main-drop-hint hidden">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <span id="mainDropLabel">Drop to assign here</span>
+    </div>
+
+    <!-- Document grid -->
+    <div id="docGrid" class="doc-grid">
+      <div class="doc-grid-empty" id="docGridEmpty">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.3">
+          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/>
+        </svg>
+        <p>No documents here</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Mobile assign bar (shown when a card is tapped on touch devices) -->
+<div class="mobile-assign-bar hidden" id="mobileAssignBar">
+  <div class="mobile-assign-bar-inner">
+    <span class="mobile-assign-title" id="mobileAssignTitle">Move to…</span>
+    <div class="mobile-assign-collections" id="mobileAssignCollections"></div>
+    <button class="lib-btn lib-btn-secondary mobile-assign-cancel" onclick="clearMobileSelection()">Cancel</button>
+  </div>
+</div>
+
+<!-- ═══════════════════ MODALS ═══════════════════ -->
+
+<!-- Upload Modal -->
+<div id="uploadModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="uploadModalTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="uploadModalTitle">Upload File</h3>
+      <button class="modal-close" onclick="closeModal('uploadModal')" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- Drop zone -->
+      <div class="upload-dropzone" id="uploadDropzone"
+           ondragover="event.preventDefault(); this.classList.add('drag-active')"
+           ondragleave="this.classList.remove('drag-active')"
+           ondrop="handleUploadDrop(event)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+          <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
+          <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+        </svg>
+        <p class="upload-dropzone-text">Drag a file here or <button class="inline-link" onclick="document.getElementById('fileInput').click()">browse</button></p>
+        <p class="upload-dropzone-hint">PDF, DOCX, TXT, or MD</p>
+        <input type="file" id="fileInput" accept=".pdf,.docx,.txt,.md" style="display:none" onchange="handleFileSelect(event)" />
+      </div>
+
+      <!-- Selected file display -->
+      <div id="uploadFileInfo" class="upload-file-info hidden">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/>
+        </svg>
+        <span id="uploadFileName">filename.pdf</span>
+        <button class="inline-link" onclick="clearUploadFile()">×</button>
+      </div>
+
+      <!-- Pre-ingest summary -->
+      <div id="uploadPreSummary" class="upload-pre-summary hidden">
+        <span class="pre-summary-badge" id="preSummaryType">PDF</span>
+        <span class="pre-summary-text">~<strong id="preSummaryChunks">—</strong> chunks estimated</span>
+        <span class="pre-summary-sep">·</span>
+        <span class="pre-summary-text" id="preSummarySize">—</span>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Collection (optional)</label>
+        <select id="uploadCollectionSelect" class="form-select">
+          <option value="">None — leave unassigned</option>
+        </select>
+      </div>
+
+      <!-- Progress -->
+      <div id="uploadProgress" class="upload-progress hidden">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressBarFill" style="width:0%"></div>
+        </div>
+        <p class="progress-label" id="progressLabel">Uploading…</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="lib-btn lib-btn-secondary" onclick="closeModal('uploadModal')">Cancel</button>
+      <button class="lib-btn lib-btn-primary" id="uploadSubmitBtn" onclick="submitUpload()" disabled>Upload &amp; Ingest</button>
+    </div>
+  </div>
+</div>
+
+<!-- Create Collection Modal -->
+<div id="createCollectionModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="createColModalTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="createColModalTitle">New Collection</h3>
+      <button class="modal-close" onclick="closeModal('createCollectionModal')" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <label class="form-label" for="colIdInput">ID <span class="form-hint">(slug, e.g. CS7646/notes)</span></label>
+        <input type="text" id="colIdInput" class="form-input" placeholder="e.g. CS7646/books" />
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="colNameInput">Name</label>
+        <input type="text" id="colNameInput" class="form-input" placeholder="e.g. CS7646 Textbooks" />
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="colDescInput">Description <span class="form-hint">(optional)</span></label>
+        <input type="text" id="colDescInput" class="form-input" placeholder="Optional description" />
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="colParentSelect">Parent Collection <span class="form-hint">(optional)</span></label>
+        <select id="colParentSelect" class="form-select">
+          <option value="">None (top-level)</option>
+        </select>
+      </div>
+      <p class="form-error hidden" id="createColError"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="lib-btn lib-btn-secondary" onclick="closeModal('createCollectionModal')">Cancel</button>
+      <button class="lib-btn lib-btn-primary" onclick="submitCreateCollection()">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div id="confirmModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
+  <div class="modal modal--sm">
+    <div class="modal-header">
+      <h3 id="confirmModalTitle">Confirm Delete</h3>
+    </div>
+    <div class="modal-body">
+      <p id="confirmModalText">Are you sure?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="lib-btn lib-btn-secondary" onclick="closeModal('confirmModal')">Cancel</button>
+      <button class="lib-btn lib-btn-danger" id="confirmModalOk">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+<script src="/static/library.js"></script>
+</body>
+</html>

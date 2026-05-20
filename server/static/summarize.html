@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Book Summarizer — Personal AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0d0f14;
+      --surface:      #151820;
+      --surface2:     #1c2030;
+      --surface3:     #232840;
+      --border:       #2a2f45;
+      --border-light: #353c58;
+      --text:         #e2e8f0;
+      --text-muted:   #8892a8;
+      --text-dim:     #505878;
+      --accent:       #818cf8;
+      --accent-sky:   #38bdf8;
+      --green:        #4ade80;
+      --yellow:       #fbbf24;
+      --red:          #f87171;
+      --radius:       8px;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── Topbar ─────────────────────────────────────────────────────────── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 10px;
+      height: 50px; padding: 0 16px;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+    }
+    .topbar a.back { display: inline-flex; align-items: center; gap: 4px; color: var(--text-muted); text-decoration: none; font-size: 13px; padding: 4px 8px; border-radius: var(--radius); transition: color .15s, background .15s; }
+    .topbar a.back:hover { color: var(--text); background: var(--surface2); }
+    .topbar .nav-icon { display: inline-flex; align-items: center; color: var(--text-muted); text-decoration: none; padding: 6px; border-radius: var(--radius); transition: color .15s, background .15s; }
+    .topbar .nav-icon:hover { color: var(--text); background: var(--surface2); }
+    .topbar .logo { font-weight: 600; font-size: 15px; color: var(--accent); margin-left: 4px; }
+    .topbar .spacer { flex: 1; }
+    .topbar button.refresh { display: inline-flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); padding: 5px 12px; border-radius: var(--radius); font-size: 12px; cursor: pointer; transition: color .15s; }
+    .topbar button.refresh:hover { color: var(--text); }
+    .topbar .refresh-label { }
+
+    /* ── Main content ───────────────────────────────────────────────────── */
+    .container { max-width: 960px; margin: 32px auto; padding: 0 20px; }
+    h2 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .subtitle { color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
+
+    /* ── Status bar ─────────────────────────────────────────────────────── */
+    #status-bar { min-height: 28px; margin-bottom: 12px; font-size: 13px; color: var(--text-muted); }
+    #status-bar.running { color: var(--accent); }
+    #status-bar.done    { color: var(--green); }
+    #status-bar.error   { color: var(--red); }
+
+
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; }
+    .badge.done    { background: rgba(74,222,128,.12); color: var(--green); }
+    .badge.pending { background: rgba(251,191,36,.12); color: var(--yellow); }
+
+    .btn-gen { background: var(--accent); color: #fff; border: none; padding: 4px 14px; border-radius: var(--radius); font-size: 12px; cursor: pointer; transition: opacity .15s; }
+    .btn-gen:hover { opacity: .85; }
+    .btn-gen:disabled { opacity: .4; cursor: default; }
+
+    /* ── Book group header ──────────────────────────────────────────────── */
+    .book-group-name { color: var(--text); }
+    .btn-gen-all { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 2px 10px; border-radius: var(--radius); font-size: 11px; cursor: pointer; white-space: nowrap; }
+    .btn-gen-all:hover { background: rgba(129,140,248,.12); }
+    .btn-gen-all:disabled { opacity: .4; cursor: default; }
+
+    /* ── Summary modal ──────────────────────────────────────────────────── */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.65); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); max-width: 720px; width: 100%; max-height: 80vh; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border); gap: 12px; }
+    .modal-header h3 { font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .modal-close { background: none; border: none; color: var(--text-dim); font-size: 20px; line-height: 1; cursor: pointer; padding: 0 4px; flex-shrink: 0; }
+    .modal-close:hover { color: var(--text); }
+    .modal-body { padding: 18px 20px; overflow-y: auto; font-size: 13px; line-height: 1.7; white-space: pre-wrap; color: var(--text); flex: 1; }
+
+    /* ── Job log panel ──────────────────────────────────────────────────── */
+    .job-row { display: flex; align-items: center; gap: 10px; padding: 7px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 5px; font-size: 12px; }
+    .job-row .job-id { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); font-size: 11px; flex: 1; }
+    .job-row .job-doc { flex: 2; }
+    .job-status { padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; }
+    .job-status.pending  { background: rgba(251,191,36,.12); color: var(--yellow); }
+    .job-status.running  { background: rgba(129,140,248,.12); color: var(--accent); }
+    .job-status.done     { background: rgba(74,222,128,.12); color: var(--green); }
+    .job-status.failed    { background: rgba(247,113,113,.12); color: var(--red); }
+    .job-status.cancelled { background: rgba(139,148,158,.12); color: var(--text-muted); }
+    .job-cancel-btn { margin-left: auto; background: none; border: 1px solid rgba(247,113,113,.4); color: var(--red); border-radius: 4px; font-size: 10px; padding: 2px 7px; cursor: pointer; opacity: 0; transition: opacity .15s; }
+    .job-row:hover .job-cancel-btn { opacity: 1; }
+    .job-cancel-btn:hover { background: rgba(247,113,113,.12); }
+    .no-data { color: var(--text-muted); font-size: 13px; padding: 16px 0; }
+
+    /* ── Section headings ────────────────────────────────────────────────── */
+    .section-heading { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    section + section { margin-top: 48px; }
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0 0; }
+
+    /* ── Summary cards (completed summaries at top) ─────────────────────── */
+    #summary-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin-top: 16px; }
+    .summary-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; cursor: pointer; transition: border-color .15s, background .15s; display: flex; flex-direction: column; gap: 10px; }
+    .summary-card:hover { border-color: var(--accent); background: var(--surface2); }
+    .card-title { font-size: 13px; font-weight: 500; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: auto; }
+    .card-type { display: inline-block; padding: 2px 7px; border-radius: 8px; font-size: 10px; font-weight: 500; background: rgba(129,140,248,.15); color: var(--accent); }
+    .card-regen { font-size: 11px; color: var(--text-dim); background: none; border: none; cursor: pointer; padding: 2px 6px; border-radius: 4px; opacity: 0; transition: opacity .15s; }
+    .summary-card:hover .card-regen { opacity: 1; }
+    .card-regen:hover { color: var(--text); background: rgba(255,255,255,.06); }
+    /* Collapsible wrapper */
+    .cards-wrapper { position: relative; }
+    .cards-wrapper.collapsed #summary-cards { max-height: 230px; overflow: hidden; }
+    .cards-fade { display: none; position: absolute; bottom: 0; left: 0; right: 0; height: 64px;
+      background: linear-gradient(transparent, var(--bg)); pointer-events: none; }
+    .cards-wrapper.collapsed .cards-fade { display: block; }
+    .cards-toggle { background: none; border: none; color: var(--accent); font-size: 12px;
+      cursor: pointer; padding: 8px 0 0; display: none; }
+    .cards-toggle:hover { text-decoration: underline; }
+
+    /* ── Compact queue table (full-doc summaries) ───────────────────────── */
+    .queue-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .queue-table th { text-align: left; padding: 6px 10px; color: var(--text-muted); font-weight: 500; font-size: 12px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 1; }
+    .queue-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .queue-table tr:last-child td { border-bottom: none; }
+    .queue-table tr:hover td { background: var(--surface2); }
+    .queue-table tr.book-group-row td { background: var(--surface2); font-size: 11px; font-weight: 600; padding: 6px 10px; border-top: 2px solid var(--border); }
+    .queue-table tr.chapter-row td { padding-left: 22px; }
+
+    /* ── Page range section ─────────────────────────────────────────────── */
+    #range-form { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 14px 0 20px; }
+    #range-form select, #range-form input[type=number] {
+      background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+      border-radius: var(--radius); padding: 5px 10px; font-size: 13px; outline: none;
+    }
+    #range-form select { min-width: 220px; max-width: 360px; }
+    #range-form input[type=number] { width: 80px; }
+    #range-form select:focus, #range-form input:focus { border-color: var(--accent); }
+    .range-label { font-size: 13px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+    .range-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      margin-bottom: 6px; font-size: 13px; }
+    .range-row .range-doc { flex: 2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .range-row .range-pages { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); white-space: nowrap; }
+    .range-row .range-preview { flex: 3; color: var(--text-dim); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* ── Job log ────────────────────────────────────────────────────────── */
+    #job-log-section h3 { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; letter-spacing: .04em; text-transform: uppercase; }
+    #job-log-list { max-height: 320px; overflow-y: auto; padding-right: 4px; }
+    #range-list   { max-height: 280px; overflow-y: auto; padding-right: 4px; }
+
+    /* ── Custom scrollbars ───────────────────────────────────────────────── */
+    ::-webkit-scrollbar              { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track        { background: transparent; }
+    ::-webkit-scrollbar-thumb        { background: var(--border); border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover  { background: var(--text-muted); }
+    * { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+
+    /* ── Mobile (≤ 640px) ────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      /* Topbar: hide text labels, tighten spacing */
+      .topbar { padding: 0 12px; gap: 8px; }
+      .topbar .back-label  { display: none; }
+      .topbar .refresh-label { display: none; }
+      .topbar .logo { font-size: 14px; }
+      .topbar button.refresh { padding: 8px 10px; }
+
+      /* Container: edge-to-edge with smaller padding */
+      .container { margin: 16px auto; padding: 0 14px; }
+      section + section { margin-top: 32px; }
+      .section-divider { margin: 32px 0 0; }
+
+      /* Summary cards: 2-up minimum on narrow screens */
+      #summary-cards { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+      .summary-card { padding: 12px 14px; }
+      /* Always show regen button on touch (no hover) */
+      .card-regen { opacity: 1; }
+
+      /* Range form: stack vertically */
+      #range-form { flex-direction: column; align-items: stretch; gap: 8px; }
+      #range-form select { min-width: 0; max-width: 100%; width: 100%; }
+      .range-label { justify-content: flex-start; }
+      #range-form input[type=number] { width: 70px; }
+      #range-submit-btn { width: 100%; padding: 8px; font-size: 13px; }
+
+      /* Range rows: hide preview to save space, allow wrap */
+      .range-row { flex-wrap: wrap; gap: 6px; }
+      .range-row .range-preview { display: none; }
+      .range-row .range-doc { flex: 1 1 100%; }
+
+      /* Queue table: horizontal scroll + hide Type column */
+      #queue-section > div { overflow-x: auto; }
+      .queue-table .col-type { display: none; }
+
+      /* Job rows: wrap on narrow screens, hide mono job-id */
+      .job-row { flex-wrap: wrap; gap: 6px; padding: 8px 10px; }
+      .job-row .job-id { display: none; }
+      .job-row .job-doc { flex: 1 1 auto; min-width: 0; }
+      /* Always show cancel btn on touch */
+      .job-cancel-btn { opacity: 1; }
+
+      /* Modal: full-screen on phone */
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal-box { max-width: 100%; max-height: 90dvh; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-left: none; border-right: none; border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Topbar ─────────────────────────────────────────────────────────── -->
+<header class="topbar">
+  <a href="/" class="back" title="Back to chat">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+    <span class="back-label">Chat</span>
+  </a>
+  <span class="logo">Book Summarizer</span>
+  <div class="spacer"></div>
+  <a href="/library" class="nav-icon" title="Library">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    </svg>
+  </a>
+  <button class="refresh" onclick="loadAll()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+    </svg>
+    <span class="refresh-label">Refresh</span>
+  </button>
+</header>
+
+<!-- ── Summary modal ──────────────────────────────────────────────────── -->
+<div id="summary-modal" class="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modal-title">Document Summary</h3>
+      <button class="modal-close" onclick="closeSummaryModal()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div id="modal-body" class="modal-body">Loading…</div>
+  </div>
+</div>
+
+<!-- ── Main ───────────────────────────────────────────────────────────── -->
+<main class="container">
+
+  <div id="status-bar"></div>
+
+  <!-- ── 1. Completed summaries ──────────────────────────────────────── -->
+  <section id="summaries-section">
+    <h2 class="section-heading">Summaries</h2>
+    <p class="subtitle">Click a card to read. Hover for re-generate.</p>
+    <div class="cards-wrapper collapsed" id="cards-wrapper">
+      <div id="summary-cards"><p class="no-data">Loading…</p></div>
+      <div class="cards-fade"></div>
+    </div>
+    <button class="cards-toggle" id="cards-toggle" onclick="toggleCards()"></button>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── 2. Page range summaries ─────────────────────────────────────── -->
+  <section id="range-section">
+    <h2 class="section-heading">Page Range Summaries</h2>
+    <p class="subtitle">Summarize pages 40–60, a chapter span, or any range from any document.</p>
+    <form id="range-form" onsubmit="submitRange(event)">
+      <select id="range-doc-select">
+        <option value="">— Select document —</option>
+      </select>
+      <span class="range-label">
+        Pages
+        <input id="range-page-start" type="number" min="0" value="0" placeholder="0" />
+        &ndash;
+        <input id="range-page-end" type="number" min="0" value="50" placeholder="50" />
+      </span>
+      <button type="submit" class="btn-gen" id="range-submit-btn">Summarize Range</button>
+    </form>
+    <div id="range-list"><p class="no-data">No page-range summaries yet.</p></div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── 3. Full document summaries (compact queue) ──────────────────── -->
+  <section id="queue-section">
+    <h2 class="section-heading">Full Document Summaries</h2>
+    <p class="subtitle">Generate or re-generate a map-reduce summary for any document. Summaries are embedded for summary-intent chat queries.</p>
+    <div style="max-height:340px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);margin-top:14px">
+    <table class="queue-table" id="queue-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th class="col-type">Type</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="queue-tbody">
+        <tr><td colspan="4" class="no-data">Loading…</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── 4. Job log ──────────────────────────────────────────────────── -->
+  <section id="job-log-section" style="margin-bottom:60px">
+    <h3>Recent Jobs <button id="worker-toggle-btn" onclick="toggleWorker()" style="margin-left:10px;font-size:11px;padding:2px 10px;border-radius:4px;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text-dim)">⏸ Pause Worker</button></h3>
+    <div id="job-log-list"><p class="no-data">No jobs yet.</p></div>
+  </section>
+
+</main>
+
+<script>
+  const setStatus = (msg, cls='') => {
+    const el = document.getElementById('status-bar');
+    el.textContent = msg;
+    el.className = cls;
+  };
+
+  // doc_id → title cache for job log display
+  let _docTitles = {};
+
+  async function loadAll() {
+    await Promise.all([loadDocuments(), loadJobs(), _loadWorkerStatus()]);
+    await loadAllRanges();
+  }
+
+  async function loadDocuments() {
+    try {
+      const r = await fetch('/api/summarize/documents');
+      if (!r.ok) throw new Error(await r.text());
+      const docs = await r.json();
+      _docTitles = {};
+      docs.forEach(d => { _docTitles[d.doc_id] = d.title || d.filename; });
+      renderSummarized(docs);
+      renderQueue(docs);
+      populateDocSelect(docs);
+    } catch(e) {
+      document.getElementById('summary-cards').innerHTML = `<p class="no-data">Error: ${e.message}</p>`;
+      document.getElementById('queue-tbody').innerHTML = `<tr><td colspan="4" class="no-data">Error: ${e.message}</td></tr>`;
+    }
+  }
+
+  // Strip trailing _Chap_N / _Week_N / _Part_N / _Vol_N suffixes to get the book key.
+  function getBookKey(title) {
+    return title
+      .replace(/[\s_\-]*(chap(ter)?|week|part|vol(ume)?|section|ep(isode)?)s?[\s_\-]?\d+\s*$/i, '')
+      .replace(/[\s_\-]+$/, '')
+      .trim() || title;
+  }
+
+  // ── Section 1: completed summary cards ────────────────────────────────
+  function renderSummarized(docs) {
+    const el = document.getElementById('summary-cards');
+    const done = docs.filter(d => d.has_summary);
+    if (!done.length) {
+      el.innerHTML = '<p class="no-data">No completed summaries yet — generate some below.</p>';
+      return;
+    }
+    done.sort((a, b) => (a.title || a.filename).localeCompare(b.title || b.filename));
+    el.innerHTML = done.map(d => {
+      const title = d.title || d.filename;
+      const type  = d.source_type || 'doc';
+      return `<div class="summary-card"
+          onclick="openSummaryModal('${esc(d.doc_id)}','${esc(title)}')"
+          title="${esc(title)}">
+        <div class="card-title">${esc(title)}</div>
+        <div class="card-footer">
+          <span class="card-type">${esc(type)}</span>
+          <button class="card-regen"
+            onclick="event.stopPropagation(); runSummarize('${esc(d.doc_id)}', this)"
+            title="Re-generate summary">Re-gen</button>
+        </div>
+      </div>`;
+    }).join('');
+    // reset collapse state then check if overflow is needed
+    const wrapper = document.getElementById('cards-wrapper');
+    wrapper.classList.add('collapsed');
+    setTimeout(() => _updateCardsToggle(done.length), 0);
+  }
+
+  function _updateCardsToggle(total) {
+    const wrapper = document.getElementById('cards-wrapper');
+    const btn     = document.getElementById('cards-toggle');
+    const grid    = document.getElementById('summary-cards');
+    if (grid.scrollHeight > 240) {
+      btn.style.display = 'inline';
+      btn.textContent   = `Show all ${total} ↓`;
+    } else {
+      btn.style.display = 'none';
+      wrapper.classList.remove('collapsed');
+    }
+  }
+
+  function toggleCards() {
+    const wrapper = document.getElementById('cards-wrapper');
+    const btn     = document.getElementById('cards-toggle');
+    const total   = document.getElementById('summary-cards').querySelectorAll('.summary-card').length;
+    if (wrapper.classList.contains('collapsed')) {
+      wrapper.classList.remove('collapsed');
+      btn.textContent = `Show fewer ↑`;
+    } else {
+      wrapper.classList.add('collapsed');
+      btn.textContent = `Show all ${total} ↓`;
+    }
+  }
+
+  // ── Section 3: compact queue table ─────────────────────────────────────
+  function renderQueue(docs) {
+    const tbody = document.getElementById('queue-tbody');
+    if (!docs.length) {
+      tbody.innerHTML = '<tr><td colspan="4" class="no-data">No documents found. Add via Library.</td></tr>';
+      return;
+    }
+    const groupOrder = [];
+    const groups = {};
+    docs.forEach(d => {
+      const key = getBookKey(d.title || d.filename);
+      if (!groups[key]) { groups[key] = []; groupOrder.push(key); }
+      groups[key].push(d);
+    });
+    groupOrder.sort((a, b) => a.localeCompare(b));
+    let rows = '';
+    for (const key of groupOrder) {
+      const members = groups[key];
+      const isGroup = members.length > 1;
+      if (isGroup) {
+        const done = members.filter(d => d.has_summary).length;
+        const todo = members.filter(d => !d.has_summary);
+        const allDoneHtml = '<span style="color:var(--green);font-size:11px">✓ All done</span>';
+        const genAllHtml  = `<button class="btn-gen-all" data-docids="${todo.map(d=>d.doc_id).join(',')}" onclick="runAll(this)">Generate All (${todo.length})</button>`;
+        rows += `<tr class="book-group-row">
+          <td colspan="2"><span class="book-group-name">${esc(key)}</span></td>
+          <td style="color:var(--text-dim);font-weight:400">${done}/${members.length} done</td>
+          <td>${todo.length ? genAllHtml : allDoneHtml}</td>
+        </tr>`;
+      }
+      for (const d of members) {
+        const indent = isGroup ? ' chapter-row' : '';
+        const badge   = d.has_summary ? '<span class="badge done">✓ Done</span>' : '<span class="badge pending">None</span>';
+        const btnLabel = d.has_summary ? 'Re-gen' : 'Generate';
+        rows += `<tr class="${indent}">
+          <td>${esc(d.title || d.filename)}</td>
+          <td class="col-type" style="color:var(--text-muted)">${esc(d.source_type || '')}</td>
+          <td>${badge}</td>
+          <td><button class="btn-gen" style="padding:3px 10px;font-size:11px" onclick="runSummarize('${esc(d.doc_id)}', this)">${btnLabel}</button></td>
+        </tr>`;
+      }
+    }
+    tbody.innerHTML = rows;
+  }
+
+  async function runSummarize(docId, btn) {
+    btn.disabled = true;
+    btn.textContent = 'Queued…';
+    setStatus('Enqueuing summarization job…', 'running');
+    try {
+      const r = await fetch('/api/summarize/run', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({doc_id: docId}),
+      });
+      if (!r.ok) throw new Error(await r.text());
+      const job = await r.json();
+      setStatus(`Job ${job.job_id.slice(0,8)}… queued. The worker will process it in the background.`, 'running');
+      pollJob(job.job_id, btn);
+    } catch(e) {
+      setStatus(`Error: ${e.message}`, 'error');
+      btn.disabled = false;
+      btn.textContent = 'Generate';
+    }
+  }
+
+  async function runAll(btn) {
+    const docIds = (btn.dataset.docids || '').split(',').filter(Boolean);
+    if (!docIds.length) return;
+    btn.disabled = true;
+    btn.textContent = 'Queuing…';
+    setStatus(`Queuing ${docIds.length} summarization jobs…`, 'running');
+    let queued = 0;
+    for (const docId of docIds) {
+      try {
+        const r = await fetch('/api/summarize/run', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({doc_id: docId}),
+        });
+        if (r.ok) queued++;
+      } catch {}
+    }
+    setStatus(`Queued ${queued} of ${docIds.length} jobs. Watch the job log for progress.`, 'running');
+    await loadDocuments();
+    await loadJobs();
+  }
+
+  async function pollJob(jobId, btn) {
+    const poll = setInterval(async () => {
+      try {
+        const r = await fetch(`/api/summarize/jobs/${jobId}`);
+        if (!r.ok) { clearInterval(poll); return; }
+        const job = await r.json();
+        if (job.status === 'done') {
+          clearInterval(poll);
+          setStatus('Summary complete!', 'done');
+          btn.textContent = 'Re-generate';
+          btn.disabled = false;
+          await loadDocuments();
+          await loadJobs();
+        } else if (job.status === 'failed') {
+          clearInterval(poll);
+          setStatus(`Job failed: ${job.error || 'unknown error'}`, 'error');
+          btn.textContent = 'Retry';
+          btn.disabled = false;
+          await loadJobs();
+        } else {
+          // background poller handles list refresh
+        }
+      } catch { clearInterval(poll); }
+    }, 3000);
+  }
+
+  // ── Summary modal ────────────────────────────────────────────────────────
+  async function openSummaryModal(docId, title) {
+    const modal = document.getElementById('summary-modal');
+    document.getElementById('modal-title').textContent = title || 'Document Summary';
+    document.getElementById('modal-body').textContent = 'Loading…';
+    modal.classList.add('open');
+    try {
+      const r = await fetch(`/api/summarize/text/${encodeURIComponent(docId)}`);
+      if (!r.ok) throw new Error('Summary not found');
+      const data = await r.json();
+      document.getElementById('modal-body').textContent = data.text;
+    } catch(e) {
+      document.getElementById('modal-body').textContent = `Could not load summary: ${e.message}`;
+    }
+  }
+
+  function closeSummaryModal() {
+    document.getElementById('summary-modal').classList.remove('open');
+  }
+
+  document.getElementById('summary-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeSummaryModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeSummaryModal();
+  });
+
+  // ── Job log ──────────────────────────────────────────────────────────────
+  async function loadJobs() {
+    try {
+      const r = await fetch('/api/summarize/jobs?limit=20');
+      if (!r.ok) return;
+      const jobs = await r.json();
+      renderJobs(jobs);
+    } catch {}
+  }
+
+  function renderJobs(jobs) {
+    const el = document.getElementById('job-log-list');
+    if (!jobs.length) {
+      el.innerHTML = '<p class="no-data">No summarize jobs yet.</p>';
+      return;
+    }
+    el.innerHTML = jobs.map(j => {
+      const params = j.params || {};
+      const docId  = params.doc_id || '';
+      const title  = docId ? (_docTitles[docId] || docId.slice(0,12) + '\u2026') : '\u2014';
+      const ts     = j.created_at ? new Date(j.created_at).toLocaleString() : '';
+      let label = esc(title);
+      if (j.job_type === 'summarize_page_range') {
+        label += ` <span style="color:var(--accent);font-size:11px">[p.${params.page_start}\u2013${params.page_end}]</span>`;
+      }
+      return `<div class="job-row">
+        <span class="job-id" title="${esc(j.job_id)}">${esc(j.job_id.slice(0,8))}\u2026</span>
+        <span class="job-doc" title="${esc(docId)}">${label}</span>
+        <span class="job-status ${j.status}">${j.status}</span>
+        <span style="color:var(--text-dim)">${esc(ts)}</span>
+        ${j.error && j.status !== 'cancelled' ? `<span style="color:#f85149;font-size:11px;flex:2" title="${esc(j.error)}">${esc((j.error||'').slice(0,80))}</span>` : ''}
+        ${'pending,running'.includes(j.status) ? `<button class="job-cancel-btn" onclick="cancelJob('${esc(j.job_id)}')">Cancel</button>` : ''}
+      </div>`;
+    }).join('');
+  }
+
+  async function cancelJob(jobId) {
+    try {
+      const r = await fetch(`/api/summarize/jobs/${jobId}`, { method: 'DELETE' });
+      if (!r.ok) { const e = await r.json().catch(() => ({})); alert(e.detail || 'Cancel failed'); return; }
+      await loadJobs();
+    } catch(e) { alert('Network error'); }
+  }
+
+  async function toggleWorker() {
+    const btn = document.getElementById('worker-toggle-btn');
+    try {
+      const status = await fetch('/api/summarize/worker/status').then(r => r.json());
+      const isPaused = status.paused;
+      const endpoint = isPaused ? '/api/summarize/worker/resume' : '/api/summarize/worker/pause';
+      await fetch(endpoint, { method: 'POST' });
+      _updateWorkerBtn(!isPaused);
+    } catch(e) { alert('Network error'); }
+  }
+
+  function _updateWorkerBtn(paused) {
+    const btn = document.getElementById('worker-toggle-btn');
+    if (!btn) return;
+    if (paused) {
+      btn.textContent = '▶ Resume Worker';
+      btn.style.color = 'var(--green)';
+      btn.style.borderColor = 'var(--green)';
+    } else {
+      btn.textContent = '\u23f8 Pause Worker';
+      btn.style.color = 'var(--text-dim)';
+      btn.style.borderColor = 'var(--border)';
+    }
+  }
+
+  async function _loadWorkerStatus() {
+    try {
+      const s = await fetch('/api/summarize/worker/status').then(r => r.json());
+      _updateWorkerBtn(s.paused);
+    } catch {}
+  }
+
+  // ── Page range ────────────────────────────────────────────────────────────
+  function populateDocSelect(docs) {
+    const sel = document.getElementById('range-doc-select');
+    const prev = sel.value;
+    sel.innerHTML = '<option value="">\u2014 Select document \u2014</option>'
+      + docs.map(d => `<option value="${esc(d.doc_id)}">${esc(d.title || d.filename)}</option>`).join('');
+    if (prev) sel.value = prev;
+  }
+
+  async function submitRange(e) {
+    e.preventDefault();
+    const docId = document.getElementById('range-doc-select').value;
+    const ps    = parseInt(document.getElementById('range-page-start').value, 10);
+    const pe    = parseInt(document.getElementById('range-page-end').value, 10);
+    if (!docId)        { setStatus('Select a document first.', 'error'); return; }
+    if (isNaN(ps) || isNaN(pe) || pe < ps || ps < 0)
+                       { setStatus('Invalid page range.', 'error'); return; }
+    const btn = document.getElementById('range-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Queued\u2026';
+    setStatus(`Queuing page-range job (pages ${ps}\u2013${pe})\u2026`, 'running');
+    try {
+      const r = await fetch('/api/summarize/run_range', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({doc_id: docId, page_start: ps, page_end: pe}),
+      });
+      if (!r.ok) throw new Error(await r.text());
+      const job = await r.json();
+      setStatus(`Job ${job.job_id.slice(0,8)}\u2026 queued. Watch the job log for progress.`, 'running');
+      pollRangeJob(job.job_id, btn, docId, ps, pe);
+    } catch(ex) {
+      setStatus(`Error: ${ex.message}`, 'error');
+      btn.disabled = false;
+      btn.textContent = 'Summarize Range';
+    }
+  }
+
+  async function pollRangeJob(jobId, btn, docId, ps, pe) {
+    const poll = setInterval(async () => {
+      try {
+        const r = await fetch(`/api/summarize/jobs/${jobId}`);
+        if (!r.ok) { clearInterval(poll); return; }
+        const job = await r.json();
+        if (job.status === 'done') {
+          clearInterval(poll);
+          setStatus(`Page range summary complete! (pages ${ps}\u2013${pe})`, 'done');
+          btn.disabled = false;
+          btn.textContent = 'Summarize Range';
+          await loadAllRanges();
+          await loadJobs();
+        } else if (job.status === 'failed') {
+          clearInterval(poll);
+          setStatus(`Job failed: ${job.error || 'unknown error'}`, 'error');
+          btn.disabled = false;
+          btn.textContent = 'Summarize Range';
+          await loadJobs();
+        } else {
+          // background poller handles list refresh
+        }
+      } catch { clearInterval(poll); }
+    }, 3000);
+  }
+
+  async function loadAllRanges() {
+    const sel = document.getElementById('range-doc-select');
+    const docId = sel ? sel.value : '';
+    if (docId) {
+      await loadRangesForDoc(docId);
+    } else {
+      try {
+        const r = await fetch('/api/summarize/ranges');
+        if (!r.ok) return;
+        const allRanges = await r.json();
+        allRanges.forEach(rng => { rng._title = _docTitles[rng.doc_id] || rng.document_title || rng.doc_id; });
+        renderRanges(allRanges);
+      } catch {}
+    }
+  }
+
+  async function loadRangesForDoc(docId) {
+    try {
+      const r = await fetch(`/api/summarize/ranges/${encodeURIComponent(docId)}`);
+      if (!r.ok) return;
+      const ranges = await r.json();
+      const title = _docTitles[docId] || docId.slice(0,16) + '\u2026';
+      ranges.forEach(rng => { rng._title = title; });
+      renderRanges(ranges);
+    } catch {}
+  }
+
+  document.getElementById('range-doc-select') && document.getElementById('range-doc-select')
+    .addEventListener('change', function() { loadRangesForDoc(this.value); });
+
+  function renderRanges(ranges) {
+    const el = document.getElementById('range-list');
+    if (!ranges.length) {
+      el.innerHTML = '<p class="no-data">No page-range summaries yet.</p>';
+      return;
+    }
+    el.innerHTML = ranges.map(rng => {
+      const title  = esc(rng._title || rng.document_title || rng.doc_id || '\u2014');
+      const pages  = `p.${rng.page_start}\u2013${rng.page_end}`;
+      const prev   = esc(rng.preview || '');
+      return `<div class="range-row">
+        <span class="range-doc" title="${title}">${title}</span>
+        <span class="range-pages">${pages}</span>
+        <span class="range-preview" title="${prev}">${prev}</span>
+        <span class="badge done" style="cursor:pointer;flex-shrink:0"
+          onclick="openRangeModal('${esc(rng.doc_id)}','${esc(rng._title||rng.document_title||'')}',${rng.page_start},${rng.page_end})"
+          title="Click to read summary">\u2713 Done</span>
+      </div>`;
+    }).join('');
+  }
+
+  async function openRangeModal(docId, title, ps, pe) {
+    const modal = document.getElementById('summary-modal');
+    document.getElementById('modal-title').textContent = `${title || docId} \u2014 Pages ${ps}\u2013${pe}`;
+    document.getElementById('modal-body').textContent = 'Loading\u2026';
+    modal.classList.add('open');
+    try {
+      const r = await fetch(`/api/summarize/range_text/${encodeURIComponent(docId)}/${ps}/${pe}`);
+      if (!r.ok) throw new Error('Summary not found');
+      const data = await r.json();
+      document.getElementById('modal-body').textContent = data.text;
+    } catch(ex) {
+      document.getElementById('modal-body').textContent = `Could not load summary: ${ex.message}`;
+    }
+  }
+
+  function esc(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Adaptive background job poller: fast when jobs are active, slow when idle.
+  let _bgJobPoll = null;
+  async function _bgPollJobs() {
+    try {
+      const r = await fetch('/api/summarize/jobs?limit=20');
+      if (r.ok) {
+        const jobs = await r.json();
+        renderJobs(jobs);
+        const hasActive = jobs.some(j => j.status === 'pending' || j.status === 'running');
+        _bgJobPoll = setTimeout(_bgPollJobs, hasActive ? 4000 : 60000);
+      } else {
+        _bgJobPoll = setTimeout(_bgPollJobs, 30000);
+      }
+    } catch {
+      _bgJobPoll = setTimeout(_bgPollJobs, 30000);
+    }
+  }
+
+  loadAll().then(_bgPollJobs);
+</script>
+</body>
+</html>

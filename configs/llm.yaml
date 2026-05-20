@@ -1,0 +1,52 @@
+llm:
+  model: rag-llm
+  base_url: http://localhost:11434
+  timeout_seconds: 220
+  temperature: 0.20  # Answer generation — slightly creative for natural prose; NOT used for HyDE (see runtime.yaml llm.temperature)
+
+prompt:
+  max_chunks: 6
+  max_chars_per_chunk: 1600
+  include_neighbor_context: true
+  max_neighbors_per_chunk: 2
+  max_chars_per_neighbor: 280
+  require_inline_citations: true
+  enforce_sentence_citations: true
+  min_citations: 2
+  max_citations: 3
+  include_retrieval_score: true
+  force_grounded_fallback_when_uncited: false
+  citation_score_window: 0.06
+
+decision:
+  medium_confidence_score: 0.55
+  high_confidence_score: 0.70
+  borderline_confidence_score: 0.62
+  max_ambiguous_gap: 0.03
+  path_override_min_term_matches: 1
+  always_use_llm: false
+  allow_uncited_if_confident: true
+  allow_low_confidence_answer: true
+  enforce_entity_grounding: true
+  entity_grounding_bands: [medium]
+  # These mirror scoring.yaml coverage section but allow llm.yaml-only overrides.
+  # scoring.yaml values are used by the retrieval layer; these govern answer policy.
+  min_coverage_score: 0.38
+  min_lexical_coverage: 0.55
+  entity_support_threshold: 0.40
+  citation_url_noise_penalty: 0.35
+
+summarize:
+  single_pass_threshold: 60000       # docs with total chars ≤ this get a single LLM call
+  segment_chars: 15000               # target chars per map-reduce segment
+  max_segments: 30                   # cap on number of segments for very large books
+  max_chars_per_segment_prompt: 60000  # hard cap on chars fed to LLM per segment call
+  max_chars_per_reduce_prompt: 24000   # pyramid threshold — if segment summaries exceed this, add an intermediate reduce layer
+  temperature: 0.3
+  timeout_seconds: 240.0
+
+crag:
+  # Corrective-RAG: if the best cross-encoder score across all hits is below
+  # this threshold, automatically re-run retrieval with internet fallback.
+  # Set to 0.0 (default) to disable; try 0.15–0.30 to enable.
+  min_relevance_score: 0.0

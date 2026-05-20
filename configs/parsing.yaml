@@ -1,0 +1,50 @@
+# Layout parser configuration
+# All thresholds are used by pipeline/extract/layout_parser.py
+
+# Set to false (default). The legacy pdf_ingest enhanced pipeline has been
+# removed; pipeline/extract is now the only PDF extraction path.
+enhanced_extraction: false
+
+layout:
+  # Fraction of page height treated as header/footer margin band
+  margin_fraction: 0.08
+
+  # Heading size multipliers relative to body font size
+  heading_thresholds:
+    h1: 1.6   # font_size >= body * h1 => H1 / Title
+    h2: 1.3   # font_size >= body * h2 => H2
+    h3: 1.1   # font_size >= body * h3 => H3
+
+  # Bold text at >= this fraction of body size is also treated as H3
+  bold_heading_ratio: 0.95
+
+  # Minimum overlap ratio (0-1) with a PDFPlumber table bbox to label as TABLE
+  table_overlap_threshold: 0.5
+
+  # Confidence values assigned per label
+  confidence:
+    title:     0.92
+    heading_h1: 0.92
+    heading_h2: 0.88
+    heading_h3: 0.82
+    body:      0.80
+    caption:   0.88
+    header:    0.85
+    footer:    0.85
+    list_item: 0.87
+    table:     0.90
+    figure:    0.95
+
+page_classifier:
+  # Fraction of page area covered by tables to classify as table_heavy
+  table_area_ratio: 0.15
+  # Fraction of chars that are math Unicode to classify as math_heavy
+  math_char_ratio: 0.05
+  # Fraction of chars in monospace fonts to classify as code_heavy
+  mono_char_ratio: 0.40
+  # Vector drawing thresholds (math-risk detection)
+  drawing_small_area_pt: 400     # pt² — paths smaller than this count as symbol-sized
+  drawing_density_ratio: 0.08    # small_paths / total_chars > this → math_heavy
+  drawing_absolute_min: 15       # minimum small drawings to trigger density check
+  drawing_sparse_text_chars: 80  # chars threshold for “almost no text” page
+  drawing_sparse_min_paths: 20   # min drawings on near-empty page → math_heavy

@@ -1,0 +1,86 @@
+# ── Internal / session notes ──────────────────────────────────────────────────
+SYSTEM_REVIEW.md
+SYSTEM_REVIEW_V2.md
+TODO.md
+LargeDocIngest.md
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.eggs/
+
+# ── Virtual environment ───────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Build / distribution ──────────────────────────────────────────────────────
+dist_nuitka/
+dist/
+build/
+*.spec
+*.exe
+*.msi
+
+# ── Data — corpus and generated files ────────────────────────────────────────
+data/raw/
+data/chunks/
+data/structured/
+data/markdown/
+data/index/
+data/metadata/
+data/extracted/
+data/extraction_checkpoints/
+data/extraction_reports/
+data/extraction_verbose/
+data/diagnostics/
+data/feedback/
+data/flag_library/
+data/cache/
+data/qa/
+data/db/
+
+# Keep top-level data config files
+!data/intent_examples.json
+!data/inference_override.json
+
+# ── Database ──────────────────────────────────────────────────────────────────
+*.sqlite3
+*.sqlite
+*.db
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Test / lint cache ─────────────────────────────────────────────────────────
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Editor / OS ───────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# ── Temporary / scratch files ─────────────────────────────────────────────────
+_tmp*.py
+*.tmp
+*.bak

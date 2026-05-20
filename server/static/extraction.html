@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extraction Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/extraction.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- ──────────────── SIDEBAR ──────────────────────────────────────── -->
+  <div id="sidebar">
+    <div id="sidebar-header">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <div class="logo">Extraction Studio</div>
+        <a href="/" title="Back to chat" style="display:inline-flex;align-items:center;color:var(--text-dim);text-decoration:none;padding:4px;border-radius:4px;transition:color .15s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-dim)'">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </a>
+      </div>
+      <div class="sub">Large-document branched extraction</div>
+    </div>
+    <div id="project-list"></div>
+    <button id="btn-new-project" onclick="openNewProjectModal()">+ New Project</button>
+  </div>
+
+  <!-- ──────────────── MAIN AREA ────────────────────────────────────── -->
+  <div id="main">
+
+    <!-- Top bar (always visible) -->
+    <div id="main-topbar">
+      <button id="sidebar-toggle-btn" onclick="toggleSidebar()" title="Toggle sidebar" aria-label="Toggle sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty-state">
+      <div class="icon">🗂️</div>
+      <p>Select a project or create a new one to get started.</p>
+      <button class="btn btn-primary" onclick="openNewProjectModal()">+ New Project</button>
+    </div>
+
+    <!-- Tab bar (shown when a project is active) -->
+    <div id="tab-bar" style="display:none">
+      <button class="tab active" id="tab-setup" onclick="showTab('setup')">Setup</button>
+      <button class="tab" id="tab-run"   onclick="showTab('run')">Run</button>
+      <button class="tab" id="tab-report" onclick="showTab('report')">Report</button>
+    </div>
+
+    <!-- Setup panel -->
+    <div id="panel-setup" class="visible" style="display:none">
+      <div class="panel-body">
+
+        <!-- Project meta -->
+        <div class="card">
+          <div class="card-title">Project</div>
+          <div class="form-row">
+            <label>Name</label>
+            <input type="text" id="proj-name" placeholder="e.g. Spec Review Q3" />
+          </div>
+          <div class="form-row">
+            <label>Slug (used for file names)</label>
+            <input type="text" id="proj-slug" placeholder="spec_review_q3" />
+          </div>
+          <div class="form-row">
+            <label>Collection</label>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <input type="text" id="proj-collection" placeholder="extraction_spec_review_q3" style="flex:1" />
+              <button class="btn btn-ghost btn-sm" onclick="openPickCollectionModal()" title="Pick an existing RAG collection">Browse…</button>
+            </div>
+            <div class="hint">Use an existing library collection to skip re-ingestion, or leave blank to auto-create.</div>
+          </div>
+          <div class="form-row">
+            <label><input type="checkbox" id="proj-keep-collection" /> Keep collection after run</label>
+          </div>
+          <div class="form-row">
+            <label><input type="checkbox" id="proj-cross-branch-dedup" /> Deduplicate across branches (keep highest-priority source only)</label>
+          </div>
+        </div>
+
+        <!-- Documents -->
+        <div class="card">
+          <div class="card-title">Source Documents</div>
+          <ul id="source-list"></ul>
+          <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
+            <button class="btn btn-ghost btn-sm" onclick="openAddDocModal()">+ Add Document</button>
+          </div>
+        </div>
+
+        <!-- Branches -->
+        <div class="card">
+          <div class="card-title">Extraction Branches</div>
+          <ul id="branch-list"></ul>
+          <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
+            <button class="btn btn-ghost btn-sm" onclick="openAddBranchModal()">+ Add Branch</button>
+            <button class="btn btn-ghost btn-sm" onclick="autoSuggestBranches()">&#x2736; Auto-Suggest</button>
+            <button class="btn btn-ghost btn-sm" onclick="loadFromFlagLibrary()">&#x1F4DA; From Flag Library</button>
+          </div>
+        </div>
+
+        <!-- Post-Branch Passes -->
+        <div class="card">
+          <div class="card-title">Post-Branch Passes <span style="color:var(--text-dim);font-size:0.75rem;font-weight:400;">(LLM calls run in series after all branches finish)</span></div>
+          <ul id="pass-list"></ul>
+          <div style="display:flex; gap:8px; margin-top:10px;">
+            <button class="btn btn-ghost btn-sm" onclick="openAddPassModal()">+ Add Pass</button>
+          </div>
+        </div>
+
+        <!-- Save / run actions -->
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-primary" onclick="saveProject()">Save Project</button>
+          <button class="btn btn-success" onclick="showTab('run')">Run Extraction →</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Run panel -->
+    <div id="panel-run" style="display:none">
+      <div class="panel-body">
+        <div class="card">
+          <div class="card-title">Run Extraction</div>
+          <div id="run-summary" style="margin-bottom:14px; font-size:0.85rem; color:var(--text-dim);">
+            No project loaded.
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <button class="btn btn-success" id="btn-run" onclick="startRun()">▶ Start Extraction</button>
+            <button class="btn btn-danger btn-sm" id="btn-abort" style="display:none" onclick="abortRun()">■ Abort</button>
+            <label style="display:flex; align-items:center; gap:6px; font-size:0.82rem; color:var(--text-dim); cursor:pointer; margin-left:6px;" title="Save every pipeline step (prompts, raw LLM responses, IDs, rehydrated chunks) to data/extraction_verbose/">
+              <input type="checkbox" id="chk-verbose" style="width:14px;height:14px;cursor:pointer;">
+              Verbose
+            </label>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Progress</div>
+          <div id="run-status-bar">
+            <div class="rsb-track"><div class="rsb-fill" id="rsb-fill" style="width:0%"></div></div>
+            <div class="rsb-row">
+              <span class="rsb-phase" id="rsb-phase">IDLE</span>
+              <span class="rsb-main" id="rsb-main">&mdash;</span>
+              <span class="rsb-sub"  id="rsb-sub"></span>
+            </div>
+          </div>
+          <div id="progress-log"><span class="log-line">Ready.</span></div>
+        </div>
+
+        <div id="run-results"></div>
+      </div>
+    </div>
+
+    <!-- Report panel -->
+    <div id="panel-report" style="display:none">
+      <div class="panel-body" style="display:flex; flex-direction:column; height:100%;">
+        <div style="display:flex; gap:10px; margin-bottom:12px; align-items:center; flex-wrap:wrap;">
+          <h2 style="flex:1; margin:0;">Report</h2>
+          <select id="report-history-select" style="background:#12141e; border:1px solid var(--border); color:var(--text); border-radius:6px; padding:5px 8px; font-size:0.82rem; max-width:260px; cursor:pointer;" onchange="loadHistoryReport(this.value)" title="Load a saved report">
+            <option value="">— History —</option>
+          </select>
+          <button class="btn btn-ghost btn-sm" onclick="copyReport()">Copy</button>
+          <button class="btn btn-ghost btn-sm" onclick="downloadReport()">Download</button>
+        </div>
+        <pre id="report-md" class="report-md-raw" style="display:none"></pre>
+        <div id="report-md-rendered" class="report-md-body">No report yet. Run extraction first.</div>
+      </div>
+    </div>
+
+    <div id="status-bar">
+      <div class="status-dot" id="status-dot"></div>
+      <span id="status-text">Idle</span>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── MODALS ───────────────────────────────────────────────── -->
+
+<!-- New Project Modal -->
+<div class="modal-overlay" id="modal-new-project">
+  <div class="modal">
+    <h2>New Project</h2>
+    <div class="form-row">
+      <label>Project Name</label>
+      <input type="text" id="np-name" placeholder="My Extraction Project" />
+    </div>
+    <div class="form-row">
+      <label>Slug</label>
+      <input type="text" id="np-slug" placeholder="my_extraction_project" />
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-new-project')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmNewProject()">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Document Modal -->
+<div class="modal-overlay" id="modal-add-doc">
+  <div class="modal" style="width:600px">
+    <h2>Add Source Document</h2>
+
+    <!-- Tab toggle -->
+    <div style="display:flex; gap:4px; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:8px;">
+      <button class="tab active" id="add-doc-tab-browse" onclick="setAddDocTab('browse')">Browse Library</button>
+      <button class="tab" id="add-doc-tab-path" onclick="setAddDocTab('path')">Enter Path</button>
+    </div>
+
+    <!-- Browse tab -->
+    <div id="add-doc-browse">
+      <div class="form-row">
+        <label>Collection</label>
+        <select id="add-doc-collection" onchange="loadDocsForCollection()"><option value="">All documents</option></select>
+      </div>
+      <div id="add-doc-doc-list" style="max-height:240px; overflow-y:auto; border:1px solid var(--border);
+           border-radius:6px; background:#12141e;">
+        <div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading…</div>
+      </div>
+    </div>
+
+    <!-- Manual path tab -->
+    <div id="add-doc-path-tab" style="display:none">
+      <div class="form-row">
+        <label>File Path (server-side absolute or relative to project root)</label>
+        <input type="text" id="add-doc-path" placeholder="data/raw/document.pdf" />
+      </div>
+    </div>
+
+    <!-- Shared role / label -->
+    <div class="form-row" style="margin-top:12px;">
+      <label>Role</label>
+      <select id="add-doc-role">
+        <option value="primary">primary (weight 1.0)</option>
+        <option value="addendum">addendum (weight 1.5 — prioritized)</option>
+        <option value="reference">reference (weight 0.6 — de-prioritized)</option>
+        <option value="custom">custom</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Label (optional — defaults to filename)</label>
+      <input type="text" id="add-doc-label" placeholder="" />
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-doc')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmAddDoc()">Add</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Branch Modal -->
+<div class="modal-overlay" id="modal-add-branch">
+  <div class="modal" style="max-height:90vh; overflow-y:auto;">
+    <h2 id="add-branch-title">Add Branch</h2>
+    <div class="form-row">
+      <label>Name</label>
+      <input type="text" id="add-branch-name" placeholder="Safety Requirements" />
+    </div>
+    <div class="form-row">
+      <label>Mode</label>
+      <select id="add-branch-mode" onchange="onBranchModeChange()">
+        <option value="keyword">keyword — hard-filter by keywords</option>
+        <option value="semantic">semantic — dense retrieval on topic</option>
+      </select>
+    </div>
+    <div id="branch-keyword-field" class="form-row">
+      <label>Keywords (comma-separated)</label>
+      <input type="text" id="add-branch-keywords" placeholder="safety, hazard, risk, mitigation" />
+    </div>
+    <div id="branch-semantic-field" class="form-row" style="display:none">
+      <label>Topic Description</label>
+      <textarea id="add-branch-topic" placeholder="Describe what content to extract semantically…"></textarea>
+    </div>
+    <div class="form-row">
+      <label>Output Heading (optional)</label>
+      <input type="text" id="add-branch-heading" placeholder="Safety Requirements" />
+    </div>
+    <div class="form-row">
+      <label>Output Format</label>
+      <select id="add-branch-format">
+        <option value="bullets">bullets</option>
+        <option value="numbered">numbered</option>
+        <option value="table">table</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Max Items</label>
+      <input type="text" id="add-branch-max" value="200" />
+    </div>
+    <div class="form-row" style="margin-top:4px;">
+      <label>Additional Context <span style="font-weight:400; color:var(--text-dim);">(optional)</span></label>
+      <textarea id="add-branch-system-override" rows="4"
+        placeholder="Extra guidance injected into the prompt for this branch.&#10;&#10;Example: Focus on formal definitions only.&#10;Example: Prioritize content from chapters 5–10."></textarea>
+      <div class="hint">Appended to the topic description so the model knows what to select or skip. Does not change the prompt structure.</div>
+    </div>
+    <input type="hidden" id="add-branch-edit-idx" value="-1" />
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-branch')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmAddBranch()">Save Branch</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Pass Modal -->
+<div class="modal-overlay" id="modal-add-pass">
+  <div class="modal" style="width:580px; max-height:90vh; overflow-y:auto;">
+    <h2 id="add-pass-title">Add Post-Branch Pass</h2>
+    <div class="form-row">
+      <label>Name</label>
+      <input type="text" id="add-pass-name" placeholder="Executive Summary" />
+    </div>
+    <div class="form-row">
+      <label>Output Heading (optional, defaults to name)</label>
+      <input type="text" id="add-pass-heading" placeholder="" />
+    </div>
+    <div class="form-row">
+      <label>Source Branches (comma-separated &mdash; blank = all branches)</label>
+      <input type="text" id="add-pass-branches" placeholder="leave blank to use all branches" />
+      <div class="hint">e.g. <em>Cost Estimates, Schedule</em> &mdash; only items from those branches are passed in.</div>
+    </div>
+    <div class="form-row">
+      <label>System Prompt</label>
+      <textarea id="add-pass-system" rows="3" placeholder="You are a technical analyst. Summarize findings concisely."></textarea>
+    </div>
+    <div class="form-row">
+      <label>User Prompt Template</label>
+      <textarea id="add-pass-user" rows="6" placeholder="Items extracted from {branch_names}:\n\n{items_text}\n\nWrite a concise summary grouped by theme."></textarea>
+      <div class="hint">Placeholders: <code>{items_text}</code> &mdash; all extracted bullets &nbsp;|&nbsp; <code>{branch_names}</code> &mdash; source branch names</div>
+    </div>
+    <div class="form-row">
+      <label>Temperature</label>
+      <input type="text" id="add-pass-temp" value="0.2" style="width:80px" />
+    </div>
+    <div class="form-row">
+      <label>Timeout (seconds)</label>
+      <input type="text" id="add-pass-timeout" value="240" style="width:80px" />
+    </div>
+    <div class="form-row">
+      <label>Max Input Chars Per Batch</label>
+      <input type="text" id="add-pass-max-chars" value="60000" style="width:100px" />
+      <div class="hint">Split large inputs into batches of this size. <code>0</code> = no limit (single call).</div>
+    </div>
+    <div class="form-row">
+      <label>Max Output Tokens (<code>num_predict</code>)</label>
+      <input type="text" id="add-pass-num-predict" value="-1" style="width:100px" />
+      <div class="hint"><code>-1</code> = model default. Set <code>4096</code>+ for synthesis passes to prevent truncation.</div>
+    </div>
+    <div class="form-row">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+        <input type="checkbox" id="add-pass-per-branch" />
+        Run once per branch (per-branch mode)
+      </label>
+      <div class="hint">Call the LLM separately for each source branch. Use for per-branch summaries. Responses are joined with a separator. <strong>Do not use for synthesis passes.</strong></div>
+    </div>
+    <input type="hidden" id="add-pass-edit-idx" value="-1" />
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-pass')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmAddPass()">Save Pass</button>
+    </div>
+  </div>
+</div>
+
+<!-- Flag Library Modal -->
+<div class="modal-overlay" id="modal-flag-library">
+  <div class="modal" style="width:600px">
+    <h2>Flag Library</h2>
+    <p style="color:var(--text-dim); font-size:0.8rem; margin-bottom:12px;">
+      Saved branch configurations.  Click a branch to add it to the current project.
+    </p>
+    <div id="flag-library-list" style="max-height:320px; overflow-y:auto;"></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-flag-library')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Pick Collection Modal -->
+<div class="modal-overlay" id="modal-pick-collection">
+  <div class="modal" style="width:540px">
+    <h2>Pick Existing Collection</h2>
+    <p style="color:var(--text-dim); font-size:0.8rem; margin-bottom:12px;">
+      Select a collection that already contains your ingested documents.
+      The extraction will run directly against its chunks — no re-ingestion needed.
+    </p>
+    <div id="pick-collection-list" style="max-height:320px; overflow-y:auto;
+         border:1px solid var(--border); border-radius:6px; background:#12141e;">
+      <div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading…</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-pick-collection')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── JAVASCRIPT ───────────────────────────────────────────── -->
+<script>
+"use strict";
+
+// ── State ────────────────────────────────────────────────────────────────────
+let state = {
+  projects: [],       // [{slug, name}]
+  current: null,      // active ProjectConfig object
+  runResult: null,    // last run result
+  runAborted: false,
+  _sse: null,         // active EventSource or fetch AbortController
+};
+
+// ── Sidebar toggle ────────────────────────────────────────────────────────────
+function toggleSidebar() {
+  document.getElementById("app").classList.toggle("sidebar-closed");
+}
+
+// Close sidebar on mobile when clicking main area
+document.addEventListener("click", e => {
+  const app = document.getElementById("app");
+  if (window.innerWidth <= 700
+      && !app.classList.contains("sidebar-closed")
+      && !document.getElementById("sidebar").contains(e.target)
+      && e.target.id !== "sidebar-toggle-btn"
+      && !e.target.closest("#sidebar-toggle-btn")) {
+    app.classList.add("sidebar-closed");
+  }
+});
+
+// ── Boot ─────────────────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  // Start with sidebar closed on narrow screens
+  if (window.innerWidth <= 700) {
+    document.getElementById("app").classList.add("sidebar-closed");
+  }
+  loadProjectList();
+});
+
+async function loadProjectList() {
+  try {
+    const res = await fetch("/api/extraction/projects");
+    state.projects = await res.json();
+  } catch { state.projects = []; }
+  renderProjectList();
+}
+
+function renderProjectList() {
+  const el = document.getElementById("project-list");
+  if (!state.projects.length) {
+    el.innerHTML = '<div style="padding:12px; color:var(--text-dim); font-size:0.8rem;">No saved projects.</div>';
+    return;
+  }
+  el.innerHTML = state.projects.map(p => `
+    <div class="project-item${state.current?.slug===p.slug?' active':''}" onclick="loadProject('${esc(p.slug)}')">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <div style="flex:1">
+          <div class="pname">${esc(p.name)}</div>
+          <div class="pslug">${esc(p.slug)}</div>
+        </div>
+        <button class="btn-icon" style="font-size:0.8rem; color:var(--danger);" title="Delete project"
+                onclick="event.stopPropagation(); deleteProject('${esc(p.slug)}', '${esc(p.name)}')">&#x1F5D1;</button>
+      </div>
+    </div>`).join("");
+}
+
+// ── Load project ──────────────────────────────────────────────────────────────
+async function loadProject(slug) {
+  try {
+    const res = await fetch(`/api/extraction/projects/${encodeURIComponent(slug)}`);
+    if (!res.ok) { alert("Could not load project."); return; }
+    const data = await res.json();
+    // Normalise old projects that predate the post_branch_passes field
+    if (!Array.isArray(data.post_branch_passes)) data.post_branch_passes = [];
+    state.current = data;
+    showProjectUI();
+    renderProjectForm();
+    renderSources();
+    renderBranches();
+    renderPasses();
+    updateRunSummary();
+  } catch(e) { alert("Error loading project: " + e); }
+}
+
+function showProjectUI() {
+  document.getElementById("empty-state").style.display = "none";
+  document.getElementById("tab-bar").style.display = "flex";
+  showTab("setup");
+  renderProjectList();
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+function showTab(name) {
+  ["setup","run","report"].forEach(t => {
+    document.getElementById("panel-"+t).style.display = "none";
+    document.getElementById("tab-"+t).classList.remove("active");
+  });
+  document.getElementById("panel-"+name).style.display = "flex";
+  document.getElementById("tab-"+name).classList.add("active");
+  if (name === "report") refreshReportHistory();
+}
+
+// ── New project modal ─────────────────────────────────────────────────────────
+function openNewProjectModal() {
+  document.getElementById("np-name").value = "";
+  document.getElementById("np-slug").value = "";
+  openModal("modal-new-project");
+  document.getElementById("np-name").oninput = () => {
+    const slug = document.getElementById("np-name").value
+      .toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_+|_+$/g,"").slice(0,40);
+    document.getElementById("np-slug").value = slug;
+  };
+}
+
+function confirmNewProject() {
+  const name = document.getElementById("np-name").value.trim();
+  const slug = document.getElementById("np-slug").value.trim();
+  if (!name || !slug) { alert("Name and slug are required."); return; }
+  state.current = {
+    slug, name,
+    document_sources: [],
+    branches: [],
+    post_branch_passes: [],
+    collection_id: `extraction_${slug}`,
+    keep_collection_after_run: false,
+    cross_branch_dedup: false,
+    report_output_path: "data/extraction_reports",
+  };
+  closeModal("modal-new-project");
+  showProjectUI();
+  renderProjectForm();
+  renderSources();
+  renderBranches();
+  renderPasses();
+  updateRunSummary();
+}
+
+// ── Project form ──────────────────────────────────────────────────────────────
+function renderProjectForm() {
+  const p = state.current;
+  if (!p) return;
+  document.getElementById("proj-name").value = p.name || "";
+  document.getElementById("proj-slug").value = p.slug || "";
+  document.getElementById("proj-collection").value = p.collection_id || "";
+  document.getElementById("proj-keep-collection").checked = !!p.keep_collection_after_run;
+  document.getElementById("proj-cross-branch-dedup").checked = !!p.cross_branch_dedup;
+}
+
+function readProjectForm() {
+  const p = state.current;
+  p.name = document.getElementById("proj-name").value.trim() || p.name;
+  p.slug = document.getElementById("proj-slug").value.trim() || p.slug;
+  p.collection_id = document.getElementById("proj-collection").value.trim() || `extraction_${p.slug}`;
+  p.keep_collection_after_run = document.getElementById("proj-keep-collection").checked;
+  p.cross_branch_dedup = document.getElementById("proj-cross-branch-dedup").checked;
+}
+
+// ── Save project ──────────────────────────────────────────────────────────────
+async function saveProject() {
+  readProjectForm();
+  const p = state.current;
+  try {
+    const res = await fetch(`/api/extraction/projects/${encodeURIComponent(p.slug)}`, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({project: p}),
+    });
+    if (!res.ok) { const d=await res.json(); alert("Save failed: "+(d.detail||res.status)); return; }
+    setStatus("ok", `Project '${p.name}' saved.`);
+    await loadProjectList();
+  } catch(e) { alert("Error saving: "+e); }
+}
+
+// ── Delete project ───────────────────────────────────────────────────────────
+async function deleteProject(slug, name) {
+  if (!confirm(`Delete project "${name}"?\nThis cannot be undone.`)) return;
+  try {
+    const res = await fetch(`/api/extraction/projects/${encodeURIComponent(slug)}`, { method: "DELETE" });
+    if (!res.ok) { alert("Delete failed: " + res.status); return; }
+    if (state.current?.slug === slug) {
+      state.current = null;
+      document.getElementById("empty-state").style.display = "";
+      document.getElementById("tab-bar").style.display = "none";
+      ["setup","run","report"].forEach(t => document.getElementById("panel-"+t).style.display="none");
+    }
+    await loadProjectList();
+    setStatus("ok", `Project '${name}' deleted.`);
+  } catch(e) { alert("Error: "+e); }
+}
+
+// ── Pick collection modal ─────────────────────────────────────────────────────
+async function openPickCollectionModal() {
+  const container = document.getElementById("pick-collection-list");
+  container.innerHTML = '<div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading…</div>';
+  openModal("modal-pick-collection");
+  try {
+    const res  = await fetch("/api/collections");
+    const cols = await res.json();
+    if (!cols.length) {
+      container.innerHTML = '<div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">No collections found.</div>';
+      return;
+    }
+    container.innerHTML = cols.map(c => `
+      <div style="padding:10px 14px; cursor:pointer; border-bottom:1px solid var(--border);
+                  display:flex; align-items:center; gap:10px;"
+           onmouseover="this.style.background='#1e2a3a'" onmouseout="this.style.background=''"
+           onclick="pickCollection('${esc(c.collection_id)}','${esc(c.name)}')">
+        <div style="flex:1;">
+          <div style="font-size:0.88rem; font-weight:500;">${esc(c.name)}</div>
+          <div style="font-size:0.75rem; color:var(--text-dim);">${esc(c.collection_id)}</div>
+        </div>
+        <span style="font-size:0.75rem; color:var(--text-dim);">${c.document_count??''} docs</span>
+      </div>`).join("");
+  } catch(e) {
+    container.innerHTML = `<div style="padding:10px; color:var(--danger); font-size:0.8rem;">Error: ${esc(String(e))}</div>`;
+  }
+}
+
+function pickCollection(colId, name) {
+  document.getElementById("proj-collection").value = colId;
+  // Also set keep_collection to true — we didn't create it, don't destroy it
+  document.getElementById("proj-keep-collection").checked = true;
+  document.getElementById("proj-cross-branch-dedup").checked = true;
+  closeModal("modal-pick-collection");
+  setStatus("ok", `Collection set to '${name}' — existing chunks will be used directly.`);
+}
+
+// ── Source documents ──────────────────────────────────────────────────────────
+function renderSources() {
+  const ul = document.getElementById("source-list");
+  const srcs = state.current?.document_sources || [];
+  if (!srcs.length) {
+    ul.innerHTML = '<li style="color:var(--text-dim);font-size:0.8rem;">No documents added yet.</li>';
+    return;
+  }
+  ul.innerHTML = srcs.map((s,i) => `
+    <li class="source-item">
+      <span class="spath">${esc(s.path)}</span>
+      <span class="srole">${esc(s.role||"primary")}</span>
+      <button class="btn-icon" title="Remove" onclick="removeSource(${i})">✕</button>
+    </li>`).join("");
+}
+
+// ── Add document modal ───────────────────────────────────────────────────────
+let _addDocTab = "browse";
+let _addDocSelected = null; // {path, filename} when browse tab has a selection
+
+function setAddDocTab(tab) {
+  _addDocTab = tab;
+  document.getElementById("add-doc-browse").style.display      = tab==="browse" ? "" : "none";
+  document.getElementById("add-doc-path-tab").style.display     = tab==="path"   ? "" : "none";
+  document.getElementById("add-doc-tab-browse").classList.toggle("active", tab==="browse");
+  document.getElementById("add-doc-tab-path").classList.toggle("active",   tab==="path");
+}
+
+async function openAddDocModal() {
+  _addDocSelected = null;
+  document.getElementById("add-doc-path").value  = "";
+  document.getElementById("add-doc-label").value = "";
+  document.getElementById("add-doc-role").value  = "primary";
+  setAddDocTab("browse");
+  openModal("modal-add-doc");
+  // Populate collection picker
+  try {
+    const res = await fetch("/api/collections");
+    const cols = await res.json();
+    const sel = document.getElementById("add-doc-collection");
+    sel.innerHTML = '<option value="">All documents</option>' +
+      cols.map(c => `<option value="${esc(c.collection_id)}">${esc(c.name)}</option>`).join("");
+  } catch {}
+  await loadDocsForCollection();
+}
+
+async function loadDocsForCollection() {
+  const colId = document.getElementById("add-doc-collection").value;
+  const container = document.getElementById("add-doc-doc-list");
+  container.innerHTML = '<div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading…</div>';
+  _addDocSelected = null;
+  try {
+    const url = colId ? `/api/documents?collection_id=${encodeURIComponent(colId)}` : "/api/documents";
+    const res = await fetch(url);
+    const docs = await res.json();
+    if (!docs.length) {
+      container.innerHTML = '<div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">No documents found.</div>';
+      return;
+    }
+    container.innerHTML = docs.map(d => `
+      <div class="doc-pick-row" data-path="${esc(d.source_path)}" data-name="${esc(d.filename)}"
+           onclick="selectDocRow(this)"
+           style="padding:8px 12px; cursor:pointer; border-bottom:1px solid var(--border);
+                  display:flex; align-items:center; gap:10px;">
+        <span style="flex:1; font-size:0.85rem;">${esc(d.title||d.filename)}</span>
+        <span style="font-size:0.75rem; color:var(--text-dim);">${esc(d.source_type||'')}</span>
+        <span style="font-size:0.72rem; color:var(--text-dim);">${d.chunk_count||0} chunks</span>
+      </div>`).join("");
+  } catch(e) {
+    container.innerHTML = `<div style="padding:10px; color:var(--danger); font-size:0.8rem;">Error: ${esc(String(e))}</div>`;
+  }
+}
+
+function selectDocRow(el) {
+  document.querySelectorAll(".doc-pick-row").forEach(r => r.style.background = "");
+  el.style.background = "#1e2a3a";
+  _addDocSelected = { path: el.dataset.path, filename: el.dataset.name };
+  if (!document.getElementById("add-doc-label").value)
+    document.getElementById("add-doc-label").value = el.dataset.name;
+}
+
+function confirmAddDoc() {
+  let path, label;
+  if (_addDocTab === "browse") {
+    if (!_addDocSelected) { alert("Select a document from the list."); return; }
+    path  = _addDocSelected.path;
+    label = document.getElementById("add-doc-label").value.trim() || _addDocSelected.filename;
+  } else {
+    path  = document.getElementById("add-doc-path").value.trim();
+    label = document.getElementById("add-doc-label").value.trim();
+    if (!path) { alert("File path is required."); return; }
+  }
+  const role = document.getElementById("add-doc-role").value;
+  state.current.document_sources = state.current.document_sources || [];
+  state.current.document_sources.push({ path, role, label: label || undefined });
+  renderSources();
+  closeModal("modal-add-doc");
+}
+
+function removeSource(i) {
+  state.current.document_sources.splice(i,1);
+  renderSources();
+}
+
+// ── Branches ──────────────────────────────────────────────────────────────────
+function renderBranches() {
+  const ul = document.getElementById("branch-list");
+  const branches = state.current?.branches || [];
+  if (!branches.length) {
+    ul.innerHTML = '<li style="color:var(--text-dim);font-size:0.8rem;">No branches configured yet.</li>';
+    return;
+  }
+  ul.innerHTML = branches.map((b,i) => {
+    const modeClass = b.mode==="semantic" ? "badge-semantic" : "badge-keyword";
+    const detail = b.mode==="keyword"
+      ? (b.keywords||[]).slice(0,5).join(", ")
+      : (b.topic_description||"").slice(0,60);
+    return `
+    <li class="branch-card">
+      <div class="branch-card-header">
+        <span class="bname">${esc(b.name)}</span>
+        <span class="branch-mode-badge ${modeClass}">${esc(b.mode)}</span>
+        <button class="btn-icon" onclick="editBranch(${i})" title="Edit">✎</button>
+        <button class="btn-icon" onclick="removeBranch(${i})" title="Remove">✕</button>
+        <button class="btn-icon" onclick="saveBranchToLibrary(${i})" title="Save to flag library">🚩</button>
+      </div>
+      <div class="branch-detail">${esc(detail)}</div>
+    </li>`;
+  }).join("");
+}
+
+function openAddBranchModal(editIdx=-1) {
+  document.getElementById("add-branch-edit-idx").value = editIdx;
+  document.getElementById("add-branch-title").textContent = editIdx>=0 ? "Edit Branch" : "Add Branch";
+  const b = editIdx>=0 ? state.current.branches[editIdx] : null;
+  document.getElementById("add-branch-name").value    = b?.name || "";
+  document.getElementById("add-branch-mode").value    = b?.mode || "keyword";
+  document.getElementById("add-branch-keywords").value = (b?.keywords||[]).join(", ");
+  document.getElementById("add-branch-topic").value   = b?.topic_description || "";
+  document.getElementById("add-branch-heading").value = b?.output_heading || "";
+  document.getElementById("add-branch-format").value  = b?.output_format || "bullets";
+  document.getElementById("add-branch-max").value     = b?.max_items ?? 200;
+  document.getElementById("add-branch-system-override").value = b?.prompt_context || "";
+  onBranchModeChange();
+  openModal("modal-add-branch");
+}
+
+function editBranch(i) { openAddBranchModal(i); }
+
+function onBranchModeChange() {
+  const mode = document.getElementById("add-branch-mode").value;
+  document.getElementById("branch-keyword-field").style.display  = mode==="keyword"  ? "" : "none";
+  document.getElementById("branch-semantic-field").style.display = mode==="semantic" ? "" : "none";
+}
+
+function confirmAddBranch() {
+  const idx   = parseInt(document.getElementById("add-branch-edit-idx").value, 10);
+  const name  = document.getElementById("add-branch-name").value.trim();
+  const mode  = document.getElementById("add-branch-mode").value;
+  const kwRaw = document.getElementById("add-branch-keywords").value;
+  const topic = document.getElementById("add-branch-topic").value.trim();
+  const heading = document.getElementById("add-branch-heading").value.trim();
+  const format  = document.getElementById("add-branch-format").value;
+  const maxItems = parseInt(document.getElementById("add-branch-max").value, 10) || 200;
+  const promptContext = document.getElementById("add-branch-system-override").value.trim() || null;
+  if (!name) { alert("Branch name is required."); return; }
+  const kws = kwRaw.split(",").map(k=>k.trim()).filter(Boolean);
+  const branch = {
+    name, mode,
+    keywords: mode==="keyword" ? kws : [],
+    topic_description: mode==="semantic" ? topic : "",
+    output_heading: heading || name,
+    output_format: format,
+    max_items: maxItems,
+    prompt_context: promptContext,
+    enabled: true,
+  };
+  if (idx >= 0) state.current.branches[idx] = branch;
+  else { state.current.branches = state.current.branches || []; state.current.branches.push(branch); }
+  renderBranches();
+  closeModal("modal-add-branch");
+}
+
+function removeBranch(i) {
+  if (!confirm("Remove this branch?")) return;
+  state.current.branches.splice(i,1);
+  renderBranches();
+}
+
+// ── Post-branch passes ───────────────────────────────────────────────────────
+function renderPasses() {
+  const ul = document.getElementById("pass-list");
+  const passes = state.current?.post_branch_passes || [];
+  if (!passes.length) {
+    ul.innerHTML = '<li style="color:var(--text-dim);font-size:0.8rem;">No post-branch passes configured.</li>';
+    return;
+  }
+  ul.innerHTML = passes.map((pp, i) => {
+    const detail = (pp.system_prompt||pp.user_prompt_template||"").slice(0, 70);
+    const srcLabel = (pp.source_branches||[]).length
+      ? (pp.source_branches||[]).join(", ")
+      : "all branches";
+    return `
+    <li class="pass-card">
+      <div class="pass-card-header">
+        <span class="pname">${esc(pp.name)}</span>
+        <span class="badge-pass">post-pass</span>
+        <button class="btn-icon" onclick="editPass(${i})" title="Edit">&#x270e;</button>
+        <button class="btn-icon" onclick="removePass(${i})" title="Remove">&times;</button>
+      </div>
+      <div class="pass-detail">Sources: ${esc(srcLabel)}</div>
+      <div class="pass-detail">${esc(detail)}</div>
+    </li>`;
+  }).join("");
+}
+
+function openAddPassModal(editIdx = -1) {
+  document.getElementById("add-pass-edit-idx").value = editIdx;
+  document.getElementById("add-pass-title").textContent = editIdx >= 0 ? "Edit Post-Branch Pass" : "Add Post-Branch Pass";
+  const pp = editIdx >= 0 ? state.current.post_branch_passes[editIdx] : null;
+  document.getElementById("add-pass-name").value     = pp?.name || "";
+  document.getElementById("add-pass-heading").value  = pp?.output_heading || "";
+  document.getElementById("add-pass-branches").value = (pp?.source_branches||[]).join(", ");
+  document.getElementById("add-pass-system").value   = pp?.system_prompt || "";
+  document.getElementById("add-pass-user").value     = pp?.user_prompt_template || "";
+  document.getElementById("add-pass-temp").value        = pp?.temperature ?? 0.2;
+  document.getElementById("add-pass-timeout").value     = pp?.timeout_seconds ?? 240;
+  document.getElementById("add-pass-max-chars").value   = pp?.max_chars_per_batch ?? 60000;
+  document.getElementById("add-pass-num-predict").value = pp?.num_predict ?? -1;
+  document.getElementById("add-pass-per-branch").checked = pp?.per_branch ?? false;
+  openModal("modal-add-pass");
+}
+
+function editPass(i) { openAddPassModal(i); }
+
+function confirmAddPass() {
+  const idx     = parseInt(document.getElementById("add-pass-edit-idx").value, 10);
+  const name    = document.getElementById("add-pass-name").value.trim();
+  const heading = document.getElementById("add-pass-heading").value.trim();
+  const branchRaw = document.getElementById("add-pass-branches").value;
+  const system  = document.getElementById("add-pass-system").value.trim();
+  const user    = document.getElementById("add-pass-user").value.trim();
+  const temp       = parseFloat(document.getElementById("add-pass-temp").value) || 0.2;
+  const timeout    = parseFloat(document.getElementById("add-pass-timeout").value) || 240;
+  const maxChars   = parseInt(document.getElementById("add-pass-max-chars").value, 10);
+  const numPredict = parseInt(document.getElementById("add-pass-num-predict").value, 10);
+  const perBranch  = document.getElementById("add-pass-per-branch").checked;
+  if (!name) { alert("Pass name is required."); return; }
+  if (!user)  { alert("User prompt template is required."); return; }
+  const sourceBranches = branchRaw.split(",").map(s=>s.trim()).filter(Boolean);
+  const pp = {
+    name,
+    output_heading: heading || name,
+    source_branches: sourceBranches,
+    system_prompt: system,
+    user_prompt_template: user,
+    temperature: temp,
+    timeout_seconds: timeout,
+    max_chars_per_batch: isNaN(maxChars) ? 60000 : maxChars,
+    num_predict: isNaN(numPredict) ? -1 : numPredict,
+    per_branch: perBranch,
+    enabled: true,
+  };
+  state.current.post_branch_passes = state.current.post_branch_passes || [];
+  if (idx >= 0) state.current.post_branch_passes[idx] = pp;
+  else state.current.post_branch_passes.push(pp);
+  renderPasses();
+  updateRunSummary();
+  closeModal("modal-add-pass");
+}
+
+function removePass(i) {
+  if (!confirm("Remove this post-branch pass?")) return;
+  state.current.post_branch_passes.splice(i, 1);
+  renderPasses();
+  updateRunSummary();
+}
+
+// ── Auto-suggest branches ─────────────────────────────────────────────────────
+async function autoSuggestBranches() {
+  const srcs = state.current?.document_sources || [];
+  const docPath = srcs.length ? srcs[0].path : null;
+  const colId   = state.current?.collection_id || null;
+  setStatus("running", "Suggesting branches…");
+  try {
+    const res = await fetch("/api/extraction/suggest-branches", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({
+        document_path: docPath,
+        collection_id: colId,
+        doc_type: "",
+        title: state.current?.name || "",
+      }),
+    });
+    if (!res.ok) { alert("Suggest failed."); setStatus("err","Suggest failed."); return; }
+    const branches = await res.json();
+    if (!branches.length) { alert("No branches suggested."); setStatus("ok","No suggestions."); return; }
+    state.current.branches = [...(state.current.branches||[]), ...branches];
+    renderBranches();
+    setStatus("ok", `Added ${branches.length} suggested branch(es).`);
+  } catch(e) { alert("Error: "+e); setStatus("err",String(e)); }
+}
+
+// ── Flag library ──────────────────────────────────────────────────────────────
+async function loadFromFlagLibrary() {
+  try {
+    const res = await fetch("/api/extraction/flag-library");
+    const lib = await res.json();
+    const branches = lib.branches || [];
+    const el = document.getElementById("flag-library-list");
+    if (!branches.length) {
+      el.innerHTML = '<p style="color:var(--text-dim)">Flag library is empty.</p>';
+    } else {
+      el.innerHTML = branches.map((b,i) => `
+        <div style="display:flex; align-items:center; gap:8px; padding:6px 0;
+             border-bottom:1px solid var(--border);">
+          <span style="flex:1; font-size:0.85rem;">${esc(b.name)}</span>
+          <span class="branch-mode-badge ${b.mode==='semantic'?'badge-semantic':'badge-keyword'}"
+                style="font-size:0.7rem; padding:2px 6px; border-radius:4px;">${esc(b.mode)}</span>
+          <button class="btn btn-ghost btn-sm" onclick="addFlagToBranches(${i})">Add</button>
+        </div>`).join("");
+      el._flagData = branches;
+    }
+    openModal("modal-flag-library");
+  } catch(e) { alert("Error: "+e); }
+}
+
+function addFlagToBranches(i) {
+  const el = document.getElementById("flag-library-list");
+  const branch = el._flagData?.[i];
+  if (!branch) return;
+  state.current.branches = state.current.branches || [];
+  state.current.branches.push({...branch});
+  renderBranches();
+  setStatus("ok", `Added '${branch.name}' from flag library.`);
+}
+
+async function saveBranchToLibrary(i) {
+  const b = state.current.branches[i];
+  try {
+    const res = await fetch("/api/extraction/flag-library/add", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({branch: b}),
+    });
+    if (!res.ok) { alert("Save failed."); return; }
+    setStatus("ok", `Saved '${b.name}' to flag library.`);
+  } catch(e) { alert("Error: "+e); }
+}
+
+// ── Run extraction ────────────────────────────────────────────────────────────
+function updateRunSummary() {
+  const el = document.getElementById("run-summary");
+  if (!state.current) { el.textContent = "No project loaded."; return; }
+  const p = state.current;
+  const nBranches = (p.branches||[]).filter(b=>b.enabled!==false).length;
+  const nPasses   = (p.post_branch_passes||[]).filter(pp=>pp.enabled!==false).length;
+  const nDocs     = (p.document_sources||[]).length;
+  const passLabel = nPasses ? `, ${nPasses} post-pass(es)` : "";
+  el.innerHTML = `<strong>${esc(p.name)}</strong> &mdash; 
+    ${nDocs} document(s), ${nBranches} enabled branch(es)${passLabel}.`;
+}
+
+function appendLog(msg, cls="") {
+  const log = document.getElementById("progress-log");
+  const d = document.createElement("div");
+  d.className = "log-line " + cls;
+  d.textContent = msg;
+  log.appendChild(d);
+  log.scrollTop = log.scrollHeight;
+}
+
+// ── Run status bar ────────────────────────────────────────────────────────────
+const _rs = {
+  phase: "idle", phaseCls: "",
+  main: "—", sub: "",
+  totalBranches: 0, doneBranches: 0,
+  totalScan: 0, doneScan: 0,
+  totalSynth: 0, doneSynth: 0,
+  totalPasses: 0, donePassses: 0,
+};
+
+function _rsbPercent() {
+  // Overall progress estimate:
+  //   5%  warmup/ingest
+  //   (90 / totalBranches) per branch, split: 10% retrieve, 50% scan, 40% synth
+  //   5%  post-passes + report
+  if (_rs.totalBranches === 0) return 0;
+  const perBranch = 90 / _rs.totalBranches;
+  let pct = 5 + _rs.doneBranches * perBranch;
+  // Add partial progress within current branch
+  if (_rs.phase === "retrieving") pct += perBranch * 0.05;
+  if (_rs.phase === "scanning")   pct += perBranch * 0.15 + (_rs.totalScan > 0 ? perBranch * 0.50 * (_rs.doneScan / _rs.totalScan) : 0);
+  if (_rs.phase === "synth")      pct += perBranch * 0.65 + (_rs.totalSynth > 0 ? perBranch * 0.35 * (_rs.doneSynth / _rs.totalSynth) : 0);
+  if (_rs.phase === "post_pass")  pct = 95 + (_rs.totalPasses > 0 ? 4 * (_rs.donePassses / _rs.totalPasses) : 0);
+  if (_rs.phase === "reporting")  pct = 99;
+  if (_rs.phase === "done")       pct = 100;
+  return Math.min(Math.round(pct), 100);
+}
+
+function _rsbUpdate() {
+  const bar  = document.getElementById("run-status-bar");
+  const fill = document.getElementById("rsb-fill");
+  const phEl = document.getElementById("rsb-phase");
+  const main = document.getElementById("rsb-main");
+  const sub  = document.getElementById("rsb-sub");
+  if (!bar) return;
+  bar.classList.add("visible");
+  const pct = _rsbPercent();
+  fill.style.width = pct + "%";
+  phEl.textContent = _rs.phase.toUpperCase().replace("_", "-");
+  phEl.className = "rsb-phase " + (
+    _rs.phase === "scanning"   ? "phase-scan"  :
+    _rs.phase === "synth"      ? "phase-synth" :
+    _rs.phase === "post_pass"  ? "phase-post"  :
+    _rs.phase === "done"       ? "phase-done"  :
+    _rs.phase === "error"      ? "phase-err"   : ""
+  );
+  main.textContent = _rs.main;
+  sub.textContent  = _rs.sub;
+}
+
+function _rsbReset() {
+  Object.assign(_rs, {
+    phase:"idle", phaseCls:"", main:"Starting…", sub:"",
+    totalBranches:0, doneBranches:0,
+    totalScan:0, doneScan:0, totalSynth:0, doneSynth:0,
+    totalPasses:0, donePassses:0,
+  });
+  const bar = document.getElementById("run-status-bar");
+  if (bar) { bar.classList.add("visible"); }
+  _rsbUpdate();
+}
+
+function _rsbParse(msg) {
+  const s = msg.trim();
+  // Branch X/Y: name
+  let m = s.match(/^Branch (\d+)\/(\d+):\s*(.+)/);
+  if (m) {
+    _rs.totalBranches = parseInt(m[2]);
+    _rs.doneBranches  = parseInt(m[1]) - 1;
+    _rs.phase = "retrieving";
+    _rs.main  = `Branch ${m[1]} / ${m[2]}: ${m[3].trim()}`;
+    _rs.sub   = "Retrieving…";
+    _rs.totalScan = 0; _rs.doneScan = 0;
+    _rs.totalSynth = 0; _rs.doneSynth = 0;
+    return;
+  }
+  // Running N branch(es)
+  m = s.match(/^Running (\d+) branch/);
+  if (m) { _rs.totalBranches = parseInt(m[1]); _rs.phase = "warming"; _rs.main = `0 / ${m[1]} branches`; return; }
+  // Sub-steps emitted by retrieve() via progress_fn (leading spaces trimmed):
+  if (s === "→ HyDE: generating passage…")              { _rs.phase = "retrieving"; _rs.sub = "HyDE: generating passage…"; return; }
+  if (s === "→ Embedding query…")                        { _rs.phase = "retrieving"; _rs.sub = "Embedding query…"; return; }
+  if (s.startsWith("→ Scoring ") && s.includes("candidates")) { _rs.phase = "retrieving"; _rs.sub = s.replace("→ ", ""); return; }
+  // Reranking N / M (MMR progress ticks)
+  m = s.match(/Reranking (\d+) \/ (\d+)/);
+  if (m) { _rs.phase = "retrieving"; _rs.sub = `Reranking ${m[1]} / ${m[2]}`; return; }
+  // Scan: N chunks across M batch(es)
+  m = s.match(/Scan: \d+ chunks across (\d+) batch/);
+  if (m) { _rs.totalScan = parseInt(m[1]); _rs.doneScan = 0; _rs.phase = "scanning"; _rs.sub = `0 / ${m[1]} scan batches`; return; }
+  // Scan batch X/Y
+  m = s.match(/Scan batch (\d+)\/(\d+)/);
+  if (m) { _rs.doneScan = parseInt(m[1]) - 1; _rs.totalScan = parseInt(m[2]);
+           _rs.phase = "scanning"; _rs.sub = `Scan batch ${m[1]} / ${m[2]}`; return; }
+  // Synthesis sub-batch X/Y
+  m = s.match(/Synthesis sub-batch (\d+)\/(\d+)/);
+  if (m) { _rs.doneSynth = parseInt(m[1]) - 1; _rs.totalSynth = parseInt(m[2]);
+           _rs.phase = "synth"; _rs.sub = `Synthesis ${m[1]} / ${m[2]}`; return; }
+  // Synthesis pass (N chunk(s))
+  m = s.match(/Synthesis pass \((\d+) chunk/);
+  if (m) { _rs.phase = "synth"; _rs.sub = `Synthesis (${m[1]} chunks)`; return; }
+  // Saved N item(s) to checkpoint
+  m = s.match(/Saved (\d+) item\(s\) to checkpoint/);
+  if (m) { _rs.doneBranches++; _rs.sub = `✓ ${m[1]} items saved`; return; }
+  // Post-pass X/Y: name
+  m = s.match(/Post-pass (\d+)\/(\d+):\s*(.+)/);
+  if (m) { _rs.totalPasses = parseInt(m[2]); _rs.donePassses = parseInt(m[1]) - 1;
+           _rs.phase = "post_pass"; _rs.main = `Post-pass ${m[1]} / ${m[2]}: ${m[3].trim()}`; _rs.sub = "Running…"; return; }
+  // Post-pass complete
+  if (s.includes("Post-pass complete")) { _rs.donePassses++; _rs.sub = "✓ Done"; return; }
+  // Building report
+  if (s.includes("Building report")) { _rs.phase = "reporting"; _rs.main = "Building report…"; _rs.sub = ""; return; }
+  // Warming LLM
+  if (s.includes("Warming LLM")) { _rs.phase = "warming"; _rs.main = "Warming LLM…"; _rs.sub = ""; return; }
+  // Building corpus index
+  if (s.includes("Building corpus index")) { _rs.phase = "indexing"; _rs.main = "Building corpus index…"; _rs.sub = ""; return; }
+  // Starting extraction
+  m = s.match(/^Starting extraction project:\s*(.+)/);
+  if (m) { _rs.phase = "starting"; _rs.main = m[1].trim(); _rs.sub = ""; return; }
+  // Ingesting
+  if (s.includes("Ingesting ")) { _rs.phase = "ingesting"; _rs.sub = s; return; }
+  // Done
+  if (s.includes("Extraction complete")) { _rs.phase = "done"; _rs.main = "Complete"; _rs.sub = ""; return; }
+  // Error
+  if (s.startsWith("✗") || s.toLowerCase().startsWith("error")) { _rs.phase = "error"; }
+}
+
+async function startRun() {
+  if (!state.current) { alert("No project loaded."); return; }
+  readProjectForm();
+  const p = state.current;
+
+  document.getElementById("progress-log").innerHTML = "";
+  document.getElementById("run-results").innerHTML = "";
+  document.getElementById("btn-run").disabled = true;
+  document.getElementById("btn-run").innerHTML = '<span class="run-spinner"></span> Running…';
+  document.getElementById("btn-abort").style.display = "";
+  state.runAborted = false;
+  setStatus("running", "Running…");
+  _rsbReset();
+
+  const verboseOn = document.getElementById("chk-verbose")?.checked || false;
+  const body = {project: p, verbose: verboseOn || undefined};
+  const ctrl = new AbortController();
+  state._sse = ctrl;
+
+  try {
+    const res = await fetch("/api/extraction/run", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(body),
+      signal: ctrl.signal,
+    });
+    if (!res.ok) { appendLog("Server error: "+res.status, "err"); return; }
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = "";
+    while (true) {
+      const {done, value} = await reader.read();
+      if (done || state.runAborted) break;
+      buf += decoder.decode(value, {stream:true});
+      const lines = buf.split("\n");
+      buf = lines.pop();
+      for (const line of lines) {
+        if (!line.startsWith("data: ")) continue;
+        const raw = line.slice(6).trim();
+        if (raw === "[DONE]") { break; }
+        try {
+          const obj = JSON.parse(raw);
+          handleSseEvent(obj);
+        } catch {}
+      }
+    }
+  } catch(e) {
+    if (!state.runAborted) { appendLog("Connection error: "+e, "err"); setStatus("err","Error"); }
+  } finally {
+    document.getElementById("btn-run").disabled = false;
+    document.getElementById("btn-run").innerHTML = "▶ Start Extraction";
+    document.getElementById("btn-abort").style.display = "none";
+    state._sse = null;
+  }
+}
+
+function handleSseEvent(obj) {
+  if (obj.type === "progress") {
+    const msg = obj.message || "";
+    const cls = msg.startsWith("✓") ? "ok" : msg.startsWith("✗") ? "err"
+              : msg.startsWith("Branch") || msg.startsWith("Starting") ? "head" : "";
+    appendLog(msg, cls);
+    _rsbParse(msg);
+    _rsbUpdate();
+  } else if (obj.type === "error") {
+    appendLog("ERROR: " + obj.message, "err");
+    _rs.phase = "error"; _rs.main = obj.message; _rsbUpdate();
+    setStatus("err", "Failed");
+  } else if (obj.type === "result") {
+    state.runResult = obj;
+    renderRunResults(obj);
+    document.getElementById("report-md").textContent = obj.report_markdown || "(empty)";
+    _renderReport(obj.report_markdown || "(empty)");
+    _rs.phase = "done"; _rs.main = `Complete — ${obj.elapsed_seconds}s`; _rs.sub = ""; _rsbUpdate();
+    setStatus("ok", `Done — ${obj.elapsed_seconds}s`);
+    appendLog(`\n✓ Extraction complete in ${obj.elapsed_seconds}s`, "ok");
+    refreshReportHistory();
+  }
+}
+
+function renderRunResults(result) {
+  const el = document.getElementById("run-results");
+  const branches   = result.branches || [];
+  const postPasses = result.post_passes || [];
+  let html = "<h3 style='margin-bottom:12px; color:var(--text-dim);'>Branches</h3>";
+  html += branches.map(b => {
+    const icon = b.status==="ok"?"✅":b.status==="empty"?"⚠️":"❌";
+    return `<div class="branch-result-block">
+      <h3>${icon} ${esc(b.name)} <span style="font-weight:normal;color:var(--text-dim)">(${b.items} items)</span></h3>
+    </div>`;
+  }).join("");
+  if (postPasses.length) {
+    html += "<h3 style='margin-bottom:12px; margin-top:16px; color:var(--text-dim);'>Post-Branch Passes</h3>";
+    html += postPasses.map(pp => {
+      const icon = pp.status==="ok" ? "✅" : "❌";
+      const detail = pp.status==="ok" ? `${(pp.response_text||'').length} chars` : (pp.error||'error');
+      return `<div class="branch-result-block">
+        <h3>${icon} ${esc(pp.pass_name)} <span style="font-weight:normal;color:var(--text-dim)">(${detail})</span></h3>
+      </div>`;
+    }).join("");
+  }
+  el.innerHTML = html;
+}
+
+function abortRun() {
+  state.runAborted = true;
+  if (state._sse) { state._sse.abort(); state._sse = null; }
+  appendLog("Aborted by user.", "err");
+  setStatus("err", "Aborted");
+  document.getElementById("btn-run").disabled = false;
+  document.getElementById("btn-abort").style.display = "none";
+}
+
+// ── Report ────────────────────────────────────────────────────────────────────
+function _renderReport(text) {
+  document.getElementById("report-md").textContent = text;
+  const rendered = document.getElementById("report-md-rendered");
+  if (typeof marked !== "undefined" && typeof DOMPurify !== "undefined") {
+    const normalised = text.replace(/([^\n])([ \t]*\n?[ \t]*)(#{1,6} )/g, "$1\n\n$3");
+    rendered.innerHTML = DOMPurify.sanitize(marked.parse(normalised));
+  } else {
+    rendered.textContent = text;
+  }
+}
+function copyReport() {
+  const text = document.getElementById("report-md").textContent;
+  navigator.clipboard.writeText(text).then(()=>setStatus("ok","Copied!"));
+}
+
+function downloadReport() {
+  const slug = state.current?.slug || "report";
+  const text = document.getElementById("report-md").textContent;
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], {type:"text/markdown"}));
+  a.download = `${slug}_report.md`;
+  a.click();
+}
+
+async function refreshReportHistory() {
+  try {
+    const resp = await fetch("/api/extraction/reports");
+    if (!resp.ok) return;
+    const list = await resp.json();
+    const sel = document.getElementById("report-history-select");
+    const cur = sel.value;
+    // Keep the placeholder, rebuild options
+    while (sel.options.length > 1) sel.remove(1);
+    list.forEach(r => {
+      const opt = document.createElement("option");
+      opt.value = r.filename;
+      // Format label: "slug_YYYYMMDD_HHMMSS.md" → "slug · YYYY-MM-DD HH:MM"
+      const m = r.filename.match(/^(.+?)_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})\.md$/);
+      opt.textContent = m
+        ? `${m[1]} · ${m[2]}-${m[3]}-${m[4]} ${m[5]}:${m[6]}`
+        : r.filename.replace(/\.md$/, "");
+      sel.appendChild(opt);
+    });
+    if (cur) sel.value = cur;
+  } catch (_) {}
+}
+
+async function loadHistoryReport(filename) {
+  if (!filename) return;
+  try {
+    const resp = await fetch(`/api/extraction/report-file/${encodeURIComponent(filename)}`);
+    if (!resp.ok) { setStatus("err", "Could not load report"); return; }
+    const text = await resp.text();
+    _renderReport(text);
+  } catch (e) {
+    setStatus("err", "Failed to load report");
+  }
+}
+
+// ── Status bar ────────────────────────────────────────────────────────────────
+function setStatus(state_, msg) {
+  const dot  = document.getElementById("status-dot");
+  const text = document.getElementById("status-text");
+  dot.className  = "status-dot " + (state_==="running"?"running":state_==="ok"?"ok":state_==="err"?"err":"");
+  text.textContent = msg;
+}
+
+// ── Modal helpers ─────────────────────────────────────────────────────────────
+function openModal(id)  { document.getElementById(id).classList.add("open"); }
+function closeModal(id) { document.getElementById(id).classList.remove("open"); }
+
+// ── Utils ─────────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+</script>
+<script src="/static/marked.min.js"></script>
+<script src="/static/purify.min.js"></script>
+<script>
+  if (typeof marked !== "undefined") marked.setOptions({ gfm: true, breaks: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+# Retrieval scoring, reranking, and context packing parameters.
+# All values here are tunable without touching source code.
+# Loaded by utils/runtime_defaults.py and exported as DEFAULT_* constants.
+
+# ── Coverage / answer-policy thresholds ───────────────────────────────────────
+coverage:
+  # Minimum top-hit vector score for the pipeline to attempt an LLM answer.
+  # Below this the answer is refused as "not covered".
+  min_coverage_score: 0.38
+
+  # Minimum fraction of query topic-keywords that must appear in retrieved chunks.
+  # Below this (and not a section/formula lookup) the answer falls back to no_coverage.
+  min_lexical_coverage: 0.55
+
+  # Fraction of named entities in the answer that may be unsupported by context
+  # before entity-grounding fallback is triggered.
+  entity_support_threshold: 0.40
+
+# ── Citation scoring ───────────────────────────────────────────────────────────
+citations:
+  # Score penalty applied to a citation when its source URL looks like noise
+  # (e.g. javascript:void, bare anchors).
+  url_noise_penalty: 0.35
+
+# ── Context packing ───────────────────────────────────────────────────────────
+context_pack:
+  # Jaccard similarity threshold above which two chunks are treated as near-duplicates.
+  near_dup_threshold: 0.90
+
+  # Maximum score gap between top hit and a candidate before it is excluded
+  # from the context window.
+  max_score_gap: 0.06
+
+  # Authority weight per source type. Used to boost/penalise sources in the
+  # context packing diversification pass.
+  source_authority:
+    pdf_book:   1.00
+    pdf_paper:  0.95
+    pdf_report: 0.92
+    docx:       0.90
+    notes:      0.70
+    web:        0.72
+    internet:   0.60
+    general:    0.50
+
+# ── Reranking bonuses / penalties ─────────────────────────────────────────────
+reranking:
+  # Master switch for second-stage cross-encoder reranking.
+  use_cross_encoder: true
+  # When true, skip bi-encoder vector scoring and build first-stage candidates
+  # from lexical overlap only, then let cross-encoder do final ranking.
+  # NOTE: keep false — setting true bypasses rerank_by_query() (losing rerank_score,
+  # rule bonuses, and MMR diversity) AND disables internet fallback triggering.
+  use_cross_encoder_only: false
+  # Candidate cross-encoder model (sentence-transformers CrossEncoder format).
+  cross_encoder_model: cross-encoder/ms-marco-MiniLM-L-6-v2
+  # Number of top first-stage candidates to rescore with cross-encoder.
+  cross_encoder_top_n: 24
+  # Blend weight for cross-encoder score in final score.
+  # final = (1-weight) * first_stage_score + weight * cross_encoder_score
+  # Grid search (72 configs × 20q): 0.25 → 65% pass, 0.40 → 50%, 0.65 (old) untested but worse.
+  cross_encoder_weight: 0.25
+
+  # Added to score per exact keyword match between query and chunk text.
+  keyword_bonus_per_match: 0.05
+  # Maximum total keyword bonus regardless of match count.
+  keyword_bonus_cap: 0.25
+
+  # Added to score per query keyword found in the chunk's section header/path.
+  header_bonus_per_match: 0.06
+  # Maximum total header bonus.
+  header_bonus_cap: 0.24
+
+  # Bonus when the full query phrase appears verbatim in the chunk text.
+  exact_phrase_bonus: 0.14
+
+  # MMR-style diversity penalty per similarity unit to already-selected chunks.
+  diversity_penalty: 0.10
+
+  # Score penalty for stub chunks (token_count_est < 20). Prevents title-only
+  # fragments from displacing substantive chunks.
+  short_stub_penalty: 0.15
+
+# ── Internet fallback ─────────────────────────────────────────────────────────
+internet:
+  # Maximum characters fetched from a full web article before truncation.
+  max_article_chars: 12000
+
+# ── Intent classification thresholds ──────────────────────────────────────────
+intent_classification:
+  # Primary intent confidence threshold. Below this the primary label is
+  # treated as None and heuristic routing takes over.
+  confidence_threshold: 0.65
+  # Maximum score gap between top and second label for secondary intent to
+  # be returned alongside the primary.
+  secondary_threshold: 0.15
+
+# ── Routing thresholds ────────────────────────────────────────────────────────
+routing:
+  # CDI (current_data_lookup) score above which factual-intent queries are
+  # also routed to web fallback, even when primary intent is not CDI.
+  cdi_threshold: 0.15
+
+# ── Per-intent retrieval alpha blends ─────────────────────────────────────────
+# alpha_vector + alpha_lexical should sum to 1.0 for each intent.
+# These are the bi-encoder/BM25 blend weights used before cross-encoder reranking.
+# Grid-confirmed values are annotated; others are tuned by inspection.
+intent_alphas:
+  metadata_lookup:   {alpha_vector: 0.58, alpha_lexical: 0.42}  # needs strong lexical for exact field names
+  formula_lookup:    {alpha_vector: 0.72, alpha_lexical: 0.28}  # math symbols need vector similarity
+  section_lookup:    {alpha_vector: 0.65, alpha_lexical: 0.24}  # grid-confirmed (was 0.35)
+  comparison:        {alpha_vector: 0.65, alpha_lexical: 0.24}  # grid-confirmed (was 0.35)
+  list_lookup:       {alpha_vector: 0.65, alpha_lexical: 0.24}  # grid-confirmed (was 0.35)
+  summary:           {alpha_vector: 0.62, alpha_lexical: 0.24}  # grid-confirmed (was 0.38)
+  fact_lookup:       {alpha_vector: 0.68, alpha_lexical: 0.24}  # grid-confirmed (was 0.32)
+  exploratory:       {alpha_vector: 0.62, alpha_lexical: 0.24}  # grid-confirmed (was 0.38)
+  current_data_lookup: {alpha_vector: 0.68, alpha_lexical: 0.32}  # live-data intent
+  implicit_followup: {alpha_vector: 0.68, alpha_lexical: 0.32}  # follow-up context injection
