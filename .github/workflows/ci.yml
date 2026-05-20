@@ -28,12 +28,17 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt pytest-timeout
 
       - name: Run tests (no Ollama required)
         # Excludes test_question_battery.py which queries the live DB via Ollama embeddings.
         # All other tests use mocked LLM calls or the hashing/test embed backend.
+        # TRANSFORMERS_OFFLINE prevents HuggingFace model downloads; intent classifier falls back to heuristics.
+        env:
+          TRANSFORMERS_OFFLINE: "1"
+          HF_DATASETS_OFFLINE: "1"
         run: |
           python -m pytest tests/ -x -q \
             --ignore=tests/test_question_battery.py \
+            --timeout=60 \
             --tb=short
