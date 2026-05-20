@@ -1,0 +1,15 @@
+# Lightweight deps for CI smoke tests.
+# sentence-transformers (and its torch/transformers pull) is omitted —
+# tests that need it are excluded in ci.yml.
+PyMuPDF==1.27.2.2
+pdfplumber==0.10.3
+PyYAML==6.0.2
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+rank-bm25>=0.2.2
+httpx>=0.27.0
+trafilatura>=1.12.0
+psycopg[binary]>=3.2.0
+pgvector>=0.3.0
+pytest>=8.0
