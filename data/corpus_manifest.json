@@ -1,28 +1,28 @@
 {
   "topics": {
-    "data": 147,
-    "learning": 112,
-    "performance": 101,
-    "methods": 98,
-    "algorithm": 95,
-    "strategy": 92,
-    "historical": 92,
-    "reinforcement": 82,
-    "policy": 82,
-    "content": 82,
-    "directly": 80,
-    "backtesting": 80,
-    "q-learning": 79,
-    "model-free": 79,
-    "optimise": 79,
-    "gradient": 79,
-    "evaluates": 79,
-    "unassigned": 79,
-    "pump": 74,
-    "maintenance": 74,
-    "checklist": 74,
-    "torque": 74,
-    "settings": 74,
+    "data": 150,
+    "learning": 114,
+    "performance": 103,
+    "methods": 100,
+    "algorithm": 97,
+    "strategy": 94,
+    "historical": 94,
+    "reinforcement": 84,
+    "policy": 84,
+    "content": 84,
+    "directly": 82,
+    "backtesting": 82,
+    "q-learning": 81,
+    "model-free": 81,
+    "optimise": 81,
+    "gradient": 81,
+    "evaluates": 81,
+    "unassigned": 81,
+    "pump": 77,
+    "maintenance": 76,
+    "checklist": 76,
+    "torque": 76,
+    "settings": 76,
     "model": 39,
     "price": 38,
     "return": 34,
@@ -30,7 +30,7 @@
     "models": 34,
     "linear": 32,
     "training": 30,
-    "time": 28,
+    "time": 29,
     "value": 28,
     "portfolio": 27,
     "regression": 26,
@@ -200,6 +200,8 @@
     "matrix": 5,
     "network": 5,
     "techniques": 5,
+    "system": 5,
+    "volume": 5,
     "asset": 4,
     "capital": 4,
     "text": 4,
@@ -212,7 +214,6 @@
     "band": 4,
     "momentum": 4,
     "correct": 4,
-    "system": 4,
     "conditional": 4,
     "positive": 4,
     "theory": 4,
@@ -227,11 +228,11 @@
     "uses": 4,
     "nyse": 4,
     "selling": 4,
-    "volume": 4,
     "valuation": 4,
     "liabilities": 4,
     "past": 4,
     "equation": 4,
+    "process": 4,
     "share": 3,
     "event": 3,
     "investor": 3,
@@ -245,7 +246,6 @@
     "agent": 3,
     "action": 3,
     "states": 3,
-    "process": 3,
     "hypothesis": 3,
     "daily_rets": 3,
     "briefing": 3,
@@ -313,7 +313,41 @@
     "surface": 1,
     "estimation": 1,
     "microstructure": 1,
-    "providers": 1
+    "providers": 1,
+    "read": 1,
+    "decimal": 1,
+    "bool": 1,
+    "scada": 1,
+    "write": 1,
+    "awtp": 1,
+    "alarm": 1,
+    "standards": 1,
+    "city": 1,
+    "refer": 1,
+    "good": 1,
+    "efforts": 1,
+    "faith": 1,
+    "software": 1,
+    "outreach": 1,
+    "plan": 1,
+    "master": 1,
+    "program": 1,
+    "control": 1,
+    "howard": 1,
+    "curren": 1,
+    "building": 1,
+    "blue": 1,
+    "command": 1,
+    "white": 1,
+    "green": 1,
+    "orange": 1,
+    "brown": 1,
+    "slate": 1,
+    "fault": 1,
+    "equipment": 1,
+    "valve": 1,
+    "stop": 1,
+    "interlock": 1
   },
   "documents": {
     "600d32f627b3fd3de6d85c7f02ff65cdd9f40e1b266bcfe75011ac0a85ee7a35": {
@@ -8892,8 +8926,160 @@
         "settings"
       ],
       "source_type": "notes"
+    },
+    "4512f2247d0d5389f54f98df3e4a7701740066094077083b2c521dd52a52395d": {
+      "title": "Lecture 1",
+      "keywords": [
+        "q-learning",
+        "model-free",
+        "reinforcement",
+        "learning",
+        "algorithm"
+      ],
+      "source_type": "notes"
+    },
+    "38bcf3ea9632fea9957a778f3530e9292a28fd56282fd371816b5fedd1404e3e": {
+      "title": "Lecture 2",
+      "keywords": [
+        "policy",
+        "gradient",
+        "methods",
+        "directly",
+        "optimise"
+      ],
+      "source_type": "notes"
+    },
+    "c759293b77caa268992bf5c1a6246f063fe4ae916080dbfce19d5890933106e8": {
+      "title": "Note A",
+      "keywords": [
+        "backtesting",
+        "evaluates",
+        "strategy",
+        "performance",
+        "historical",
+        "data"
+      ],
+      "source_type": "notes"
+    },
+    "e2253750503575baa3b9ceb4f1dc91c404bbc1ef2eac2cd225d67b4f9afc0ff2": {
+      "title": "Orphan",
+      "keywords": [
+        "unassigned",
+        "content"
+      ],
+      "source_type": "notes"
+    },
+    "1eca1bee85ed9f07d85355557f63fe3a7d5248fb0be96a132d66e8f5c3264f51": {
+      "title": "Ops note",
+      "keywords": [
+        "pump",
+        "maintenance",
+        "checklist",
+        "torque",
+        "settings"
+      ],
+      "source_type": "notes"
+    },
+    "536ea5da5e61d6168e1b27f9b0a2bc2cc42967abb1080c473c694ea9c684e291": {
+      "title": "Lecture 1",
+      "keywords": [
+        "q-learning",
+        "model-free",
+        "reinforcement",
+        "learning",
+        "algorithm"
+      ],
+      "source_type": "notes"
+    },
+    "0f283b3e87ec6fc4db4ba7f3bc8f0958a4d6e1cc6275923c675187b36407a22b": {
+      "title": "Lecture 2",
+      "keywords": [
+        "policy",
+        "gradient",
+        "methods",
+        "directly",
+        "optimise"
+      ],
+      "source_type": "notes"
+    },
+    "6d495d3a8caf9583100bd63224a03a5d1a42ca393e10069408d93679388b737e": {
+      "title": "Note A",
+      "keywords": [
+        "backtesting",
+        "evaluates",
+        "strategy",
+        "performance",
+        "historical",
+        "data"
+      ],
+      "source_type": "notes"
+    },
+    "7f8ddaf45a198fac6ebe191a4fa34de584a265a9da447c205e65ebdfd4d86516": {
+      "title": "Orphan",
+      "keywords": [
+        "unassigned",
+        "content"
+      ],
+      "source_type": "notes"
+    },
+    "93f49da78d475fd2079bbb6fa7186dd2a3c36117d0f4161dd3e953f02bb39ead": {
+      "title": "Ops note",
+      "keywords": [
+        "pump",
+        "maintenance",
+        "checklist",
+        "torque",
+        "settings"
+      ],
+      "source_type": "notes"
+    },
+    "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07": {
+      "title": "RFQ 26-D-00017",
+      "keywords": [
+        "read",
+        "decimal",
+        "bool",
+        "scada",
+        "write",
+        "awtp",
+        "alarm",
+        "standards",
+        "system",
+        "city",
+        "refer",
+        "good",
+        "efforts",
+        "faith",
+        "software",
+        "outreach",
+        "plan",
+        "volume",
+        "master",
+        "program",
+        "control",
+        "howard",
+        "curren",
+        "building",
+        "blue",
+        "command",
+        "data",
+        "white",
+        "green",
+        "orange",
+        "brown",
+        "slate",
+        "fault",
+        "pump",
+        "process",
+        "equipment",
+        "time",
+        "valve",
+        "stop",
+        "interlock"
+      ],
+      "source_type": "pdf"
     }
   },
-  "last_updated": "2026-05-20T03:08:52.833152+00:00",
-  "doc_count": 493
+  "last_updated": "2026-06-05T02:04:47.749451+00:00",
+  "doc_count": 504
 }

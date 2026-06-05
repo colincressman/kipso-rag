@@ -119,7 +119,14 @@ Every extracted item is **verbatim text from the source documents** — the LLM 
 3. Each branch independently retrieves candidates from the shared corpus, then runs **LLM selection in as many batches as the corpus requires**:
    - Coarse pass over chunk previews (IDs + short excerpts) — the LLM identifies relevant candidates. Minimal token cost; scales to any corpus size.
    - Fine pass over the full text of shortlisted chunks — the LLM makes the final selection of chunks to include verbatim.
-4. **Post-branch passes** — optional series of additional LLM calls that run after all branches: cross-compare results, synthesize a summary, or chain passes (output of one feeds the next).
+4. **Post-branch passes** — optional report-building LLM passes that run after all branches finish. Each pass is now explicit about:
+   - **Input Source** — `All branch items`, `Selected branch items`, or `Previous pass output`
+   - **Execution Mode** — `Single pass`, `Per-branch`, `Map-reduce`, or `Chain from previous output`
+   - Use **Single pass** when the extracted items are small enough to fit comfortably in one call.
+   - Use **Per-branch** when you want one mini-summary per branch and then join those summaries together.
+   - Use **Map-reduce** when the extracted items are large: the system runs the same prompt over multiple batches, then performs a **true final combine step** to merge the partial outputs into one polished section.
+   - Use **Chain from previous output** when a later pass should transform or refine the result of an earlier pass instead of re-reading the branch items.
+   - Example: Pass 1 can summarize **all branch items** into a proposal-readiness report, and Pass 2 can **chain from previous output** to turn that report into an executive summary or bid/no-bid recommendation.
 5. **Cross-branch deduplication** — items appearing in multiple branches are flagged with `⚠`.
 6. Output: a structured **Markdown report** with a TOC, per-branch sections, page citations, and a branch stats table.
 
@@ -135,6 +142,7 @@ from extraction.branch_config import ProjectConfig
 result = run_project(ProjectConfig.from_dict({...}), emit=print)
 # result.report_path    — path to the generated Markdown report
 # result.branch_results — per-branch lists of verbatim ExtractionItems
+# result.post_pass_results — optional report-building pass outputs
 ```
 
 ---

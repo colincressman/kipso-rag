@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Extraction Studio</title>
+  <title>Extraction Studio — Personal AI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -16,7 +16,19 @@
   <div id="sidebar">
     <div id="sidebar-header">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-        <div class="logo">Extraction Studio</div>
+        <div class="logo">
+          <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="13" stroke="url(#grad-extract)" stroke-width="2"/>
+            <circle cx="14" cy="14" r="6" fill="url(#grad-extract)" opacity="0.8"/>
+            <defs>
+              <linearGradient id="grad-extract" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#818cf8"/>
+                <stop offset="1" stop-color="#38bdf8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>Extraction Studio</span>
+        </div>
         <a href="/" title="Back to chat" style="display:inline-flex;align-items:center;color:var(--text-dim);text-decoration:none;padding:4px;border-radius:4px;transition:color .15s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-dim)'">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -323,9 +335,28 @@
       <input type="text" id="add-pass-heading" placeholder="" />
     </div>
     <div class="form-row">
-      <label>Source Branches (comma-separated &mdash; blank = all branches)</label>
-      <input type="text" id="add-pass-branches" placeholder="leave blank to use all branches" />
-      <div class="hint">e.g. <em>Cost Estimates, Schedule</em> &mdash; only items from those branches are passed in.</div>
+      <label>Input Source</label>
+      <select id="add-pass-input-source" onchange="onPassConfigChange()">
+        <option value="all_branch_items">All branch items</option>
+        <option value="selected_branch_items">Selected branch items</option>
+        <option value="previous_pass_output">Previous pass output</option>
+      </select>
+      <div class="hint">Choose whether this pass should read extracted items directly or transform the output of the prior pass.</div>
+    </div>
+    <div class="form-row">
+      <label>Execution Mode</label>
+      <select id="add-pass-mode" onchange="onPassConfigChange()">
+        <option value="single">Single pass</option>
+        <option value="per_branch">Per-branch</option>
+        <option value="map_reduce">Map-reduce</option>
+        <option value="chain">Chain from previous output</option>
+      </select>
+      <div class="hint" id="add-pass-mode-hint">Run one LLM call over the chosen input. Use for straightforward synthesis over all items.</div>
+    </div>
+    <div class="form-row" id="add-pass-branches-row">
+      <label>Source Branches (comma-separated)</label>
+      <input type="text" id="add-pass-branches" placeholder="Cost Estimates, Schedule" />
+      <div class="hint">Required when input source is <em>Selected branch items</em>. Example: <em>Cost Estimates, Schedule</em>.</div>
     </div>
     <div class="form-row">
       <label>System Prompt</label>
@@ -353,13 +384,6 @@
       <label>Max Output Tokens (<code>num_predict</code>)</label>
       <input type="text" id="add-pass-num-predict" value="-1" style="width:100px" />
       <div class="hint"><code>-1</code> = model default. Set <code>4096</code>+ for synthesis passes to prevent truncation.</div>
-    </div>
-    <div class="form-row">
-      <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
-        <input type="checkbox" id="add-pass-per-branch" />
-        Run once per branch (per-branch mode)
-      </label>
-      <div class="hint">Call the LLM separately for each source branch. Use for per-branch summaries. Responses are joined with a separator. <strong>Do not use for synthesis passes.</strong></div>
     </div>
     <input type="hidden" id="add-pass-edit-idx" value="-1" />
     <div class="modal-footer">
@@ -413,6 +437,25 @@ let state = {
   runAborted: false,
   _sse: null,         // active EventSource or fetch AbortController
 };
+
+function normalizePostPass(pp) {
+  const sourceBranches = Array.isArray(pp?.source_branches) ? pp.source_branches : [];
+  let inputSource = pp?.input_source || (sourceBranches.length ? "selected_branch_items" : "all_branch_items");
+  let passMode = pp?.pass_mode || (pp?.per_branch ? "per_branch" : "single");
+  if (passMode === "chain") inputSource = "previous_pass_output";
+  return {
+    ...pp,
+    source_branches: sourceBranches,
+    input_source: inputSource,
+    pass_mode: passMode,
+    enabled: pp?.enabled !== false,
+  };
+}
+
+function normalizeProjectPasses(project) {
+  if (!Array.isArray(project.post_branch_passes)) project.post_branch_passes = [];
+  project.post_branch_passes = project.post_branch_passes.map(normalizePostPass);
+}
 
 // ── Sidebar toggle ────────────────────────────────────────────────────────────
 function toggleSidebar() {
@@ -473,8 +516,7 @@ async function loadProject(slug) {
     const res = await fetch(`/api/extraction/projects/${encodeURIComponent(slug)}`);
     if (!res.ok) { alert("Could not load project."); return; }
     const data = await res.json();
-    // Normalise old projects that predate the post_branch_passes field
-    if (!Array.isArray(data.post_branch_passes)) data.post_branch_passes = [];
+    normalizeProjectPasses(data);
     state.current = data;
     showProjectUI();
     renderProjectForm();
@@ -529,6 +571,7 @@ function confirmNewProject() {
     cross_branch_dedup: false,
     report_output_path: "data/extraction_reports",
   };
+  normalizeProjectPasses(state.current);
   closeModal("modal-new-project");
   showProjectUI();
   renderProjectForm();
@@ -827,9 +870,19 @@ function renderPasses() {
   }
   ul.innerHTML = passes.map((pp, i) => {
     const detail = (pp.system_prompt||pp.user_prompt_template||"").slice(0, 70);
-    const srcLabel = (pp.source_branches||[]).length
-      ? (pp.source_branches||[]).join(", ")
-      : "all branches";
+    const sourceMap = {
+      all_branch_items: "all branch items",
+      selected_branch_items: (pp.source_branches||[]).join(", ") || "selected branches",
+      previous_pass_output: "previous pass output",
+    };
+    const modeMap = {
+      single: "single",
+      per_branch: "per-branch",
+      map_reduce: "map-reduce",
+      chain: "chain",
+    };
+    const srcLabel = sourceMap[pp.input_source] || "all branch items";
+    const modeLabel = modeMap[pp.pass_mode] || "single";
     return `
     <li class="pass-card">
       <div class="pass-card-header">
@@ -838,7 +891,7 @@ function renderPasses() {
         <button class="btn-icon" onclick="editPass(${i})" title="Edit">&#x270e;</button>
         <button class="btn-icon" onclick="removePass(${i})" title="Remove">&times;</button>
       </div>
-      <div class="pass-detail">Sources: ${esc(srcLabel)}</div>
+      <div class="pass-detail">Input: ${esc(srcLabel)} · Mode: ${esc(modeLabel)}</div>
       <div class="pass-detail">${esc(detail)}</div>
     </li>`;
   }).join("");
@@ -850,6 +903,8 @@ function openAddPassModal(editIdx = -1) {
   const pp = editIdx >= 0 ? state.current.post_branch_passes[editIdx] : null;
   document.getElementById("add-pass-name").value     = pp?.name || "";
   document.getElementById("add-pass-heading").value  = pp?.output_heading || "";
+  document.getElementById("add-pass-input-source").value = pp?.input_source || "all_branch_items";
+  document.getElementById("add-pass-mode").value = pp?.pass_mode || "single";
   document.getElementById("add-pass-branches").value = (pp?.source_branches||[]).join(", ");
   document.getElementById("add-pass-system").value   = pp?.system_prompt || "";
   document.getElementById("add-pass-user").value     = pp?.user_prompt_template || "";
@@ -857,16 +912,40 @@ function openAddPassModal(editIdx = -1) {
   document.getElementById("add-pass-timeout").value     = pp?.timeout_seconds ?? 240;
   document.getElementById("add-pass-max-chars").value   = pp?.max_chars_per_batch ?? 60000;
   document.getElementById("add-pass-num-predict").value = pp?.num_predict ?? -1;
-  document.getElementById("add-pass-per-branch").checked = pp?.per_branch ?? false;
+  onPassConfigChange();
   openModal("modal-add-pass");
 }
 
 function editPass(i) { openAddPassModal(i); }
 
+function onPassConfigChange() {
+  const inputSource = document.getElementById("add-pass-input-source").value;
+  const mode = document.getElementById("add-pass-mode").value;
+  const row = document.getElementById("add-pass-branches-row");
+  const hint = document.getElementById("add-pass-mode-hint");
+
+  if (mode === "chain") {
+    document.getElementById("add-pass-input-source").value = "previous_pass_output";
+  }
+
+  const actualInputSource = document.getElementById("add-pass-input-source").value;
+  row.style.display = actualInputSource === "selected_branch_items" ? "" : "none";
+
+  const modeHints = {
+    single: "Run one LLM pass over the chosen input. Best for smaller, direct synthesis tasks.",
+    per_branch: "Run one LLM call per selected branch and join the branch-level outputs together.",
+    map_reduce: "Split large inputs into batches, run the same prompt over each batch, then merge the partial outputs into one final section.",
+    chain: "Transform the previous pass output instead of re-reading branch items. Use this for staged report building.",
+  };
+  hint.textContent = modeHints[mode] || modeHints.single;
+}
+
 function confirmAddPass() {
   const idx     = parseInt(document.getElementById("add-pass-edit-idx").value, 10);
   const name    = document.getElementById("add-pass-name").value.trim();
   const heading = document.getElementById("add-pass-heading").value.trim();
+  let inputSource = document.getElementById("add-pass-input-source").value;
+  const passMode = document.getElementById("add-pass-mode").value;
   const branchRaw = document.getElementById("add-pass-branches").value;
   const system  = document.getElementById("add-pass-system").value.trim();
   const user    = document.getElementById("add-pass-user").value.trim();
@@ -874,26 +953,43 @@ function confirmAddPass() {
   const timeout    = parseFloat(document.getElementById("add-pass-timeout").value) || 240;
   const maxChars   = parseInt(document.getElementById("add-pass-max-chars").value, 10);
   const numPredict = parseInt(document.getElementById("add-pass-num-predict").value, 10);
-  const perBranch  = document.getElementById("add-pass-per-branch").checked;
   if (!name) { alert("Pass name is required."); return; }
   if (!user)  { alert("User prompt template is required."); return; }
   const sourceBranches = branchRaw.split(",").map(s=>s.trim()).filter(Boolean);
+  if (passMode === "chain") inputSource = "previous_pass_output";
+  if (inputSource === "selected_branch_items" && !sourceBranches.length) {
+    alert("Selected branch items requires at least one source branch.");
+    return;
+  }
+  if (inputSource === "previous_pass_output" && idx === 0) {
+    alert("The first pass cannot use previous pass output.");
+    return;
+  }
+  if (inputSource === "previous_pass_output" && idx < 0 && (state.current.post_branch_passes || []).length === 0) {
+    alert("Add at least one earlier pass before chaining from previous output.");
+    return;
+  }
+  if (passMode === "per_branch" && inputSource === "previous_pass_output") {
+    alert("Per-branch mode only works with branch-item inputs.");
+    return;
+  }
   const pp = {
     name,
     output_heading: heading || name,
-    source_branches: sourceBranches,
+    input_source: inputSource,
+    pass_mode: passMode,
+    source_branches: inputSource === "selected_branch_items" ? sourceBranches : [],
     system_prompt: system,
     user_prompt_template: user,
     temperature: temp,
     timeout_seconds: timeout,
     max_chars_per_batch: isNaN(maxChars) ? 60000 : maxChars,
     num_predict: isNaN(numPredict) ? -1 : numPredict,
-    per_branch: perBranch,
     enabled: true,
   };
   state.current.post_branch_passes = state.current.post_branch_passes || [];
-  if (idx >= 0) state.current.post_branch_passes[idx] = pp;
-  else state.current.post_branch_passes.push(pp);
+  if (idx >= 0) state.current.post_branch_passes[idx] = normalizePostPass(pp);
+  else state.current.post_branch_passes.push(normalizePostPass(pp));
   renderPasses();
   updateRunSummary();
   closeModal("modal-add-pass");

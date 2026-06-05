@@ -156,8 +156,14 @@ class PostBranchPass:
     name: str
     enabled: bool = True
     output_heading: str = ""
+    input_source: Literal["all_branch_items", "selected_branch_items", "previous_pass_output"] = "all_branch_items"
+    """What this pass consumes as input."""
+
+    pass_mode: Literal["single", "per_branch", "map_reduce", "chain"] = "single"
+    """How this pass executes over the chosen input."""
+
     source_branches: List[str] = field(default_factory=list)
-    """Branch names to draw items from.  Empty list = all branches."""
+    """Branch names to draw items from when input_source='selected_branch_items'."""
     system_prompt: str = ""
     user_prompt_template: str = ""
     temperature: float = 0.1
@@ -165,7 +171,7 @@ class PostBranchPass:
     max_chars_per_batch: int = 10000
     """Maximum characters of items_text sent in a single LLM call.
     If the input exceeds this, it is split into batches and responses are
-    concatenated. 0 = no limit (single call, risky for large inputs)."""
+    concatenated, or reduced when pass_mode='map_reduce'. 0 = no limit."""
 
     num_predict: int = -1
     """Maximum tokens the LLM may generate in a single call. -1 = model default.
@@ -184,11 +190,20 @@ class PostBranchPass:
 
     @classmethod
     def from_dict(cls, d: Dict[str, Any]) -> "PostBranchPass":
+        raw = dict(d)
+        if "input_source" not in raw:
+            source_branches = raw.get("source_branches") or []
+            raw["input_source"] = "selected_branch_items" if source_branches else "all_branch_items"
+        if "pass_mode" not in raw:
+            raw["pass_mode"] = "per_branch" if raw.get("per_branch") else "single"
+        if raw.get("pass_mode") == "chain":
+            raw["input_source"] = "previous_pass_output"
+
         valid_keys = {f.name for f in cls.__dataclass_fields__.values()}  # type: ignore[attr-defined]
-        unknown = set(d) - valid_keys
+        unknown = set(raw) - valid_keys - {"per_branch"}
         if unknown:
             logger.warning("PostBranchPass: unknown keys ignored: %s", sorted(unknown))
-        return cls(**{k: v for k, v in d.items() if k in valid_keys})
+        return cls(**{k: v for k, v in raw.items() if k in valid_keys})
 
 
 @dataclass

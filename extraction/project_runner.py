@@ -258,6 +258,64 @@ def _split_items_text(items_text: str, max_chars: int) -> List[str]:
     return batches or [items_text]
 
 
+def _render_post_pass_user_prompt(template: str, branch_names: str, items_text: str) -> str:
+    """Fill the standard placeholders used by post-pass prompts."""
+    return template.replace("{branch_names}", branch_names).replace("{items_text}", items_text)
+
+
+def _run_post_pass_llm(
+    llm_fn: Callable,
+    *,
+    system_prompt: str,
+    user_prompt: str,
+    temperature: float,
+    timeout_seconds: float,
+    num_predict: int,
+) -> str:
+    """Run one post-pass LLM call and normalize the response."""
+    return llm_fn(
+        system_prompt=system_prompt,
+        user_prompt=user_prompt,
+        temperature=temperature,
+        timeout_seconds=timeout_seconds,
+        num_predict=num_predict,
+    ) or ""
+
+
+def _reduce_post_pass_outputs(
+    partial_outputs: List[str],
+    pp: Any,
+    llm_fn: Callable,
+    emit: Callable[[str], None],
+) -> str:
+    """Merge map-step partial outputs into one cohesive final section."""
+    if len(partial_outputs) <= 1:
+        return partial_outputs[0] if partial_outputs else ""
+
+    emit("    reduce step…")
+    partials_text = "\n\n---\n\n".join(
+        f"Partial output {idx + 1}:\n{txt.strip()}" for idx, txt in enumerate(partial_outputs)
+    )
+    reduce_system = (
+        pp.system_prompt.strip()
+        or "You are consolidating partial report sections into one final polished section."
+    )
+    reduce_user = (
+        "The following partial outputs were produced from the same instruction over different batches.\n\n"
+        f"{partials_text}\n\n"
+        "Combine them into one coherent final section. Deduplicate overlap, preserve the intended structure, "
+        "and do not mention batching, partials, or intermediate steps."
+    )
+    return _run_post_pass_llm(
+        llm_fn,
+        system_prompt=reduce_system,
+        user_prompt=reduce_user,
+        temperature=pp.temperature,
+        timeout_seconds=pp.timeout_seconds,
+        num_predict=pp.num_predict,
+    )
+
+
 # ---------------------------------------------------------------------------
 # Post-branch pass runner
 # ---------------------------------------------------------------------------
@@ -285,24 +343,26 @@ def _run_post_passes(
         emit(f"\nPost-pass {i}/{len(passes)}: {pp.name}")
         t0 = time.perf_counter()
         try:
-            # Chain: when no explicit source_branches are set AND a previous pass
-            # has run, use that pass's full response as the input text so passes
-            # compose iteratively (summarise → refine → format → …).
-            chaining = prev_response is not None and not pp.source_branches
-            if chaining:
-                # Per-branch mode cannot chain (needs real items); fall through to item path
-                if pp.per_branch:
-                    chaining = False
+            input_source = getattr(pp, "input_source", "selected_branch_items" if pp.source_branches else "all_branch_items")
+            pass_mode = getattr(pp, "pass_mode", "per_branch" if getattr(pp, "per_branch", False) else "single")
+            if pass_mode == "chain":
+                input_source = "previous_pass_output"
 
-            if chaining:
-                items_text = prev_response
+            if input_source == "previous_pass_output":
+                if not prev_response or not results:
+                    raise ValueError("This pass requires a previous pass output, but no previous pass has completed yet.")
                 branch_names_str = f"[output of: {results[-1].pass_name}]"
+                per_branch_inputs = [(branch_names_str, prev_response)]
                 input_desc = "previous pass output"
-                # Build a single-branch list so the per_branch path below still works uniformly
-                per_branch_inputs = [(branch_names_str, items_text)]
             else:
-                source_names = pp.source_branches or list(branch_items_by_name.keys())
-                if pp.per_branch:
+                if input_source == "selected_branch_items":
+                    source_names = list(pp.source_branches or [])
+                    if not source_names:
+                        raise ValueError("This pass is set to selected branch items, but no source branches were provided.")
+                else:
+                    source_names = list(branch_items_by_name.keys())
+
+                if pass_mode == "per_branch":
                     # One LLM call per branch
                     per_branch_inputs = [
                         (bn, "\n".join(_format_item_for_pass(item) for item in branch_items_by_name.get(bn, [])))
@@ -320,24 +380,27 @@ def _run_post_passes(
 
             branch_responses: List[str] = []
             for branch_name_str, branch_items_text in per_branch_inputs:
-                if pp.per_branch and len(per_branch_inputs) > 1:
+                if pass_mode == "per_branch" and len(per_branch_inputs) > 1:
                     emit(f"  → {branch_name_str}…")
-                user_prompt_base = pp.user_prompt_template.replace("{branch_names}", branch_name_str)
                 batches = _split_items_text(branch_items_text, pp.max_chars_per_batch)
                 batch_responses: List[str] = []
                 for b_idx, batch_text in enumerate(batches, start=1):
                     if len(batches) > 1:
                         emit(f"    batch {b_idx}/{len(batches)}…")
-                    user_prompt = user_prompt_base.replace("{items_text}", batch_text)
-                    batch_resp = llm_fn(
+                    user_prompt = _render_post_pass_user_prompt(pp.user_prompt_template, branch_name_str, batch_text)
+                    batch_resp = _run_post_pass_llm(
+                        llm_fn,
                         system_prompt=pp.system_prompt,
                         user_prompt=user_prompt,
                         temperature=pp.temperature,
                         timeout_seconds=pp.timeout_seconds,
                         num_predict=pp.num_predict,
-                    ) or ""
+                    )
                     batch_responses.append(batch_resp)
-                branch_responses.append("\n\n".join(batch_responses))
+                if pass_mode == "map_reduce":
+                    branch_responses.append(_reduce_post_pass_outputs(batch_responses, pp, llm_fn, emit))
+                else:
+                    branch_responses.append("\n\n".join(batch_responses))
 
             response = "\n\n---\n\n".join(branch_responses)
 
