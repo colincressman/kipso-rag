@@ -1,0 +1,27 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 391,
+  "page_number": 392,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.48206399368320657,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "18 run time fb definition"
+  ],
+  "text_length": 1639,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n  \n \n \n \n \n \n \n \n \n  \n \n \n \n \n  \n \n \n \n \n \n \n \n \n  \n \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \n18 Run Time FB Definition \nNAME \nUSAGE \nTYPE \nALIAS FOR \nDEFAULT \nSTYLE \nREQ \nVIS \nDESCRIPTION \n",
+  "bbox": [
+    64.28800201416016,
+    93.54000091552734,
+    731.2919921875,
+    468.4599914550781
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0392_table_01.png"
+}

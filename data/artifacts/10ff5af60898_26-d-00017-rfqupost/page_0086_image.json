@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 85,
+  "page_number": 86,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan",
+    "howard f. curren awtp - scada system"
+  ],
+  "text_length": 143,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "  \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \nPLC Hardware Evaluation \nAppendix A: \nHFC AWTP PLC Network \nHFC AWTP Master Plan \nHoward F. Curren AWTP - SCADA System \nPLC Hardware Evaluation \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0086_image.png",
+  "artifact_type_inferred": "Technical Report Title Page",
+  "artifact_summary": "Title page for Appendix A of the Hazen PLC Hardware Evaluation report regarding the HFC AWTP PLC Network within the Howard F. Curren AWTP SCADA System Master Plan.",
+  "artifact_key_elements": [
+    "Appendix A Header",
+    "Hazen PLC Hardware Evaluation",
+    "HFC AWTP PLC Network",
+    "Howard F. Curren AWTP SCADA System",
+    "HFC AWTP Master Plan"
+  ],
+  "artifact_blurb": "This document serves as the designated title page for Appendix A of the Hazen PLC Hardware Evaluation report. It specifically delineates the scope of the HFC AWTP PLC Network, functioning as a critical section header within the broader HFC AWTP Master Plan for the Howard F. Curren Advanced Water Treatment Plant (AWTP) Supervisory Control and Data Acquisition (SCADA) System.",
+  "replacement_text": "This document serves as the designated title page for Appendix A of the Hazen PLC Hardware Evaluation report. It specifically delineates the scope of the HFC AWTP PLC Network, functioning as a critical section header within the broader HFC AWTP Master Plan for the Howard F. Curren Advanced Water Treatment Plant (AWTP) Supervisory Control and Data Acquisition (SCADA) System.",
+  "normalized_text": "This document serves as the designated title page for Appendix A of the Hazen PLC Hardware Evaluation report. It specifically delineates the scope of the HFC AWTP PLC Network, functioning as a critical section header within the broader HFC AWTP Master Plan for the Howard F. Curren Advanced Water Treatment Plant (AWTP) Supervisory Control and Data Acquisition (SCADA) System.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:25:52.728392+00:00"
+}

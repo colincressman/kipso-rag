@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 25,
+  "page_number": 26,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 111,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "Appendix A: \nFiber Network Map \nHFC AWTP Master Plan \nImprovements: SCADA Design Criteria \nTechnical Memorandum \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0026_image.png",
+  "artifact_type_inferred": "Technical Document Title Page",
+  "artifact_summary": "Title page for Appendix A of the HFC AWTP Master Plan Improvements: SCADA Design Criteria document, displaying the Fiber Network Map section with Hazen and Reliable Tampa Partners logos.",
+  "artifact_key_elements": [
+    "Hazen and Reliable Tampa Partners logos",
+    "Appendix A designation",
+    "Fiber Network Map section title",
+    "HFC AWTP Master Plan Improvements document",
+    "SCADA Design Criteria context"
+  ],
+  "artifact_blurb": "This image serves as the official title page for Appendix A of the 'HFC AWTP Master Plan Improvements: SCADA Design Criteria' technical memorandum. It visually identifies the specific content as the 'Fiber Network Map' and prominently features the corporate branding of Hazen and Reliable Tampa Partners.",
+  "replacement_text": "This image serves as the official title page for Appendix A of the 'HFC AWTP Master Plan Improvements: SCADA Design Criteria' technical memorandum. It visually identifies the specific content as the 'Fiber Network Map' and prominently features the corporate branding of Hazen and Reliable Tampa Partners.",
+  "normalized_text": "This image serves as the official title page for Appendix A of the 'HFC AWTP Master Plan Improvements: SCADA Design Criteria' technical memorandum. It visually identifies the specific content as the 'Fiber Network Map' and prominently features the corporate branding of Hazen and Reliable Tampa Partners.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:07:27.825657+00:00"
+}

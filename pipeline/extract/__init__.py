@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
+from typing import Any
 
 import fitz  # PyMuPDF — CPU-only, always available
 
@@ -53,7 +54,7 @@ def _extract_pymupdf_all_pages(pdf_path: Path) -> dict[int, str]:
 # Public API
 # ---------------------------------------------------------------------------
 
-def extract_to_markdown(pdf_path: Path) -> str:
+def extract_to_markdown_with_context(pdf_path: Path) -> tuple[str, dict[str, Any]]:
     """
     Extract *pdf_path* to a single markdown string using per-page dispatch.
 
@@ -83,7 +84,7 @@ def extract_to_markdown(pdf_path: Path) -> str:
     """
     # Heavy imports are lazy so that ``import pipeline.extract`` succeeds
     # in environments where torch/marker/surya are not installed.
-    from pipeline.extract.page_classifier  import classify_all_pages
+    from pipeline.extract.page_classifier  import classify_all_pages_with_details
     from pipeline.extract.marker_extractor import extract_with_marker
     from pipeline.extract.table_extractor  import extract_with_pdfplumber
     from pipeline.normalize.to_markdown2   import assemble
@@ -103,14 +104,21 @@ def extract_to_markdown(pdf_path: Path) -> str:
 
     # ── Stage 2: classify pages ──────────────────────────────────────────────
     logger.info("pipeline/extract: classifying pages — %s", pdf_path.name)
-    page_types = classify_all_pages(pdf_path)
+    page_analysis = classify_all_pages_with_details(pdf_path)
+    page_types = {
+        pn: str(meta.get("page_type") or "standard")
+        for pn, meta in page_analysis.items()
+    }
 
     if not page_types:
         logger.warning(
             "pipeline/extract: no pages found in %s — falling back to PyMuPDF only",
             pdf_path.name,
         )
-        return assemble(pymupdf_pages)
+        return assemble(pymupdf_pages), {
+            "page_text": pymupdf_pages,
+            "page_analysis": page_analysis,
+        }
 
     math_risk_pages = sorted(
         pn for pn, t in page_types.items()
@@ -176,4 +184,12 @@ def extract_to_markdown(pdf_path: Path) -> str:
 
     # ── Stage 6: assemble and unload GPU models ───────────────────────────────
     _model_manager.unload_all()
-    return assemble(pages)
+    return assemble(pages), {
+        "page_text": pymupdf_pages,
+        "page_analysis": page_analysis,
+    }
+
+
+def extract_to_markdown(pdf_path: Path) -> str:
+    markdown, _ = extract_to_markdown_with_context(pdf_path)
+    return markdown

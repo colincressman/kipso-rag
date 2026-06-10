@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 31,
+  "page_number": 32,
+  "artifact_kind": "image",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 4129,
+  "reasons": [
+    "page_classifier:table_heavy",
+    "table_override:page_spanning_table_bbox"
+  ],
+  "text_preview": "0\n1\"\n1/2\"\nWORKSTATION\nFIELD PANEL\nPLC\nPROCESS\nHOR\nM\nM\nHOR\nYA\nHS\nQL\nFHK\nRUNNING\nVFD FAULT\nRUN\nHOA\nPAH\nSI\nRESET\nMAL\nTAH\nHS\nRESET\nSETPOINT\nMATRIX\nHS\nPAL\nSHK\nON\nYA\nVFD HI TEMP\nMOTOR\nMOTOR\nHS\nHOA\nQL\nRUN\nYA\nVFD FAULT\nFIR\nSTART\nPROCESS VARIABLE\nSETPOINT\nSPEED OUTPUT\nQL\nREMOTE\nDEWATERING\nSYSTEM RIO\nI I\nCURRENT\nQL\nREMOTE\nHOA\nRESET\nREMOTE\nON\nYA\nO/L\nPUMP SELECTION\nL\nL\nL\nL\nL\nL\nL\nL\nL\nL\nETHERNET LINK\nAIR\nFOR POLYMER FEED\nPROCESS VARIABLE\nAND CENTRIFUGE\nTOTAL SOLIDS\nOPERATION\nA\nA\nA\nA\nA\nA\nA\nA\nDAILY TOTAL\nFQI\nAIH\nAIL\nAQI\nDAILY AVG\nDAILY \nMAX\nDAILY \nMIN\nLIR\nA\nA\nA\nLAH\nLAL\nA\nA\nA\nA\nZAC\n*\n*\n*\nEMERG\nSTOP\nFile: C:\\BM",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0032_image.png",
+  "artifact_type_inferred": "Piping and Instrumentation Diagram (P&ID)",
+  "artifact_summary": "Process flow, instrumentation, and electrical connections for a sludge feed system involving grinders, pumps, and centrifuges.",
+  "artifact_key_elements": [
+    "Sludge Feed System",
+    "Grinders",
+    "Pumps",
+    "Centrifuges",
+    "Instrumentation",
+    "Electrical Connections"
+  ],
+  "artifact_blurb": "A detailed Piping and Instrumentation Diagram (P&ID) illustrating the sludge feed subsystem of a wastewater dewatering facility. The schematic maps the hydraulic process flow, control instrumentation, and power distribution for critical equipment including grinders, transfer pumps, and centrifuges used in the treatment sequence.",
+  "replacement_text": "A detailed Piping and Instrumentation Diagram (P&ID) illustrating the sludge feed subsystem of a wastewater dewatering facility. The schematic maps the hydraulic process flow, control instrumentation, and power distribution for critical equipment including grinders, transfer pumps, and centrifuges used in the treatment sequence.",
+  "normalized_text": "A detailed Piping and Instrumentation Diagram (P&ID) illustrating the sludge feed subsystem of a wastewater dewatering facility. The schematic maps the hydraulic process flow, control instrumentation, and power distribution for critical equipment including grinders, transfer pumps, and centrifuges used in the treatment sequence.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:14:08.432989+00:00"
+}

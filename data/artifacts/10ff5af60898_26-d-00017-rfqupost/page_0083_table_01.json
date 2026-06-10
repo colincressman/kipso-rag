@@ -1,0 +1,28 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 82,
+  "page_number": 83,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.3510909283918118,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "the three models of plcs manufactured by a-b considered for this project are controllogix",
+    "compactlogix, and micrologix. the controllogix is comparable to the ge/emerson rx3i, the"
+  ],
+  "text_length": 2288,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": "  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n   \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n  \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n",
+  "bbox": [
+    66.87999725341797,
+    337.3599853515625,
+    546.3200073242188,
+    720.5599975585938
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0083_table_01.png"
+}

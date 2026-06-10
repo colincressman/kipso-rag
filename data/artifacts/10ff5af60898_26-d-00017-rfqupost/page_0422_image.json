@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 421,
+  "page_number": 422,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n115 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0422_image.png",
+  "artifact_type_inferred": "SCADA Operator Interface Screenshot",
+  "artifact_summary": "Visual standard screenshot of a Constant Speed Motor Faceplate for Sump Pump No.1 within Hazen SCADA Standards Appendix A.",
+  "artifact_key_elements": [
+    "Constant Speed Motor Faceplate",
+    "Sump Pump No.1",
+    "Motor Running Status Indicators",
+    "Fault/Running State",
+    "Navigation Icons",
+    "Hazen SCADA Standards Appendix A"
+  ],
+  "artifact_blurb": "A compliant SCADA operator interface screenshot depicting the 'Constant Speed Motor Faceplate' assigned to 'Sump Pump No.1'. The interface includes critical status indicators for 'Motor Running Status' (distinguishing between Fault and Running states) and standard navigation icons, adhering to the visual specifications defined in Hazen SCADA Standards Appendix A.",
+  "replacement_text": "A compliant SCADA operator interface screenshot depicting the 'Constant Speed Motor Faceplate' assigned to 'Sump Pump No.1'. The interface includes critical status indicators for 'Motor Running Status' (distinguishing between Fault and Running states) and standard navigation icons, adhering to the visual specifications defined in Hazen SCADA Standards Appendix A.",
+  "normalized_text": "A compliant SCADA operator interface screenshot depicting the 'Constant Speed Motor Faceplate' assigned to 'Sump Pump No.1'. The interface includes critical status indicators for 'Motor Running Status' (distinguishing between Fault and Running states) and standard navigation icons, adhering to the visual specifications defined in Hazen SCADA Standards Appendix A.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:11:42.787113+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 32,
+  "page_number": 33,
+  "artifact_kind": "image",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 6134,
+  "reasons": [
+    "page_classifier:table_heavy",
+    "table_override:page_spanning_table_bbox"
+  ],
+  "text_preview": "0\n1\"\n1/2\"\nWORKSTATION\nFIELD PANEL\nPLC\nPROCESS\nM\nM\nRUNNING\nRESET\nYA\nHS\nQL\nSHK\nVFD FAULT\nRUN\nHOA\nSI\nTAH\nHS\nRESET\nYA\nVFD HI TEMP\nMOTOR\nYA\nE-STOP\nTIR\nVIR\nTIR\nFAL\nSE LUBE\nTAH\nLAL\nHYD OIL\nFAL\nLE LUBE\nPAL\nAIR\nQL\nREMOTE\nPM\nTSH\n(4)\nCENTRIFUGE\n PLC (COP)\nI I\nCURRENT\nHOA\nON\nRESET\nHOA\nYA\nFAULT\nHS\n1/2/ALT\nHS\nQL\nRUN\nHOA\nA\nB\n(4)\nDEWATERING\nSYSTEM PLC\nETHERNET LINK\nYA\nO/L\n(3)\n(6)\nDEWATERING\nSYSTEM PLC\nQL\nREMOTE\n(4)\n(4)\nZL\nMA\nHS\nOCA\nO/C\nIN AUTO\nQL\n(2)\n(2)\n(2)\n(3)\nHS\nQL\nRUN\nHOA\nYA\nVFD FAULT\nYL\nREMOTE\nON\nRESET\nHOA\n(3)\n(3)\n(3)\n(3)\nIA\nSI\n(3)\n(3)\n(4)\nA\nB\nTAH\nVFD HI TEMP\n(3)\nTAH\nMOTOR\nOVERLOAD\n(3)\nM\nPAL\n(3)\n(2)\n(3)\n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0033_image.png",
+  "artifact_type_inferred": "process schematic",
+  "artifact_summary": "This document is a process schematic for a dewatering facility, detailing the instrumentation and control logic for centrifuges and pumps.",
+  "artifact_key_elements": [
+    "PLC Interlock Logic",
+    "Field Panel Controls",
+    "Centrifuge Equipment",
+    "Booster Pump System",
+    "Instrumentation Symbols",
+    "Title Block Information"
+  ],
+  "artifact_blurb": "This process schematic illustrates the instrumentation and control layout for a dewatering system, connecting the central PLC to field panels and process equipment. It details the specific instrumentation for centrifuges and booster pumps, including sensors, valves, and drive controls. The diagram serves as a reference for the automated control logic and physical connections within the wastewater treatment facility.",
+  "replacement_text": "This process schematic illustrates the instrumentation and control layout for a dewatering system, connecting the central PLC to field panels and process equipment. It details the specific instrumentation for centrifuges and booster pumps, including sensors, valves, and drive controls. The diagram serves as a reference for the automated control logic and physical connections within the wastewater treatment facility.",
+  "normalized_text": "This process schematic illustrates the instrumentation and control layout for a dewatering system, connecting the central PLC to field panels and process equipment. It details the specific instrumentation for centrifuges and booster pumps, including sensors, valves, and drive controls. The diagram serves as a reference for the automated control logic and physical connections within the wastewater treatment facility.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:14:48.742694+00:00"
+}

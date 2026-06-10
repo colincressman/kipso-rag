@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 450,
+  "page_number": 451,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n144 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0451_image.png",
+  "artifact_type_inferred": "document_title_page",
+  "artifact_summary": "Title sheet for SCADA Standards Appendix A within the HFC AWTP Master Plan, dated January 2025.",
+  "artifact_key_elements": [
+    "SCADA Standards Appendix A",
+    "HFC AWTP Master Plan",
+    "January 2025",
+    "Technical data field screenshots",
+    "Reference for definitions",
+    "General standards listing"
+  ],
+  "artifact_blurb": "This document serves as the official title page for 'SCADA Standards Appendix A,' a component of the HFC AWTP Master Plan published in January 2025. The page functions as a reference index for technical definitions and general standards, featuring embedded screenshots of specific data fields to illustrate the scope of the appendix.",
+  "replacement_text": "This document serves as the official title page for 'SCADA Standards Appendix A,' a component of the HFC AWTP Master Plan published in January 2025. The page functions as a reference index for technical definitions and general standards, featuring embedded screenshots of specific data fields to illustrate the scope of the appendix.",
+  "normalized_text": "This document serves as the official title page for 'SCADA Standards Appendix A,' a component of the HFC AWTP Master Plan published in January 2025. The page functions as a reference index for technical definitions and general standards, featuring embedded screenshots of specific data fields to illustrate the scope of the appendix.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:54:07.320468+00:00"
+}

@@ -64,12 +64,18 @@ h3 { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transf
 #sidebar-header .logo span { line-height: 1; }
 #sidebar-header .sub  { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
 #project-list { flex: 1; overflow-y: auto; padding: 12px; }
+.project-row { display: flex; align-items: stretch; gap: 6px; margin-bottom: 4px; }
 .project-item { padding: 8px 10px; border-radius: var(--radius); cursor: pointer;
-                border: 1px solid transparent; margin-bottom: 4px; transition: background .15s; }
+                border: 1px solid transparent; margin-bottom: 4px; transition: background .15s;
+                display: flex; flex-direction: column; gap: 2px; background: transparent; color: var(--text);
+                appearance: none; outline: none; }
 .project-item:hover { background: var(--surface2); }
 .project-item.active { background: var(--surface2); border-color: var(--accent); }
 .project-item .pname { font-weight: 500; font-size: 0.9rem; }
 .project-item .pslug { font-size: 0.75rem; color: var(--text-muted); }
+.project-delete { border: 1px solid var(--border); background: var(--surface2); color: var(--text-muted);
+                  border-radius: var(--radius); padding: 8px 10px; font-size: 0.75rem; }
+.project-delete:hover { color: var(--danger); border-color: var(--danger); }
 #btn-new-project { margin: 12px; padding: 9px; background: var(--accent);
                    color: #fff; border: none; border-radius: var(--radius); font-weight: 600;
                    font-size: 0.85rem; width: calc(100% - 24px); }
@@ -118,14 +124,83 @@ h3 { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transf
 .branch-detail { font-size: 0.8rem; color: var(--text-muted); }
 
 /* ── Post-branch pass list ───────────────────────────────────────────── */
-#pass-list { list-style: none; }
-.pass-card { background: var(--bg); border: 1px solid var(--border);
-             border-radius: var(--radius); padding: 12px; margin-bottom: 8px; }
-.pass-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-.pass-card-header .pname { flex: 1; font-weight: 600; }
-.pass-detail { font-size: 0.8rem; color: var(--text-muted); }
+#second-pass-list { list-style: none; }
+.second-pass-card { background: var(--bg); border: 1px solid var(--border);
+                    border-radius: var(--radius); padding: 12px; margin-bottom: 8px; }
+.second-pass-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.second-pass-card-header .spname { flex: 1; font-weight: 600; min-width: 0; }
+.second-pass-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.second-pass-detail { font-size: 0.8rem; color: var(--text-muted); }
+.second-pass-meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; }
+.second-pass-meta-label { display: inline-block; margin-right: 6px; color: var(--text); font-weight: 600; }
 .badge-pass { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 600;
               background: rgba(56,189,248,0.15); color: var(--accent-sky); }
+.badge-guided { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+                background: rgba(129,140,248,0.18); color: var(--accent); }
+
+.collapse-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+.collapse-toggle:hover { background: var(--surface2); }
+
+.preview-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+.preview-block + .preview-block {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.preview-title {
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.preview-sub {
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.preview-sections {
+  margin-top: 10px;
+}
+.preview-sections-title {
+  color: var(--text);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 6px;
+}
+.preview-sections ul {
+  padding-left: 18px;
+}
+.preview-sections li {
+  margin-bottom: 3px;
+}
+.preview-warnings {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(251,191,36,0.25);
+  background: rgba(251,191,36,0.08);
+  border-radius: 8px;
+}
+.preview-warnings ul {
+  padding-left: 18px;
+}
 
 /* ── Document source list ────────────────────────────────────────────── */
 #source-list { list-style: none; }
@@ -207,9 +282,41 @@ h3 { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transf
 
 /* ── Report markdown viewer ──────────────────────────────────────────── */
 .report-md-raw { display: none; }   /* hidden raw store for copy/download */
+.report-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.9fr);
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+.report-pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 8px;
+}
+.report-pane-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.report-pane-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.report-pane-sub {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
 .report-md-body {
   background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 20px 24px; flex: 1; overflow-y: auto; line-height: 1.75; font-size: 0.88rem;
+}
+.report-pane-secondary .report-md-body {
+  background: linear-gradient(180deg, rgba(129,140,248,0.06), rgba(56,189,248,0.03));
 }
 .report-md-body h1, .report-md-body h2, .report-md-body h3 {
   color: var(--text); margin: 1.2em 0 0.5em; font-weight: 600;
@@ -274,6 +381,8 @@ h3 { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transf
   }
   #app:not(.sidebar-closed) #main { pointer-events: none; opacity: 0.4; }
   #app.sidebar-closed #sidebar { width: 0; border-right: none; }
+  .report-split { grid-template-columns: 1fr; }
+  .report-pane-sub { white-space: normal; }
 }
 
 /* ── Status bar ──────────────────────────────────────────────────────── */

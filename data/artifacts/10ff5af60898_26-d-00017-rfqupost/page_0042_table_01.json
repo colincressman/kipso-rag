@@ -1,0 +1,27 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 41,
+  "page_number": 42,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.6082887700534759,
+  "classified_page_type": "table_heavy",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "ultransonic liquid level control system"
+  ],
+  "text_length": 994,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": "ID \nDescription \nLCS250 \nULTRANSONIC LIQUID LEVEL CONTROL SYSTEM \nLIS180 \nLAWN IRRIGATION SYSTEM \nLSO100 \nLIFT STATION OPERATION FACILTY \nLST117 \nLOX STORAGE TANK \nMA029 \nMECHANICAL AERATOR \nMB229 \nMETTLER BALANCER \nMBS096 \nMETHANOL BASKET STRAINER \nMCC190 \nMOTOR CONTROL CENTERS \nMCP159 \nPANEL, MAIN CONTROL \nMDU420 \nPERMISSIBLE METHANE MONITOR \nMET036 \nMETER \nMEV145 \nMODULATING EFFLUENT VALVE \nMF224 \nMUFFLE FURNACE \nMFP096 \nMETHONAL FEED PUMP \nMH009 \nHOIST \nMIX028 \nMIXER \nMIX029 \nMIXER--WET WELL MIXER \nMLSS077 \nMIXED LIQUOR SUSPENDED SOLIDS METER \nMOV125 \nMOTOR OPERATED VALVE \nMP025 \nMETERING ",
+  "bbox": [
+    64.0,
+    64.0,
+    548.0,
+    710.0
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0042_table_01.png"
+}

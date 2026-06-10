@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 430,
+  "page_number": 431,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n124 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0431_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "A SCADA system display showing two Modulating Valve Faceplates for Reactor Gate No.3, with one panel indicating an active Process Input Fault alarm.",
+  "artifact_key_elements": [
+    "Modulating Valve Faceplate",
+    "Reactor Gate No.3",
+    "Process Input Fault alarm",
+    "Operational parameters list",
+    "Standard screen layout",
+    "Side-by-side window configuration"
+  ],
+  "artifact_blurb": "The image presents a SCADA operator interface displaying dual Modulating Valve Faceplates associated with Reactor Gate No.3. The left panel enumerates standard operational parameters, while the right panel actively flags a 'Process Input Fault' alarm, indicating a deviation in the input signal for that specific valve control loop.",
+  "replacement_text": "The image presents a SCADA operator interface displaying dual Modulating Valve Faceplates associated with Reactor Gate No.3. The left panel enumerates standard operational parameters, while the right panel actively flags a 'Process Input Fault' alarm, indicating a deviation in the input signal for that specific valve control loop.",
+  "normalized_text": "The image presents a SCADA operator interface displaying dual Modulating Valve Faceplates associated with Reactor Gate No.3. The left panel enumerates standard operational parameters, while the right panel actively flags a 'Process Input Fault' alarm, indicating a deviation in the input signal for that specific valve control loop.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:24:06.146172+00:00"
+}

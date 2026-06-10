@@ -1,0 +1,20 @@
+{"seq": 1, "type": "run_started", "run_id": "rerun_20260608_202806_6ff4b3d4", "kind": "second_pass_rerun", "project_slug": "test"}
+{"seq": 2, "type": "progress", "message": "Starting report-only rerun: test"}
+{"seq": 3, "type": "progress", "message": "Source checkpoint: data\\extraction_checkpoints\\test_20260608_134056.jsonl"}
+{"seq": 4, "type": "progress", "message": "Checkpoint: data\\extraction_checkpoints\\test_20260608_202806_reports.jsonl"}
+{"seq": 5, "type": "progress", "message": "Loaded 10 branch result(s) from checkpoint"}
+{"seq": 6, "type": "progress", "message": "\nSecond-pass plan: 6 step(s)"}
+{"seq": 7, "type": "progress", "message": "\nSecond pass 1/6: Category Summaries"}
+{"seq": 8, "type": "progress", "message": "    routing evidence into report category: Project Overview"}
+{"seq": 9, "type": "progress", "message": "      category routing batch 1/124"}
+{"seq": 10, "type": "progress", "message": "      category routing batch 2/124"}
+{"seq": 11, "type": "progress", "message": "      category routing batch 3/124"}
+{"seq": 12, "type": "progress", "message": "      category routing batch 4/124"}
+{"seq": 13, "type": "progress", "message": "      category routing batch 5/124"}
+{"seq": 14, "type": "progress", "message": "      category routing batch 6/124"}
+{"seq": 15, "type": "progress", "message": "      category routing batch 7/124"}
+{"seq": 16, "type": "progress", "message": "      category routing batch 8/124"}
+{"seq": 17, "type": "progress", "message": "      category routing batch 9/124"}
+{"seq": 18, "type": "progress", "message": "      category routing batch 10/124"}
+{"seq": 19, "type": "progress", "message": "      category routing batch 11/124"}
+{"seq": 20, "type": "error", "message": "Server restarted during extraction run", "phase": "error", "stage": "interrupted", "percent_hint": null}

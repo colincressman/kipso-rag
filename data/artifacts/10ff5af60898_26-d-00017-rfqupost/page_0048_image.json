@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 47,
+  "page_number": 48,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 117,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "Appendix E: \nWork Shop meeting notes \nHFC AWTP Master Plan \nImprovements: SCADA Design Criteria \nTechnical Memorandum \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0048_image.png",
+  "artifact_type_inferred": "Technical Memorandum Title Page",
+  "artifact_summary": "Title page for Appendix E of a technical memorandum detailing workshop meeting notes on the HFC AWTP Master Plan and SCADA design criteria improvements.",
+  "artifact_key_elements": [
+    "Appendix E designation",
+    "HFC AWTP Master Plan",
+    "SCADA design criteria",
+    "Workshop meeting notes",
+    "Technical memorandum format",
+    "Document title page"
+  ],
+  "artifact_blurb": "This document serves as the title page for Appendix E of a technical memorandum. The appendix compiles workshop meeting notes focused on the HFC AWTP Master Plan and outlines specific improvements to SCADA design criteria.",
+  "replacement_text": "This document serves as the title page for Appendix E of a technical memorandum. The appendix compiles workshop meeting notes focused on the HFC AWTP Master Plan and outlines specific improvements to SCADA design criteria.",
+  "normalized_text": "This document serves as the title page for Appendix E of a technical memorandum. The appendix compiles workshop meeting notes focused on the HFC AWTP Master Plan and outlines specific improvements to SCADA design criteria.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:21:16.676596+00:00"
+}

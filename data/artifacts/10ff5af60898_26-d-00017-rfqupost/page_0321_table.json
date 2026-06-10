@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 320,
+  "page_number": 321,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1541,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nPFS308 \nPRODUCT FLOW SCALE \nPG000 \nPRESSURE GAUGE \nPH074 \nPH ANALYZER \nPIT000 \nPRESSURE INDICATING TRANSMITTER \nPJB000 \nPOWER JUNCTION BOX \nPLC000 \nPROGRAMMABLE LOGIC CONTROLLER \nPLM000 \nPLUMBING \nPM261 \nPUG MILL \nPMP000 \nPUMP (GENERAL) \nPPL000 \nPOWER PANEL \nPRN000 \nPRINTER \nPRS000 \nSCREEN PRESS \nPRV126 \nPRESSURE RELIEF VALVES \nPRV130 \nG",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0321_table.png"
+}

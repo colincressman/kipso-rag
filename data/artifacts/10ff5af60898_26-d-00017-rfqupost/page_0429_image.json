@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 428,
+  "page_number": 429,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n122 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0429_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "Screenshot of the HSP Motor Group LLS Manager SCADA interface displaying a split view of seven motor statuses, demand availability, and asset running metrics.",
+  "artifact_key_elements": [
+    "HSP Motor Group LLS Manager title",
+    "Seven motor operational status indicators",
+    "Readiness and running state flags",
+    "Left panel demand status list",
+    "Right panel asset running graph"
+  ],
+  "artifact_blurb": "A SCADA system dashboard titled 'HSP Motor Group LLS Manager' presenting a dual-panel layout. The left section enumerates demand status and available motor inventory, while the right section visualizes the count of active assets via a line graph, with specific indicators denoting motor readiness and current running states for a total of seven monitored units.",
+  "replacement_text": "A SCADA system dashboard titled 'HSP Motor Group LLS Manager' presenting a dual-panel layout. The left section enumerates demand status and available motor inventory, while the right section visualizes the count of active assets via a line graph, with specific indicators denoting motor readiness and current running states for a total of seven monitored units.",
+  "normalized_text": "A SCADA system dashboard titled 'HSP Motor Group LLS Manager' presenting a dual-panel layout. The left section enumerates demand status and available motor inventory, while the right section visualizes the count of active assets via a line graph, with specific indicators denoting motor readiness and current running states for a total of seven monitored units.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:21:45.805362+00:00"
+}

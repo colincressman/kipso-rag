@@ -1,0 +1,25 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 386,
+  "page_number": 387,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.16501011637302548,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 776,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n \nSCADA Standards Appendix A \nSts_IntlkTripShelved \nOutput \nBOOL \nIntlkTrip.Shelved \n0 \nDecimal \n0 \n0 \n1=Interlock Trip Alarm has \nbeen Shelved by Operator \nRead/Write \nSts_IntlkTripSuppressed \nOutput \nBOOL \nIntlkTrip.Suppressed \n0 \nDecimal \n0 \n0 \n1=Interlock Trip Alarm has \nbeen Suppressed by Program \nRead/Write \nMRdy_Rel \nOutput \nBOOL \nCmdSrc.MRdy_Rel \n0 \nDecimal \n0 \n0 \n1=Ready for MCmd_Rel \n(enables HMI butto",
+  "bbox": [
+    64.2953872680664,
+    66.18000030517578,
+    709.3245849609375,
+    209.3300018310547
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0387_table_01.png"
+}

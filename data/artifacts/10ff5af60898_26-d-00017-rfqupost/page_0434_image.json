@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 433,
+  "page_number": 434,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n127 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0434_image.png",
+  "artifact_type_inferred": "SCADA interface screenshot",
+  "artifact_summary": "This artifact is a screenshot of a SCADA system interface displaying the configuration settings for a specific knife gate valve. It captures parameter definitions for limit switches and operational timers used in the HFC AWTP Master Plan.",
+  "artifact_key_elements": [
+    "Knife Gate No.1 title",
+    "Valve ID H-010-KV047-101-01",
+    "Limit switch configuration checkboxes",
+    "Pulse Out Timer setting",
+    "Full Stall Timer setting",
+    "Transit Stall Timer setting"
+  ],
+  "artifact_blurb": "This screenshot displays a SCADA interface configuration for Knife Gate No.1, identified by the tag H-010-KV047-101-01. The interface includes options to configure limit switches and sets specific timing parameters, such as a 20.0-second pulse out timer and a 35.0-second full stall timer. This visual reference is part of the SCADA Standards Appendix A within the HFC AWTP Master Plan documentation.",
+  "replacement_text": "This screenshot displays a SCADA interface configuration for Knife Gate No.1, identified by the tag H-010-KV047-101-01. The interface includes options to configure limit switches and sets specific timing parameters, such as a 20.0-second pulse out timer and a 35.0-second full stall timer. This visual reference is part of the SCADA Standards Appendix A within the HFC AWTP Master Plan documentation.",
+  "normalized_text": "This screenshot displays a SCADA interface configuration for Knife Gate No.1, identified by the tag H-010-KV047-101-01. The interface includes options to configure limit switches and sets specific timing parameters, such as a 20.0-second pulse out timer and a 35.0-second full stall timer. This visual reference is part of the SCADA Standards Appendix A within the HFC AWTP Master Plan documentation.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:27:15.935462+00:00"
+}

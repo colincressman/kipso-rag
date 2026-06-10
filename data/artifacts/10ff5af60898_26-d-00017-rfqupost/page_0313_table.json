@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 312,
+  "page_number": 313,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1504,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n3 \nSCADA Standards Appendix A \nEquipment Codes \nCODE \nEQUIPMENT \nAB018 \nAIR BLOWER \nABEF302 \nAFTERBURNER EXH FAN \nABF301 \nAFTERBURNACE FURNACE \nABS220 \nATOMIC ABSORPTION UNIT \nABV012 \nAIR OPERATED BLOCK VALVE \nABX000 \nAFTERBURNER EXHAUST FAN \nAC020 \nAIR COMPRESSOR \nACD300 \nDAMPER \nACP000 \nANALYZER CONTROL PANEL \nACP100 \nPANEL, AERATION CONTROL \nACS102 \nACTIVATED CARBON SYST \nA",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0313_table.png"
+}

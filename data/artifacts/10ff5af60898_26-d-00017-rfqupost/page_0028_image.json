@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 27,
+  "page_number": 28,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 113,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "Appendix B: \nBuilding Number Map \nHFC AWTP Master Plan \nImprovements: SCADA Design Criteria \nTechnical Memorandum \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0028_image.png",
+  "artifact_type_inferred": "Technical Memorandum Title Page",
+  "artifact_summary": "Cover page for Appendix B of the HFC AWTP Master Plan, featuring the Hazen and Reliable Tampa Partners logos and titled 'Building Number Map'.",
+  "artifact_key_elements": [
+    "Appendix B designation",
+    "HFC AWTP Master Plan association",
+    "Building Number Map title",
+    "Hazen logo",
+    "Reliable Tampa Partners logo",
+    "Technical memorandum format"
+  ],
+  "artifact_blurb": "Official title page for Appendix B of the HFC Advanced Water Treatment Plant (AWTP) Master Plan. The document serves as a cover sheet for the accompanying 'Building Number Map' and prominently displays the corporate branding of Hazen and the Reliable Tampa Partners.",
+  "replacement_text": "Official title page for Appendix B of the HFC Advanced Water Treatment Plant (AWTP) Master Plan. The document serves as a cover sheet for the accompanying 'Building Number Map' and prominently displays the corporate branding of Hazen and the Reliable Tampa Partners.",
+  "normalized_text": "Official title page for Appendix B of the HFC Advanced Water Treatment Plant (AWTP) Master Plan. The document serves as a cover sheet for the accompanying 'Building Number Map' and prominently displays the corporate branding of Hazen and the Reliable Tampa Partners.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:09:04.407010+00:00"
+}

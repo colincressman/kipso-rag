@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 316,
+  "page_number": 317,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1618,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nFDR000 \nVOLUMETRIC CHEMICAL FEEDER \nFE000 \nFLOW ELEMENT \nFE242 \nFIRE EXTINGUSHERS \nFED000 \nFEEDERS \nFEP216 \nFILTER EFFLUENT PUMP \nFET000 \nFLOW ELEMENT ATTACHED TO TRANSMITTER, NON-INDICATING \nFG185 \nFENCES AND GATES \nFGD000 \nFLARES GROUND \nFGST167 \nFUEL GAS SURGE TANK \nFH312 \nFIRE HYDRANTS \nFHR000 \nFIRE HOSE REEL \nFIT000 \nFLOW INDICATING",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0317_table.png"
+}

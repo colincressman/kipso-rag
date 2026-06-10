@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 429,
+  "page_number": 430,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n123 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0430_image.png",
+  "artifact_type_inferred": "software interface screenshot",
+  "artifact_summary": "This document page displays two side-by-side screenshots of a SCADA system interface titled 'Modulating Valve Faceplate'. It illustrates the layout and data points for a specific reactor gate valve, including control source, valve status, and position parameters.",
+  "artifact_key_elements": [
+    "Modulating Valve Faceplate interface",
+    "Reactor Gate No.3 H-011-SG012-100-03",
+    "Control Source (Operator Mode)",
+    "Valve Status (At Target)",
+    "Position Parameters (Position Ref, Manual Pos, Position Feedback)",
+    "HFC AWTP Master Plan footer"
+  ],
+  "artifact_blurb": "This page from the SCADA Standards Appendix A presents two examples of a Modulating Valve Faceplate interface used for monitoring Reactor Gate No.3. The interface displays the control source set to Operator Mode, confirms the valve is at target, and shows position parameters with a reference of 40.0% and a feedback reading of 55.1%. The document is part of the HFC AWTP Master Plan for the Howard F. Curren Advanced Water Treatment Plant.",
+  "replacement_text": "This page from the SCADA Standards Appendix A presents two examples of a Modulating Valve Faceplate interface used for monitoring Reactor Gate No.3. The interface displays the control source set to Operator Mode, confirms the valve is at target, and shows position parameters with a reference of 40.0% and a feedback reading of 55.1%. The document is part of the HFC AWTP Master Plan for the Howard F. Curren Advanced Water Treatment Plant.",
+  "normalized_text": "This page from the SCADA Standards Appendix A presents two examples of a Modulating Valve Faceplate interface used for monitoring Reactor Gate No.3. The interface displays the control source set to Operator Mode, confirms the valve is at target, and shows position parameters with a reference of 40.0% and a feedback reading of 55.1%. The document is part of the HFC AWTP Master Plan for the Howard F. Curren Advanced Water Treatment Plant.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:22:29.870993+00:00"
+}

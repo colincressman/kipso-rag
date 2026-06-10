@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 432,
+  "page_number": 433,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n126 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0433_image.png",
+  "artifact_type_inferred": "SCADA interface screenshot",
+  "artifact_summary": "This screenshot displays a SCADA system faceplate for a specific valve, showing operational metrics and event counts.",
+  "artifact_key_elements": [
+    "Open/Close Valve Faceplate",
+    "Knife Gate No.1",
+    "Successful Closing Counts",
+    "Incomplete Opening Counts",
+    "Slow Closing Counts",
+    "Clear Counts button"
+  ],
+  "artifact_blurb": "This screenshot displays the Open/Close Valve Faceplate for Knife Gate No.1, identified by the tag H-010-KV047-101-01. The interface presents a list of operational statistics including successful closing counts (10), successful opening counts (11), and incomplete counts for both actions. It also tracks slow operation events, specifically listing 8 slow closing counts and 11 slow opening counts, alongside buttons to clear these specific count categories.",
+  "replacement_text": "This screenshot displays the Open/Close Valve Faceplate for Knife Gate No.1, identified by the tag H-010-KV047-101-01. The interface presents a list of operational statistics including successful closing counts (10), successful opening counts (11), and incomplete counts for both actions. It also tracks slow operation events, specifically listing 8 slow closing counts and 11 slow opening counts, alongside buttons to clear these specific count categories.",
+  "normalized_text": "This screenshot displays the Open/Close Valve Faceplate for Knife Gate No.1, identified by the tag H-010-KV047-101-01. The interface presents a list of operational statistics including successful closing counts (10), successful opening counts (11), and incomplete counts for both actions. It also tracks slow operation events, specifically listing 8 slow closing counts and 11 slow opening counts, alongside buttons to clear these specific count categories.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:26:22.940603+00:00"
+}

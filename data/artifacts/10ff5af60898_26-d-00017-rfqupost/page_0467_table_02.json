@@ -1,0 +1,27 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 466,
+  "page_number": 467,
+  "artifact_kind": "table",
+  "artifact_index": 2,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.4601253225510207,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "change request form example"
+  ],
+  "text_length": 1085,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n  \n \n \n \n                \n \n \n \n \n                \n \n \n \n \n                \n \n \n \n \n                \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix B \nChange Request Form Example \nDate of Request: \n1/20/2025 \nProject Number: \n1234 \nName of Requester: \nJ. Bond \nName of Firm: \nMI6 \nPhone Number: \n123-456-7890 \nE-mail address: \nJBond@mi6.com \nAttach additional sheets as needed to provide the information required below",
+  "bbox": [
+    64.26399993896484,
+    159.5399932861328,
+    547.8599853515625,
+    652.5
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0467_table_02.png"
+}

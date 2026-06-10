@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 414,
+  "page_number": 415,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 12,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 178,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \n20.4\u0003Modulating Valves\u0003\nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n108 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0415_image.png",
+  "artifact_type_inferred": "SCADA_Symbol_Guide",
+  "artifact_summary": "Grid of ten modulating valve symbols from Hazen SCADA Standards Appendix A showing gate and butterfly valves with open percentages.",
+  "artifact_key_elements": [
+    "Hazen SCADA Standards",
+    "Modulating Valve Symbols",
+    "Gate Valve Diagrams",
+    "Butterfly Valve Diagrams",
+    "Open Percentage Labels",
+    "Target State Indicators"
+  ],
+  "artifact_blurb": "This Hazen SCADA Standards Appendix A page presents a comprehensive grid of ten distinct modulating valve symbols, specifically detailing gate and butterfly valve configurations annotated with precise open percentages and corresponding target operational states.",
+  "replacement_text": "This Hazen SCADA Standards Appendix A page presents a comprehensive grid of ten distinct modulating valve symbols, specifically detailing gate and butterfly valve configurations annotated with precise open percentages and corresponding target operational states.",
+  "normalized_text": "This Hazen SCADA Standards Appendix A page presents a comprehensive grid of ten distinct modulating valve symbols, specifically detailing gate and butterfly valve configurations annotated with precise open percentages and corresponding target operational states.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:01:15.011900+00:00"
+}

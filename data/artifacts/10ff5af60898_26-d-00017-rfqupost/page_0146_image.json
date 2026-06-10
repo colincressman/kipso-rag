@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 145,
+  "page_number": 146,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan",
+    "howard f. curren awtp - scada system"
+  ],
+  "text_length": 164,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nReport Creator Software \nFigure 18 XLReport Quote \nHFC AWTP Master Plan \nDecember 2024 \nHoward F. Curren AWTP - SCADA System \nReport Creator Software Evaluation \n46 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0146_image.png",
+  "artifact_type_inferred": "Commercial Quote",
+  "artifact_summary": "SmartSights quote for Hazen Report Creator Software XLReporter Ultimate subscription and installation services totaling $7,850.00.",
+  "artifact_key_elements": [
+    "Vendor: SmartSights",
+    "Product: Hazen Report Creator Software",
+    "License: XLReporter Ultimate",
+    "Services: Installation",
+    "Total Cost: $7,850.00"
+  ],
+  "artifact_blurb": "Commercial quotation from SmartSights for the Hazen Report Creator Software suite, specifically detailing pricing for XLReporter Ultimate subscription licenses and associated installation services, with a finalized grand total of $7,850.00.",
+  "replacement_text": "Commercial quotation from SmartSights for the Hazen Report Creator Software suite, specifically detailing pricing for XLReporter Ultimate subscription licenses and associated installation services, with a finalized grand total of $7,850.00.",
+  "normalized_text": "Commercial quotation from SmartSights for the Hazen Report Creator Software suite, specifically detailing pricing for XLReporter Ultimate subscription licenses and associated installation services, with a finalized grand total of $7,850.00.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:53:54.191453+00:00"
+}

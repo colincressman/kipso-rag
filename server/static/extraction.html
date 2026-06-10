@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Extraction Studio — Personal AI</title>
+  <title>Extraction Studio - Personal AI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
 <body>
 <div id="app">
 
-  <!-- ──────────────── SIDEBAR ──────────────────────────────────────── -->
+  <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <div id="sidebar">
     <div id="sidebar-header">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
@@ -42,7 +42,7 @@
     <button id="btn-new-project" onclick="openNewProjectModal()">+ New Project</button>
   </div>
 
-  <!-- ──────────────── MAIN AREA ────────────────────────────────────── -->
+  <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ MAIN AREA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <div id="main">
 
     <!-- Top bar (always visible) -->
@@ -56,7 +56,7 @@
 
     <!-- Empty state -->
     <div id="empty-state">
-      <div class="icon">🗂️</div>
+      <div class="icon">Folder</div>
       <p>Select a project or create a new one to get started.</p>
       <button class="btn btn-primary" onclick="openNewProjectModal()">+ New Project</button>
     </div>
@@ -87,7 +87,7 @@
             <label>Collection</label>
             <div style="display:flex; gap:8px; align-items:center;">
               <input type="text" id="proj-collection" placeholder="extraction_spec_review_q3" style="flex:1" />
-              <button class="btn btn-ghost btn-sm" onclick="openPickCollectionModal()" title="Pick an existing RAG collection">Browse…</button>
+              <button class="btn btn-ghost btn-sm" onclick="openPickCollectionModal()" title="Pick an existing RAG collection">Browse...</button>
             </div>
             <div class="hint">Use an existing library collection to skip re-ingestion, or leave blank to auto-create.</div>
           </div>
@@ -96,6 +96,14 @@
           </div>
           <div class="form-row">
             <label><input type="checkbox" id="proj-cross-branch-dedup" /> Deduplicate across branches (keep highest-priority source only)</label>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Workflow</div>
+          <div class="hint" style="font-size:0.82rem; line-height:1.6; color:var(--text);">
+            <strong>1.</strong> Define the evidence you want to collect with branches.
+            <strong>2.</strong> Run extraction to build a category-organized report directly from those branches.
           </div>
         </div>
 
@@ -110,28 +118,35 @@
 
         <!-- Branches -->
         <div class="card">
-          <div class="card-title">Extraction Branches</div>
+          <div class="card-title">Branches</div>
+          <div class="hint" style="margin-bottom:10px;">Create data-collection branches for the kinds of evidence you want to pull, like definitions, deadlines, requirements, risks, formulas, deliverables, or open questions.</div>
           <ul id="branch-list"></ul>
           <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
             <button class="btn btn-ghost btn-sm" onclick="openAddBranchModal()">+ Add Branch</button>
+            <button class="btn btn-ghost btn-sm" onclick="openBranchPackModal()">+ Suggested Pack</button>
             <button class="btn btn-ghost btn-sm" onclick="autoSuggestBranches()">&#x2736; Auto-Suggest</button>
             <button class="btn btn-ghost btn-sm" onclick="loadFromFlagLibrary()">&#x1F4DA; From Flag Library</button>
           </div>
         </div>
 
-        <!-- Post-Branch Passes -->
         <div class="card">
-          <div class="card-title">Post-Branch Passes <span style="color:var(--text-dim);font-size:0.75rem;font-weight:400;">(LLM calls run in series after all branches finish)</span></div>
-          <ul id="pass-list"></ul>
-          <div style="display:flex; gap:8px; margin-top:10px;">
-            <button class="btn btn-ghost btn-sm" onclick="openAddPassModal()">+ Add Pass</button>
+          <div class="card-title">Second Passes</div>
+          <div class="hint" style="margin-bottom:10px;">These run serially after branch extraction. Branches collect evidence. Second passes can organize that evidence into report categories, summarize those categories, then assemble the final report.</div>
+          <ul id="second-pass-list"></ul>
+          <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
+            <button class="btn btn-ghost btn-sm" onclick="openSecondPassModal('organize_by_category')">+ Organize by Category</button>
+            <button class="btn btn-ghost btn-sm" onclick="openSecondPassModal('summarize_by_category')">+ Summarize by Category</button>
+            <button class="btn btn-ghost btn-sm" onclick="openSecondPassModal('executive_summary')">+ Executive Summary</button>
+            <button class="btn btn-ghost btn-sm" onclick="openSecondPassModal('key_findings')">+ Key Findings</button>
+            <button class="btn btn-ghost btn-sm" onclick="openSecondPassModal('next_actions')">+ Next Actions</button>
+            <button class="btn btn-ghost btn-sm" onclick="openSecondPassModal('assemble_report')">+ Assemble Report</button>
           </div>
         </div>
 
         <!-- Save / run actions -->
         <div style="display:flex; gap:10px;">
           <button class="btn btn-primary" onclick="saveProject()">Save Project</button>
-          <button class="btn btn-success" onclick="showTab('run')">Run Extraction →</button>
+          <button class="btn btn-success" onclick="showTab('run')">Run Extraction -></button>
         </div>
 
       </div>
@@ -146,8 +161,10 @@
             No project loaded.
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <button class="btn btn-success" id="btn-run" onclick="startRun()">▶ Start Extraction</button>
-            <button class="btn btn-danger btn-sm" id="btn-abort" style="display:none" onclick="abortRun()">■ Abort</button>
+            <button class="btn btn-success" id="btn-run" onclick="startRun()">Start Extraction</button>
+            <button class="btn btn-ghost btn-sm" id="btn-rerun-second-passes" onclick="rerunSecondPassesOnly()">Rerun Second Passes Only</button>
+            <button class="btn btn-danger btn-sm" id="btn-abort" style="display:none" onclick="abortRun()">Abort</button>
+            <button class="btn btn-ghost btn-sm" id="btn-clear-run" style="display:none" onclick="clearLastRun()">Clear Run</button>
             <label style="display:flex; align-items:center; gap:6px; font-size:0.82rem; color:var(--text-dim); cursor:pointer; margin-left:6px;" title="Save every pipeline step (prompts, raw LLM responses, IDs, rehydrated chunks) to data/extraction_verbose/">
               <input type="checkbox" id="chk-verbose" style="width:14px;height:14px;cursor:pointer;">
               Verbose
@@ -178,13 +195,29 @@
         <div style="display:flex; gap:10px; margin-bottom:12px; align-items:center; flex-wrap:wrap;">
           <h2 style="flex:1; margin:0;">Report</h2>
           <select id="report-history-select" style="background:#12141e; border:1px solid var(--border); color:var(--text); border-radius:6px; padding:5px 8px; font-size:0.82rem; max-width:260px; cursor:pointer;" onchange="loadHistoryReport(this.value)" title="Load a saved report">
-            <option value="">— History —</option>
+            <option value="">- History -</option>
           </select>
           <button class="btn btn-ghost btn-sm" onclick="copyReport()">Copy</button>
           <button class="btn btn-ghost btn-sm" onclick="downloadReport()">Download</button>
         </div>
-        <pre id="report-md" class="report-md-raw" style="display:none"></pre>
-        <div id="report-md-rendered" class="report-md-body">No report yet. Run extraction first.</div>
+        <div class="report-split">
+          <section class="report-pane">
+            <div class="report-pane-head">
+              <h3>Main Report</h3>
+              <span class="report-pane-sub">Synthesized proposal-writing view</span>
+            </div>
+            <pre id="report-md" class="report-md-raw" style="display:none"></pre>
+            <div id="report-md-rendered" class="report-md-body">No report yet. Run extraction first.</div>
+          </section>
+          <section class="report-pane report-pane-secondary">
+            <div class="report-pane-head">
+              <h3>Organized Evidence</h3>
+              <span class="report-pane-sub">Raw category support for backtracking and QA</span>
+            </div>
+            <pre id="report-appendix-md" class="report-md-raw" style="display:none"></pre>
+            <div id="report-appendix-rendered" class="report-md-body">No evidence appendix yet. Run extraction first.</div>
+          </section>
+        </div>
       </div>
     </div>
 
@@ -195,7 +228,7 @@
   </div>
 </div>
 
-<!-- ──────────────── MODALS ───────────────────────────────────────────────── -->
+<!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ MODALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 
 <!-- New Project Modal -->
 <div class="modal-overlay" id="modal-new-project">
@@ -235,7 +268,7 @@
       </div>
       <div id="add-doc-doc-list" style="max-height:240px; overflow-y:auto; border:1px solid var(--border);
            border-radius:6px; background:#12141e;">
-        <div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading…</div>
+        <div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading...</div>
       </div>
     </div>
 
@@ -252,13 +285,13 @@
       <label>Role</label>
       <select id="add-doc-role">
         <option value="primary">primary (weight 1.0)</option>
-        <option value="addendum">addendum (weight 1.5 — prioritized)</option>
-        <option value="reference">reference (weight 0.6 — de-prioritized)</option>
+        <option value="addendum">addendum (weight 1.5 - prioritized)</option>
+        <option value="reference">reference (weight 0.6 - deprioritized)</option>
         <option value="custom">custom</option>
       </select>
     </div>
     <div class="form-row">
-      <label>Label (optional — defaults to filename)</label>
+      <label>Label (optional - defaults to filename)</label>
       <input type="text" id="add-doc-label" placeholder="" />
     </div>
 
@@ -275,13 +308,13 @@
     <h2 id="add-branch-title">Add Branch</h2>
     <div class="form-row">
       <label>Name</label>
-      <input type="text" id="add-branch-name" placeholder="Safety Requirements" />
+      <input type="text" id="add-branch-name" placeholder="Definitions, Deadlines, Risks, Formulas..." />
     </div>
     <div class="form-row">
       <label>Mode</label>
       <select id="add-branch-mode" onchange="onBranchModeChange()">
-        <option value="keyword">keyword — hard-filter by keywords</option>
-        <option value="semantic">semantic — dense retrieval on topic</option>
+        <option value="keyword">keyword - hard-filter by keywords</option>
+        <option value="semantic">semantic - dense retrieval on topic</option>
       </select>
     </div>
     <div id="branch-keyword-field" class="form-row">
@@ -290,11 +323,11 @@
     </div>
     <div id="branch-semantic-field" class="form-row" style="display:none">
       <label>Topic Description</label>
-      <textarea id="add-branch-topic" placeholder="Describe what content to extract semantically…"></textarea>
+      <textarea id="add-branch-topic" placeholder="Describe what content to extract semantically..."></textarea>
     </div>
     <div class="form-row">
       <label>Output Heading (optional)</label>
-      <input type="text" id="add-branch-heading" placeholder="Safety Requirements" />
+      <input type="text" id="add-branch-heading" placeholder="Definitions" />
     </div>
     <div class="form-row">
       <label>Output Format</label>
@@ -311,84 +344,88 @@
     <div class="form-row" style="margin-top:4px;">
       <label>Additional Context <span style="font-weight:400; color:var(--text-dim);">(optional)</span></label>
       <textarea id="add-branch-system-override" rows="4"
-        placeholder="Extra guidance injected into the prompt for this branch.&#10;&#10;Example: Focus on formal definitions only.&#10;Example: Prioritize content from chapters 5–10."></textarea>
+        placeholder="Extra guidance injected into the prompt for this branch.&#10;&#10;Example: Focus on formal definitions only.&#10;Example: Prioritize content from chapters 5-10."></textarea>
       <div class="hint">Appended to the topic description so the model knows what to select or skip. Does not change the prompt structure.</div>
     </div>
     <input type="hidden" id="add-branch-edit-idx" value="-1" />
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeModal('modal-add-branch')">Cancel</button>
-      <button class="btn btn-primary" onclick="confirmAddBranch()">Save Branch</button>
+        <button class="btn btn-primary" onclick="confirmAddBranch()">Save Branch</button>
     </div>
   </div>
 </div>
 
-<!-- Add Pass Modal -->
-<div class="modal-overlay" id="modal-add-pass">
-  <div class="modal" style="width:580px; max-height:90vh; overflow-y:auto;">
-    <h2 id="add-pass-title">Add Post-Branch Pass</h2>
+<div class="modal-overlay" id="modal-branch-pack">
+  <div class="modal" style="width:620px; max-height:90vh; overflow-y:auto;">
+    <h2>Suggested Evidence Pack</h2>
+    <div class="form-row">
+      <label>Document Type</label>
+      <select id="branch-pack-document-type" onchange="renderBranchPackPreview()">
+        <option value="public_bid_spec">Public bid / spec package</option>
+        <option value="textbook_course_material">Textbook / course material</option>
+        <option value="policy_law_regulation">Policy / law / regulation</option>
+        <option value="technical_manual_sop">Technical manual / SOP</option>
+        <option value="financial_accounting">Financial / accounting material</option>
+        <option value="general_document_set">General document set</option>
+        <option value="other_custom">Other / custom</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Domain Lens</label>
+      <select id="branch-pack-domain-lens" onchange="renderBranchPackPreview()">
+        <option value="general">General</option>
+        <option value="engineering_technical">Engineering / Technical</option>
+        <option value="legal_regulatory">Legal / Regulatory</option>
+        <option value="financial_accounting">Financial / Accounting</option>
+        <option value="educational_textbook">Educational / Textbook</option>
+        <option value="business_operations">Business / Operations</option>
+        <option value="healthcare_clinical">Healthcare / Clinical</option>
+        <option value="public_procurement_government">Public Procurement / Government</option>
+      </select>
+    </div>
+    <div id="branch-pack-preview" class="preview-panel"></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-branch-pack')">Cancel</button>
+      <button class="btn btn-primary" onclick="applyBranchPack()">Add Categories</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-second-pass">
+  <div class="modal" style="width:640px; max-height:90vh; overflow-y:auto;">
+    <h2 id="second-pass-title">Add Second Pass</h2>
     <div class="form-row">
       <label>Name</label>
-      <input type="text" id="add-pass-name" placeholder="Executive Summary" />
+      <input type="text" id="second-pass-name" placeholder="Organize by Category" />
     </div>
     <div class="form-row">
-      <label>Output Heading (optional, defaults to name)</label>
-      <input type="text" id="add-pass-heading" placeholder="" />
+      <label>Section Title</label>
+      <input type="text" id="second-pass-heading" placeholder="Organized Evidence by Category" />
     </div>
     <div class="form-row">
-      <label>Input Source</label>
-      <select id="add-pass-input-source" onchange="onPassConfigChange()">
-        <option value="all_branch_items">All branch items</option>
-        <option value="selected_branch_items">Selected branch items</option>
-        <option value="previous_pass_output">Previous pass output</option>
-      </select>
-      <div class="hint">Choose whether this pass should read extracted items directly or transform the output of the prior pass.</div>
+      <label>Source Branches</label>
+      <input type="text" id="second-pass-source-branches" placeholder="Optional comma-separated branch names. Leave blank to use all branches." />
+      <div class="hint">These are data-collection branches, not final report categories.</div>
+    </div>
+    <div class="form-row" id="second-pass-report-categories-row">
+      <label>Report Categories</label>
+      <label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-weight:400;color:var(--text-dim);" id="second-pass-category-link-row">
+        <input type="checkbox" id="second-pass-use-linked-categories" onchange="onSecondPassCategoryLinkToggle()" />
+        <span id="second-pass-category-link-label">Use same categories as companion pass</span>
+      </label>
+      <div class="hint" id="second-pass-category-link-preview" style="margin-bottom:8px; display:none;"></div>
+      <textarea id="second-pass-report-categories" rows="6" placeholder="One report category per line&#10;Example: Controls Scope&#10;Example: Integration Risks&#10;Example: Procurement Requirements"></textarea>
+      <div class="hint">Use this for the categories that should appear in the report. They can be completely different from your branch names.</div>
     </div>
     <div class="form-row">
-      <label>Execution Mode</label>
-      <select id="add-pass-mode" onchange="onPassConfigChange()">
-        <option value="single">Single pass</option>
-        <option value="per_branch">Per-branch</option>
-        <option value="map_reduce">Map-reduce</option>
-        <option value="chain">Chain from previous output</option>
-      </select>
-      <div class="hint" id="add-pass-mode-hint">Run one LLM call over the chosen input. Use for straightforward synthesis over all items.</div>
+      <label>Instructions</label>
+      <textarea id="second-pass-instructions" rows="4" placeholder="Optional guidance for how this pass should group or summarize the evidence."></textarea>
     </div>
-    <div class="form-row" id="add-pass-branches-row">
-      <label>Source Branches (comma-separated)</label>
-      <input type="text" id="add-pass-branches" placeholder="Cost Estimates, Schedule" />
-      <div class="hint">Required when input source is <em>Selected branch items</em>. Example: <em>Cost Estimates, Schedule</em>.</div>
-    </div>
-    <div class="form-row">
-      <label>System Prompt</label>
-      <textarea id="add-pass-system" rows="3" placeholder="You are a technical analyst. Summarize findings concisely."></textarea>
-    </div>
-    <div class="form-row">
-      <label>User Prompt Template</label>
-      <textarea id="add-pass-user" rows="6" placeholder="Items extracted from {branch_names}:\n\n{items_text}\n\nWrite a concise summary grouped by theme."></textarea>
-      <div class="hint">Placeholders: <code>{items_text}</code> &mdash; all extracted bullets &nbsp;|&nbsp; <code>{branch_names}</code> &mdash; source branch names</div>
-    </div>
-    <div class="form-row">
-      <label>Temperature</label>
-      <input type="text" id="add-pass-temp" value="0.2" style="width:80px" />
-    </div>
-    <div class="form-row">
-      <label>Timeout (seconds)</label>
-      <input type="text" id="add-pass-timeout" value="240" style="width:80px" />
-    </div>
-    <div class="form-row">
-      <label>Max Input Chars Per Batch</label>
-      <input type="text" id="add-pass-max-chars" value="60000" style="width:100px" />
-      <div class="hint">Split large inputs into batches of this size. <code>0</code> = no limit (single call).</div>
-    </div>
-    <div class="form-row">
-      <label>Max Output Tokens (<code>num_predict</code>)</label>
-      <input type="text" id="add-pass-num-predict" value="-1" style="width:100px" />
-      <div class="hint"><code>-1</code> = model default. Set <code>4096</code>+ for synthesis passes to prevent truncation.</div>
-    </div>
-    <input type="hidden" id="add-pass-edit-idx" value="-1" />
+    <input type="hidden" id="second-pass-edit-idx" value="-1" />
+    <input type="hidden" id="second-pass-type" value="" />
     <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal('modal-add-pass')">Cancel</button>
-      <button class="btn btn-primary" onclick="confirmAddPass()">Save Pass</button>
+      <button class="btn btn-ghost" onclick="closeModal('modal-second-pass')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmSecondPass()">Save Second Pass</button>
     </div>
   </div>
 </div>
@@ -413,11 +450,11 @@
     <h2>Pick Existing Collection</h2>
     <p style="color:var(--text-dim); font-size:0.8rem; margin-bottom:12px;">
       Select a collection that already contains your ingested documents.
-      The extraction will run directly against its chunks — no re-ingestion needed.
+      The extraction will run directly against its chunks - no re-ingestion needed.
     </p>
     <div id="pick-collection-list" style="max-height:320px; overflow-y:auto;
          border:1px solid var(--border); border-radius:6px; background:#12141e;">
-      <div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading…</div>
+      <div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading...</div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeModal('modal-pick-collection')">Cancel</button>
@@ -425,116 +462,355 @@
   </div>
 </div>
 
-<!-- ──────────────── JAVASCRIPT ───────────────────────────────────────────── -->
+<!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ JAVASCRIPT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
 <script>
 "use strict";
 
-// ── State ────────────────────────────────────────────────────────────────────
+// â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let state = {
   projects: [],       // [{slug, name}]
   current: null,      // active ProjectConfig object
   runResult: null,    // last run result
+  latestCheckpointPath: null,
+  activeRunId: null,
+  lastRunId: null,
+  activeRunStatus: null,
+  runCursor: 0,
   runAborted: false,
-  _sse: null,         // active EventSource or fetch AbortController
+  _sse: null,         // active EventSource
 };
 
-function normalizePostPass(pp) {
-  const sourceBranches = Array.isArray(pp?.source_branches) ? pp.source_branches : [];
-  let inputSource = pp?.input_source || (sourceBranches.length ? "selected_branch_items" : "all_branch_items");
-  let passMode = pp?.pass_mode || (pp?.per_branch ? "per_branch" : "single");
-  if (passMode === "chain") inputSource = "previous_pass_output";
-  return {
-    ...pp,
-    source_branches: sourceBranches,
-    input_source: inputSource,
-    pass_mode: passMode,
-    enabled: pp?.enabled !== false,
-  };
-}
+const GUIDED_REPORT_PRESETS = {
+  structured_summary: {
+    label: "Structured Summary",
+    document_type: "general_document_set",
+    sections: [
+      "Overview",
+      "Most Important Findings",
+      "Key Requirements or Obligations",
+      "Risks, Gaps, or Uncertainties",
+      "Recommended Next Steps",
+    ],
+  },
+  action_checklist: {
+    label: "Action Checklist",
+    document_type: "general_document_set",
+    sections: [
+      "Required Items",
+      "Submission or Process Requirements",
+      "Technical or Content Items to Address",
+      "Missing or Unclear Items",
+      "Questions Before Completion",
+    ],
+  },
+  risk_issues_review: {
+    label: "Risk and Issues Review",
+    document_type: "general_document_set",
+    sections: [
+      "Confirmed Risk Signals",
+      "Ambiguities or Unknowns",
+      "Operational or Technical Risks",
+      "Commercial, Legal, or Compliance Risks",
+      "Items Requiring Human Review",
+      "Overall Risk Posture",
+    ],
+  },
+  key_concepts_definitions: {
+    label: "Key Concepts and Definitions",
+    document_type: "general_document_set",
+    sections: ["Core Concepts", "Definitions", "Important Relationships or Rules", "Common Misunderstandings or Edge Cases", "Questions for Further Review"],
+  },
+  requirements_breakdown: {
+    label: "Requirements Breakdown",
+    document_type: "general_document_set",
+    sections: ["Primary Requirements", "Technical or Content Requirements", "Process, Submission, or Timing Requirements", "Qualifications, Dependencies, or Preconditions", "Open Questions or Unclear Requirements"],
+  },
+  questions_gaps: {
+    label: "Questions and Gaps",
+    document_type: "general_document_set",
+    sections: ["Missing or Incomplete Information", "Ambiguities", "Potential Conflicts or Inconsistencies", "Questions to Resolve", "Recommended Follow-up Actions"],
+  },
+  decision_support_memo: {
+    label: "Decision Support Memo",
+    document_type: "general_document_set",
+    sections: ["Situation Overview", "Key Decision Factors", "Evidence Supporting Action", "Evidence Raising Concern", "Unknowns or Assumptions Requiring Review", "Recommended Next Decision Steps"],
+  },
+};
+
+const DOCUMENT_TYPE_LABELS = {
+  public_bid_spec: "Public bid / spec package",
+  textbook_course_material: "Textbook / course material",
+  policy_law_regulation: "Policy / law / regulation",
+  technical_manual_sop: "Technical manual / SOP",
+  financial_accounting: "Financial / accounting material",
+  general_document_set: "General document set",
+  other_custom: "Other / custom",
+};
+
+const DOMAIN_LENS_LABELS = {
+  general: "General",
+  engineering_technical: "Engineering / Technical",
+  legal_regulatory: "Legal / Regulatory",
+  financial_accounting: "Financial / Accounting",
+  educational_textbook: "Educational / Textbook",
+  business_operations: "Business / Operations",
+  healthcare_clinical: "Healthcare / Clinical",
+  public_procurement_government: "Public Procurement / Government",
+};
+
+const DOMAIN_LENS_GUIDANCE = {
+  general: "Keep the report broadly useful and avoid assuming a specialized reader unless the audience or instructions say otherwise.",
+  engineering_technical: "Prioritize technical requirements, interfaces, systems, testing, constraints, dependencies, and implementation details.",
+  legal_regulatory: "Prioritize obligations, exceptions, deadlines, penalties, compliance language, and items requiring counsel review.",
+  financial_accounting: "Prioritize reporting requirements, controls, deadlines, obligations, exceptions, and financially material risks.",
+  educational_textbook: "Prioritize definitions, concepts, formulas, examples, likely exam material, and common misunderstandings.",
+  business_operations: "Prioritize objectives, deliverables, dependencies, process requirements, decision points, and operational risks.",
+  healthcare_clinical: "Prioritize patient-impacting requirements, workflows, compliance duties, safety constraints, and unresolved clinical or operational questions.",
+  public_procurement_government: "Prioritize submission requirements, procurement rules, deadlines, evaluation factors, mandatory forms, and clarification needs.",
+};
+
+const BRANCH_PACK_SUGGESTIONS = {
+  public_bid_spec: ["scope", "requirements", "deadlines", "submission items", "qualifications", "risks", "questions"],
+  textbook_course_material: ["definitions", "core concepts", "formulas or rules", "examples", "review topics"],
+  policy_law_regulation: ["obligations", "exceptions", "deadlines", "penalties", "ambiguities"],
+  technical_manual_sop: ["procedure steps", "inputs and outputs", "warnings", "maintenance", "troubleshooting"],
+  financial_accounting: ["reporting requirements", "controls", "deadlines", "exceptions", "financial risks"],
+  general_document_set: ["key findings", "requirements", "risks", "questions", "next actions"],
+  other_custom: ["key findings", "requirements", "risks", "questions", "next actions"],
+};
+
+const DOMAIN_BRANCH_ADDONS = {
+  engineering_technical: ["interfaces", "systems", "testing", "constraints"],
+  legal_regulatory: ["obligations", "exceptions", "definitions", "penalties"],
+  financial_accounting: ["controls", "reporting", "exceptions", "financial risks"],
+  educational_textbook: ["definitions", "examples", "review topics", "common mistakes"],
+  business_operations: ["deliverables", "dependencies", "decision points", "next actions"],
+  healthcare_clinical: ["safety constraints", "workflows", "compliance duties", "open clinical questions"],
+  public_procurement_government: ["evaluation factors", "mandatory forms", "clarifications", "procurement rules"],
+};
+
+const COMMON_SECTION_SUGGESTIONS = [
+  "Overview",
+  "Key Findings",
+  "Requirements",
+  "Risks or Uncertainties",
+  "Open Questions",
+  "Recommended Next Steps",
+];
 
 function normalizeProjectPasses(project) {
-  if (!Array.isArray(project.post_branch_passes)) project.post_branch_passes = [];
-  project.post_branch_passes = project.post_branch_passes.map(normalizePostPass);
+  if (!Array.isArray(project.second_passes)) project.second_passes = [];
+  project.second_passes = project.second_passes.map(sp => ({
+    ...sp,
+    enabled: sp?.enabled !== false,
+    source_branches: Array.isArray(sp?.source_branches) ? sp.source_branches : [],
+    report_categories: Array.isArray(sp?.report_categories) ? sp.report_categories : [],
+    reuse_categories_from_pass: String(sp?.reuse_categories_from_pass || ""),
+  }));
+  _ensureSecondPassScaffold(project);
 }
 
-// ── Sidebar toggle ────────────────────────────────────────────────────────────
+const SECOND_PASS_LIBRARY = {
+  organize_by_category: { name: "Organize by Category", title: "Organized Evidence by Category" },
+  summarize_by_category: { name: "Summarize by Category", title: "Category Summaries" },
+  executive_summary: { name: "Executive Summary", title: "Executive Summary" },
+  key_findings: { name: "Key Findings", title: "Key Findings" },
+  next_actions: { name: "Next Actions", title: "Next Actions" },
+  assemble_report: { name: "Assemble Report", title: "Final Report" },
+};
+
+function _defaultSecondPassScaffold() {
+  return [
+    {
+      name: "Organize by Category",
+      pass_type: "organize_by_category",
+      title: "Organized Evidence by Category",
+      enabled: true,
+      source_branches: [],
+      report_categories: [],
+      reuse_categories_from_pass: "",
+      instructions: "",
+    },
+    {
+      name: "Assemble Report",
+      pass_type: "assemble_report",
+      title: "Final Report",
+      enabled: true,
+      source_branches: [],
+      report_categories: [],
+      reuse_categories_from_pass: "",
+      instructions: "",
+    },
+  ];
+}
+
+function _ensureSecondPassScaffold(project) {
+  if (!project) return;
+  const passes = Array.isArray(project.second_passes) ? project.second_passes : [];
+  let organize = passes.find(sp => sp?.pass_type === "organize_by_category");
+  let assemble = passes.find(sp => sp?.pass_type === "assemble_report");
+  const middle = passes.filter(sp => sp && sp.pass_type !== "organize_by_category" && sp.pass_type !== "assemble_report");
+  if (!organize) organize = _defaultSecondPassScaffold()[0];
+  if (!assemble) assemble = _defaultSecondPassScaffold()[1];
+  project.second_passes = [organize, ...middle, assemble];
+}
+
+function _parseLineOrCommaList(text) {
+  return String(text || "")
+    .split(/\r?\n|,/)
+    .map(part => part.trim())
+    .filter(Boolean);
+}
+
+async function refreshLatestCheckpointForCurrentProject() {
+  const slug = state.current?.slug;
+  if (!slug) return;
+  try {
+    const res = await fetch(`/api/extraction/projects/${encodeURIComponent(slug)}/latest-checkpoint`);
+    if (!res.ok) return;
+    const data = await res.json();
+    state.latestCheckpointPath = data.checkpoint_path || null;
+  } catch (_) {}
+}
+
+async function refreshActiveRunForCurrentProject() {
+  const slug = state.current?.slug;
+  if (!slug) return null;
+  try {
+    const res = await fetch(`/api/extraction/runs/active?project_slug=${encodeURIComponent(slug)}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data && data.run_id && (data.status === "queued" || data.status === "running")) {
+      state.activeRunId = data.run_id;
+      state.lastRunId = data.run_id;
+      state.activeRunStatus = data.status;
+      return data;
+    }
+    const latestRes = await fetch(`/api/extraction/runs/latest?project_slug=${encodeURIComponent(slug)}`);
+    if (latestRes.ok) {
+      const latest = await latestRes.json();
+      if (latest && latest.run_id) {
+        state.lastRunId = latest.run_id;
+      }
+    }
+    state.activeRunId = null;
+    state.activeRunStatus = null;
+    _setRunButtons(false);
+    return null;
+  } catch (_) {
+    return null;
+  }
+}
+
 function toggleSidebar() {
   document.getElementById("app").classList.toggle("sidebar-closed");
 }
 
-// Close sidebar on mobile when clicking main area
-document.addEventListener("click", e => {
-  const app = document.getElementById("app");
-  if (window.innerWidth <= 700
-      && !app.classList.contains("sidebar-closed")
-      && !document.getElementById("sidebar").contains(e.target)
-      && e.target.id !== "sidebar-toggle-btn"
-      && !e.target.closest("#sidebar-toggle-btn")) {
-    app.classList.add("sidebar-closed");
-  }
-});
-
-// ── Boot ─────────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-  // Start with sidebar closed on narrow screens
   if (window.innerWidth <= 700) {
     document.getElementById("app").classList.add("sidebar-closed");
   }
   loadProjectList();
 });
 
+function showProjectUI() {
+  document.getElementById("empty-state").style.display = "none";
+  document.getElementById("tab-bar").style.display = "";
+  document.getElementById("panel-setup").style.display = "flex";
+  document.getElementById("panel-run").style.display = "none";
+  document.getElementById("panel-report").style.display = "none";
+  document.getElementById("tab-setup").classList.add("active");
+  document.getElementById("tab-run").classList.remove("active");
+  document.getElementById("tab-report").classList.remove("active");
+}
+
 async function loadProjectList() {
+  const container = document.getElementById("project-list");
   try {
     const res = await fetch("/api/extraction/projects");
-    state.projects = await res.json();
-  } catch { state.projects = []; }
-  renderProjectList();
-}
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const projects = await res.json();
+    state.projects = Array.isArray(projects) ? projects : [];
+    container.innerHTML = "";
+    if (!state.projects.length) {
+      container.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:8px 2px;">No projects yet.</div>';
+      return;
+    }
+    for (const project of state.projects) {
+      const row = document.createElement("div");
+      row.className = "project-row";
 
-function renderProjectList() {
-  const el = document.getElementById("project-list");
-  if (!state.projects.length) {
-    el.innerHTML = '<div style="padding:12px; color:var(--text-dim); font-size:0.8rem;">No saved projects.</div>';
-    return;
+      const item = document.createElement("button");
+      item.type = "button";
+      item.className = `project-item${state.current?.slug === project.slug ? " active" : ""}`;
+      item.style.width = "100%";
+      item.style.textAlign = "left";
+      item.onclick = () => {
+        item.blur();
+        loadProject(String(project.slug || ""));
+      };
+
+      const nameEl = document.createElement("div");
+      nameEl.className = "pname";
+      nameEl.textContent = String(project.name || project.slug || "");
+
+      const slugEl = document.createElement("div");
+      slugEl.className = "pslug";
+      slugEl.textContent = String(project.slug || "");
+
+      item.appendChild(nameEl);
+      item.appendChild(slugEl);
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.type = "button";
+      deleteBtn.className = "project-delete";
+      deleteBtn.textContent = "Delete";
+      deleteBtn.onclick = (event) => {
+        event.stopPropagation();
+        deleteProject(String(project.slug || ""), String(project.name || project.slug || ""));
+      };
+
+      row.appendChild(item);
+      row.appendChild(deleteBtn);
+      container.appendChild(row);
+    }
+  } catch (e) {
+    container.innerHTML = `<div style="color:var(--danger);font-size:0.82rem;padding:8px 2px;">Could not load projects: ${esc(String(e))}</div>`;
   }
-  el.innerHTML = state.projects.map(p => `
-    <div class="project-item${state.current?.slug===p.slug?' active':''}" onclick="loadProject('${esc(p.slug)}')">
-      <div style="display:flex; align-items:center; gap:6px;">
-        <div style="flex:1">
-          <div class="pname">${esc(p.name)}</div>
-          <div class="pslug">${esc(p.slug)}</div>
-        </div>
-        <button class="btn-icon" style="font-size:0.8rem; color:var(--danger);" title="Delete project"
-                onclick="event.stopPropagation(); deleteProject('${esc(p.slug)}', '${esc(p.name)}')">&#x1F5D1;</button>
-      </div>
-    </div>`).join("");
 }
 
-// ── Load project ──────────────────────────────────────────────────────────────
 async function loadProject(slug) {
   try {
     const res = await fetch(`/api/extraction/projects/${encodeURIComponent(slug)}`);
-    if (!res.ok) { alert("Could not load project."); return; }
-    const data = await res.json();
-    normalizeProjectPasses(data);
-    state.current = data;
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const project = await res.json();
+    normalizeProjectPasses(project);
+    state.current = project;
+    state.runResult = null;
+    state.lastRunId = null;
+    state.latestCheckpointPath = project.latest_checkpoint_path || null;
     showProjectUI();
     renderProjectForm();
     renderSources();
     renderBranches();
-    renderPasses();
+    renderSecondPasses();
     updateRunSummary();
-  } catch(e) { alert("Error loading project: " + e); }
+    document.getElementById("report-md").textContent = "";
+    document.getElementById("report-md-rendered").textContent = "No report yet. Run extraction first.";
+    document.getElementById("report-appendix-md").textContent = "";
+    document.getElementById("report-appendix-rendered").textContent = "No evidence appendix yet. Run extraction first.";
+    await loadProjectList();
+    await refreshLatestCheckpointForCurrentProject();
+    const activeRun = await refreshActiveRunForCurrentProject();
+    if (activeRun?.run_id) {
+      reconnectToRun(activeRun.run_id, { clearLog: false, announce: true });
+    }
+  } catch (e) {
+    setStatus("err", `Could not load project: ${String(e)}`);
+  }
 }
 
-function showProjectUI() {
-  document.getElementById("empty-state").style.display = "none";
-  document.getElementById("tab-bar").style.display = "flex";
-  showTab("setup");
-  renderProjectList();
-}
-
-// ── Tabs ──────────────────────────────────────────────────────────────────────
+// â”€â”€ Tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function showTab(name) {
   ["setup","run","report"].forEach(t => {
     document.getElementById("panel-"+t).style.display = "none";
@@ -545,7 +821,7 @@ function showTab(name) {
   if (name === "report") refreshReportHistory();
 }
 
-// ── New project modal ─────────────────────────────────────────────────────────
+// â”€â”€ New project modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function openNewProjectModal() {
   document.getElementById("np-name").value = "";
   document.getElementById("np-slug").value = "";
@@ -565,23 +841,25 @@ function confirmNewProject() {
     slug, name,
     document_sources: [],
     branches: [],
-    post_branch_passes: [],
+    second_passes: _defaultSecondPassScaffold(),
     collection_id: `extraction_${slug}`,
     keep_collection_after_run: false,
     cross_branch_dedup: false,
     report_output_path: "data/extraction_reports",
   };
   normalizeProjectPasses(state.current);
+  state.runResult = null;
+  state.latestCheckpointPath = null;
   closeModal("modal-new-project");
   showProjectUI();
   renderProjectForm();
   renderSources();
   renderBranches();
-  renderPasses();
+  renderSecondPasses();
   updateRunSummary();
 }
 
-// ── Project form ──────────────────────────────────────────────────────────────
+// â”€â”€ Project form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderProjectForm() {
   const p = state.current;
   if (!p) return;
@@ -601,7 +879,7 @@ function readProjectForm() {
   p.cross_branch_dedup = document.getElementById("proj-cross-branch-dedup").checked;
 }
 
-// ── Save project ──────────────────────────────────────────────────────────────
+// â”€â”€ Save project â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function saveProject() {
   readProjectForm();
   const p = state.current;
@@ -617,7 +895,7 @@ async function saveProject() {
   } catch(e) { alert("Error saving: "+e); }
 }
 
-// ── Delete project ───────────────────────────────────────────────────────────
+// â”€â”€ Delete project â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function deleteProject(slug, name) {
   if (!confirm(`Delete project "${name}"?\nThis cannot be undone.`)) return;
   try {
@@ -634,10 +912,10 @@ async function deleteProject(slug, name) {
   } catch(e) { alert("Error: "+e); }
 }
 
-// ── Pick collection modal ─────────────────────────────────────────────────────
+// â”€â”€ Pick collection modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function openPickCollectionModal() {
   const container = document.getElementById("pick-collection-list");
-  container.innerHTML = '<div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading…</div>';
+  container.innerHTML = '<div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading...</div>';
   openModal("modal-pick-collection");
   try {
     const res  = await fetch("/api/collections");
@@ -664,14 +942,14 @@ async function openPickCollectionModal() {
 
 function pickCollection(colId, name) {
   document.getElementById("proj-collection").value = colId;
-  // Also set keep_collection to true — we didn't create it, don't destroy it
+  // Also set keep_collection to true - we didn't create it, so don't destroy it
   document.getElementById("proj-keep-collection").checked = true;
   document.getElementById("proj-cross-branch-dedup").checked = true;
   closeModal("modal-pick-collection");
-  setStatus("ok", `Collection set to '${name}' — existing chunks will be used directly.`);
+  setStatus("ok", `Collection set to '${name}' - existing chunks will be used directly.`);
 }
 
-// ── Source documents ──────────────────────────────────────────────────────────
+// â”€â”€ Source documents â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderSources() {
   const ul = document.getElementById("source-list");
   const srcs = state.current?.document_sources || [];
@@ -683,11 +961,11 @@ function renderSources() {
     <li class="source-item">
       <span class="spath">${esc(s.path)}</span>
       <span class="srole">${esc(s.role||"primary")}</span>
-      <button class="btn-icon" title="Remove" onclick="removeSource(${i})">✕</button>
+      <button class="btn-icon" title="Remove" onclick="removeSource(${i})">×</button>
     </li>`).join("");
 }
 
-// ── Add document modal ───────────────────────────────────────────────────────
+// â”€â”€ Add document modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let _addDocTab = "browse";
 let _addDocSelected = null; // {path, filename} when browse tab has a selection
 
@@ -720,7 +998,7 @@ async function openAddDocModal() {
 async function loadDocsForCollection() {
   const colId = document.getElementById("add-doc-collection").value;
   const container = document.getElementById("add-doc-doc-list");
-  container.innerHTML = '<div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading…</div>';
+  container.innerHTML = '<div style="padding:10px; color:var(--text-dim); font-size:0.8rem;">Loading...</div>';
   _addDocSelected = null;
   try {
     const url = colId ? `/api/documents?collection_id=${encodeURIComponent(colId)}` : "/api/documents";
@@ -775,7 +1053,7 @@ function removeSource(i) {
   renderSources();
 }
 
-// ── Branches ──────────────────────────────────────────────────────────────────
+// â”€â”€ Branches â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderBranches() {
   const ul = document.getElementById("branch-list");
   const branches = state.current?.branches || [];
@@ -793,9 +1071,9 @@ function renderBranches() {
       <div class="branch-card-header">
         <span class="bname">${esc(b.name)}</span>
         <span class="branch-mode-badge ${modeClass}">${esc(b.mode)}</span>
-        <button class="btn-icon" onclick="editBranch(${i})" title="Edit">✎</button>
-        <button class="btn-icon" onclick="removeBranch(${i})" title="Remove">✕</button>
-        <button class="btn-icon" onclick="saveBranchToLibrary(${i})" title="Save to flag library">🚩</button>
+        <button class="btn-icon" onclick="editBranch(${i})" title="Edit">Edit</button>
+        <button class="btn-icon" onclick="removeBranch(${i})" title="Remove">Remove</button>
+        <button class="btn-icon" onclick="saveBranchToLibrary(${i})" title="Save to flag library">Save</button>
       </div>
       <div class="branch-detail">${esc(detail)}</div>
     </li>`;
@@ -854,451 +1132,539 @@ function confirmAddBranch() {
   closeModal("modal-add-branch");
 }
 
+function normalizedTokens(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .split(" ")
+    .map(s => s.trim())
+    .filter(Boolean);
+}
+
+function categoryMatchesSuggestion(categoryName, suggestion) {
+  const cat = normalizedTokens(categoryName);
+  const sug = normalizedTokens(suggestion);
+  if (!cat.length || !sug.length) return false;
+  const catJoined = cat.join(" ");
+  const sugJoined = sug.join(" ");
+  if (catJoined.includes(sugJoined) || sugJoined.includes(catJoined)) return true;
+  return sug.some(tok => cat.includes(tok));
+}
+
+function suggestedBranchPack(docType, lens) {
+  const base = [...(BRANCH_PACK_SUGGESTIONS[docType] || BRANCH_PACK_SUGGESTIONS.general_document_set)];
+  const addon = DOMAIN_BRANCH_ADDONS[lens] || [];
+  const seen = new Set();
+  const merged = [];
+  for (const item of [...base, ...addon]) {
+    const key = item.toLowerCase();
+    if (!seen.has(key)) {
+      seen.add(key);
+      merged.push(item);
+    }
+  }
+  return merged;
+}
+
 function removeBranch(i) {
   if (!confirm("Remove this branch?")) return;
   state.current.branches.splice(i,1);
   renderBranches();
 }
 
-// ── Post-branch passes ───────────────────────────────────────────────────────
-function renderPasses() {
-  const ul = document.getElementById("pass-list");
-  const passes = state.current?.post_branch_passes || [];
+// â”€â”€ Second passes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function renderSecondPasses() {
+  const ul = document.getElementById("second-pass-list");
+  if (!ul) return;
+  const passes = state.current?.second_passes || [];
   if (!passes.length) {
-    ul.innerHTML = '<li style="color:var(--text-dim);font-size:0.8rem;">No post-branch passes configured.</li>';
+    ul.innerHTML = '<li style="color:var(--text-dim);font-size:0.8rem;">No second passes configured yet.</li>';
     return;
   }
-  ul.innerHTML = passes.map((pp, i) => {
-    const detail = (pp.system_prompt||pp.user_prompt_template||"").slice(0, 70);
-    const sourceMap = {
-      all_branch_items: "all branch items",
-      selected_branch_items: (pp.source_branches||[]).join(", ") || "selected branches",
-      previous_pass_output: "previous pass output",
-    };
-    const modeMap = {
-      single: "single",
-      per_branch: "per-branch",
-      map_reduce: "map-reduce",
-      chain: "chain",
-    };
-    const srcLabel = sourceMap[pp.input_source] || "all branch items";
-    const modeLabel = modeMap[pp.pass_mode] || "single";
-    return `
-    <li class="pass-card">
-      <div class="pass-card-header">
-        <span class="pname">${esc(pp.name)}</span>
-        <span class="badge-pass">post-pass</span>
-        <button class="btn-icon" onclick="editPass(${i})" title="Edit">&#x270e;</button>
-        <button class="btn-icon" onclick="removePass(${i})" title="Remove">&times;</button>
+  ul.innerHTML = passes.map((sp, i) => `
+    <li class="second-pass-card">
+      <div class="second-pass-card-header">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0;">
+          <span class="spname">${esc(sp.title || sp.name)}</span>
+          <span class="badge-pass">${esc((sp.pass_type || "").replaceAll("_", " "))}</span>
+        </div>
+        <div class="second-pass-actions">
+          <button class="btn-icon" onclick="moveSecondPass(${i}, -1)" title="Move up" ${i <= 1 ? "disabled" : ""}>Up</button>
+          <button class="btn-icon" onclick="moveSecondPass(${i}, 1)" title="Move down" ${i >= passes.length - 2 ? "disabled" : ""}>Down</button>
+          <button class="btn-icon" onclick="openSecondPassModal('${esc(sp.pass_type || "")}', ${i})" title="Edit">Edit</button>
+          <button class="btn-icon" onclick="removeSecondPass(${i})" title="Remove" ${i === 0 || i === passes.length - 1 ? "disabled" : ""}>Remove</button>
+        </div>
       </div>
-      <div class="pass-detail">Input: ${esc(srcLabel)} · Mode: ${esc(modeLabel)}</div>
-      <div class="pass-detail">${esc(detail)}</div>
-    </li>`;
-  }).join("");
+      <div class="second-pass-detail">${esc(sp.instructions || "Runs after branch extraction as part of the serial second-pass pipeline.")}</div>
+      ${sp.reuse_categories_from_pass ? `<div class="second-pass-meta"><span class="second-pass-meta-label">Category source</span>${esc(`Same as ${sp.reuse_categories_from_pass}`)}</div>` : ""}
+      ${(sp.report_categories || []).length ? `<div class="second-pass-meta"><span class="second-pass-meta-label">Report categories</span>${esc((sp.report_categories || []).join(", "))}</div>` : ""}
+      ${(sp.source_branches || []).length ? `<div class="second-pass-meta"><span class="second-pass-meta-label">Source branches</span>${esc((sp.source_branches || []).join(", "))}</div>` : ""}
+    </li>`).join("");
 }
 
-function openAddPassModal(editIdx = -1) {
-  document.getElementById("add-pass-edit-idx").value = editIdx;
-  document.getElementById("add-pass-title").textContent = editIdx >= 0 ? "Edit Post-Branch Pass" : "Add Post-Branch Pass";
-  const pp = editIdx >= 0 ? state.current.post_branch_passes[editIdx] : null;
-  document.getElementById("add-pass-name").value     = pp?.name || "";
-  document.getElementById("add-pass-heading").value  = pp?.output_heading || "";
-  document.getElementById("add-pass-input-source").value = pp?.input_source || "all_branch_items";
-  document.getElementById("add-pass-mode").value = pp?.pass_mode || "single";
-  document.getElementById("add-pass-branches").value = (pp?.source_branches||[]).join(", ");
-  document.getElementById("add-pass-system").value   = pp?.system_prompt || "";
-  document.getElementById("add-pass-user").value     = pp?.user_prompt_template || "";
-  document.getElementById("add-pass-temp").value        = pp?.temperature ?? 0.2;
-  document.getElementById("add-pass-timeout").value     = pp?.timeout_seconds ?? 240;
-  document.getElementById("add-pass-max-chars").value   = pp?.max_chars_per_batch ?? 60000;
-  document.getElementById("add-pass-num-predict").value = pp?.num_predict ?? -1;
-  onPassConfigChange();
-  openModal("modal-add-pass");
+function _normalizeCategoryListForUi(values) {
+  const out = [];
+  const seen = new Set();
+  (Array.isArray(values) ? values : []).forEach(v => {
+    const clean = String(v || "").replace(/\s+/g, " ").trim();
+    const key = clean.toLowerCase();
+    if (!clean || seen.has(key)) return;
+    seen.add(key);
+    out.push(clean);
+  });
+  return out;
 }
 
-function editPass(i) { openAddPassModal(i); }
-
-function onPassConfigChange() {
-  const inputSource = document.getElementById("add-pass-input-source").value;
-  const mode = document.getElementById("add-pass-mode").value;
-  const row = document.getElementById("add-pass-branches-row");
-  const hint = document.getElementById("add-pass-mode-hint");
-
-  if (mode === "chain") {
-    document.getElementById("add-pass-input-source").value = "previous_pass_output";
+function _getCompanionSecondPass(passType, editIdx = -1) {
+  const wanted = passType === "organize_by_category"
+    ? "summarize_by_category"
+    : passType === "summarize_by_category"
+      ? "organize_by_category"
+      : "";
+  if (!wanted) return null;
+  const passes = state.current?.second_passes || [];
+  for (let i = 0; i < passes.length; i += 1) {
+    if (i === editIdx) continue;
+    const sp = passes[i];
+    if (sp?.pass_type === wanted) return { pass: sp, index: i };
   }
-
-  const actualInputSource = document.getElementById("add-pass-input-source").value;
-  row.style.display = actualInputSource === "selected_branch_items" ? "" : "none";
-
-  const modeHints = {
-    single: "Run one LLM pass over the chosen input. Best for smaller, direct synthesis tasks.",
-    per_branch: "Run one LLM call per selected branch and join the branch-level outputs together.",
-    map_reduce: "Split large inputs into batches, run the same prompt over each batch, then merge the partial outputs into one final section.",
-    chain: "Transform the previous pass output instead of re-reading branch items. Use this for staged report building.",
-  };
-  hint.textContent = modeHints[mode] || modeHints.single;
+  return null;
 }
 
-function confirmAddPass() {
-  const idx     = parseInt(document.getElementById("add-pass-edit-idx").value, 10);
-  const name    = document.getElementById("add-pass-name").value.trim();
-  const heading = document.getElementById("add-pass-heading").value.trim();
-  let inputSource = document.getElementById("add-pass-input-source").value;
-  const passMode = document.getElementById("add-pass-mode").value;
-  const branchRaw = document.getElementById("add-pass-branches").value;
-  const system  = document.getElementById("add-pass-system").value.trim();
-  const user    = document.getElementById("add-pass-user").value.trim();
-  const temp       = parseFloat(document.getElementById("add-pass-temp").value) || 0.2;
-  const timeout    = parseFloat(document.getElementById("add-pass-timeout").value) || 240;
-  const maxChars   = parseInt(document.getElementById("add-pass-max-chars").value, 10);
-  const numPredict = parseInt(document.getElementById("add-pass-num-predict").value, 10);
-  if (!name) { alert("Pass name is required."); return; }
-  if (!user)  { alert("User prompt template is required."); return; }
-  const sourceBranches = branchRaw.split(",").map(s=>s.trim()).filter(Boolean);
-  if (passMode === "chain") inputSource = "previous_pass_output";
-  if (inputSource === "selected_branch_items" && !sourceBranches.length) {
-    alert("Selected branch items requires at least one source branch.");
+function _refreshSecondPassCategoryLinkUi() {
+  const passType = document.getElementById("second-pass-type").value;
+  const editIdx = parseInt(document.getElementById("second-pass-edit-idx").value || "-1", 10);
+  const row = document.getElementById("second-pass-category-link-row");
+  const label = document.getElementById("second-pass-category-link-label");
+  const preview = document.getElementById("second-pass-category-link-preview");
+  const checkbox = document.getElementById("second-pass-use-linked-categories");
+  const textarea = document.getElementById("second-pass-report-categories");
+  const companionInfo = _getCompanionSecondPass(passType, editIdx);
+  const companion = companionInfo?.pass || null;
+  const show = passType === "organize_by_category" || passType === "summarize_by_category";
+  const currentPosition = editIdx >= 0 ? editIdx : ((state.current?.second_passes || []).length);
+  const canInherit = !!(companionInfo && currentPosition > companionInfo.index);
+  if (!show) {
+    row.style.display = "none";
+    preview.style.display = "none";
+    textarea.disabled = false;
     return;
   }
-  if (inputSource === "previous_pass_output" && idx === 0) {
-    alert("The first pass cannot use previous pass output.");
+  if (!companion || !canInherit) {
+    row.style.display = "none";
+    preview.style.display = "none";
+    checkbox.checked = false;
+    textarea.disabled = false;
     return;
   }
-  if (inputSource === "previous_pass_output" && idx < 0 && (state.current.post_branch_passes || []).length === 0) {
-    alert("Add at least one earlier pass before chaining from previous output.");
-    return;
+  row.style.display = "";
+  label.textContent = `Use same categories as "${companion.title || companion.name}"`;
+  const companionCategories = _normalizeCategoryListForUi(companion.report_categories || []);
+  preview.textContent = companionCategories.length
+    ? `Using: ${companionCategories.join(", ")}`
+    : "The companion pass does not have report categories yet.";
+  preview.style.display = "";
+  if (!checkbox.dataset.userSet) checkbox.checked = true;
+  if (checkbox.checked) {
+    textarea.value = companionCategories.join("\n");
+    textarea.disabled = true;
+  } else {
+    textarea.disabled = false;
   }
-  if (passMode === "per_branch" && inputSource === "previous_pass_output") {
-    alert("Per-branch mode only works with branch-item inputs.");
-    return;
-  }
-  const pp = {
+}
+
+function onSecondPassCategoryLinkToggle() {
+  const checkbox = document.getElementById("second-pass-use-linked-categories");
+  checkbox.dataset.userSet = "1";
+  _refreshSecondPassCategoryLinkUi();
+}
+
+function onSecondPassTypeChange() {
+  const passType = document.getElementById("second-pass-type").value;
+  const showCategories = passType === "organize_by_category" || passType === "summarize_by_category";
+  document.getElementById("second-pass-report-categories-row").style.display = showCategories ? "" : "none";
+  _refreshSecondPassCategoryLinkUi();
+}
+
+function openSecondPassModal(passType, editIdx = -1) {
+  if (!state.current) return;
+  const spec = SECOND_PASS_LIBRARY[passType];
+  if (!spec) return;
+  const existing = editIdx >= 0 ? state.current.second_passes?.[editIdx] : null;
+  document.getElementById("second-pass-title").textContent = editIdx >= 0 ? "Edit Second Pass" : "Add Second Pass";
+  document.getElementById("second-pass-edit-idx").value = String(editIdx);
+  document.getElementById("second-pass-type").value = passType;
+  document.getElementById("second-pass-name").value = existing?.name || spec.name;
+  document.getElementById("second-pass-heading").value = existing?.title || spec.title;
+  document.getElementById("second-pass-source-branches").value = (existing?.source_branches || []).join(", ");
+  document.getElementById("second-pass-report-categories").value = (existing?.report_categories || []).join("\n");
+  document.getElementById("second-pass-instructions").value = existing?.instructions || "";
+  const companionInfo = _getCompanionSecondPass(passType, editIdx);
+  const companion = companionInfo?.pass || null;
+  const currentPosition = editIdx >= 0 ? editIdx : ((state.current?.second_passes || []).length);
+  const canInherit = !!(companionInfo && currentPosition > companionInfo.index);
+  const linked = !!(canInherit && companion && ((existing && existing.reuse_categories_from_pass === (companion.name || "")) || (!existing)));
+  const categoryLinkCheckbox = document.getElementById("second-pass-use-linked-categories");
+  categoryLinkCheckbox.checked = linked;
+  delete categoryLinkCheckbox.dataset.userSet;
+  onSecondPassTypeChange();
+  openModal("modal-second-pass");
+}
+
+function confirmSecondPass() {
+  if (!state.current) return;
+  const idx = parseInt(document.getElementById("second-pass-edit-idx").value, 10);
+  const existing = idx >= 0 ? state.current.second_passes?.[idx] : null;
+  const passType = document.getElementById("second-pass-type").value;
+  const name = document.getElementById("second-pass-name").value.trim() || (SECOND_PASS_LIBRARY[passType]?.name || "Second Pass");
+  const title = document.getElementById("second-pass-heading").value.trim() || (SECOND_PASS_LIBRARY[passType]?.title || name);
+  const sourceBranches = _parseLineOrCommaList(document.getElementById("second-pass-source-branches").value);
+  const reportCategories = _parseLineOrCommaList(document.getElementById("second-pass-report-categories").value);
+  const instructions = document.getElementById("second-pass-instructions").value.trim();
+  const companionInfo = _getCompanionSecondPass(passType, idx);
+  const companion = companionInfo?.pass || null;
+  const currentPosition = idx >= 0 ? idx : ((state.current?.second_passes || []).length);
+  const canInherit = !!(companionInfo && currentPosition > companionInfo.index);
+  const useLinkedCategories = !!(canInherit && companion && document.getElementById("second-pass-use-linked-categories").checked);
+  const passConfig = {
     name,
-    output_heading: heading || name,
-    input_source: inputSource,
-    pass_mode: passMode,
-    source_branches: inputSource === "selected_branch_items" ? sourceBranches : [],
-    system_prompt: system,
-    user_prompt_template: user,
-    temperature: temp,
-    timeout_seconds: timeout,
-    max_chars_per_batch: isNaN(maxChars) ? 60000 : maxChars,
-    num_predict: isNaN(numPredict) ? -1 : numPredict,
+    pass_type: passType,
+    title,
     enabled: true,
+    source_branches: sourceBranches,
+    report_categories: useLinkedCategories ? _normalizeCategoryListForUi(companion?.report_categories || []) : reportCategories,
+    reuse_categories_from_pass: useLinkedCategories ? String(companion?.name || "") : "",
+    instructions,
   };
-  state.current.post_branch_passes = state.current.post_branch_passes || [];
-  if (idx >= 0) state.current.post_branch_passes[idx] = normalizePostPass(pp);
-  else state.current.post_branch_passes.push(normalizePostPass(pp));
-  renderPasses();
+  state.current.second_passes = state.current.second_passes || [];
+  if (idx >= 0) state.current.second_passes[idx] = passConfig;
+  else if (passType === "organize_by_category") state.current.second_passes[0] = passConfig;
+  else if (passType === "assemble_report") state.current.second_passes[state.current.second_passes.length - 1] = passConfig;
+  else state.current.second_passes.splice(Math.max(1, state.current.second_passes.length - 1), 0, passConfig);
+  if (existing?.name && existing.name !== name) {
+    state.current.second_passes = state.current.second_passes.map((sp, spIdx) => (
+      spIdx !== idx && sp?.reuse_categories_from_pass === existing.name
+        ? { ...sp, reuse_categories_from_pass: name }
+        : sp
+    ));
+  }
+  closeModal("modal-second-pass");
+  _ensureSecondPassScaffold(state.current);
+  renderSecondPasses();
   updateRunSummary();
-  closeModal("modal-add-pass");
 }
 
-function removePass(i) {
-  if (!confirm("Remove this post-branch pass?")) return;
-  state.current.post_branch_passes.splice(i, 1);
-  renderPasses();
+function removeSecondPass(i) {
+  if (!state.current?.second_passes) return;
+  if (i === 0 || i === state.current.second_passes.length - 1) return;
+  state.current.second_passes.splice(i, 1);
+  _ensureSecondPassScaffold(state.current);
+  renderSecondPasses();
   updateRunSummary();
 }
 
-// ── Auto-suggest branches ─────────────────────────────────────────────────────
-async function autoSuggestBranches() {
-  const srcs = state.current?.document_sources || [];
-  const docPath = srcs.length ? srcs[0].path : null;
-  const colId   = state.current?.collection_id || null;
-  setStatus("running", "Suggesting branches…");
-  try {
-    const res = await fetch("/api/extraction/suggest-branches", {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({
-        document_path: docPath,
-        collection_id: colId,
-        doc_type: "",
-        title: state.current?.name || "",
-      }),
-    });
-    if (!res.ok) { alert("Suggest failed."); setStatus("err","Suggest failed."); return; }
-    const branches = await res.json();
-    if (!branches.length) { alert("No branches suggested."); setStatus("ok","No suggestions."); return; }
-    state.current.branches = [...(state.current.branches||[]), ...branches];
-    renderBranches();
-    setStatus("ok", `Added ${branches.length} suggested branch(es).`);
-  } catch(e) { alert("Error: "+e); setStatus("err",String(e)); }
+function moveSecondPass(i, delta) {
+  if (!state.current?.second_passes) return;
+  const passes = state.current.second_passes;
+  if (i <= 0 || i >= passes.length - 1) return;
+  const j = i + delta;
+  if (j <= 0 || j >= passes.length - 1) return;
+  const temp = passes[i];
+  passes[i] = passes[j];
+  passes[j] = temp;
+  renderSecondPasses();
+  updateRunSummary();
 }
 
-// ── Flag library ──────────────────────────────────────────────────────────────
-async function loadFromFlagLibrary() {
-  try {
-    const res = await fetch("/api/extraction/flag-library");
-    const lib = await res.json();
-    const branches = lib.branches || [];
-    const el = document.getElementById("flag-library-list");
-    if (!branches.length) {
-      el.innerHTML = '<p style="color:var(--text-dim)">Flag library is empty.</p>';
-    } else {
-      el.innerHTML = branches.map((b,i) => `
-        <div style="display:flex; align-items:center; gap:8px; padding:6px 0;
-             border-bottom:1px solid var(--border);">
-          <span style="flex:1; font-size:0.85rem;">${esc(b.name)}</span>
-          <span class="branch-mode-badge ${b.mode==='semantic'?'badge-semantic':'badge-keyword'}"
-                style="font-size:0.7rem; padding:2px 6px; border-radius:4px;">${esc(b.mode)}</span>
-          <button class="btn btn-ghost btn-sm" onclick="addFlagToBranches(${i})">Add</button>
-        </div>`).join("");
-      el._flagData = branches;
-    }
-    openModal("modal-flag-library");
-  } catch(e) { alert("Error: "+e); }
-}
-
-function addFlagToBranches(i) {
-  const el = document.getElementById("flag-library-list");
-  const branch = el._flagData?.[i];
-  if (!branch) return;
-  state.current.branches = state.current.branches || [];
-  state.current.branches.push({...branch});
-  renderBranches();
-  setStatus("ok", `Added '${branch.name}' from flag library.`);
-}
-
-async function saveBranchToLibrary(i) {
-  const b = state.current.branches[i];
-  try {
-    const res = await fetch("/api/extraction/flag-library/add", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({branch: b}),
-    });
-    if (!res.ok) { alert("Save failed."); return; }
-    setStatus("ok", `Saved '${b.name}' to flag library.`);
-  } catch(e) { alert("Error: "+e); }
-}
-
-// ── Run extraction ────────────────────────────────────────────────────────────
 function updateRunSummary() {
   const el = document.getElementById("run-summary");
-  if (!state.current) { el.textContent = "No project loaded."; return; }
-  const p = state.current;
-  const nBranches = (p.branches||[]).filter(b=>b.enabled!==false).length;
-  const nPasses   = (p.post_branch_passes||[]).filter(pp=>pp.enabled!==false).length;
-  const nDocs     = (p.document_sources||[]).length;
-  const passLabel = nPasses ? `, ${nPasses} post-pass(es)` : "";
-  el.innerHTML = `<strong>${esc(p.name)}</strong> &mdash; 
-    ${nDocs} document(s), ${nBranches} enabled branch(es)${passLabel}.`;
+  if (!el) return;
+  const project = state.current;
+  if (!project) {
+    el.textContent = "No project loaded.";
+    return;
+  }
+
+  const docs = project.document_sources || [];
+  const branches = project.branches || [];
+  const secondPasses = (project.second_passes || []).filter(sp => sp && sp.enabled !== false);
+  const collection = project.collection_id || "(auto)";
+
+  el.innerHTML = [
+    `<strong>${esc(project.name || project.slug || "Untitled Project")}</strong>`,
+    `${docs.length} source document${docs.length === 1 ? "" : "s"}`,
+    `${branches.length} branch${branches.length === 1 ? "" : "es"}`,
+    `${secondPasses.length} second pass${secondPasses.length === 1 ? "" : "es"}`,
+    `collection: ${esc(collection)}`,
+  ].join(" &middot; ");
 }
 
-function appendLog(msg, cls="") {
-  const log = document.getElementById("progress-log");
-  const d = document.createElement("div");
-  d.className = "log-line " + cls;
-  d.textContent = msg;
-  log.appendChild(d);
-  log.scrollTop = log.scrollHeight;
-}
+let _rs = { phase: "idle", main: "Ready.", sub: "", pct: 0 };
 
-// ── Run status bar ────────────────────────────────────────────────────────────
-const _rs = {
-  phase: "idle", phaseCls: "",
-  main: "—", sub: "",
-  totalBranches: 0, doneBranches: 0,
-  totalScan: 0, doneScan: 0,
-  totalSynth: 0, doneSynth: 0,
-  totalPasses: 0, donePassses: 0,
-};
-
-function _rsbPercent() {
-  // Overall progress estimate:
-  //   5%  warmup/ingest
-  //   (90 / totalBranches) per branch, split: 10% retrieve, 50% scan, 40% synth
-  //   5%  post-passes + report
-  if (_rs.totalBranches === 0) return 0;
-  const perBranch = 90 / _rs.totalBranches;
-  let pct = 5 + _rs.doneBranches * perBranch;
-  // Add partial progress within current branch
-  if (_rs.phase === "retrieving") pct += perBranch * 0.05;
-  if (_rs.phase === "scanning")   pct += perBranch * 0.15 + (_rs.totalScan > 0 ? perBranch * 0.50 * (_rs.doneScan / _rs.totalScan) : 0);
-  if (_rs.phase === "synth")      pct += perBranch * 0.65 + (_rs.totalSynth > 0 ? perBranch * 0.35 * (_rs.doneSynth / _rs.totalSynth) : 0);
-  if (_rs.phase === "post_pass")  pct = 95 + (_rs.totalPasses > 0 ? 4 * (_rs.donePassses / _rs.totalPasses) : 0);
-  if (_rs.phase === "reporting")  pct = 99;
-  if (_rs.phase === "done")       pct = 100;
-  return Math.min(Math.round(pct), 100);
+function appendLog(msg, cls = "") {
+  const el = document.getElementById("progress-log");
+  if (!el) return;
+  const line = document.createElement("div");
+  line.className = `log-line${cls ? " " + cls : ""}`;
+  line.textContent = String(msg || "");
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
 }
 
 function _rsbUpdate() {
-  const bar  = document.getElementById("run-status-bar");
-  const fill = document.getElementById("rsb-fill");
-  const phEl = document.getElementById("rsb-phase");
-  const main = document.getElementById("rsb-main");
-  const sub  = document.getElementById("rsb-sub");
-  if (!bar) return;
-  bar.classList.add("visible");
-  const pct = _rsbPercent();
-  fill.style.width = pct + "%";
-  phEl.textContent = _rs.phase.toUpperCase().replace("_", "-");
-  phEl.className = "rsb-phase " + (
-    _rs.phase === "scanning"   ? "phase-scan"  :
-    _rs.phase === "synth"      ? "phase-synth" :
-    _rs.phase === "post_pass"  ? "phase-post"  :
-    _rs.phase === "done"       ? "phase-done"  :
-    _rs.phase === "error"      ? "phase-err"   : ""
-  );
-  main.textContent = _rs.main;
-  sub.textContent  = _rs.sub;
-}
-
-function _rsbReset() {
-  Object.assign(_rs, {
-    phase:"idle", phaseCls:"", main:"Starting…", sub:"",
-    totalBranches:0, doneBranches:0,
-    totalScan:0, doneScan:0, totalSynth:0, doneSynth:0,
-    totalPasses:0, donePassses:0,
-  });
   const bar = document.getElementById("run-status-bar");
-  if (bar) { bar.classList.add("visible"); }
-  _rsbUpdate();
+  const fill = document.getElementById("rsb-fill");
+  const phase = document.getElementById("rsb-phase");
+  const main = document.getElementById("rsb-main");
+  const sub = document.getElementById("rsb-sub");
+  if (!bar || !fill || !phase || !main || !sub) return;
+  bar.classList.add("visible");
+  const phaseName = String(_rs.phase || "idle").toLowerCase();
+  phase.className = `rsb-phase phase-${phaseName === "running" ? "scan" : phaseName === "post" ? "post" : phaseName === "done" ? "done" : phaseName === "error" ? "err" : "scan"}`;
+  phase.textContent = String(_rs.phase || "idle").toUpperCase();
+  main.textContent = _rs.main || "Running...";
+  sub.textContent = _rs.sub || "";
+  fill.style.width = `${Math.max(0, Math.min(100, Number(_rs.pct || 0)))}%`;
 }
 
 function _rsbParse(msg) {
-  const s = msg.trim();
-  // Branch X/Y: name
-  let m = s.match(/^Branch (\d+)\/(\d+):\s*(.+)/);
-  if (m) {
-    _rs.totalBranches = parseInt(m[2]);
-    _rs.doneBranches  = parseInt(m[1]) - 1;
-    _rs.phase = "retrieving";
-    _rs.main  = `Branch ${m[1]} / ${m[2]}: ${m[3].trim()}`;
-    _rs.sub   = "Retrieving…";
-    _rs.totalScan = 0; _rs.doneScan = 0;
-    _rs.totalSynth = 0; _rs.doneSynth = 0;
-    return;
+  const text = String(msg || "");
+  if (!text) return;
+  if (text.toLowerCase().includes("second pass")) {
+    _rs.phase = "post";
+  } else if (text.toLowerCase().includes("complete")) {
+    _rs.phase = "done";
+    _rs.pct = 100;
+  } else {
+    _rs.phase = "running";
   }
-  // Running N branch(es)
-  m = s.match(/^Running (\d+) branch/);
-  if (m) { _rs.totalBranches = parseInt(m[1]); _rs.phase = "warming"; _rs.main = `0 / ${m[1]} branches`; return; }
-  // Sub-steps emitted by retrieve() via progress_fn (leading spaces trimmed):
-  if (s === "→ HyDE: generating passage…")              { _rs.phase = "retrieving"; _rs.sub = "HyDE: generating passage…"; return; }
-  if (s === "→ Embedding query…")                        { _rs.phase = "retrieving"; _rs.sub = "Embedding query…"; return; }
-  if (s.startsWith("→ Scoring ") && s.includes("candidates")) { _rs.phase = "retrieving"; _rs.sub = s.replace("→ ", ""); return; }
-  // Reranking N / M (MMR progress ticks)
-  m = s.match(/Reranking (\d+) \/ (\d+)/);
-  if (m) { _rs.phase = "retrieving"; _rs.sub = `Reranking ${m[1]} / ${m[2]}`; return; }
-  // Scan: N chunks across M batch(es)
-  m = s.match(/Scan: \d+ chunks across (\d+) batch/);
-  if (m) { _rs.totalScan = parseInt(m[1]); _rs.doneScan = 0; _rs.phase = "scanning"; _rs.sub = `0 / ${m[1]} scan batches`; return; }
-  // Scan batch X/Y
-  m = s.match(/Scan batch (\d+)\/(\d+)/);
-  if (m) { _rs.doneScan = parseInt(m[1]) - 1; _rs.totalScan = parseInt(m[2]);
-           _rs.phase = "scanning"; _rs.sub = `Scan batch ${m[1]} / ${m[2]}`; return; }
-  // Synthesis sub-batch X/Y
-  m = s.match(/Synthesis sub-batch (\d+)\/(\d+)/);
-  if (m) { _rs.doneSynth = parseInt(m[1]) - 1; _rs.totalSynth = parseInt(m[2]);
-           _rs.phase = "synth"; _rs.sub = `Synthesis ${m[1]} / ${m[2]}`; return; }
-  // Synthesis pass (N chunk(s))
-  m = s.match(/Synthesis pass \((\d+) chunk/);
-  if (m) { _rs.phase = "synth"; _rs.sub = `Synthesis (${m[1]} chunks)`; return; }
-  // Saved N item(s) to checkpoint
-  m = s.match(/Saved (\d+) item\(s\) to checkpoint/);
-  if (m) { _rs.doneBranches++; _rs.sub = `✓ ${m[1]} items saved`; return; }
-  // Post-pass X/Y: name
-  m = s.match(/Post-pass (\d+)\/(\d+):\s*(.+)/);
-  if (m) { _rs.totalPasses = parseInt(m[2]); _rs.donePassses = parseInt(m[1]) - 1;
-           _rs.phase = "post_pass"; _rs.main = `Post-pass ${m[1]} / ${m[2]}: ${m[3].trim()}`; _rs.sub = "Running…"; return; }
-  // Post-pass complete
-  if (s.includes("Post-pass complete")) { _rs.donePassses++; _rs.sub = "✓ Done"; return; }
-  // Building report
-  if (s.includes("Building report")) { _rs.phase = "reporting"; _rs.main = "Building report…"; _rs.sub = ""; return; }
-  // Warming LLM
-  if (s.includes("Warming LLM")) { _rs.phase = "warming"; _rs.main = "Warming LLM…"; _rs.sub = ""; return; }
-  // Building corpus index
-  if (s.includes("Building corpus index")) { _rs.phase = "indexing"; _rs.main = "Building corpus index…"; _rs.sub = ""; return; }
-  // Starting extraction
-  m = s.match(/^Starting extraction project:\s*(.+)/);
-  if (m) { _rs.phase = "starting"; _rs.main = m[1].trim(); _rs.sub = ""; return; }
-  // Ingesting
-  if (s.includes("Ingesting ")) { _rs.phase = "ingesting"; _rs.sub = s; return; }
-  // Done
-  if (s.includes("Extraction complete")) { _rs.phase = "done"; _rs.main = "Complete"; _rs.sub = ""; return; }
-  // Error
-  if (s.startsWith("✗") || s.toLowerCase().startsWith("error")) { _rs.phase = "error"; }
+  _rs.main = text;
+}
+
+function _applyProgressMeta(obj) {
+  if (!obj || typeof obj !== "object") return;
+  if (obj.phase) {
+    const phase = String(obj.phase || "").toLowerCase();
+    if (phase === "post" || phase === "report") {
+      _rs.phase = "post";
+    } else if (phase === "done" || phase === "error") {
+      _rs.phase = phase;
+    } else if (phase) {
+      _rs.phase = "running";
+    }
+  }
+  if (Number.isFinite(obj.percent_hint)) {
+    _rs.pct = Number(obj.percent_hint);
+  }
+  if (obj.message) {
+    _rs.main = String(obj.message);
+  }
+}
+
+function _setRunButtons(isRunning) {
+  const runBtn = document.getElementById("btn-run");
+  const rerunBtn = document.getElementById("btn-rerun-second-passes");
+  const abortBtn = document.getElementById("btn-abort");
+  const clearBtn = document.getElementById("btn-clear-run");
+  if (runBtn) runBtn.disabled = !!isRunning;
+  if (rerunBtn) rerunBtn.disabled = !!isRunning;
+  if (abortBtn) abortBtn.style.display = isRunning ? "" : "none";
+  if (clearBtn) clearBtn.style.display = !isRunning && state.lastRunId ? "" : "none";
+}
+
+function _prepareRunUi(startMessage, phase) {
+  setStatus("running", startMessage);
+  showTab("run");
+  _setRunButtons(true);
+  document.getElementById("run-results").innerHTML = "";
+  document.getElementById("progress-log").innerHTML = "";
+  document.getElementById("report-md").textContent = "";
+  document.getElementById("report-md-rendered").textContent = startMessage;
+  document.getElementById("report-appendix-md").textContent = "";
+  document.getElementById("report-appendix-rendered").textContent = "Waiting for organized evidence...";
+  state.runAborted = false;
+  state.runCursor = 0;
+  _rs = { phase: phase, main: startMessage, sub: "", pct: 5 };
+  _rsbUpdate();
+  appendLog(startMessage, "head");
+}
+
+async function reconnectToRun(runId, opts = {}) {
+  if (!runId) return;
+  const { clearLog = false, announce = false } = opts;
+  if (state._sse) {
+    try { state._sse.close(); } catch (_) {}
+    state._sse = null;
+  }
+  state.activeRunId = runId;
+  state.lastRunId = runId;
+  state.activeRunStatus = state.activeRunStatus || "running";
+  if (clearLog) {
+    document.getElementById("progress-log").innerHTML = "";
+    state.runCursor = 0;
+  }
+  showTab("run");
+  _setRunButtons(true);
+  if (announce) {
+    appendLog(`Reconnected to active run ${runId}`, "head");
+    setStatus("running", "Reconnected to active run");
+  }
+  const es = new EventSource(`/api/extraction/runs/${encodeURIComponent(runId)}/events?cursor=${state.runCursor}`);
+  state._sse = es;
+  es.onmessage = (event) => {
+    if (event.data === "[DONE]") {
+      try { es.close(); } catch (_) {}
+      if (state._sse === es) state._sse = null;
+      return;
+    }
+    try {
+      const payload = JSON.parse(event.data);
+      if (payload && payload.seq) state.runCursor = Math.max(state.runCursor, Number(payload.seq) || 0);
+      handleSseEvent(payload);
+    } catch (_) {
+      appendLog(`Malformed event: ${event.data}`, "err");
+    }
+  };
+  es.onerror = async () => {
+    try { es.close(); } catch (_) {}
+    if (state._sse === es) state._sse = null;
+    const active = await refreshActiveRunForCurrentProject();
+    if (active?.run_id === runId) {
+      setTimeout(() => reconnectToRun(runId, { clearLog: false, announce: false }), 1000);
+    } else {
+      _setRunButtons(false);
+    }
+  };
 }
 
 async function startRun() {
-  if (!state.current) { alert("No project loaded."); return; }
+  if (!state.current) {
+    setStatus("err", "No project loaded");
+    return;
+  }
+
   readProjectForm();
-  const p = state.current;
-
-  document.getElementById("progress-log").innerHTML = "";
-  document.getElementById("run-results").innerHTML = "";
-  document.getElementById("btn-run").disabled = true;
-  document.getElementById("btn-run").innerHTML = '<span class="run-spinner"></span> Running…';
-  document.getElementById("btn-abort").style.display = "";
-  state.runAborted = false;
-  setStatus("running", "Running…");
-  _rsbReset();
-
-  const verboseOn = document.getElementById("chk-verbose")?.checked || false;
-  const body = {project: p, verbose: verboseOn || undefined};
-  const ctrl = new AbortController();
-  state._sse = ctrl;
+  _prepareRunUi("Starting extraction...", "running");
 
   try {
-    const res = await fetch("/api/extraction/run", {
+    const resp = await fetch("/api/extraction/run-start", {
       method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify(body),
-      signal: ctrl.signal,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        project: state.current,
+        verbose: !!document.getElementById("chk-verbose")?.checked,
+      }),
     });
-    if (!res.ok) { appendLog("Server error: "+res.status, "err"); return; }
-    const reader = res.body.getReader();
-    const decoder = new TextDecoder();
-    let buf = "";
-    while (true) {
-      const {done, value} = await reader.read();
-      if (done || state.runAborted) break;
-      buf += decoder.decode(value, {stream:true});
-      const lines = buf.split("\n");
-      buf = lines.pop();
-      for (const line of lines) {
-        if (!line.startsWith("data: ")) continue;
-        const raw = line.slice(6).trim();
-        if (raw === "[DONE]") { break; }
-        try {
-          const obj = JSON.parse(raw);
-          handleSseEvent(obj);
-        } catch {}
-      }
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    state.activeRunId = data.run_id || null;
+    state.lastRunId = data.run_id || state.lastRunId;
+    state.activeRunStatus = data.status || "queued";
+    await reconnectToRun(data.run_id, { clearLog: false, announce: false });
+  } catch (e) {
+    if (!state.runAborted) {
+      appendLog("ERROR: " + String(e), "err");
+      _rs.phase = "error";
+      _rs.main = String(e);
+      _rsbUpdate();
+      setStatus("err", "Run failed");
+      _setRunButtons(false);
     }
-  } catch(e) {
-    if (!state.runAborted) { appendLog("Connection error: "+e, "err"); setStatus("err","Error"); }
-  } finally {
-    document.getElementById("btn-run").disabled = false;
-    document.getElementById("btn-run").innerHTML = "▶ Start Extraction";
-    document.getElementById("btn-abort").style.display = "none";
-    state._sse = null;
+  }
+}
+
+async function rerunSecondPassesOnly() {
+  if (!state.current) {
+    setStatus("err", "No project loaded");
+    return;
+  }
+  if (!state.latestCheckpointPath) {
+    await refreshLatestCheckpointForCurrentProject();
+  }
+  if (!state.latestCheckpointPath) {
+    setStatus("err", "No checkpoint available for rerun");
+    return;
+  }
+
+  readProjectForm();
+  _prepareRunUi("Starting second-pass rerun...", "post");
+
+  try {
+    const resp = await fetch("/api/extraction/rerun-second-passes-start", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        project: state.current,
+        checkpoint_path: state.latestCheckpointPath,
+      }),
+    });
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    state.activeRunId = data.run_id || null;
+    state.lastRunId = data.run_id || state.lastRunId;
+    state.activeRunStatus = data.status || "queued";
+    await reconnectToRun(data.run_id, { clearLog: false, announce: false });
+  } catch (e) {
+    if (!state.runAborted) {
+      appendLog("ERROR: " + String(e), "err");
+      _rs.phase = "error";
+      _rs.main = String(e);
+      _rsbUpdate();
+      setStatus("err", "Rerun failed");
+      _setRunButtons(false);
+    }
   }
 }
 
 function handleSseEvent(obj) {
-  if (obj.type === "progress") {
+  if (obj.type === "run_started") {
+    state.activeRunId = obj.run_id || state.activeRunId;
+    state.lastRunId = obj.run_id || state.lastRunId;
+    state.activeRunStatus = "running";
+  } else if (obj.type === "abort_requested") {
+    appendLog(obj.message || "Abort requested by user.", "err");
+    _rs.phase = "error"; _rs.main = obj.message || "Abort requested"; _rsbUpdate();
+    setStatus("err", "Abort requested");
+    state.activeRunStatus = "cancel_requested";
+  } else if (obj.type === "canceled") {
+    state.runAborted = true;
+    state.lastRunId = state.activeRunId || state.lastRunId;
+    appendLog(obj.message || "Run aborted by user.", "err");
+    _rs.phase = "error"; _rs.main = obj.message || "Run aborted"; _rsbUpdate();
+    setStatus("err", "Aborted");
+    state.activeRunStatus = "canceled";
+    state.activeRunId = null;
+    _setRunButtons(false);
+  } else if (obj.type === "progress") {
     const msg = obj.message || "";
-    const cls = msg.startsWith("✓") ? "ok" : msg.startsWith("✗") ? "err"
+    const cls = msg.startsWith("OK") ? "ok" : msg.startsWith("FAIL") ? "err"
               : msg.startsWith("Branch") || msg.startsWith("Starting") ? "head" : "";
     appendLog(msg, cls);
     _rsbParse(msg);
+    _applyProgressMeta(obj);
     _rsbUpdate();
   } else if (obj.type === "error") {
     appendLog("ERROR: " + obj.message, "err");
-    _rs.phase = "error"; _rs.main = obj.message; _rsbUpdate();
+    state.lastRunId = state.activeRunId || state.lastRunId;
+    _rs.phase = "error"; _rs.main = obj.message; _applyProgressMeta(obj); _rsbUpdate();
     setStatus("err", "Failed");
+    state.activeRunStatus = "error";
+    state.activeRunId = null;
+    _setRunButtons(false);
   } else if (obj.type === "result") {
     state.runResult = obj;
+    state.lastRunId = state.activeRunId || state.lastRunId;
+    state.latestCheckpointPath = obj.checkpoint_path || state.latestCheckpointPath;
     renderRunResults(obj);
     document.getElementById("report-md").textContent = obj.report_markdown || "(empty)";
     _renderReport(obj.report_markdown || "(empty)");
-    _rs.phase = "done"; _rs.main = `Complete — ${obj.elapsed_seconds}s`; _rs.sub = ""; _rsbUpdate();
-    setStatus("ok", `Done — ${obj.elapsed_seconds}s`);
-    appendLog(`\n✓ Extraction complete in ${obj.elapsed_seconds}s`, "ok");
+    void loadMatchingAppendix(obj.report_path || "", obj.appendix_path || "");
+    _rs.phase = "done"; _rs.main = `Complete - ${obj.elapsed_seconds}s`; _rs.sub = ""; _rsbUpdate();
+    setStatus("ok", `Done - ${obj.elapsed_seconds}s`);
+    appendLog(`\nOK Extraction complete in ${obj.elapsed_seconds}s`, "ok");
+    state.activeRunStatus = "done";
+    state.activeRunId = null;
+    _setRunButtons(false);
     refreshReportHistory();
   }
 }
@@ -1306,18 +1672,18 @@ function handleSseEvent(obj) {
 function renderRunResults(result) {
   const el = document.getElementById("run-results");
   const branches   = result.branches || [];
-  const postPasses = result.post_passes || [];
+  const secondPasses = result.second_passes || [];
   let html = "<h3 style='margin-bottom:12px; color:var(--text-dim);'>Branches</h3>";
   html += branches.map(b => {
-    const icon = b.status==="ok"?"✅":b.status==="empty"?"⚠️":"❌";
+    const icon = b.status==="ok"?"OK":b.status==="empty"?"WARN":"FAIL";
     return `<div class="branch-result-block">
       <h3>${icon} ${esc(b.name)} <span style="font-weight:normal;color:var(--text-dim)">(${b.items} items)</span></h3>
     </div>`;
   }).join("");
-  if (postPasses.length) {
-    html += "<h3 style='margin-bottom:12px; margin-top:16px; color:var(--text-dim);'>Post-Branch Passes</h3>";
-    html += postPasses.map(pp => {
-      const icon = pp.status==="ok" ? "✅" : "❌";
+  if (secondPasses.length) {
+    html += "<h3 style='margin-bottom:12px; margin-top:16px; color:var(--text-dim);'>Second Passes</h3>";
+    html += secondPasses.filter(pp => pp.pass_name !== "report_plan").map(pp => {
+      const icon = pp.status==="ok" ? "OK" : "FAIL";
       const detail = pp.status==="ok" ? `${(pp.response_text||'').length} chars` : (pp.error||'error');
       return `<div class="branch-result-block">
         <h3>${icon} ${esc(pp.pass_name)} <span style="font-weight:normal;color:var(--text-dim)">(${detail})</span></h3>
@@ -1327,16 +1693,48 @@ function renderRunResults(result) {
   el.innerHTML = html;
 }
 
-function abortRun() {
-  state.runAborted = true;
-  if (state._sse) { state._sse.abort(); state._sse = null; }
-  appendLog("Aborted by user.", "err");
-  setStatus("err", "Aborted");
-  document.getElementById("btn-run").disabled = false;
-  document.getElementById("btn-abort").style.display = "none";
+async function abortRun() {
+  if (!state.activeRunId) {
+    setStatus("err", "No active run");
+    return;
+  }
+  try {
+    const resp = await fetch(`/api/extraction/runs/${encodeURIComponent(state.activeRunId)}/abort`, {
+      method: "POST",
+    });
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    state.runAborted = true;
+    appendLog("Abort requested by user.", "err");
+    setStatus("err", "Abort requested");
+    state.activeRunStatus = "cancel_requested";
+  } catch (e) {
+    appendLog("ERROR: " + String(e), "err");
+    setStatus("err", "Abort request failed");
+  }
 }
 
-// ── Report ────────────────────────────────────────────────────────────────────
+async function clearLastRun() {
+  if (!state.lastRunId) {
+    setStatus("err", "No run to clear");
+    return;
+  }
+  try {
+    const resp = await fetch(`/api/extraction/runs/${encodeURIComponent(state.lastRunId)}`, {
+      method: "DELETE",
+    });
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    state.lastRunId = null;
+    state.activeRunId = null;
+    state.activeRunStatus = null;
+    setStatus("ok", "Run cleared");
+    _setRunButtons(false);
+  } catch (e) {
+    appendLog("ERROR: " + String(e), "err");
+    setStatus("err", "Could not clear run");
+  }
+}
+
+// â”€â”€ Report â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function _renderReport(text) {
   document.getElementById("report-md").textContent = text;
   const rendered = document.getElementById("report-md-rendered");
@@ -1345,6 +1743,48 @@ function _renderReport(text) {
     rendered.innerHTML = DOMPurify.sanitize(marked.parse(normalised));
   } else {
     rendered.textContent = text;
+  }
+}
+function _renderAppendix(text) {
+  document.getElementById("report-appendix-md").textContent = text;
+  const rendered = document.getElementById("report-appendix-rendered");
+  if (typeof marked !== "undefined" && typeof DOMPurify !== "undefined") {
+    const normalised = text.replace(/([^\n])([ \t]*\n?[ \t]*)(#{1,6} )/g, "$1\n\n$3");
+    rendered.innerHTML = DOMPurify.sanitize(marked.parse(normalised));
+  } else {
+    rendered.textContent = text;
+  }
+}
+function _clearAppendix(message="No evidence appendix available for this report.") {
+  _renderAppendix(message);
+}
+function _deriveAppendixFilename(filename) {
+  const m = String(filename || "").match(/^(.*)\.md$/);
+  return m ? `${m[1]}_evidence_appendix.md` : "";
+}
+async function loadMatchingAppendix(reportPath, appendixPath="") {
+  let filename = "";
+  if (appendixPath) {
+    const parts = String(appendixPath).split(/[\\/]/);
+    filename = parts[parts.length - 1] || "";
+  } else if (reportPath) {
+    const parts = String(reportPath).split(/[\\/]/);
+    filename = _deriveAppendixFilename(parts[parts.length - 1] || "");
+  }
+  if (!filename) {
+    _clearAppendix();
+    return;
+  }
+  try {
+    const resp = await fetch(`/api/extraction/report-file/${encodeURIComponent(filename)}`);
+    if (!resp.ok) {
+      _clearAppendix();
+      return;
+    }
+    const text = await resp.text();
+    _renderAppendix(text || "No evidence appendix available for this report.");
+  } catch (_) {
+    _clearAppendix();
   }
 }
 function copyReport() {
@@ -1373,10 +1813,10 @@ async function refreshReportHistory() {
     list.forEach(r => {
       const opt = document.createElement("option");
       opt.value = r.filename;
-      // Format label: "slug_YYYYMMDD_HHMMSS.md" → "slug · YYYY-MM-DD HH:MM"
+      // Format label: "slug_YYYYMMDD_HHMMSS.md" -> "slug - YYYY-MM-DD HH:MM"
       const m = r.filename.match(/^(.+?)_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})\.md$/);
       opt.textContent = m
-        ? `${m[1]} · ${m[2]}-${m[3]}-${m[4]} ${m[5]}:${m[6]}`
+        ? `${m[1]} - ${m[2]}-${m[3]}-${m[4]} ${m[5]}:${m[6]}`
         : r.filename.replace(/\.md$/, "");
       sel.appendChild(opt);
     });
@@ -1391,12 +1831,13 @@ async function loadHistoryReport(filename) {
     if (!resp.ok) { setStatus("err", "Could not load report"); return; }
     const text = await resp.text();
     _renderReport(text);
+    await loadMatchingAppendix(filename, "");
   } catch (e) {
     setStatus("err", "Failed to load report");
   }
 }
 
-// ── Status bar ────────────────────────────────────────────────────────────────
+// â”€â”€ Status bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function setStatus(state_, msg) {
   const dot  = document.getElementById("status-dot");
   const text = document.getElementById("status-text");
@@ -1404,11 +1845,11 @@ function setStatus(state_, msg) {
   text.textContent = msg;
 }
 
-// ── Modal helpers ─────────────────────────────────────────────────────────────
+// â”€â”€ Modal helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function openModal(id)  { document.getElementById(id).classList.add("open"); }
 function closeModal(id) { document.getElementById(id).classList.remove("open"); }
 
-// ── Utils ─────────────────────────────────────────────────────────────────────
+// â”€â”€ Utils â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function esc(s) {
   return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
@@ -1420,3 +1861,4 @@ function esc(s) {
 </script>
 </body>
 </html>
+

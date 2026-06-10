@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 449,
+  "page_number": 450,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 6,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n143 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0450_image.png",
+  "artifact_type_inferred": "SCADA Interface Specification",
+  "artifact_summary": "Appendix A of the HFC AWTP Master Plan defining graphical standards for monitoring pressure, flow, level, and pump discharge.",
+  "artifact_key_elements": [
+    "Pressure readout visualization",
+    "Flow rate data formatting",
+    "Tank level monitoring display",
+    "Pump discharge status indicators",
+    "Graphical element style guide",
+    "Data formatting requirements"
+  ],
+  "artifact_blurb": "This document serves as Appendix A within the HFC AWTP Master Plan, establishing mandatory SCADA interface standards. It provides visual references and specific formatting rules for monitoring critical hydraulic parameters, including pressure, flow, level, and pump discharge readouts, ensuring consistency across the system's graphical user interface.",
+  "replacement_text": "This document serves as Appendix A within the HFC AWTP Master Plan, establishing mandatory SCADA interface standards. It provides visual references and specific formatting rules for monitoring critical hydraulic parameters, including pressure, flow, level, and pump discharge readouts, ensuring consistency across the system's graphical user interface.",
+  "normalized_text": "This document serves as Appendix A within the HFC AWTP Master Plan, establishing mandatory SCADA interface standards. It provides visual references and specific formatting rules for monitoring critical hydraulic parameters, including pressure, flow, level, and pump discharge readouts, ensuring consistency across the system's graphical user interface.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:52:40.871073+00:00"
+}

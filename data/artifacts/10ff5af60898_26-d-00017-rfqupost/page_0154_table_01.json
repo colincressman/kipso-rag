@@ -1,0 +1,28 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 153,
+  "page_number": 154,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.3008751313802227,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "scada standards volume 1 of 3",
+    "the policies and procedures contained in this manual must be periodically reviewed and"
+  ],
+  "text_length": 1898,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n  \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n   \n \n \n \n \n \n \n  \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n   \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n2 \nSCADA Standards Volume 1 of 3 \nResponsibilities Matrix \nThe policies and procedures contained in this manual must be periodically reviewed and \nupdated to ensure accuracy based on changes to the City’s systems and for changes to \ntechnology. This section describes the roles and responsibilities for maintenance and \nupdate of these policies. \nPolicy \nCity operations technology (OT) contact ",
+  "bbox": [
+    64.29828643798828,
+    167.10000610351562,
+    547.8242797851562,
+    495.0299987792969
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0154_table_01.png"
+}

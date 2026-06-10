@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 93,
+  "page_number": 94,
+  "artifact_kind": "image",
+  "classified_page_type": "table_heavy",
+  "image_count": 27,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 3414,
+  "reasons": [
+    "page_classifier:table_heavy",
+    "table_override:page_spanning_table_bbox"
+  ],
+  "text_preview": "0\n1\"\n1/2\"\nMedia Converter \nMedia Converter \nMedia Converter\nMedia Converter \nModbus RTU \nMedia Converter \nSG60A Service \nPort \nMedia Converter \nSwitchgear 60A \nMedia Converter \nBreakers\nFile: C:\\USERS\\LGONZALEZ\\ONEDRIVE - HAZEN AND SAWYER\\00_PROJECTS\\TAMPA\\41077-013 HFC PLAN IMPROVEMENTS\\41077-13E NETWORK DIAGRAM\\41077-13E NETWORK DIAGRAM\\PID DWG\\41077-13E-I08 Saved by LGONZALEZ Save date: 1/5/2024 9:11 AM \nPLOT DATE: 1/5/2024 9:19 AM    BY: LGONZALEZ \nI-308 \nI-309 \n1 \nISSUED FOR CONSTRUCTION \n04/2023 \nTDT \nJ. PORTER \nT. THOMAS \nJ. THOMAS \nG. WALKER \nIF THIS BAR DOES NOT \nMEASURE 1\" THEN DRAWI",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0094_image.png",
+  "artifact_type_inferred": "Industrial Network Topology Diagram",
+  "artifact_summary": "Schematic of the City of Tampa Wastewater Department network for the Howard F. Curren AWTP project, showing PLC, media converter, and SCADA terminal connections.",
+  "artifact_key_elements": [
+    "PLC Stations",
+    "Media Converters",
+    "SCADA Terminals",
+    "Pump Stations",
+    "Control Buildings",
+    "Network Topology"
+  ],
+  "artifact_blurb": "A detailed network topology schematic for the Howard F. Curren Advanced Water Treatment Plant (AWTP) project, operated by the City of Tampa Wastewater Department. The diagram visualizes the industrial control network architecture, specifically mapping the interconnections between Programmable Logic Controllers (PLCs), media converters, and SCADA terminals located at various pump stations and control buildings.",
+  "replacement_text": "A detailed network topology schematic for the Howard F. Curren Advanced Water Treatment Plant (AWTP) project, operated by the City of Tampa Wastewater Department. The diagram visualizes the industrial control network architecture, specifically mapping the interconnections between Programmable Logic Controllers (PLCs), media converters, and SCADA terminals located at various pump stations and control buildings.",
+  "normalized_text": "A detailed network topology schematic for the Howard F. Curren Advanced Water Treatment Plant (AWTP) project, operated by the City of Tampa Wastewater Department. The diagram visualizes the industrial control network architecture, specifically mapping the interconnections between Programmable Logic Controllers (PLCs), media converters, and SCADA terminals located at various pump stations and control buildings.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:32:04.173937+00:00"
+}

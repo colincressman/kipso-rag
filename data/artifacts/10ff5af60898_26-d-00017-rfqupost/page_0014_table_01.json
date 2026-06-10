@@ -1,0 +1,27 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 13,
+  "page_number": 14,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.5607432601417969,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "table 2-2: hfc awtp building identification"
+  ],
+  "text_length": 3164,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": "Table 2-2: HFC AWTP Building Identification \nBuilding \nNo. \nAcronym \nBuilding \nNo. \nAcronym \nRaw Sewage Pump Station \n001 \nRSP \nSludge Heat Drying \n035 \nHD1 \nJunction Chamber No. 1 \n002 \nJC1 \nJC-1 Odor Control No. 1 \n036 \nJC1 \nMeter Vault No. 1 \n003 \nJC-1 Odor Control No. 2 \n037 \nJC1 \nLube Storage Building \n004 \nTech Services Building \n039 \nScreen & Grit No. 2 \n005 \nS$G \nOperation & Maintenance Building \n040 \nJunction Chamber No. 2 \n006 \nOxygen Plants Area Generation \n041 \nOXY \nMeter Vault No. 2 \n007 \nChemical Handling Platform \n042 \nJunction Chamber No. 3 \n008 \nChemical Storage Tanks \n043 \nPr",
+  "bbox": [
+    64.0,
+    100.25,
+    543.5599975585938,
+    702.5700073242188
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0014_table_01.png"
+}

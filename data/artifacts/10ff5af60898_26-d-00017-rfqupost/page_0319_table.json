@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 318,
+  "page_number": 319,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1667,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nACT000 \nACTUATOR \nAD021 \nAIR DRYER \nADS341 \nAIR DIFFUSER SYSTEM \nAE000 \nANALYZER ELEMENT/PROBE \nAEP000 \nAERATION CONTROL PANEL \nAFC000 \nAIR FAN COOLER \nAFS193 \nAIR FILTRATION UNIT \nAHF000 \nACTIVE HARMONIC FILTER \nAHU051 \nAIR CONDITIONING UNIT \nAIT000 \nANALYZER INDICATING TRANSMITTER \nALG500 \nAIR LEAKS GENERAL \nAOV124 \nAIR OPERATED ",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0319_table.png"
+}

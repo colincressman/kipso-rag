@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 313,
+  "page_number": 314,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1534,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nBFV01 \nBUTTERFLY VALVE \nBHC000 \nBOOSTER HEATING COIL \nBI222 \nBACTERIAL INCUBATOR \nBIN000 \nBINS \nBIO200 \nBIO-FILTER \nBLD000 \nBUILDING \nBLN000 \nBLEND UNIT \nBLR000 \nBOILER, WATER HEATER \nBLW000 \nBLOWERS \nBP263 \nBACKFLOW PREVENTERS \nBRD000 \nDC DISTRIBUTION BOARDS \nBRN000 \nBURNER – WASTE GAS \nBS001 \nBAR SCREEN \nBST099 \nBREWERY WASTE ",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0314_table.png"
+}

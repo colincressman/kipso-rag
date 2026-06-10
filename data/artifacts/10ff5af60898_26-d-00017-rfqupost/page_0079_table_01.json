@@ -1,0 +1,28 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 78,
+  "page_number": 79,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.3409870943330557,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "the three plc suppliers, ge (rx3i), rockwell (logix series), and schineder (m540/m580) are all",
+    "reliable plcs, and within each of the evaluation factors, no one supplier was always top ranked"
+  ],
+  "text_length": 2262,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": "  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n  \n \n \n \n  \n \n \n \n  \n \n \n \n \n \n \n  \n \n \n \n \n \n  \n  \n \n  \n \n \n \n \n \n \n    \n \n    \n  \n  \n \n \n \n  \n \n  \n \n \n \n \n \n     \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n   \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n  \n \n  \n \n \n \n  \n \n \n \n   \n  \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ",
+  "bbox": [
+    40.489601135253906,
+    344.1781921386719,
+    569.2304077148438,
+    682.52001953125
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0079_table_01.png"
+}

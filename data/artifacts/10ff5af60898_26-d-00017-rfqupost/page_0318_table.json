@@ -1,0 +1,18 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 317,
+  "page_number": 318,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "gate except flow control gate (fcg"
+  ],
+  "text_length": 1709,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nGTE000 \nGATE EXCEPT FLOW CONTROL GATE (FCG) \nGV120 \nGATE VALVE \nGW005 \nGRIT WASHER \nHC054 \nELECTRIC HEATER COIL \nHCP000 \nHVAC CONTROL PANEL \nHCS000 \nHVAC CONTROL SYSTEM \nHD000 \nHEAT DETECTOR \nHDU000 \nHYDRAULIC UNITS \nHE136 \nSLUDGE HEAT EXCHANGER \nHH000 \nHANDHOLE \nHMP000 \nHEAT PUMP, WATER SOURCE HEAT PUMP \nHOP000 \nHOPPERS \nHPP313 \nHOT WATER F",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0318_table.png"
+}

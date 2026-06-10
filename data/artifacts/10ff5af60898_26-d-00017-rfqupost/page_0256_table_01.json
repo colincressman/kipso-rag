@@ -1,0 +1,28 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 255,
+  "page_number": 256,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.2087777085318121,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "scada standards volume 3 of 3",
+    "has four significant digits and is presumed to be accurate to the tenths place. this is"
+  ],
+  "text_length": 2093,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": "SCADA Standards Volume 3 of 3 \nhas four significant digits and is presumed to be accurate to the tenths place. This is \nhighly dependent on the instrument or calculation. Digitals shall not be indicated past \ntheir determined significance. \nNumbers that might be referenced using scientific notation will allow enough space for \nthe sign and exponential portion. In example: “1.246E-8” has four significant digits and \nan exponent portion indicating its magnitude. \n7.5\u0003Text\u0003\nStatic text and static objects are elements that do not change in response to change in \ninput or output statuses. They reta",
+  "bbox": [
+    64.26399993896484,
+    428.1499938964844,
+    547.1400146484375,
+    660.9000244140625
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0256_table_01.png"
+}

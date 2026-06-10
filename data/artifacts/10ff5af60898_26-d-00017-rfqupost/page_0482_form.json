@@ -1,0 +1,35 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 481,
+  "page_number": 482,
+  "artifact_kind": "form",
+  "classified_page_type": "standard",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "failure to complete, sign, and submit all forms 10,20, & 50 may render the bid or proposal non-responsive",
+    "participation plan: guidance for complying with good faith efforts outreach",
+    "solicited and dmi-utilized forms must be completed for all firms solicited and all firms utilized. other"
+  ],
+  "text_length": 3031,
+  "reasons": [
+    "native:form_packet_continuation"
+  ],
+  "text_preview": " \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n  \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nFailure to Complete, Sign, and Submit all Forms 10,20, & 50 MAY render the Bid or Proposal Non-Responsive \nParticipation",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0482_form.png",
+  "artifact_type_inferred": "GFECP-DMI 50 Form Page 3",
+  "artifact_summary": "Guidance document outlining ten requirements for contractors to solicit, document, and assist Small Local Business Enterprises (SLBEs) in compliance with Good Faith Efforts Outreach.",
+  "artifact_key_elements": [
+    "SLBE solicitation protocols",
+    "Subcontracting assistance procedures",
+    "Documentation requirements",
+    "Good Faith Efforts compliance",
+    "Bidding process guidelines",
+    "Contractor outreach obligations"
+  ],
+  "artifact_blurb": "This section of the GFECP-DMI 50 Form provides detailed operational directives for contractors regarding Good Faith Efforts Outreach. It enumerates ten mandatory requirements specifically focused on the active solicitation, rigorous documentation, and strategic assistance of Small Local Business Enterprises (SLBEs) throughout the competitive bidding and subcontracting lifecycle.",
+  "replacement_text": "This section of the GFECP-DMI 50 Form provides detailed operational directives for contractors regarding Good Faith Efforts Outreach. It enumerates ten mandatory requirements specifically focused on the active solicitation, rigorous documentation, and strategic assistance of Small Local Business Enterprises (SLBEs) throughout the competitive bidding and subcontracting lifecycle.",
+  "normalized_text": "This section of the GFECP-DMI 50 Form provides detailed operational directives for contractors regarding Good Faith Efforts Outreach. It enumerates ten mandatory requirements specifically focused on the active solicitation, rigorous documentation, and strategic assistance of Small Local Business Enterprises (SLBEs) throughout the competitive bidding and subcontracting lifecycle.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T01:12:05.492747+00:00"
+}

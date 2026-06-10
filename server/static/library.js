@@ -10,8 +10,145 @@ const state = {
   docs: [],                 // docs in current view
   draggingDocId: null,      // doc_id being dragged
   pendingJobs: {},          // jobId -> { filename, status, timerId }
+  uploadDraft: null,        // { filename, collectionId, startedAt }
   confirmCallback: null,    // pending confirm modal callback
 };
+
+const PENDING_UPLOADS_KEY = 'rag.library.pendingUploads';
+const UPLOAD_DRAFT_KEY = 'rag.library.uploadDraft';
+
+function _serializePendingJobs() {
+  const out = {};
+  for (const [jobId, job] of Object.entries(state.pendingJobs || {})) {
+    out[jobId] = {
+      filename: job.filename,
+      collectionId: job.collectionId || null,
+      status: job.status || 'running',
+      error: job.error || null,
+      destPath: job.destPath || null,
+      queuePosition: Number.isFinite(job.queuePosition) ? job.queuePosition : null,
+      isActive: !!job.isActive,
+      isWaiting: !!job.isWaiting,
+      gpuHolder: job.gpuHolder || null,
+      stage: job.stage || null,
+      stageDetail: job.stageDetail || null,
+    };
+  }
+  return out;
+}
+
+function _persistPendingJobs() {
+  try {
+    localStorage.setItem(PENDING_UPLOADS_KEY, JSON.stringify(_serializePendingJobs()));
+  } catch {}
+}
+
+function _persistUploadDraft() {
+  try {
+    if (state.uploadDraft) {
+      localStorage.setItem(UPLOAD_DRAFT_KEY, JSON.stringify(state.uploadDraft));
+    } else {
+      localStorage.removeItem(UPLOAD_DRAFT_KEY);
+    }
+  } catch {}
+}
+
+function _restorePendingJobs() {
+  try {
+    const raw = localStorage.getItem(PENDING_UPLOADS_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return;
+    state.pendingJobs = parsed;
+  } catch {
+    state.pendingJobs = {};
+  }
+}
+
+function _restoreUploadDraft() {
+  try {
+    const raw = localStorage.getItem(UPLOAD_DRAFT_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return;
+    state.uploadDraft = parsed;
+  } catch {
+    state.uploadDraft = null;
+  }
+}
+
+async function _hydratePendingJobsFromServer() {
+  try {
+    const jobs = await api('GET', '/api/upload-active');
+    if (!Array.isArray(jobs)) return;
+    const activeJobIds = new Set();
+    for (const job of jobs) {
+      if (!job || !job.job_id) continue;
+      activeJobIds.add(job.job_id);
+      const existing = state.pendingJobs[job.job_id] || {};
+      state.pendingJobs[job.job_id] = {
+        ...existing,
+        filename: job.filename || existing.filename || 'upload',
+        collectionId: job.collection_id || existing.collectionId || null,
+        status: job.status || existing.status || 'running',
+        error: job.error || existing.error || null,
+        destPath: job.dest_path || existing.destPath || null,
+        queuePosition: Number.isFinite(job.queue_position) ? job.queue_position : existing.queuePosition,
+        isActive: !!job.is_active,
+        isWaiting: !!job.is_waiting,
+        gpuHolder: job.gpu_holder || existing.gpuHolder || null,
+        stage: job.stage || existing.stage || null,
+        stageDetail: job.stage_detail || existing.stageDetail || null,
+        timerId: existing.timerId,
+      };
+    }
+    for (const jobId of Object.keys(state.pendingJobs || {})) {
+      if (activeJobIds.has(jobId)) continue;
+      const existing = state.pendingJobs[jobId];
+      if (!existing || existing.status === 'error') continue;
+      try {
+        const status = await api('GET', `/api/upload/${jobId}`);
+        state.pendingJobs[jobId] = {
+          ...existing,
+          status: status.status || existing.status || 'error',
+          error: status.error || existing.error || null,
+          destPath: status.dest_path || existing.destPath || null,
+          queuePosition: Number.isFinite(status.queue_position) ? status.queue_position : existing.queuePosition,
+          isActive: !!status.is_active,
+          isWaiting: !!status.is_waiting,
+          gpuHolder: status.gpu_holder || existing.gpuHolder || null,
+          stage: status.stage || existing.stage || null,
+          stageDetail: status.stage_detail || existing.stageDetail || null,
+          timerId: existing.timerId,
+        };
+      } catch {
+        existing.status = 'error';
+        existing.error = 'Job not found on server';
+        existing.stage = 'interrupted';
+        existing.stageDetail = 'Server no longer has this upload job';
+      }
+    }
+    if (state.uploadDraft && Array.isArray(jobs) && jobs.some(job => {
+      if (!job) return false;
+      const sameName = (job.filename || '') === (state.uploadDraft.filename || '');
+      const sameCollection = (job.collection_id || null) === (state.uploadDraft.collectionId || null);
+      return sameName && sameCollection;
+    })) {
+      state.uploadDraft = null;
+    }
+    _persistUploadDraft();
+    _persistPendingJobs();
+  } catch {
+    for (const job of Object.values(state.pendingJobs || {})) {
+      if (!job || job.status === 'error') continue;
+      job.status = 'error';
+      job.error = 'Lost connection to server';
+      job.stage = 'disconnected';
+      job.stageDetail = 'Server unavailable';
+    }
+    _persistPendingJobs();
+  }
+}
 
 // ── API helpers ────────────────────────────────────────────────────────────
 async function api(method, url, body) {
@@ -34,8 +171,10 @@ async function api(method, url, body) {
 
 // ── Load / refresh ─────────────────────────────────────────────────────────
 async function loadAll() {
+  await _hydratePendingJobsFromServer();
   await loadCollections();
   await loadDocs(state.selectedId);
+  _resumePendingJobPollers();
 }
 
 async function loadCollections() {
@@ -176,6 +315,7 @@ function renderDocGrid() {
   const pendingHtml = Object.keys(state.pendingJobs)
     .map(jid => _renderPendingCard(jid))
     .join('');
+  const draftHtml = state.uploadDraft ? _renderUploadDraftCard() : '';
 
   const visibleDocs = (state.docs || []).filter(doc => {
     if (!filterText) return true;
@@ -184,8 +324,8 @@ function renderDocGrid() {
   });
 
   if (visibleDocs.length === 0) {
-    grid.innerHTML = pendingHtml;
-    if (!pendingHtml) {
+    grid.innerHTML = draftHtml + pendingHtml;
+    if (!draftHtml && !pendingHtml) {
       _emptyEl.style.display = '';
       grid.appendChild(_emptyEl);
     }
@@ -194,7 +334,7 @@ function renderDocGrid() {
   // Remove empty placeholder before overwriting innerHTML
   if (_emptyEl.parentNode === grid) _emptyEl.remove();
 
-  grid.innerHTML = pendingHtml + visibleDocs.map(doc => {
+  grid.innerHTML = draftHtml + pendingHtml + visibleDocs.map(doc => {
     const ext = getExt(doc.filename);
     // Prefer document_title (rich title) > title > filename
     const displayName = doc.document_title || doc.title || doc.filename;
@@ -486,11 +626,49 @@ async function submitUpload() {
   progressFill.style.width = '30%';
   progressLabel.textContent = 'Uploading file…';
 
-  const formData = new FormData();
-  formData.append('file', _selectedFile);
-  if (collectionId) formData.append('collection_id', collectionId);
-
   try {
+    state.uploadDraft = {
+      filename: _selectedFile.name,
+      collectionId: collectionId,
+      startedAt: new Date().toISOString(),
+    };
+    _persistUploadDraft();
+    renderDocGrid();
+
+    const initRes = await fetch('/api/upload-init', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        filename: _selectedFile.name,
+        collection_id: collectionId,
+      }),
+      keepalive: true,
+    });
+    if (!initRes.ok) {
+      const err = await initRes.json().catch(() => ({ detail: `HTTP ${initRes.status}` }));
+      throw new Error(err.detail || 'Upload init failed');
+    }
+    const initJob = await initRes.json();
+    state.pendingJobs[initJob.job_id] = {
+      filename: initJob.filename,
+      collectionId: collectionId,
+      status: initJob.status || 'uploading',
+      destPath: null,
+      queuePosition: null,
+      isActive: false,
+      isWaiting: false,
+      gpuHolder: null,
+      stage: 'uploading',
+      stageDetail: 'Receiving file upload',
+    };
+    _persistPendingJobs();
+    renderDocGrid();
+
+    const formData = new FormData();
+    formData.append('file', _selectedFile);
+    formData.append('job_id', initJob.job_id);
+    if (collectionId) formData.append('collection_id', collectionId);
+
     const res = await fetch('/api/upload', { method: 'POST', body: formData });
     if (!res.ok) {
       const err = await res.json().catch(() => ({ detail: `HTTP ${res.status}` }));
@@ -502,10 +680,16 @@ async function submitUpload() {
 
     // Register pending job and close modal — ingest shown on card in grid
     state.pendingJobs[job.job_id] = {
+      ...(state.pendingJobs[job.job_id] || {}),
       filename: job.filename,
       collectionId: collectionId,
-      status: 'running',
+      status: job.status || 'queued',
+      stage: job.stage || 'queued',
+      stageDetail: job.stage_detail || 'Waiting for ingest worker',
     };
+    state.uploadDraft = null;
+    _persistUploadDraft();
+    _persistPendingJobs();
     renderDocGrid(); // show the pending card immediately
 
     setTimeout(() => {
@@ -515,6 +699,13 @@ async function submitUpload() {
 
     _startJobPoller(job.job_id);
   } catch (e) {
+    const message = String(e && e.message ? e.message : e || '');
+    const likelyInterrupted =
+      /aborted|aborterror|failed to fetch|networkerror/i.test(message);
+    if (!likelyInterrupted) {
+      state.uploadDraft = null;
+      _persistUploadDraft();
+    }
     progressLabel.textContent = 'Error: ' + e.message;
     progressFill.style.width = '0%';
     submitBtn.disabled = false;
@@ -529,16 +720,34 @@ async function submitUpload() {
 function _startJobPoller(jobId) {
   const job = state.pendingJobs[jobId];
   if (!job) return;
+  if (job.timerId) return;
   let attempts = 0;
+  let failures = 0;
   const maxAttempts = 240; // 240 × 5 s = 20 min
 
   const interval = setInterval(async () => {
     attempts++;
     try {
       const status = await api('GET', `/api/upload/${jobId}`);
+      failures = 0;
+      state.pendingJobs[jobId] = {
+        ...(state.pendingJobs[jobId] || {}),
+        status: status.status || state.pendingJobs[jobId]?.status || 'running',
+        error: status.error || null,
+        destPath: status.dest_path || state.pendingJobs[jobId]?.destPath || null,
+        queuePosition: Number.isFinite(status.queue_position) ? status.queue_position : state.pendingJobs[jobId]?.queuePosition,
+        isActive: !!status.is_active,
+        isWaiting: !!status.is_waiting,
+        gpuHolder: status.gpu_holder || state.pendingJobs[jobId]?.gpuHolder || null,
+        stage: status.stage || state.pendingJobs[jobId]?.stage || null,
+        stageDetail: status.stage_detail || state.pendingJobs[jobId]?.stageDetail || null,
+      };
       if (status.status === 'done') {
         clearInterval(interval);
+        delete job.timerId;
         delete state.pendingJobs[jobId];
+        _persistPendingJobs();
+        api('DELETE', `/api/upload/${jobId}`).catch(() => {});
         showToast(`"${job.filename}" indexed successfully`, 'success');
         const colTarget = job.collectionId || state.selectedId;
         if (colTarget !== '__unassigned__' && colTarget !== state.selectedId) {
@@ -549,8 +758,12 @@ function _startJobPoller(jobId) {
         await loadCollections();
       } else if (status.status === 'error') {
         clearInterval(interval);
+        delete job.timerId;
         state.pendingJobs[jobId].status = 'error';
         state.pendingJobs[jobId].error = status.error || 'Unknown error';
+        state.pendingJobs[jobId].stage = status.stage || state.pendingJobs[jobId].stage || 'error';
+        state.pendingJobs[jobId].stageDetail = status.stage_detail || state.pendingJobs[jobId].stageDetail || 'Ingest failed';
+        _persistPendingJobs();
         _updatePendingCard(jobId);
         showToast('Ingest failed: ' + (status.error || 'Unknown'), 'error');
       } else {
@@ -558,11 +771,26 @@ function _startJobPoller(jobId) {
       }
       if (attempts >= maxAttempts) {
         clearInterval(interval);
+        delete job.timerId;
         delete state.pendingJobs[jobId];
+        _persistPendingJobs();
         renderDocGrid();
       }
-    } catch {}
+    } catch {
+      failures++;
+      if (failures >= 3 && state.pendingJobs[jobId]) {
+        clearInterval(interval);
+        delete job.timerId;
+        state.pendingJobs[jobId].status = 'error';
+        state.pendingJobs[jobId].error = 'Lost connection to server';
+        state.pendingJobs[jobId].stage = 'disconnected';
+        state.pendingJobs[jobId].stageDetail = 'Server unavailable';
+        _persistPendingJobs();
+        _updatePendingCard(jobId);
+      }
+    }
   }, 5000);
+  job.timerId = interval;
 }
 
 /** Update the status text on an existing pending card without a full re-render. */
@@ -579,8 +807,68 @@ function _updatePendingCard(jobId, attempts) {
     card.querySelector('.pending-spinner')?.remove();
   } else {
     const dots = '.'.repeat(((attempts || 1) % 3) + 1);
-    label.textContent = 'Indexing' + dots;
+    if (job.status === 'uploading') {
+      label.textContent = (job.stageDetail || 'Uploading') + (job.stageDetail ? '' : dots);
+    } else if (job.status === 'queued') {
+      label.textContent = (job.stageDetail || 'Queued') + (job.stageDetail ? '' : dots);
+    } else {
+      label.textContent = (job.stageDetail || _humanizeStage(job.stage) || 'Indexing') + (job.stageDetail ? '' : dots);
+    }
   }
+
+  const detail = card.querySelector('.pending-card-detail');
+  if (!detail) return;
+  if (job.status === 'uploading') {
+    detail.textContent = _humanizeStage(job.stage) || 'Uploading';
+  } else if (job.status === 'queued') {
+    detail.textContent = Number.isFinite(job.queuePosition)
+      ? `Queue position #${job.queuePosition}`
+      : (_humanizeStage(job.stage) || 'Waiting for GPU slot');
+  } else if (job.status === 'running') {
+    detail.textContent = _humanizeStage(job.stage) || (job.destPath ? `Working on ${_basename(job.destPath)}` : 'Ingest in progress');
+  } else {
+    detail.textContent = '';
+  }
+}
+
+function _humanizeStage(stage) {
+  const value = String(stage || '').trim();
+  if (!value) return '';
+  return value.replace(/_/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase());
+}
+
+function _jobStageBadgeText(job) {
+  if (!job) return 'Ingesting';
+  if (job.status === 'error') return 'Failed';
+  if (job.status === 'done') return 'Complete';
+  return _humanizeStage(job.stage) || _humanizeStage(job.status) || 'Ingesting';
+}
+
+function _jobPrimaryStatusText(job, attempts) {
+  if (!job) return '';
+  if (job.status === 'error') return 'Ingest failed';
+  if (job.stageDetail) return job.stageDetail;
+  const dots = '.'.repeat(((attempts || 1) % 3) + 1);
+  if (job.status === 'uploading') return `Uploading${dots}`;
+  if (job.status === 'queued') return `Queued${dots}`;
+  return `${_jobStageBadgeText(job)}${dots}`;
+}
+
+function _jobSecondaryDetailText(job) {
+  if (!job) return '';
+  if (job.status === 'error') return job.error || '';
+  if (job.status === 'uploading') return 'Transferring file to server';
+  if (job.status === 'queued') {
+    return Number.isFinite(job.queuePosition)
+      ? `Queue position #${job.queuePosition}`
+      : 'Waiting for ingest worker';
+  }
+  if (job.status === 'running') {
+    return job.destPath
+      ? `Working on ${_basename(job.destPath)}`
+      : 'Processing in background';
+  }
+  return '';
 }
 
 /**
@@ -590,31 +878,185 @@ function _renderPendingCard(jobId) {
   const job = state.pendingJobs[jobId];
   if (!job) return '';
   const ext = job.filename.split('.').pop().toLowerCase() || 'doc';
+  const stageLabel = _humanizeStage(job.stage);
   const statusText = job.status === 'error'
     ? ('✗ ' + (job.error || 'Ingest failed'))
-    : 'Indexing…';
+    : (job.status === 'uploading'
+      ? (job.stageDetail || 'Uploading…')
+      : (job.status === 'queued'
+        ? (job.stageDetail || 'Queued…')
+        : (job.stageDetail || (stageLabel ? `${stageLabel}…` : 'Indexing…'))));
   const spinnerHtml = job.status !== 'error'
     ? `<div class="pending-spinner"></div>`
     : '';
+  const dismissHtml = job.status === 'error'
+    ? `<button class="doc-card-dismiss" type="button" onclick="dismissPendingJob('${esc(jobId)}')" title="Dismiss upload job">×</button>`
+    : '';
+  const detailText = job.status === 'uploading'
+    ? (stageLabel || 'Uploading')
+    : (job.status === 'queued'
+      ? (Number.isFinite(job.queuePosition) ? `Queue position #${job.queuePosition}` : (stageLabel || 'Waiting for GPU slot'))
+      : (job.status === 'running'
+        ? (stageLabel || (job.destPath ? `Working on ${_basename(job.destPath)}` : 'Ingest in progress'))
+        : ''));
   return `
     <div class="doc-card doc-card-pending" data-job-id="${esc(jobId)}">
+      ${dismissHtml}
       <div class="doc-card-icon ${esc(ext)}">${extIcon(ext)}</div>
       <div class="doc-card-title" title="${esc(job.filename)}">${esc(job.filename)}</div>
       <div class="doc-card-meta">
         <span class="doc-badge doc-badge--${esc(ext)}">${ext.toUpperCase()}</span>
-        <span class="doc-badge ingest-badge">ingesting</span>
+        <span class="doc-badge ingest-badge">${esc(job.stage || job.status || 'ingesting')}</span>
       </div>
       <div class="pending-status-row">
         ${spinnerHtml}
         <span class="pending-card-status">${esc(statusText)}</span>
       </div>
+      <div class="pending-card-detail">${esc(detailText)}</div>
+    </div>`;
+}
+
+function _renderUploadDraftCard() {
+  const draft = state.uploadDraft;
+  if (!draft) return '';
+  const ext = (draft.filename || 'doc').split('.').pop().toLowerCase() || 'doc';
+  return `
+    <div class="doc-card doc-card-pending" data-job-id="upload-draft">
+      <div class="doc-card-icon ${esc(ext)}">${extIcon(ext)}</div>
+      <div class="doc-card-title" title="${esc(draft.filename || 'uploading')}">${esc(draft.filename || 'uploading')}</div>
+      <div class="doc-card-meta">
+        <span class="doc-badge doc-badge--${esc(ext)}">${ext.toUpperCase()}</span>
+        <span class="doc-badge ingest-badge">uploading</span>
+      </div>
+      <div class="pending-status-row">
+        <div class="pending-spinner"></div>
+        <span class="pending-card-status">Starting upload…</span>
+      </div>
+      <div class="pending-card-detail">Waiting for server job registration</div>
+    </div>`;
+}
+
+function _basename(path) {
+  const parts = String(path || '').split(/[\\/]/);
+  return parts[parts.length - 1] || '';
+}
+
+function _jobStageBadgeText(job) {
+  if (!job) return 'Ingesting';
+  if (job.status === 'error') return 'Failed';
+  if (job.status === 'done') return 'Complete';
+  return _humanizeStage(job.stage) || _humanizeStage(job.status) || 'Ingesting';
+}
+
+function _jobPrimaryStatusText(job, attempts) {
+  if (!job) return '';
+  if (job.status === 'error') return 'Ingest failed';
+  if (job.stageDetail) return job.stageDetail;
+  const dots = '.'.repeat(((attempts || 1) % 3) + 1);
+  if (job.status === 'uploading') return `Uploading${dots}`;
+  if (job.status === 'queued') return `Queued${dots}`;
+  return `${_jobStageBadgeText(job)}${dots}`;
+}
+
+function _jobSecondaryDetailText(job) {
+  if (!job) return '';
+  if (job.status === 'error') return job.error || '';
+  if (job.status === 'uploading') return 'Transferring file to server';
+  if (job.status === 'queued') {
+    return Number.isFinite(job.queuePosition)
+      ? `Queue position #${job.queuePosition}`
+      : 'Waiting for ingest worker';
+  }
+  if (job.status === 'running') {
+    return job.destPath
+      ? `Working on ${_basename(job.destPath)}`
+      : 'Processing in background';
+  }
+  return '';
+}
+
+function _updatePendingCard(jobId, attempts) {
+  const card = document.querySelector(`.doc-card-pending[data-job-id="${CSS.escape(jobId)}"]`);
+  if (!card) return;
+  const job = state.pendingJobs[jobId];
+  if (!job) return;
+
+  const badge = card.querySelector('.ingest-badge');
+  const label = card.querySelector('.pending-card-status');
+  const detail = card.querySelector('.pending-card-detail');
+  if (!label || !detail) return;
+
+  if (badge) {
+    badge.textContent = _jobStageBadgeText(job);
+    badge.classList.toggle('ingest-badge--error', job.status === 'error');
+  }
+
+  if (job.status === 'error') {
+    label.textContent = 'Ingest failed';
+    label.classList.add('pending-card-status--error');
+    card.querySelector('.pending-spinner')?.remove();
+  } else {
+    label.textContent = _jobPrimaryStatusText(job, attempts);
+    label.classList.remove('pending-card-status--error');
+  }
+
+  detail.textContent = _jobSecondaryDetailText(job);
+}
+
+function _renderPendingCard(jobId) {
+  const job = state.pendingJobs[jobId];
+  if (!job) return '';
+  const ext = job.filename.split('.').pop().toLowerCase() || 'doc';
+  const statusText = _jobPrimaryStatusText(job, 1);
+  const detailText = _jobSecondaryDetailText(job);
+  const spinnerHtml = job.status !== 'error'
+    ? `<div class="pending-spinner"></div>`
+    : '';
+  const dismissHtml = job.status === 'error'
+    ? `<button class="doc-card-dismiss" type="button" onclick="dismissPendingJob('${esc(jobId)}')" title="Dismiss upload job">×</button>`
+    : '';
+  const badgeClass = job.status === 'error'
+    ? 'doc-badge ingest-badge ingest-badge--error'
+    : 'doc-badge ingest-badge';
+  return `
+    <div class="doc-card doc-card-pending" data-job-id="${esc(jobId)}">
+      ${dismissHtml}
+      <div class="doc-card-icon ${esc(ext)}">${extIcon(ext)}</div>
+      <div class="doc-card-title" title="${esc(job.filename)}">${esc(job.filename)}</div>
+      <div class="doc-card-meta">
+        <span class="doc-badge doc-badge--${esc(ext)}">${ext.toUpperCase()}</span>
+        <span class="${badgeClass}">${esc(_jobStageBadgeText(job))}</span>
+      </div>
+      <div class="pending-status-row">
+        ${spinnerHtml}
+        <span class="pending-card-status${job.status === 'error' ? ' pending-card-status--error' : ''}">${esc(statusText)}</span>
+      </div>
+      <div class="pending-card-detail">${esc(detailText)}</div>
     </div>`;
 }
 
 function pollJob(jobId, filename, progressFill, progressLabel, submitBtn, collectionId) {
   // Legacy shim — new code uses _startJobPoller. Kept for any external callers.
   state.pendingJobs[jobId] = { filename, collectionId, status: 'running' };
+  _persistPendingJobs();
   _startJobPoller(jobId);
+}
+
+async function dismissPendingJob(jobId) {
+  if (!jobId || !state.pendingJobs[jobId]) return;
+  try {
+    await api('DELETE', `/api/upload/${jobId}`);
+  } catch (_) {}
+  delete state.pendingJobs[jobId];
+  _persistPendingJobs();
+  renderDocGrid();
+}
+
+function _resumePendingJobPollers() {
+  for (const [jobId, job] of Object.entries(state.pendingJobs || {})) {
+    if (!job || job.status === 'error') continue;
+    _startJobPoller(jobId);
+  }
 }
 
 
@@ -834,4 +1276,6 @@ function clearMobileSelection() {
 }
 
 // ── Init ───────────────────────────────────────────────────────────────────
+_restorePendingJobs();
+_restoreUploadDraft();
 loadAll();

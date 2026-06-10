@@ -1,0 +1,25 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 115,
+  "page_number": 116,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.4485679175997168,
+  "classified_page_type": "table_heavy",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 896,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nReport Creator Software \nImportance \nFactor \nEvaluation \nCriteria \nsimplified \nDreamReport \nRank \nIgnition \nRank \nPI System \nRank \nXLReport \nRank \n5 \nPricing \n2 \n3 \n1 \n4 \n5 \nUser dashboard \nconfiguration \n3 \n2 \n4 \n1 \n5 \nCustom report \ncreation \n3 \n1 \n4 \n2 \n5 \nVTScada \nintegration \n4 \n1 \n3 \n2 \n5 \nD",
+  "bbox": [
+    81.06400299072266,
+    99.05999755859375,
+    531.1799926757812,
+    615.9000244140625
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0116_table_01.png"
+}

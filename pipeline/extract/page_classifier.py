@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
-from typing import Dict
+from typing import Any, Dict
 
 import fitz  # PyMuPDF
 import pdfplumber
@@ -180,6 +180,71 @@ def _classify_single_page(
     return "standard"
 
 
+def _classify_single_page_with_details(
+    fitz_page: "fitz.Page",
+    plumber_page: "pdfplumber.page.Page",
+) -> Dict[str, Any]:
+    table_bboxes: list[list[float]] = []
+    page_type = "standard"
+
+    # Table check (PDFPlumber)
+    try:
+        tables = plumber_page.find_tables()
+        if tables:
+            pw = plumber_page.width or 1.0
+            ph = plumber_page.height or 1.0
+            page_area = pw * ph
+            table_area = 0.0
+            for t in tables:
+                bbox = getattr(t, "bbox", None)
+                if bbox is None:
+                    continue
+                table_bboxes.append([float(v) for v in bbox])
+                table_area += abs(bbox[2] - bbox[0]) * abs(bbox[3] - bbox[1])
+            if page_area > 0 and (table_area / page_area) > _TABLE_AREA_RATIO:
+                page_type = "table_heavy"
+    except Exception as exc:
+        logger.debug("PDFPlumber table check failed: %s", exc)
+
+    if page_type == "table_heavy":
+        return {"page_type": page_type, "table_bboxes": table_bboxes}
+
+    # Text / font analysis (PyMuPDF rawdict)
+    try:
+        raw = fitz_page.get_text("rawdict")
+    except Exception as exc:
+        logger.debug("PyMuPDF rawdict failed: %s", exc)
+        return {"page_type": "standard", "table_bboxes": table_bboxes}
+
+    total_chars = 0
+    math_chars = 0
+    mono_chars = 0
+
+    for block in raw.get("blocks", []):
+        if block.get("type") != 0:
+            continue
+        for line in block.get("lines", []):
+            for span in line.get("spans", []):
+                text: str = span.get("text", "")
+                font: str = span.get("font", "").lower()
+                n = len(text)
+                total_chars += n
+                math_chars += sum(1 for ch in text if _is_math_char(ord(ch)))
+                if any(m in font for m in _MONO_FONT_MARKERS):
+                    mono_chars += n
+
+    if _vector_drawing_math_risk(fitz_page, total_chars):
+        page_type = "math_heavy"
+    elif total_chars == 0:
+        page_type = "standard"
+    elif math_chars / total_chars > _MATH_CHAR_RATIO:
+        page_type = "math_heavy"
+    elif mono_chars / total_chars > _MONO_CHAR_RATIO:
+        page_type = "code_heavy"
+
+    return {"page_type": page_type, "table_bboxes": table_bboxes}
+
+
 def classify_all_pages(pdf_path: Path) -> Dict[int, str]:
     """
     Open *pdf_path* and classify every page.
@@ -196,21 +261,36 @@ def classify_all_pages(pdf_path: Path) -> Dict[int, str]:
         (``"standard"``, ``"math_heavy"``, ``"table_heavy"``, or ``"code_heavy"``).
         Returns an empty dict if the file cannot be opened.
     """
-    result: Dict[int, str] = {}
+    details = classify_all_pages_with_details(pdf_path)
+    return {
+        page_num: str(meta.get("page_type") or "standard")
+        for page_num, meta in details.items()
+    }
+
+
+def classify_all_pages_with_details(pdf_path: Path) -> Dict[int, Dict[str, Any]]:
+    """
+    Return detailed page classification metadata keyed by 0-based page index.
+
+    Each value includes:
+    - page_type: standard | math_heavy | table_heavy | code_heavy
+    - table_bboxes: list of [x0, top, x1, bottom] table boxes detected by pdfplumber
+    """
+    result: Dict[int, Dict[str, Any]] = {}
     try:
         with fitz.open(str(pdf_path)) as doc:
             with pdfplumber.open(str(pdf_path)) as plumber_doc:
                 for page_num in range(len(doc)):
                     try:
-                        fitz_page    = doc[page_num]
+                        fitz_page = doc[page_num]
                         plumber_page = plumber_doc.pages[page_num]
-                        result[page_num] = _classify_single_page(fitz_page, plumber_page)
+                        result[page_num] = _classify_single_page_with_details(fitz_page, plumber_page)
                     except Exception as exc:
                         logger.warning(
                             "page %d classification failed, defaulting to standard: %s",
                             page_num, exc,
                         )
-                        result[page_num] = "standard"
+                        result[page_num] = {"page_type": "standard", "table_bboxes": []}
     except Exception as exc:
-        logger.error("classify_all_pages failed for %s: %s", pdf_path, exc)
+        logger.error("classify_all_pages_with_details failed for %s: %s", pdf_path, exc)
     return result

@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 319,
+  "page_number": 320,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1599,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nMIX028 \nMIXER \nMIX029 \nMIXER--WET WELL MIXER \nMKP000 \nGLYCOL MAKE-UP UNIT \nMLSS077 \nML SUSPENDED SOLIDS METER \nMNT000 \nMONITOR \nMOV125 \nMOTOR OPERATED VALVE \nMP025 \nMETERING PUMP \nMPM075 \nMULTIPARAMETER METER \nMS132 \nMOISTURE SEPERATOR \nMSP015 \nMAIN SEWAGE PUMP \nMSP153 \nMIXED SLUDGE PUMP \nMST100 \nMETHONAL STORAGE TANK \nMTP095 \nMETHONAL T",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0320_table.png"
+}

@@ -1,0 +1,35 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 475,
+  "page_number": 476,
+  "artifact_kind": "form",
+  "classified_page_type": "standard",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "instructions for completing the sub- (contractor’s/consultants/ suppliers) solicited form",
+    "dmi 10 form",
+    "this form must be submitted with all bids or proposals. all subcontractors (regardless of ownership or size",
+    "solicited and subcontractors from whom unsolicited quotations were received must be included in this form. the"
+  ],
+  "text_length": 3571,
+  "reasons": [
+    "native:form_packet_continuation"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \ni \nPage 2 of 2 – DMI Solicited/Utilized \nInstructions for completing The Sub- (Contractor’s/Consultants/ Suppliers) Solicited Form \n(DMI 10 Form) \nThis form must be submitted with all bids or proposals. All subcontractors (regardless of ownership or size) \nsolicited and subcontractors from whom unsolicited quotations were received must be included in this form. The \ninstructions that follow correspond to the headings on the form required to be completed. Note: Ability or desire \nto perform all work shall not exempt the prime from ",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0476_form.png",
+  "artifact_type_inferred": "Instructional Form Guide",
+  "artifact_summary": "Instruction sheet for completing the City of Tampa DMI 10 Form for bids and proposals.",
+  "artifact_key_elements": [
+    "Contract number identification",
+    "Business contact information",
+    "Solicitation status documentation",
+    "Subcontractor detail guidelines",
+    "SLBE certification requirements"
+  ],
+  "artifact_blurb": "This document functions as a procedural guide for contractors and subcontractors submitting bids or proposals to the City of Tampa via the DMI 10 Form. It outlines mandatory data entry fields, including contract identifiers and business contact details, while providing specific protocols for documenting subcontractor information and verifying SLBE (Small and Local Business Enterprise) certification status.",
+  "replacement_text": "This document functions as a procedural guide for contractors and subcontractors submitting bids or proposals to the City of Tampa via the DMI 10 Form. It outlines mandatory data entry fields, including contract identifiers and business contact details, while providing specific protocols for documenting subcontractor information and verifying SLBE (Small and Local Business Enterprise) certification status.",
+  "normalized_text": "This document functions as a procedural guide for contractors and subcontractors submitting bids or proposals to the City of Tampa via the DMI 10 Form. It outlines mandatory data entry fields, including contract identifiers and business contact details, while providing specific protocols for documenting subcontractor information and verifying SLBE (Small and Local Business Enterprise) certification status.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T01:04:27.527331+00:00"
+}

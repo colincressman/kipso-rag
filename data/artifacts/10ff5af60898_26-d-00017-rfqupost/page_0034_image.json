@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 33,
+  "page_number": 34,
+  "artifact_kind": "image",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 5290,
+  "reasons": [
+    "page_classifier:table_heavy",
+    "table_override:page_spanning_table_bbox"
+  ],
+  "text_preview": "0\n1\"\n1/2\"\nWORKSTATION\nFIELD PANEL\nPLC\nPROCESS\nM\nM\nZL\nMA\nHS\nOCA\nO/C\nIN AUTO\nQL\nHS\nHOA\nHOR\nB\nA\nB\nE\nF\nLI\nO/C\nM\nC\nD\nE\nSE\nG\n(3)(4)\n(9)\n(12)\nON\nQL\nRUN\nYA\nFAULT\nSAL\nZERO SPEED\nQL\nREMOTE\nM\nREV\nHS\nAM\nQL\nFORWARD\nYA\nFAULT\nFOR\nSAL\nZERO SPEED\nM\nSE\nQL\nREMOTE\nDEWATERING\nSYSTEM PLC\nTO EACH CENTRIFUGE PLC\nRESET\nRESET\nH\nH\nWIR\n(3)\n(3)\nM\nM\nM\nM\nA\nD\nL\nJ\nF\nG\nC\nJ\nL\nM\n(3)\nLR\nFOR\nQL\nREVERSE\nHS\nFOR\n(3)\n(3)\n(3)\n(3)\n(12)\n(12)\n(12)\n(3)\n(3)\n(3)\n(3)\n(3)\nSE\nM\nHOR\nN\nO\nR\nU\nT\nS\nMS\nPSH\nMS\nPSH\nMS\nPSH\nQ\nP\nHS\nON/OFF\nON\nQL\nRUN\nYA\nFAULT\nSAL\nZERO SPEED\nQL\nREMOTE\nRESET\nN\nO\nP\nQ\nR\nS\nT\nU\nMA\nPULL CHORD\nPAH\nMA\nPULL CHORD\nPAH\nMA\nPULL CHORD\nPA",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0034_image.png",
+  "artifact_type_inferred": "Piping and Instrumentation Diagram (P&ID)",
+  "artifact_summary": "Process flow and control logic for a cake conveying system in a wastewater dewatering facility.",
+  "artifact_key_elements": [
+    "Conveyor systems",
+    "Drive motors",
+    "Diverters",
+    "PLC inputs",
+    "Field panels",
+    "Instrumentation tags"
+  ],
+  "artifact_blurb": "This P&ID illustrates the mechanical and electrical architecture of a cake conveying subsystem within a wastewater dewatering plant. It maps the interaction between physical process equipment—specifically conveyors, drive motors, and diverters—and their corresponding control logic, PLC input signals, and field operator panel configurations.",
+  "replacement_text": "This P&ID illustrates the mechanical and electrical architecture of a cake conveying subsystem within a wastewater dewatering plant. It maps the interaction between physical process equipment—specifically conveyors, drive motors, and diverters—and their corresponding control logic, PLC input signals, and field operator panel configurations.",
+  "normalized_text": "This P&ID illustrates the mechanical and electrical architecture of a cake conveying subsystem within a wastewater dewatering plant. It maps the interaction between physical process equipment—specifically conveyors, drive motors, and diverters—and their corresponding control logic, PLC input signals, and field operator panel configurations.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:16:37.828217+00:00"
+}

@@ -141,78 +141,62 @@ class DocumentSource:
 
 
 # ---------------------------------------------------------------------------
-# PostBranchPass / PostBranchPassResult
+# SecondPassConfig / SecondPassResult
 # ---------------------------------------------------------------------------
 
-@dataclass
-class PostBranchPass:
-    """An LLM call that runs after all branches complete, in series.
+SECOND_PASS_TYPES = Literal[
+    "organize_by_category",
+    "summarize_by_category",
+    "executive_summary",
+    "key_findings",
+    "next_actions",
+    "assemble_report",
+]
 
-    user_prompt_template supports two placeholders:
-      {items_text}    — bullet-formatted items from source_branches (or all branches)
-      {branch_names}  — comma-separated names of the source branches
-    """
+
+@dataclass
+class SecondPassConfig:
+    """A simple serial post-LLM pass that runs after all branch calls finish."""
 
     name: str
+    pass_type: SECOND_PASS_TYPES
     enabled: bool = True
-    output_heading: str = ""
-    input_source: Literal["all_branch_items", "selected_branch_items", "previous_pass_output"] = "all_branch_items"
-    """What this pass consumes as input."""
-
-    pass_mode: Literal["single", "per_branch", "map_reduce", "chain"] = "single"
-    """How this pass executes over the chosen input."""
-
+    title: str = ""
     source_branches: List[str] = field(default_factory=list)
-    """Branch names to draw items from when input_source='selected_branch_items'."""
+    report_categories: List[str] = field(default_factory=list)
+    reuse_categories_from_pass: str = ""
+    instructions: str = ""
     system_prompt: str = ""
     user_prompt_template: str = ""
+    max_chars_per_batch: int = 12000
     temperature: float = 0.1
     timeout_seconds: float = 180.0
-    max_chars_per_batch: int = 10000
-    """Maximum characters of items_text sent in a single LLM call.
-    If the input exceeds this, it is split into batches and responses are
-    concatenated, or reduced when pass_mode='map_reduce'. 0 = no limit."""
-
     num_predict: int = -1
-    """Maximum tokens the LLM may generate in a single call. -1 = model default.
-    Set to 4096 or higher for synthesis passes that need long outputs."""
-
-    per_branch: bool = False
-    """When True, call the LLM once per source branch and concatenate the results.
-    Each call receives only that branch's items and the {branch_names} placeholder
-    resolves to that single branch name.  Use for per-branch summaries."""
 
     def effective_heading(self) -> str:
-        return self.output_heading or self.name
+        return self.title or self.name
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, d: Dict[str, Any]) -> "PostBranchPass":
-        raw = dict(d)
-        if "input_source" not in raw:
-            source_branches = raw.get("source_branches") or []
-            raw["input_source"] = "selected_branch_items" if source_branches else "all_branch_items"
-        if "pass_mode" not in raw:
-            raw["pass_mode"] = "per_branch" if raw.get("per_branch") else "single"
-        if raw.get("pass_mode") == "chain":
-            raw["input_source"] = "previous_pass_output"
-
+    def from_dict(cls, d: Dict[str, Any]) -> "SecondPassConfig":
         valid_keys = {f.name for f in cls.__dataclass_fields__.values()}  # type: ignore[attr-defined]
-        unknown = set(raw) - valid_keys - {"per_branch"}
+        unknown = set(d) - valid_keys
         if unknown:
-            logger.warning("PostBranchPass: unknown keys ignored: %s", sorted(unknown))
-        return cls(**{k: v for k, v in raw.items() if k in valid_keys})
+            logger.warning("SecondPassConfig: unknown keys ignored: %s", sorted(unknown))
+        return cls(**{k: v for k, v in d.items() if k in valid_keys})
 
 
 @dataclass
-class PostBranchPassResult:
-    """Output of one post-branch LLM pass."""
+class SecondPassResult:
+    """Output of one serial second-pass step."""
 
     pass_name: str
     output_heading: str
     response_text: str = ""
+    artifact_type: str = ""
+    artifact_data: Optional[Dict[str, Any]] = None
     status: Literal["ok", "error"] = "ok"
     error: Optional[str] = None
     elapsed_seconds: float = 0.0
@@ -221,7 +205,7 @@ class PostBranchPassResult:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, d: Dict[str, Any]) -> "PostBranchPassResult":
+    def from_dict(cls, d: Dict[str, Any]) -> "SecondPassResult":
         valid_keys = {f.name for f in cls.__dataclass_fields__.values()}  # type: ignore[attr-defined]
         return cls(**{k: v for k, v in d.items() if k in valid_keys})
 
@@ -252,7 +236,7 @@ class ProjectConfig:
     keep_collection_after_run: bool = True
     """Keep ingested chunks in SQLite after extraction finishes."""
 
-    report_output_path: str = "data/reports"
+    report_output_path: str = "data/extraction_reports"
     """Directory where the output .md report is written."""
 
     cross_branch_dedup: bool = False
@@ -263,8 +247,8 @@ class ProjectConfig:
 
     created_at: str = ""
     updated_at: str = ""
-    post_branch_passes: List[PostBranchPass] = field(default_factory=list)
-    """Ordered list of LLM passes to run after all branches complete, in series."""
+    second_passes: List[SecondPassConfig] = field(default_factory=list)
+    """Optional serial post-LLM passes that run after branch extraction."""
 
     def effective_collection_id(self) -> str:
         return self.collection_id or f"extraction_{self.slug}"
@@ -275,17 +259,20 @@ class ProjectConfig:
 
     @classmethod
     def from_dict(cls, d: Dict[str, Any]) -> "ProjectConfig":
-        sources = [DocumentSource.from_dict(s) for s in d.pop("document_sources", [])]
-        branches = [BranchConfig.from_dict(b) for b in d.pop("branches", [])]
-        post_passes = [PostBranchPass.from_dict(p) for p in d.pop("post_branch_passes", [])]
+        raw = dict(d)
+        sources = [DocumentSource.from_dict(s) for s in raw.pop("document_sources", [])]
+        branches = [BranchConfig.from_dict(b) for b in raw.pop("branches", [])]
+        second_passes = [SecondPassConfig.from_dict(p) for p in raw.pop("second_passes", [])]
+        raw.pop("guided_reports", None)
+        raw.pop("post_branch_passes", None)
         valid_keys = {f.name for f in cls.__dataclass_fields__.values()}  # type: ignore[attr-defined]
-        unknown = set(d) - valid_keys
+        unknown = set(raw) - valid_keys
         if unknown:
             logger.warning("ProjectConfig: unknown keys ignored: %s", sorted(unknown))
-        obj = cls(**{k: v for k, v in d.items() if k in valid_keys})
+        obj = cls(**{k: v for k, v in raw.items() if k in valid_keys})
         obj.document_sources = sources
         obj.branches = branches
-        obj.post_branch_passes = post_passes
+        obj.second_passes = second_passes
         return obj
 
     def save(self, projects_dir: str = "data/flag_library/projects") -> None:
@@ -371,6 +358,7 @@ class BranchResult:
     branch_name: str
     output_heading: str
     items: List[ExtractionItem] = field(default_factory=list)
+    evidence_chunks: List[Dict[str, Any]] = field(default_factory=list)
     stats: BranchStats = field(default_factory=BranchStats)
     status: Literal["ok", "empty", "error"] = "ok"
 
@@ -385,6 +373,7 @@ class BranchResult:
             branch_name=d["branch_name"],
             output_heading=d["output_heading"],
             items=items,
+            evidence_chunks=list(d.get("evidence_chunks", []) or []),
             stats=stats,
             status=d.get("status", "ok"),
         )

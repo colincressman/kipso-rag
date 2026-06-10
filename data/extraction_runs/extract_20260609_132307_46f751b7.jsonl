@@ -1,0 +1,287 @@
+{"seq": 1, "type": "run_started", "run_id": "extract_20260609_132307_46f751b7", "kind": "full_run", "project_slug": "test"}
+{"seq": 2, "type": "progress", "message": "Starting extraction project: test"}
+{"seq": 3, "type": "progress", "message": "Checkpoint: data\\extraction_checkpoints\\test_20260609_132307.jsonl"}
+{"seq": 4, "type": "progress", "message": "Collection: Tampa"}
+{"seq": 5, "type": "progress", "message": "  \u00e2\u0153\u201c Already ingested: 26-d-00017-rfqupost.pdf"}
+{"seq": 6, "type": "progress", "message": "Building corpus index\u00e2\u20ac\u00a6"}
+{"seq": 7, "type": "progress", "message": "  \u00e2\u2020\u2019 450 chunks loaded for collection 'Tampa'"}
+{"seq": 8, "type": "progress", "message": "Running 10 branch(es)\u00e2\u20ac\u00a6"}
+{"seq": 9, "type": "progress", "message": "Warming LLM\u00e2\u20ac\u00a6"}
+{"seq": 10, "type": "progress", "message": "  \u00e2\u0153\u201c LLM ready"}
+{"seq": 11, "type": "progress", "message": "\nBranch 1/10: Project Identification / Executive Summary"}
+{"seq": 12, "type": "progress", "message": "Retrieving chunks for branch 'Project Identification / Executive Summary'\u2026"}
+{"seq": 13, "type": "progress", "message": "  \u2192 HyDE: generating passage\u2026"}
+{"seq": 14, "type": "progress", "message": "  \u2192 Step-back: broadening query\u2026"}
+{"seq": 15, "type": "progress", "message": "  \u2192 Embedding query\u2026"}
+{"seq": 16, "type": "progress", "message": "  \u2192 Scoring 450 candidates\u2026"}
+{"seq": 17, "type": "progress", "message": "  \u2192 438 chunks after filter (from 452 retrieved)"}
+{"seq": 18, "type": "progress", "message": "  \u2192 Scan: 438 chunks across 95 batch(es)"}
+{"seq": 19, "type": "progress", "message": "  \u2192 Scan batch 1/95\u2026"}
+{"seq": 20, "type": "progress", "message": "  \u2192 Scan batch 2/95\u2026"}
+{"seq": 21, "type": "progress", "message": "  \u2192 Scan batch 3/95\u2026"}
+{"seq": 22, "type": "progress", "message": "  \u2192 Scan batch 4/95\u2026"}
+{"seq": 23, "type": "progress", "message": "  \u2192 Scan batch 5/95\u2026"}
+{"seq": 24, "type": "progress", "message": "  \u2192 Scan batch 6/95\u2026"}
+{"seq": 25, "type": "progress", "message": "  \u2192 Scan batch 7/95\u2026"}
+{"seq": 26, "type": "progress", "message": "  \u2192 Scan batch 8/95\u2026"}
+{"seq": 27, "type": "progress", "message": "  \u2192 Scan batch 9/95\u2026"}
+{"seq": 28, "type": "progress", "message": "  \u2192 Scan batch 10/95\u2026"}
+{"seq": 29, "type": "progress", "message": "  \u2192 Scan batch 11/95\u2026"}
+{"seq": 30, "type": "progress", "message": "  \u2192 Scan batch 12/95\u2026"}
+{"seq": 31, "type": "progress", "message": "  \u2192 Scan batch 13/95\u2026"}
+{"seq": 32, "type": "progress", "message": "  \u2192 Scan batch 14/95\u2026"}
+{"seq": 33, "type": "progress", "message": "  \u2192 Scan batch 15/95\u2026"}
+{"seq": 34, "type": "progress", "message": "  \u2192 Scan batch 16/95\u2026"}
+{"seq": 35, "type": "progress", "message": "  \u2192 Scan batch 17/95\u2026"}
+{"seq": 36, "type": "progress", "message": "  \u2192 Scan batch 18/95\u2026"}
+{"seq": 37, "type": "progress", "message": "  \u2192 Scan batch 19/95\u2026"}
+{"seq": 38, "type": "progress", "message": "  \u2192 Scan batch 20/95\u2026"}
+{"seq": 39, "type": "progress", "message": "  \u2192 Scan batch 21/95\u2026"}
+{"seq": 40, "type": "progress", "message": "  \u2192 Scan batch 22/95\u2026"}
+{"seq": 41, "type": "progress", "message": "  \u2192 Scan batch 23/95\u2026"}
+{"seq": 42, "type": "progress", "message": "  \u2192 Scan batch 24/95\u2026"}
+{"seq": 43, "type": "progress", "message": "  \u2192 Scan batch 25/95\u2026"}
+{"seq": 44, "type": "progress", "message": "  \u2192 Scan batch 26/95\u2026"}
+{"seq": 45, "type": "progress", "message": "  \u2192 Scan batch 27/95\u2026"}
+{"seq": 46, "type": "progress", "message": "  \u2192 Scan batch 28/95\u2026"}
+{"seq": 47, "type": "progress", "message": "  \u2192 Scan batch 29/95\u2026"}
+{"seq": 48, "type": "progress", "message": "  \u2192 Scan batch 30/95\u2026"}
+{"seq": 49, "type": "progress", "message": "  \u2192 Scan batch 31/95\u2026"}
+{"seq": 50, "type": "progress", "message": "  \u2192 Scan batch 32/95\u2026"}
+{"seq": 51, "type": "progress", "message": "  \u2192 Scan batch 33/95\u2026"}
+{"seq": 52, "type": "progress", "message": "  \u2192 Scan batch 34/95\u2026"}
+{"seq": 53, "type": "progress", "message": "  \u2192 Scan batch 35/95\u2026"}
+{"seq": 54, "type": "progress", "message": "  \u2192 Scan batch 36/95\u2026"}
+{"seq": 55, "type": "progress", "message": "  \u2192 Scan batch 37/95\u2026"}
+{"seq": 56, "type": "progress", "message": "  \u2192 Scan batch 38/95\u2026"}
+{"seq": 57, "type": "progress", "message": "  \u2192 Scan batch 39/95\u2026"}
+{"seq": 58, "type": "progress", "message": "  \u2192 Scan batch 40/95\u2026"}
+{"seq": 59, "type": "progress", "message": "  \u2192 Scan batch 41/95\u2026"}
+{"seq": 60, "type": "progress", "message": "  \u2192 Scan batch 42/95\u2026"}
+{"seq": 61, "type": "progress", "message": "  \u2192 Scan batch 43/95\u2026"}
+{"seq": 62, "type": "progress", "message": "  \u2192 Scan batch 44/95\u2026"}
+{"seq": 63, "type": "progress", "message": "  \u2192 Scan batch 45/95\u2026"}
+{"seq": 64, "type": "progress", "message": "  \u2192 Scan batch 46/95\u2026"}
+{"seq": 65, "type": "progress", "message": "  \u2192 Scan batch 47/95\u2026"}
+{"seq": 66, "type": "progress", "message": "  \u2192 Scan batch 48/95\u2026"}
+{"seq": 67, "type": "progress", "message": "  \u2192 Scan batch 49/95\u2026"}
+{"seq": 68, "type": "progress", "message": "  \u2192 Scan batch 50/95\u2026"}
+{"seq": 69, "type": "progress", "message": "  \u2192 Scan batch 51/95\u2026"}
+{"seq": 70, "type": "progress", "message": "  \u2192 Scan batch 52/95\u2026"}
+{"seq": 71, "type": "progress", "message": "  \u2192 Scan batch 53/95\u2026"}
+{"seq": 72, "type": "progress", "message": "  \u2192 Scan batch 54/95\u2026"}
+{"seq": 73, "type": "progress", "message": "  \u2192 Scan batch 55/95\u2026"}
+{"seq": 74, "type": "progress", "message": "  \u2192 Scan batch 56/95\u2026"}
+{"seq": 75, "type": "progress", "message": "  \u2192 Scan batch 57/95\u2026"}
+{"seq": 76, "type": "progress", "message": "  \u2192 Scan batch 58/95\u2026"}
+{"seq": 77, "type": "progress", "message": "  \u2192 Scan batch 59/95\u2026"}
+{"seq": 78, "type": "progress", "message": "  \u2192 Scan batch 60/95\u2026"}
+{"seq": 79, "type": "progress", "message": "  \u2192 Scan batch 61/95\u2026"}
+{"seq": 80, "type": "progress", "message": "  \u2192 Scan batch 62/95\u2026"}
+{"seq": 81, "type": "progress", "message": "  \u2192 Scan batch 63/95\u2026"}
+{"seq": 82, "type": "progress", "message": "  \u2192 Scan batch 64/95\u2026"}
+{"seq": 83, "type": "progress", "message": "  \u2192 Scan batch 65/95\u2026"}
+{"seq": 84, "type": "progress", "message": "  \u2192 Scan batch 66/95\u2026"}
+{"seq": 85, "type": "progress", "message": "  \u2192 Scan batch 67/95\u2026"}
+{"seq": 86, "type": "progress", "message": "  \u2192 Scan batch 68/95\u2026"}
+{"seq": 87, "type": "progress", "message": "  \u2192 Scan batch 69/95\u2026"}
+{"seq": 88, "type": "progress", "message": "  \u2192 Scan batch 70/95\u2026"}
+{"seq": 89, "type": "progress", "message": "  \u2192 Scan batch 71/95\u2026"}
+{"seq": 90, "type": "progress", "message": "  \u2192 Scan batch 72/95\u2026"}
+{"seq": 91, "type": "progress", "message": "  \u2192 Scan batch 73/95\u2026"}
+{"seq": 92, "type": "progress", "message": "  \u2192 Scan batch 74/95\u2026"}
+{"seq": 93, "type": "progress", "message": "  \u2192 Scan batch 75/95\u2026"}
+{"seq": 94, "type": "progress", "message": "  \u2192 Scan batch 76/95\u2026"}
+{"seq": 95, "type": "progress", "message": "  \u2192 Scan batch 77/95\u2026"}
+{"seq": 96, "type": "progress", "message": "  \u2192 Scan batch 78/95\u2026"}
+{"seq": 97, "type": "progress", "message": "  \u2192 Scan batch 79/95\u2026"}
+{"seq": 98, "type": "progress", "message": "  \u2192 Scan batch 80/95\u2026"}
+{"seq": 99, "type": "progress", "message": "  \u2192 Scan batch 81/95\u2026"}
+{"seq": 100, "type": "progress", "message": "  \u2192 Scan batch 82/95\u2026"}
+{"seq": 101, "type": "progress", "message": "  \u2192 Scan batch 83/95\u2026"}
+{"seq": 102, "type": "progress", "message": "  \u2192 Scan batch 84/95\u2026"}
+{"seq": 103, "type": "progress", "message": "  \u2192 Scan batch 85/95\u2026"}
+{"seq": 104, "type": "progress", "message": "  \u2192 Scan batch 86/95\u2026"}
+{"seq": 105, "type": "progress", "message": "  \u2192 Scan batch 87/95\u2026"}
+{"seq": 106, "type": "progress", "message": "  \u2192 Scan batch 88/95\u2026"}
+{"seq": 107, "type": "progress", "message": "  \u2192 Scan batch 89/95\u2026"}
+{"seq": 108, "type": "progress", "message": "  \u2192 Scan batch 90/95\u2026"}
+{"seq": 109, "type": "progress", "message": "  \u2192 Scan batch 91/95\u2026"}
+{"seq": 110, "type": "progress", "message": "  \u2192 Scan batch 92/95\u2026"}
+{"seq": 111, "type": "progress", "message": "  \u2192 Scan batch 93/95\u2026"}
+{"seq": 112, "type": "progress", "message": "  \u2192 Scan batch 94/95\u2026"}
+{"seq": 113, "type": "progress", "message": "  \u2192 Scan batch 95/95\u2026"}
+{"seq": 114, "type": "progress", "message": "  \u2192 Scan selected 111 chunk(s)"}
+{"seq": 115, "type": "progress", "message": "  \u2192 Synthesis sub-batch 1/28\u2026"}
+{"seq": 116, "type": "progress", "message": "  \u2192 Synthesis sub-batch 2/28\u2026"}
+{"seq": 117, "type": "progress", "message": "  \u2192 Synthesis sub-batch 3/28\u2026"}
+{"seq": 118, "type": "progress", "message": "  \u2192 Synthesis sub-batch 4/28\u2026"}
+{"seq": 119, "type": "progress", "message": "  \u2192 Synthesis sub-batch 5/28\u2026"}
+{"seq": 120, "type": "progress", "message": "  \u2192 Synthesis sub-batch 6/28\u2026"}
+{"seq": 121, "type": "progress", "message": "  \u2192 Synthesis sub-batch 7/28\u2026"}
+{"seq": 122, "type": "progress", "message": "  \u2192 Synthesis sub-batch 8/28\u2026"}
+{"seq": 123, "type": "progress", "message": "  \u2192 Synthesis sub-batch 9/28\u2026"}
+{"seq": 124, "type": "progress", "message": "  \u2192 Synthesis sub-batch 10/28\u2026"}
+{"seq": 125, "type": "progress", "message": "  \u2192 Synthesis sub-batch 11/28\u2026"}
+{"seq": 126, "type": "progress", "message": "  \u2192 Synthesis sub-batch 12/28\u2026"}
+{"seq": 127, "type": "progress", "message": "  \u2192 Synthesis sub-batch 13/28\u2026"}
+{"seq": 128, "type": "progress", "message": "  \u2192 Synthesis sub-batch 14/28\u2026"}
+{"seq": 129, "type": "progress", "message": "  \u2192 Synthesis sub-batch 15/28\u2026"}
+{"seq": 130, "type": "progress", "message": "  \u2192 Synthesis sub-batch 16/28\u2026"}
+{"seq": 131, "type": "progress", "message": "  \u2192 Synthesis sub-batch 17/28\u2026"}
+{"seq": 132, "type": "progress", "message": "  \u2192 Synthesis sub-batch 18/28\u2026"}
+{"seq": 133, "type": "progress", "message": "  \u2192 Synthesis sub-batch 19/28\u2026"}
+{"seq": 134, "type": "progress", "message": "  \u2192 Synthesis sub-batch 20/28\u2026"}
+{"seq": 135, "type": "progress", "message": "  \u2192 Synthesis sub-batch 21/28\u2026"}
+{"seq": 136, "type": "progress", "message": "  \u2192 Synthesis sub-batch 22/28\u2026"}
+{"seq": 137, "type": "progress", "message": "  \u2192 Synthesis sub-batch 23/28\u2026"}
+{"seq": 138, "type": "progress", "message": "  \u2192 Synthesis sub-batch 24/28\u2026"}
+{"seq": 139, "type": "progress", "message": "  \u2192 Synthesis sub-batch 25/28\u2026"}
+{"seq": 140, "type": "progress", "message": "  \u2192 Synthesis sub-batch 26/28\u2026"}
+{"seq": 141, "type": "progress", "message": "  \u2192 Synthesis sub-batch 27/28\u2026"}
+{"seq": 142, "type": "progress", "message": "  \u2192 Synthesis sub-batch 28/28\u2026"}
+{"seq": 143, "type": "progress", "message": "  \u2192 Branch 'Project Identification / Executive Summary': 45 item(s) extracted (1204.95s)"}
+{"seq": 144, "type": "progress", "message": "  \u00e2\u2020\u2019 Saved 45 item(s) to checkpoint"}
+{"seq": 145, "type": "progress", "message": "\nBranch 2/10: Proposal / Procurement Requirements"}
+{"seq": 146, "type": "progress", "message": "Retrieving chunks for branch 'Proposal / Procurement Requirements'\u2026"}
+{"seq": 147, "type": "progress", "message": "  \u2192 Step-back: broadening query\u2026"}
+{"seq": 148, "type": "progress", "message": "  \u2192 Embedding query\u2026"}
+{"seq": 149, "type": "progress", "message": "  \u2192 Scoring 450 candidates\u2026"}
+{"seq": 150, "type": "progress", "message": "  \u2192 113 chunks after filter (from 452 retrieved)"}
+{"seq": 151, "type": "progress", "message": "  \u2192 Scan: 113 chunks across 29 batch(es)"}
+{"seq": 152, "type": "progress", "message": "  \u2192 Scan batch 1/29\u2026"}
+{"seq": 153, "type": "progress", "message": "  \u2192 Scan batch 2/29\u2026"}
+{"seq": 154, "type": "progress", "message": "  \u2192 Scan batch 3/29\u2026"}
+{"seq": 155, "type": "progress", "message": "  \u2192 Scan batch 4/29\u2026"}
+{"seq": 156, "type": "progress", "message": "  \u2192 Scan batch 5/29\u2026"}
+{"seq": 157, "type": "progress", "message": "  \u2192 Scan batch 6/29\u2026"}
+{"seq": 158, "type": "progress", "message": "  \u2192 Scan batch 7/29\u2026"}
+{"seq": 159, "type": "progress", "message": "  \u2192 Scan batch 8/29\u2026"}
+{"seq": 160, "type": "progress", "message": "  \u2192 Scan batch 9/29\u2026"}
+{"seq": 161, "type": "progress", "message": "  \u2192 Scan batch 10/29\u2026"}
+{"seq": 162, "type": "progress", "message": "  \u2192 Scan batch 11/29\u2026"}
+{"seq": 163, "type": "progress", "message": "  \u2192 Scan batch 12/29\u2026"}
+{"seq": 164, "type": "progress", "message": "  \u2192 Scan batch 13/29\u2026"}
+{"seq": 165, "type": "progress", "message": "  \u2192 Scan batch 14/29\u2026"}
+{"seq": 166, "type": "progress", "message": "  \u2192 Scan batch 15/29\u2026"}
+{"seq": 167, "type": "progress", "message": "  \u2192 Scan batch 16/29\u2026"}
+{"seq": 168, "type": "progress", "message": "  \u2192 Scan batch 17/29\u2026"}
+{"seq": 169, "type": "progress", "message": "  \u2192 Scan batch 18/29\u2026"}
+{"seq": 170, "type": "progress", "message": "  \u2192 Scan batch 19/29\u2026"}
+{"seq": 171, "type": "progress", "message": "  \u2192 Scan batch 20/29\u2026"}
+{"seq": 172, "type": "progress", "message": "  \u2192 Scan batch 21/29\u2026"}
+{"seq": 173, "type": "progress", "message": "  \u2192 Scan batch 22/29\u2026"}
+{"seq": 174, "type": "progress", "message": "  \u2192 Scan batch 23/29\u2026"}
+{"seq": 175, "type": "progress", "message": "  \u2192 Scan batch 24/29\u2026"}
+{"seq": 176, "type": "progress", "message": "  \u2192 Scan batch 25/29\u2026"}
+{"seq": 177, "type": "progress", "message": "  \u2192 Scan batch 26/29\u2026"}
+{"seq": 178, "type": "progress", "message": "  \u2192 Scan batch 27/29\u2026"}
+{"seq": 179, "type": "progress", "message": "  \u2192 Scan batch 28/29\u2026"}
+{"seq": 180, "type": "progress", "message": "  \u2192 Scan batch 29/29\u2026"}
+{"seq": 181, "type": "progress", "message": "  \u2192 Scan selected 16 chunk(s)"}
+{"seq": 182, "type": "progress", "message": "  \u2192 Synthesis sub-batch 1/5\u2026"}
+{"seq": 183, "type": "progress", "message": "  \u2192 Synthesis sub-batch 2/5\u2026"}
+{"seq": 184, "type": "progress", "message": "  \u2192 Synthesis sub-batch 3/5\u2026"}
+{"seq": 185, "type": "progress", "message": "  \u2192 Synthesis sub-batch 4/5\u2026"}
+{"seq": 186, "type": "progress", "message": "  \u2192 Synthesis sub-batch 5/5\u2026"}
+{"seq": 187, "type": "progress", "message": "  \u2192 Branch 'Proposal / Procurement Requirements': 15 item(s) extracted (346.87s)"}
+{"seq": 188, "type": "progress", "message": "  \u00e2\u2020\u2019 Saved 15 item(s) to checkpoint"}
+{"seq": 189, "type": "progress", "message": "\nBranch 3/10: Scope of Work"}
+{"seq": 190, "type": "progress", "message": "Retrieving chunks for branch 'Scope of Work'\u2026"}
+{"seq": 191, "type": "progress", "message": "  \u2192 HyDE: generating passage\u2026"}
+{"seq": 192, "type": "progress", "message": "  \u2192 Step-back: broadening query\u2026"}
+{"seq": 193, "type": "progress", "message": "  \u2192 Embedding query\u2026"}
+{"seq": 194, "type": "progress", "message": "  \u2192 Scoring 450 candidates\u2026"}
+{"seq": 195, "type": "progress", "message": "  \u2192 438 chunks after filter (from 452 retrieved)"}
+{"seq": 196, "type": "progress", "message": "  \u2192 Scan: 438 chunks across 94 batch(es)"}
+{"seq": 197, "type": "progress", "message": "  \u2192 Scan batch 1/94\u2026"}
+{"seq": 198, "type": "progress", "message": "  \u2192 Scan batch 2/94\u2026"}
+{"seq": 199, "type": "progress", "message": "  \u2192 Scan batch 3/94\u2026"}
+{"seq": 200, "type": "progress", "message": "  \u2192 Scan batch 4/94\u2026"}
+{"seq": 201, "type": "progress", "message": "  \u2192 Scan batch 5/94\u2026"}
+{"seq": 202, "type": "progress", "message": "  \u2192 Scan batch 6/94\u2026"}
+{"seq": 203, "type": "progress", "message": "  \u2192 Scan batch 7/94\u2026"}
+{"seq": 204, "type": "progress", "message": "  \u2192 Scan batch 8/94\u2026"}
+{"seq": 205, "type": "progress", "message": "  \u2192 Scan batch 9/94\u2026"}
+{"seq": 206, "type": "progress", "message": "  \u2192 Scan batch 10/94\u2026"}
+{"seq": 207, "type": "progress", "message": "  \u2192 Scan batch 11/94\u2026"}
+{"seq": 208, "type": "progress", "message": "  \u2192 Scan batch 12/94\u2026"}
+{"seq": 209, "type": "progress", "message": "  \u2192 Scan batch 13/94\u2026"}
+{"seq": 210, "type": "progress", "message": "  \u2192 Scan batch 14/94\u2026"}
+{"seq": 211, "type": "progress", "message": "  \u2192 Scan batch 15/94\u2026"}
+{"seq": 212, "type": "progress", "message": "  \u2192 Scan batch 16/94\u2026"}
+{"seq": 213, "type": "progress", "message": "  \u2192 Scan batch 17/94\u2026"}
+{"seq": 214, "type": "progress", "message": "  \u2192 Scan batch 18/94\u2026"}
+{"seq": 215, "type": "progress", "message": "  \u2192 Scan batch 19/94\u2026"}
+{"seq": 216, "type": "progress", "message": "  \u2192 Scan batch 20/94\u2026"}
+{"seq": 217, "type": "progress", "message": "  \u2192 Scan batch 21/94\u2026"}
+{"seq": 218, "type": "progress", "message": "  \u2192 Scan batch 22/94\u2026"}
+{"seq": 219, "type": "progress", "message": "  \u2192 Scan batch 23/94\u2026"}
+{"seq": 220, "type": "progress", "message": "  \u2192 Scan batch 24/94\u2026"}
+{"seq": 221, "type": "progress", "message": "  \u2192 Scan batch 25/94\u2026"}
+{"seq": 222, "type": "progress", "message": "  \u2192 Scan batch 26/94\u2026"}
+{"seq": 223, "type": "progress", "message": "  \u2192 Scan batch 27/94\u2026"}
+{"seq": 224, "type": "progress", "message": "  \u2192 Scan batch 28/94\u2026"}
+{"seq": 225, "type": "progress", "message": "  \u2192 Scan batch 29/94\u2026"}
+{"seq": 226, "type": "progress", "message": "  \u2192 Scan batch 30/94\u2026"}
+{"seq": 227, "type": "progress", "message": "  \u2192 Scan batch 31/94\u2026"}
+{"seq": 228, "type": "progress", "message": "  \u2192 Scan batch 32/94\u2026"}
+{"seq": 229, "type": "progress", "message": "  \u2192 Scan batch 33/94\u2026"}
+{"seq": 230, "type": "progress", "message": "  \u2192 Scan batch 34/94\u2026"}
+{"seq": 231, "type": "progress", "message": "  \u2192 Scan batch 35/94\u2026"}
+{"seq": 232, "type": "progress", "message": "  \u2192 Scan batch 36/94\u2026"}
+{"seq": 233, "type": "progress", "message": "  \u2192 Scan batch 37/94\u2026"}
+{"seq": 234, "type": "progress", "message": "  \u2192 Scan batch 38/94\u2026"}
+{"seq": 235, "type": "progress", "message": "  \u2192 Scan batch 39/94\u2026"}
+{"seq": 236, "type": "progress", "message": "  \u2192 Scan batch 40/94\u2026"}
+{"seq": 237, "type": "progress", "message": "  \u2192 Scan batch 41/94\u2026"}
+{"seq": 238, "type": "progress", "message": "  \u2192 Scan batch 42/94\u2026"}
+{"seq": 239, "type": "progress", "message": "  \u2192 Scan batch 43/94\u2026"}
+{"seq": 240, "type": "progress", "message": "  \u2192 Scan batch 44/94\u2026"}
+{"seq": 241, "type": "progress", "message": "  \u2192 Scan batch 45/94\u2026"}
+{"seq": 242, "type": "progress", "message": "  \u2192 Scan batch 46/94\u2026"}
+{"seq": 243, "type": "progress", "message": "  \u2192 Scan batch 47/94\u2026"}
+{"seq": 244, "type": "progress", "message": "  \u2192 Scan batch 48/94\u2026"}
+{"seq": 245, "type": "progress", "message": "  \u2192 Scan batch 49/94\u2026"}
+{"seq": 246, "type": "progress", "message": "  \u2192 Scan batch 50/94\u2026"}
+{"seq": 247, "type": "progress", "message": "  \u2192 Scan batch 51/94\u2026"}
+{"seq": 248, "type": "progress", "message": "  \u2192 Scan batch 52/94\u2026"}
+{"seq": 249, "type": "progress", "message": "  \u2192 Scan batch 53/94\u2026"}
+{"seq": 250, "type": "progress", "message": "  \u2192 Scan batch 54/94\u2026"}
+{"seq": 251, "type": "progress", "message": "  \u2192 Scan batch 55/94\u2026"}
+{"seq": 252, "type": "progress", "message": "  \u2192 Scan batch 56/94\u2026"}
+{"seq": 253, "type": "progress", "message": "  \u2192 Scan batch 57/94\u2026"}
+{"seq": 254, "type": "progress", "message": "  \u2192 Scan batch 58/94\u2026"}
+{"seq": 255, "type": "progress", "message": "  \u2192 Scan batch 59/94\u2026"}
+{"seq": 256, "type": "progress", "message": "  \u2192 Scan batch 60/94\u2026"}
+{"seq": 257, "type": "progress", "message": "  \u2192 Scan batch 61/94\u2026"}
+{"seq": 258, "type": "progress", "message": "  \u2192 Scan batch 62/94\u2026"}
+{"seq": 259, "type": "progress", "message": "  \u2192 Scan batch 63/94\u2026"}
+{"seq": 260, "type": "progress", "message": "  \u2192 Scan batch 64/94\u2026"}
+{"seq": 261, "type": "progress", "message": "  \u2192 Scan batch 65/94\u2026"}
+{"seq": 262, "type": "progress", "message": "  \u2192 Scan batch 66/94\u2026"}
+{"seq": 263, "type": "progress", "message": "  \u2192 Scan batch 67/94\u2026"}
+{"seq": 264, "type": "progress", "message": "  \u2192 Scan batch 68/94\u2026"}
+{"seq": 265, "type": "progress", "message": "  \u2192 Scan batch 69/94\u2026"}
+{"seq": 266, "type": "progress", "message": "  \u2192 Scan batch 70/94\u2026"}
+{"seq": 267, "type": "progress", "message": "  \u2192 Scan batch 71/94\u2026"}
+{"seq": 268, "type": "progress", "message": "  \u2192 Scan batch 72/94\u2026"}
+{"seq": 269, "type": "progress", "message": "  \u2192 Scan batch 73/94\u2026"}
+{"seq": 270, "type": "progress", "message": "  \u2192 Scan batch 74/94\u2026"}
+{"seq": 271, "type": "progress", "message": "  \u2192 Scan batch 75/94\u2026"}
+{"seq": 272, "type": "progress", "message": "  \u2192 Scan batch 76/94\u2026"}
+{"seq": 273, "type": "progress", "message": "  \u2192 Scan batch 77/94\u2026"}
+{"seq": 274, "type": "progress", "message": "  \u2192 Scan batch 78/94\u2026"}
+{"seq": 275, "type": "progress", "message": "  \u2192 Scan batch 79/94\u2026"}
+{"seq": 276, "type": "progress", "message": "  \u2192 Scan batch 80/94\u2026"}
+{"seq": 277, "type": "progress", "message": "  \u2192 Scan batch 81/94\u2026"}
+{"seq": 278, "type": "progress", "message": "  \u2192 Scan batch 82/94\u2026"}
+{"seq": 279, "type": "progress", "message": "  \u2192 Scan batch 83/94\u2026"}
+{"seq": 280, "type": "progress", "message": "  \u2192 Scan batch 84/94\u2026"}
+{"seq": 281, "type": "progress", "message": "  \u2192 Scan batch 85/94\u2026"}
+{"seq": 282, "type": "progress", "message": "  \u2192 Scan batch 86/94\u2026"}
+{"seq": 283, "type": "progress", "message": "  \u2192 Scan batch 87/94\u2026"}
+{"seq": 284, "type": "progress", "message": "  \u2192 Scan batch 88/94\u2026"}
+{"seq": 285, "type": "progress", "message": "  \u2192 Scan batch 89/94\u2026"}
+{"seq": 286, "type": "progress", "message": "  \u2192 Scan batch 90/94\u2026"}
+{"seq": 287, "type": "error", "message": "Server restarted during extraction run", "phase": "error", "stage": "interrupted", "percent_hint": null}

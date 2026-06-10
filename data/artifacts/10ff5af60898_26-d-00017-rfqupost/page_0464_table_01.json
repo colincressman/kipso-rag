@@ -1,0 +1,27 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 463,
+  "page_number": 464,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.5218796835490306,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "contractor extended check-out request form"
+  ],
+  "text_length": 916,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n                  \n                       \n \n     \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n             \n \n \n \n \n \nSCADA Standards Appendix B \nContractor Extended Check-Out Request Form \nExample \nDate of Request: \n1/20/2025 \nProject Number: \n1234 \nName of Requester: \nJ. Bond \nName of Firm: \nMI6 \nPhone Number: \n123-456-7890 \nE-mail address: \nJBond@mi6.com \nAnticipated Check-\nOut Date: \n1/21/2025 \nAnticipated Check-\nIn Date: \n1/22/2025 \nAttach additional sheets",
+  "bbox": [
+    64.5182876586914,
+    118.73999786376953,
+    547.7526245117188,
+    676.1325073242188
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0464_table_01.png"
+}

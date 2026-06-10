@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 139,
+  "page_number": 140,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan",
+    "howard f. curren awtp - scada system"
+  ],
+  "text_length": 185,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nReport Creator Software \n6.4 \nIgnition Quote \nFigure 11 Ignition Quote \nHFC AWTP Master Plan \nDecember 2024 \nHoward F. Curren AWTP - SCADA System \nReport Creator Software Evaluation \n40 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0140_image.png",
+  "artifact_type_inferred": "Commercial Invoice Sample",
+  "artifact_summary": "Sample invoice from Inductive Automation showing software packages and support services totaling $29,205.00 USD.",
+  "artifact_key_elements": [
+    "Vendor: Inductive Automation",
+    "Total Amount: $29,205.00 USD",
+    "Item Type: Software Packages & Support Services",
+    "Context: Software Evaluation Report",
+    "Figure Reference: Figure 11"
+  ],
+  "artifact_blurb": "Figure 11 presents a rendered commercial invoice sample from Inductive Automation, itemizing software packages and support services with a total value of $29,205.00 USD, including specific billing addresses and payment terms for a software evaluation report.",
+  "replacement_text": "Figure 11 presents a rendered commercial invoice sample from Inductive Automation, itemizing software packages and support services with a total value of $29,205.00 USD, including specific billing addresses and payment terms for a software evaluation report.",
+  "normalized_text": "Figure 11 presents a rendered commercial invoice sample from Inductive Automation, itemizing software packages and support services with a total value of $29,205.00 USD, including specific billing addresses and payment terms for a software evaluation report.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:47:14.550588+00:00"
+}

@@ -1,0 +1,84 @@
+{"seq": 1, "type": "run_started", "run_id": "extract_20260608_133448_8094e245", "kind": "full_run", "project_slug": "test"}
+{"seq": 2, "type": "progress", "message": "Starting extraction project: test"}
+{"seq": 3, "type": "progress", "message": "Checkpoint: data\\extraction_checkpoints\\test_20260608_133448.jsonl"}
+{"seq": 4, "type": "progress", "message": "Collection: Tampa"}
+{"seq": 5, "type": "progress", "message": "  \u00e2\u0153\u201c Already ingested: 26-d-00017-rfqupost.pdf"}
+{"seq": 6, "type": "progress", "message": "Building corpus index\u00e2\u20ac\u00a6"}
+{"seq": 7, "type": "progress", "message": "  \u00e2\u2020\u2019 450 chunks loaded for collection 'Tampa'"}
+{"seq": 8, "type": "progress", "message": "Running 10 branch(es)\u00e2\u20ac\u00a6"}
+{"seq": 9, "type": "progress", "message": "Warming LLM\u00e2\u20ac\u00a6"}
+{"seq": 10, "type": "progress", "message": "  \u00e2\u0153\u201c LLM ready"}
+{"seq": 11, "type": "progress", "message": "\nBranch 1/10: Project Identification / Executive Summary"}
+{"seq": 12, "type": "progress", "message": "Retrieving chunks for branch 'Project Identification / Executive Summary'\u2026"}
+{"seq": 13, "type": "progress", "message": "  \u2192 HyDE: generating passage\u2026"}
+{"seq": 14, "type": "progress", "message": "  \u2192 Step-back: broadening query\u2026"}
+{"seq": 15, "type": "progress", "message": "  \u2192 Embedding query\u2026"}
+{"seq": 16, "type": "progress", "message": "  \u2192 Scoring 450 candidates\u2026"}
+{"seq": 17, "type": "progress", "message": "  \u2192 49 chunks after filter (from 452 retrieved)"}
+{"seq": 18, "type": "progress", "message": "  \u2192 Scan: 49 chunks across 5 batch(es)"}
+{"seq": 19, "type": "progress", "message": "  \u2192 Scan batch 1/5\u2026"}
+{"seq": 20, "type": "progress", "message": "  \u2192 Scan batch 2/5\u2026"}
+{"seq": 21, "type": "progress", "message": "  \u2192 Scan batch 3/5\u2026"}
+{"seq": 22, "type": "progress", "message": "  \u2192 Scan batch 4/5\u2026"}
+{"seq": 23, "type": "progress", "message": "  \u2192 Scan batch 5/5\u2026"}
+{"seq": 24, "type": "progress", "message": "  \u2192 Scan selected 4 chunk(s)"}
+{"seq": 25, "type": "progress", "message": "  \u2192 Synthesis pass (4 chunk(s))\u2026"}
+{"seq": 26, "type": "progress", "message": "  \u2192 Branch 'Project Identification / Executive Summary': 0 item(s) extracted (81.93s)"}
+{"seq": 27, "type": "progress", "message": "  \u00e2\u2020\u2019 Saved 0 item(s) to checkpoint"}
+{"seq": 28, "type": "progress", "message": "\nBranch 2/10: Proposal / Procurement Requirements"}
+{"seq": 29, "type": "progress", "message": "Retrieving chunks for branch 'Proposal / Procurement Requirements'\u2026"}
+{"seq": 30, "type": "progress", "message": "  \u2192 Step-back: broadening query\u2026"}
+{"seq": 31, "type": "progress", "message": "  \u2192 Embedding query\u2026"}
+{"seq": 32, "type": "progress", "message": "  \u2192 Scoring 450 candidates\u2026"}
+{"seq": 33, "type": "progress", "message": "  \u2192 5 chunks after filter (from 452 retrieved)"}
+{"seq": 34, "type": "progress", "message": "  \u2192 Scan: 5 chunks across 1 batch(es)"}
+{"seq": 35, "type": "progress", "message": "  \u2192 Scan batch 1/1\u2026"}
+{"seq": 36, "type": "progress", "message": "  \u2192 Scan selected 0 chunk(s)"}
+{"seq": 37, "type": "progress", "message": "  \u2192 No chunks selected by scan pass for branch 'Proposal / Procurement Requirements'"}
+{"seq": 38, "type": "progress", "message": "  \u00e2\u2020\u2019 Saved 0 item(s) to checkpoint"}
+{"seq": 39, "type": "progress", "message": "\nBranch 3/10: Scope of Work"}
+{"seq": 40, "type": "progress", "message": "Retrieving chunks for branch 'Scope of Work'\u2026"}
+{"seq": 41, "type": "progress", "message": "  \u2192 HyDE: generating passage\u2026"}
+{"seq": 42, "type": "progress", "message": "  \u2192 Step-back: broadening query\u2026"}
+{"seq": 43, "type": "progress", "message": "  \u2192 Embedding query\u2026"}
+{"seq": 44, "type": "progress", "message": "  \u2192 Scoring 450 candidates\u2026"}
+{"seq": 45, "type": "progress", "message": "  \u2192 49 chunks after filter (from 452 retrieved)"}
+{"seq": 46, "type": "progress", "message": "  \u2192 Scan: 49 chunks across 5 batch(es)"}
+{"seq": 47, "type": "progress", "message": "  \u2192 Scan batch 1/5\u2026"}
+{"seq": 48, "type": "progress", "message": "  \u2192 Scan batch 2/5\u2026"}
+{"seq": 49, "type": "progress", "message": "  \u2192 Scan batch 3/5\u2026"}
+{"seq": 50, "type": "progress", "message": "  \u2192 Scan batch 4/5\u2026"}
+{"seq": 51, "type": "progress", "message": "  \u2192 Scan batch 5/5\u2026"}
+{"seq": 52, "type": "progress", "message": "  \u2192 Scan selected 21 chunk(s)"}
+{"seq": 53, "type": "progress", "message": "  \u2192 Synthesis sub-batch 1/2\u2026"}
+{"seq": 54, "type": "progress", "message": "  \u2192 Synthesis sub-batch 2/2\u2026"}
+{"seq": 55, "type": "progress", "message": "  \u2192 Branch 'Scope of Work': 6 item(s) extracted (95.67s)"}
+{"seq": 56, "type": "progress", "message": "  \u00e2\u2020\u2019 Saved 6 item(s) to checkpoint"}
+{"seq": 57, "type": "progress", "message": "\nBranch 4/10: SCADA / Control System Requirements"}
+{"seq": 58, "type": "progress", "message": "Retrieving chunks for branch 'SCADA / Control System Requirements'\u2026"}
+{"seq": 59, "type": "progress", "message": "  \u2192 Step-back: broadening query\u2026"}
+{"seq": 60, "type": "progress", "message": "  \u2192 Embedding query\u2026"}
+{"seq": 61, "type": "progress", "message": "  \u2192 Scoring 450 candidates\u2026"}
+{"seq": 62, "type": "progress", "message": "  \u2192 37 chunks after filter (from 452 retrieved)"}
+{"seq": 63, "type": "progress", "message": "  \u2192 Scan: 37 chunks across 4 batch(es)"}
+{"seq": 64, "type": "progress", "message": "  \u2192 Scan batch 1/4\u2026"}
+{"seq": 65, "type": "progress", "message": "  \u2192 Scan batch 2/4\u2026"}
+{"seq": 66, "type": "progress", "message": "  \u2192 Scan batch 3/4\u2026"}
+{"seq": 67, "type": "progress", "message": "  \u2192 Scan batch 4/4\u2026"}
+{"seq": 68, "type": "progress", "message": "  \u2192 Scan selected 36 chunk(s)"}
+{"seq": 69, "type": "progress", "message": "  \u2192 Synthesis sub-batch 1/4\u2026"}
+{"seq": 70, "type": "progress", "message": "  \u2192 Synthesis sub-batch 2/4\u2026"}
+{"seq": 71, "type": "progress", "message": "  \u2192 Synthesis sub-batch 3/4\u2026"}
+{"seq": 72, "type": "progress", "message": "  \u2192 Synthesis sub-batch 4/4\u2026"}
+{"seq": 73, "type": "progress", "message": "  \u2192 Branch 'SCADA / Control System Requirements': 35 item(s) extracted (107.7s)"}
+{"seq": 74, "type": "progress", "message": "  \u00e2\u2020\u2019 Saved 35 item(s) to checkpoint"}
+{"seq": 75, "type": "progress", "message": "\nBranch 5/10: Network / Fiber / Communications Requirements"}
+{"seq": 76, "type": "progress", "message": "Retrieving chunks for branch 'Network / Fiber / Communications Requirements'\u2026"}
+{"seq": 77, "type": "progress", "message": "  \u2192 Step-back: broadening query\u2026"}
+{"seq": 78, "type": "progress", "message": "  \u2192 Embedding query\u2026"}
+{"seq": 79, "type": "progress", "message": "  \u2192 Scoring 450 candidates\u2026"}
+{"seq": 80, "type": "progress", "message": "  \u2192 12 chunks after filter (from 452 retrieved)"}
+{"seq": 81, "type": "progress", "message": "  \u2192 Scan: 12 chunks across 2 batch(es)"}
+{"seq": 82, "type": "progress", "message": "  \u2192 Scan batch 1/2\u2026"}
+{"seq": 83, "type": "progress", "message": "  \u2192 Scan batch 2/2\u2026"}
+{"seq": 84, "type": "error", "message": "Server restarted during extraction run", "phase": "error", "stage": "interrupted", "percent_hint": null}

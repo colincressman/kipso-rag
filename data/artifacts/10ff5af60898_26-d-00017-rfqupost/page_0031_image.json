@@ -1,0 +1,29 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 30,
+  "page_number": 31,
+  "artifact_kind": "image",
+  "classified_page_type": "math_heavy",
+  "image_count": 6,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 0,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0031_image.png",
+  "artifact_type_inferred": "Engineering Legend Sheet",
+  "artifact_summary": "Reference document for the City of Tampa Wastewater Department detailing instrumentation symbols, tag numbering, and piping conventions.",
+  "artifact_key_elements": [
+    "Valve symbols",
+    "Pump definitions",
+    "Instrument tags",
+    "Piping line types"
+  ],
+  "artifact_blurb": "Comprehensive legend sheet titled 'Instrumentation Legend and Symbols' serving as a critical reference for the City of Tampa Wastewater Department's dewatering facility replacement project. It provides standardized visual definitions for engineering components including valves, pumps, and instruments, alongside specific conventions for tag numbering and piping line classifications.",
+  "replacement_text": "Comprehensive legend sheet titled 'Instrumentation Legend and Symbols' serving as a critical reference for the City of Tampa Wastewater Department's dewatering facility replacement project. It provides standardized visual definitions for engineering components including valves, pumps, and instruments, alongside specific conventions for tag numbering and piping line classifications.",
+  "normalized_text": "Comprehensive legend sheet titled 'Instrumentation Legend and Symbols' serving as a critical reference for the City of Tampa Wastewater Department's dewatering facility replacement project. It provides standardized visual definitions for engineering components including valves, pumps, and instruments, alongside specific conventions for tag numbering and piping line classifications.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:12:31.663229+00:00"
+}

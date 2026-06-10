@@ -1,0 +1,34 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 476,
+  "page_number": 477,
+  "artifact_kind": "form",
+  "classified_page_type": "table_heavy",
+  "image_count": 0,
+  "widget_count": 49,
+  "form_packet_signature": [
+    "failure to complete, sign, and submit forms 10, 20, & 50 may render the bid or",
+    "dmi solicited/utilized schedules",
+    "city of tampa - schedule of all to-be-utilized sub-(contractors/consultants/suppliers",
+    "dmi 20 form"
+  ],
+  "text_length": 1755,
+  "reasons": [
+    "native:pdf_form_widgets"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n   \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n   \n \n \n \n \n \n \n \n \n \n                             \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n   \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \nFailure t",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0477_form.png",
+  "artifact_type_inferred": "Government Procurement Form",
+  "artifact_summary": "City of Tampa DMI 20 Form for scheduling utilized subcontractors, consultants, and suppliers with NIGP codes and financial data.",
+  "artifact_key_elements": [
+    "Contract and Company Information Section",
+    "Subcontractor Listing Table with NIGP Codes",
+    "Financial Details and Cost Breakdown",
+    "Certification and Signature Block"
+  ],
+  "artifact_blurb": "This is a City of Tampa DMI 20 Form, specifically a 'Schedule of All To-Be-Utilized Sub-(Contractors/Consultants/Suppliers)'. The document facilitates the official registration of third-party entities involved in municipal projects. It includes dedicated fields for primary contract and company details, a structured table for enumerating subcontractors alongside their specific NIGP classification codes and associated financial metrics, and a formal certification section requiring authorized signatures to validate the submitted information.",
+  "replacement_text": "This is a City of Tampa DMI 20 Form, specifically a 'Schedule of All To-Be-Utilized Sub-(Contractors/Consultants/Suppliers)'. The document facilitates the official registration of third-party entities involved in municipal projects. It includes dedicated fields for primary contract and company details, a structured table for enumerating subcontractors alongside their specific NIGP classification codes and associated financial metrics, and a formal certification section requiring authorized signatures to validate the submitted information.",
+  "normalized_text": "This is a City of Tampa DMI 20 Form, specifically a 'Schedule of All To-Be-Utilized Sub-(Contractors/Consultants/Suppliers)'. The document facilitates the official registration of third-party entities involved in municipal projects. It includes dedicated fields for primary contract and company details, a structured table for enumerating subcontractors alongside their specific NIGP classification codes and associated financial metrics, and a formal certification section requiring authorized signatures to validate the submitted information.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T01:06:08.330965+00:00"
+}

@@ -1,0 +1,35 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 477,
+  "page_number": 478,
+  "artifact_kind": "form",
+  "classified_page_type": "standard",
+  "image_count": 0,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "instructions for completing the sub- (contractor’s/consultants/ suppliers) to be utilized form",
+    "dmi 20 form",
+    "this form must be submitted with all bids or proposals. all subcontractors (regardless of ownership or size",
+    "projected to be utilized must be included in this form"
+  ],
+  "text_length": 3517,
+  "reasons": [
+    "native:form_packet_continuation"
+  ],
+  "text_preview": " \n \n \n    \n \n \n \n  \n  \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0478_form.png",
+  "artifact_type_inferred": "Solicited Subcontractor List Form",
+  "artifact_summary": "Instructions for completing the DMI 20 Form, a solicited/utilized subcontractor list for the City of Tampa.",
+  "artifact_key_elements": [
+    "Contract number fields",
+    "Contractor details section",
+    "Federal ID requirements",
+    "SLBE firm compliance rules",
+    "Subcontracting goal specifications"
+  ],
+  "artifact_blurb": "This document provides comprehensive guidelines for populating the DMI 20 Form, which serves as the official solicited and utilized subcontractor registry for the City of Tampa. It outlines mandatory data entry points including unique contract identifiers, full contractor profiles, and federal identification numbers, while enforcing specific adherence to Small and Local Business Enterprise (SLBE) compliance protocols and established subcontracting performance goals.",
+  "replacement_text": "This document provides comprehensive guidelines for populating the DMI 20 Form, which serves as the official solicited and utilized subcontractor registry for the City of Tampa. It outlines mandatory data entry points including unique contract identifiers, full contractor profiles, and federal identification numbers, while enforcing specific adherence to Small and Local Business Enterprise (SLBE) compliance protocols and established subcontracting performance goals.",
+  "normalized_text": "This document provides comprehensive guidelines for populating the DMI 20 Form, which serves as the official solicited and utilized subcontractor registry for the City of Tampa. It outlines mandatory data entry points including unique contract identifiers, full contractor profiles, and federal identification numbers, while enforcing specific adherence to Small and Local Business Enterprise (SLBE) compliance protocols and established subcontracting performance goals.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T01:07:37.907924+00:00"
+}

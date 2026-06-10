@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 134,
+  "page_number": 135,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan",
+    "howard f. curren awtp - scada system"
+  ],
+  "text_length": 190,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nReport Creator Software \n6.2 \nDreamReport Quote \nFigure 6 DreamReport Quote \nHFC AWTP Master Plan \nDecember 2024 \nHoward F. Curren AWTP - SCADA System \nReport Creator Software Evaluation \n35 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0135_image.png",
+  "artifact_type_inferred": "document_page",
+  "artifact_summary": "Document page containing a DreamReport Quote from Ocean Data Systems with subscription pricing, payment terms, and contact details.",
+  "artifact_key_elements": [
+    "DreamReport Quote",
+    "Ocean Data Systems",
+    "Subscription License Pricing",
+    "Payment Terms",
+    "Contact Information"
+  ],
+  "artifact_blurb": "This document page presents a formal quotation for the DreamReport software solution provided by Ocean Data Systems. The content outlines specific pricing structures for a subscription-based license model, details the associated terms of payment, and lists relevant contact information for the vendor.",
+  "replacement_text": "This document page presents a formal quotation for the DreamReport software solution provided by Ocean Data Systems. The content outlines specific pricing structures for a subscription-based license model, details the associated terms of payment, and lists relevant contact information for the vendor.",
+  "normalized_text": "This document page presents a formal quotation for the DreamReport software solution provided by Ocean Data Systems. The content outlines specific pricing structures for a subscription-based license model, details the associated terms of payment, and lists relevant contact information for the vendor.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:40:34.936194+00:00"
+}

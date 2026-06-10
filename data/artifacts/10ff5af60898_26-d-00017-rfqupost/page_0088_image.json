@@ -1,0 +1,35 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 87,
+  "page_number": 88,
+  "artifact_kind": "image",
+  "classified_page_type": "table_heavy",
+  "image_count": 28,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "030 - stb sludge treatment building",
+    "035-fpp-03 - sludge treatment building (mcc enclosure"
+  ],
+  "text_length": 2496,
+  "reasons": [
+    "page_classifier:table_heavy",
+    "table_override:page_spanning_table_bbox"
+  ],
+  "text_preview": "I-200 \nI-201 \nI-202 \n030 - STB Sludge Treatment Building \n035-FPP-03 - Sludge Treatment Building (MCC Enclosure)\n030-FPP-01 - Sludge Treatment Building (MCC Enclosure) \n030-FPP-02 - Sludge Treatment Building (MCC Enclosure) \nSlot 1 \nSlot 2 \nSlot 3 \nSlot 4 \nSlot 1 \nSlot 2 \nSlot 3 \nSlot 4 \nSlot 1 \nSlot 2 \nBlue \nBlue \nRed \nRed \nBlue \nBlue \nRed \nRed \nWhite \nWhite \nOrange \nOrange \nBlack \nBlack \nOrange \nOrange \nBlack \nBlack \nSlate \nSlate \nGreen \nGreen \nYellow \nYellow \nGreen \nGreen \nYellow \nYellow \nBrown \nBrown \nBrown \nBrown \nViolet \nViolet \nBrown \nBrown \nViolet \nViolet \nGreen \nGreen \nSlate \nSlate \nR",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0088_image.png",
+  "artifact_type_inferred": "Industrial Network Schematic",
+  "artifact_summary": "Network diagram for City of Tampa Wastewater Department treatment plant showing PLC, SCADA, and media converter connections.",
+  "artifact_key_elements": [
+    "PLC Control Stations",
+    "SCADA Terminals",
+    "Media Converters",
+    "Sludge Treatment Building",
+    "Standby Power Building",
+    "Oxygen Generation Building"
+  ],
+  "artifact_blurb": "A detailed network topology schematic for the City of Tampa Wastewater Department's treatment facility, mapping physical cabling and logical connections between Programmable Logic Controllers (PLCs), Supervisory Control and Data Acquisition (SCADA) terminals, and media converters distributed across the Sludge Treatment, Standby Power, and Oxygen Generation buildings.",
+  "replacement_text": "A detailed network topology schematic for the City of Tampa Wastewater Department's treatment facility, mapping physical cabling and logical connections between Programmable Logic Controllers (PLCs), Supervisory Control and Data Acquisition (SCADA) terminals, and media converters distributed across the Sludge Treatment, Standby Power, and Oxygen Generation buildings.",
+  "normalized_text": "A detailed network topology schematic for the City of Tampa Wastewater Department's treatment facility, mapping physical cabling and logical connections between Programmable Logic Controllers (PLCs), Supervisory Control and Data Acquisition (SCADA) terminals, and media converters distributed across the Sludge Treatment, Standby Power, and Oxygen Generation buildings.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:27:22.592820+00:00"
+}

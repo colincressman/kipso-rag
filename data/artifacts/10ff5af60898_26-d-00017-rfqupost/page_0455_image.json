@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 454,
+  "page_number": 455,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n148 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0455_image.png",
+  "artifact_type_inferred": "SCADA_Tag_Specification_Table",
+  "artifact_summary": "Table defining SCADA tags, device types, addresses, and descriptions for Hazen SCADA Standards Appendix A, covering actuators, motors, and PID controllers.",
+  "artifact_key_elements": [
+    "SCADA System Tags",
+    "Device Types",
+    "Communication Addresses",
+    "Configuration Parameters",
+    "Actuator Settings",
+    "PID Controller Logic"
+  ],
+  "artifact_blurb": "A structured data table enumerating SCADA system tags, associated device types, network addresses, and functional descriptions for general variables and configuration parameters. Specifically details operational settings for actuators, motors, and PID controllers as defined in the Hazen SCADA Standards Appendix A.",
+  "replacement_text": "A structured data table enumerating SCADA system tags, associated device types, network addresses, and functional descriptions for general variables and configuration parameters. Specifically details operational settings for actuators, motors, and PID controllers as defined in the Hazen SCADA Standards Appendix A.",
+  "normalized_text": "A structured data table enumerating SCADA system tags, associated device types, network addresses, and functional descriptions for general variables and configuration parameters. Specifically details operational settings for actuators, motors, and PID controllers as defined in the Hazen SCADA Standards Appendix A.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:59:48.487008+00:00"
+}

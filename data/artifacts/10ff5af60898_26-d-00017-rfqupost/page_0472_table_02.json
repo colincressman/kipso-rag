@@ -1,0 +1,28 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 471,
+  "page_number": 472,
+  "artifact_kind": "table",
+  "artifact_index": 2,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.4842599551830974,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "programming laptop request form example",
+    "name of requester: j. bond"
+  ],
+  "text_length": 759,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n             \n \n \n \n \n \nSCADA Standards Appendix B \nProgramming Laptop Request Form Example \nDate of Request: 1/20/2025 \nProject Number: 1234 \nName of Requester: J. Bond \nName of Firm: MI6 \nPhone Number: 123-456-7890 \nE-mail address: JBond@MI6.com \nAttach additional sheets as needed to provide the information required below. \nName of Programmer(s): \nJ. Bond \nExpected Duration of use: Two (2) months \nRequired Software Application(s):Studio 5",
+  "bbox": [
+    59.79557800292969,
+    161.33999633789062,
+    547.739990234375,
+    674.6925048828125
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0472_table_02.png"
+}

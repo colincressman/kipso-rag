@@ -1,0 +1,31 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 91,
+  "page_number": 92,
+  "artifact_kind": "image",
+  "classified_page_type": "table_heavy",
+  "image_count": 37,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 2349,
+  "reasons": [
+    "page_classifier:table_heavy",
+    "table_override:page_spanning_table_bbox"
+  ],
+  "text_preview": "0\n1\"\n1/2\"\n089-FPP-01 - Fuel Island \nSlot 1 \nWhite \nSlate \nBrown \nGreen \nOrange \nBlue \n054 - Sludge Control Building \n054-FPP-01 - Sludge Control Building (MCC Room) \nSlot 1 \nSlot 2 \nSlot 3 \nBlue \nBlue \nBlue \nOrange \nOrange \nOrange \nGreen \nGreen \nGreen \nBrown \nBrown \nBrown \nSlate \nSlate \nSlate \nWhite \nWhite \nWhite \nPLC-08 (SCB) \n192.0.39.108 \nI-500 \nI-304 \nI-501 \nI-502 \nI-503 \nVeeder Root \nMedia Converter\nMedia Converter \nMedia Converter \nUnknown FPP \n12 Strand to 2 Strand \nGuy Verger Gate \nSecurity \n005 - Screen & Grit 2 \n059 - Screen & Grit 1 \n059-FPP-01 - Screen & Grit 1(MCC Room)\n005-FPP-01",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0092_image.png",
+  "artifact_type_inferred": "Network Infrastructure Schematic",
+  "artifact_summary": "IT network topology for the City of Tampa Wastewater Department's Advanced Wastewater Treatment Plant.",
+  "artifact_key_elements": [
+    "PLC connectivity",
+    "Industrial switches",
+    "Control consoles",
+    "Sludge Control Building",
+    "Screen & Grit zones"
+  ],
+  "artifact_blurb": "Detailed network diagram illustrating the IT infrastructure architecture for the City of Tampa Wastewater Department's Advanced Wastewater Treatment Plant, mapping data pathways between Programmable Logic Controllers (PLCs), network switches, and control consoles within critical facility zones including the Sludge Control Building and Screen & Grit areas.",
+  "replacement_text": "Detailed network diagram illustrating the IT infrastructure architecture for the City of Tampa Wastewater Department's Advanced Wastewater Treatment Plant, mapping data pathways between Programmable Logic Controllers (PLCs), network switches, and control consoles within critical facility zones including the Sludge Control Building and Screen & Grit areas.",
+  "normalized_text": "Detailed network diagram illustrating the IT infrastructure architecture for the City of Tampa Wastewater Department's Advanced Wastewater Treatment Plant, mapping data pathways between Programmable Logic Controllers (PLCs), network switches, and control consoles within critical facility zones including the Sludge Control Building and Screen & Grit areas.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:28:53.217461+00:00"
+}

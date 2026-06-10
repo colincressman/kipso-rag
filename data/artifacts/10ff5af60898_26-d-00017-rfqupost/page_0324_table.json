@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 323,
+  "page_number": 324,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1679,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nTS183 \nTREES AND SHRUBS \nTSH000 \nTEMPERATURE SWITCH, HIGH \nTSL000 \nTEMPERATURE SWITCH, LOW \nTSM161 \nTANK SKIMMER MECHANISM \nTSP082 \nTHICKENED SLUDGE PUMP \nTSS011 \nTOTAL SUSPENDED SOLIDS ANALYZER \nTWV123 \nTHREE WAY VALVES \nUH064 \nUNIT HEATER \nUNS000 \nRECTIFIERS, INVERTERS, FREQUENCY CONVERTERS \nUPS310 \nUNINTERRUPTIBLE POWER SUPPLY \nUU215 \nULTRAFI",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0324_table.png"
+}

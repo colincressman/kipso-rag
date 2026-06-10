@@ -55,6 +55,7 @@ except Exception:
 STATIC_DIR   = _BUNDLE_ROOT / "server" / "static"
 CONTEXT_PATH = PROJECT_ROOT / "data" / "context.json"
 FEEDBACK_DIR = PROJECT_ROOT / "data" / "feedback"
+UPLOAD_JOBS_DIR = PROJECT_ROOT / "data" / "upload_jobs"
 
 # ── GPU lock ──────────────────────────────────────────────────────────────────
 # A single semaphore serialises all GPU-heavy jobs (ingest, large-doc extraction).
@@ -121,6 +122,64 @@ _raw_ingest_state: Dict[str, Any] = {
     "current_file": None,
     "error":        None,
 }
+
+
+def _utc_now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def persist_ingest_job(job_id: str) -> None:
+    """Persist one ingest job record to disk for restart recovery."""
+    job = _ingest_jobs.get(job_id)
+    if not job:
+        return
+    UPLOAD_JOBS_DIR.mkdir(parents=True, exist_ok=True)
+    payload = dict(job)
+    payload.pop("timerId", None)
+    (UPLOAD_JOBS_DIR / f"{job_id}.json").write_text(
+        json.dumps(payload, indent=2),
+        encoding="utf-8",
+    )
+
+
+def delete_persisted_ingest_job(job_id: str) -> None:
+    """Delete one persisted ingest job record from disk and memory."""
+    _ingest_jobs.pop(job_id, None)
+    path = UPLOAD_JOBS_DIR / f"{job_id}.json"
+    try:
+        path.unlink()
+    except FileNotFoundError:
+        pass
+
+
+def load_persisted_ingest_jobs() -> None:
+    """Load persisted ingest jobs into memory on startup."""
+    _ingest_jobs.clear()
+    if not UPLOAD_JOBS_DIR.exists():
+        return
+    for path in sorted(UPLOAD_JOBS_DIR.glob("*.json")):
+        try:
+            _ingest_jobs[path.stem] = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+
+
+def reconcile_ingest_jobs_on_startup() -> int:
+    """Mark interrupted in-flight ingest jobs as errors after a restart."""
+    load_persisted_ingest_jobs()
+    recovered = 0
+    for job_id, job in list(_ingest_jobs.items()):
+        status = str(job.get("status") or "")
+        if status not in {"uploading", "queued", "running"}:
+            continue
+        job["status"] = "error"
+        job["error"] = "Server restarted during upload or ingest"
+        job["stage"] = "interrupted"
+        job["stage_detail"] = "Server restarted during upload or ingest"
+        job["completed_at"] = _utc_now_iso()
+        persist_ingest_job(job_id)
+        recovered += 1
+    return recovered
 
 # ── Personal context ──────────────────────────────────────────────────────────
 

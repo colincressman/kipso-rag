@@ -1,0 +1,27 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 43,
+  "page_number": 44,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.6082887700534759,
+  "classified_page_type": "table_heavy",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "plant water break tank"
+  ],
+  "text_length": 974,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \nID \nDescription \nPV119 \nPLUG VALVES \nPW093 \nPARTS WASHER \nPWBT210 \nPLANT WATER BREAK TANK \nPWJP154 \nPLANT WATER JOCKEY PUMP \nPWP022 \nPLANT WATER PUMP \nRB293 \nRECYCLE BIN \nRC014 \nRATE CONTROLLER \nRC207 \nRATIO CONTROLLER \nRCU114 \nPEPCON REMOTE UNIT \nRDD260 \nROTATING DRYER \nREF050 \nROOF EXHAUST FAN \nREF231 \nREFRIGERATOR UNIT \nRF049 \nRETURN FAN \nRFS309 \nRECYCLE FLOW SCALE \nRH271 \nREACTIVATION HEATER \nROAD186 \nROADS \nROD080 \nOVER HEAD ROLLING DOOR \nRP327 \nRETENTION POND \nRR243 \nRAILROAD TRACK MAINTENANCE \nRSCS285 \nRETURN SLUDGE CONTROL SYSTEM \nRSP033 \nRETURN SLUDGE PUMP \nRSP034 \nRAW",
+  "bbox": [
+    64.0,
+    64.0,
+    548.0,
+    710.0
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0044_table_01.png"
+}

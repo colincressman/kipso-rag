@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 425,
+  "page_number": 426,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n119 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0426_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "Screenshot of a SCADA 'Generator Faceplate' showing operational status selection for 'Generator No.1' between 'Stopped' and 'Running'.",
+  "artifact_key_elements": [
+    "SCADA Interface",
+    "Generator Faceplate",
+    "Generator No.1",
+    "Operational Status",
+    "Stopped/Running Toggle"
+  ],
+  "artifact_blurb": "A detailed view of the Supervisory Control and Data Acquisition (SCADA) system's 'Generator Faceplate' module, specifically monitoring the real-time operational state of 'Generator No.1' with a binary status selector toggling between 'Stopped' and 'Running' modes.",
+  "replacement_text": "A detailed view of the Supervisory Control and Data Acquisition (SCADA) system's 'Generator Faceplate' module, specifically monitoring the real-time operational state of 'Generator No.1' with a binary status selector toggling between 'Stopped' and 'Running' modes.",
+  "normalized_text": "A detailed view of the Supervisory Control and Data Acquisition (SCADA) system's 'Generator Faceplate' module, specifically monitoring the real-time operational state of 'Generator No.1' with a binary status selector toggling between 'Stopped' and 'Running' modes.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:17:51.281169+00:00"
+}

@@ -1,0 +1,35 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 479,
+  "page_number": 480,
+  "artifact_kind": "form",
+  "classified_page_type": "standard",
+  "image_count": 0,
+  "widget_count": 25,
+  "form_packet_signature": [
+    "failure to complete, sign, and submit all forms 10,20, & 50 may render the bid or proposal non-responsive",
+    "good faith effort compliance plan (gfecp) guidelines",
+    "dmi 50 form - see detailed instructions on"
+  ],
+  "text_length": 4415,
+  "reasons": [
+    "native:pdf_form_widgets"
+  ],
+  "text_preview": " \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n  \n \n \n \n    \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n  \n \n \n  \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n  \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n   \n \n  \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n  \n \n  \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0480_form.png",
+  "artifact_type_inferred": "Good Faith Effort Compliance Plan (GFECP)",
+  "artifact_summary": "Compliance form for the City of Tampa's Equal Business Opportunity Program detailing SLBE solicitation steps and participation goals.",
+  "artifact_key_elements": [
+    "Contract details section",
+    "SLBE solicitation checklist",
+    "Participation goal reporting",
+    "Documentation requirements",
+    "Good faith effort verification",
+    "Equal Business Opportunity Program"
+  ],
+  "artifact_blurb": "This document serves as a formal Good Faith Effort Compliance Plan (GFECP) submitted to the City of Tampa's Equal Business Opportunity Program. It functions as a mandatory administrative record where contractors must document specific contract particulars and provide a verified checklist of proactive steps taken to solicit Small Local Business Enterprises (SLBEs). The form requires explicit checkboxes to affirm adherence to participation goals and to certify that all necessary supporting documentation has been compiled to demonstrate compliance with local equal business opportunity mandates.",
+  "replacement_text": "This document serves as a formal Good Faith Effort Compliance Plan (GFECP) submitted to the City of Tampa's Equal Business Opportunity Program. It functions as a mandatory administrative record where contractors must document specific contract particulars and provide a verified checklist of proactive steps taken to solicit Small Local Business Enterprises (SLBEs). The form requires explicit checkboxes to affirm adherence to participation goals and to certify that all necessary supporting documentation has been compiled to demonstrate compliance with local equal business opportunity mandates.",
+  "normalized_text": "This document serves as a formal Good Faith Effort Compliance Plan (GFECP) submitted to the City of Tampa's Equal Business Opportunity Program. It functions as a mandatory administrative record where contractors must document specific contract particulars and provide a verified checklist of proactive steps taken to solicit Small Local Business Enterprises (SLBEs). The form requires explicit checkboxes to affirm adherence to participation goals and to certify that all necessary supporting documentation has been compiled to demonstrate compliance with local equal business opportunity mandates.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T01:09:06.271352+00:00"
+}

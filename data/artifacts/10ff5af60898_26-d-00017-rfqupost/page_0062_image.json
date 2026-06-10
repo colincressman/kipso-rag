@@ -1,0 +1,34 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 61,
+  "page_number": 62,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "plant plc listing",
+    "hfc awtp master plan"
+  ],
+  "text_length": 111,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "Appendix F: \nPlant PLC Listing \nHFC AWTP Master Plan \nImprovements: SCADA Design Criteria \nTechnical Memorandum \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0062_image.png",
+  "artifact_type_inferred": "Technical Memorandum Cover Sheet",
+  "artifact_summary": "Title page for Appendix F of the HFC AWTP Master Plan, introducing the Plant PLC Listing inventory.",
+  "artifact_key_elements": [
+    "HFC AWTP Master Plan",
+    "Appendix F",
+    "Plant PLC Listing",
+    "Programmable Logic Controllers",
+    "Facility Inventory",
+    "Technical Memorandum"
+  ],
+  "artifact_blurb": "This document serves as the official title page for Appendix F within the HFC AWTP Master Plan Technical Memorandum. It functions as a cover sheet specifically dedicated to the 'Plant PLC Listing' section, providing an introductory overview for the comprehensive inventory of Programmable Logic Controllers (PLCs) utilized across the facility.",
+  "replacement_text": "This document serves as the official title page for Appendix F within the HFC AWTP Master Plan Technical Memorandum. It functions as a cover sheet specifically dedicated to the 'Plant PLC Listing' section, providing an introductory overview for the comprehensive inventory of Programmable Logic Controllers (PLCs) utilized across the facility.",
+  "normalized_text": "This document serves as the official title page for Appendix F within the HFC AWTP Master Plan Technical Memorandum. It functions as a cover sheet specifically dedicated to the 'Plant PLC Listing' section, providing an introductory overview for the comprehensive inventory of Programmable Logic Controllers (PLCs) utilized across the facility.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:22:48.596631+00:00"
+}

@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 451,
+  "page_number": 452,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 178,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \n21 OIT Address Mapping \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n145 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0452_image.png",
+  "artifact_type_inferred": "SCADA Documentation Table",
+  "artifact_summary": "Hazens SCADA Standards Appendix A page detailing OIT Address Mapping for navigation, commands, and status variables.",
+  "artifact_key_elements": [
+    "OIT Address Mapping",
+    "Hexadecimal Memory Addresses",
+    "PLC Status Variables",
+    "Faceplate Commands",
+    "Navigation Variables",
+    "Device Type Specifications"
+  ],
+  "artifact_blurb": "Hazens SCADA Standards Appendix A page detailing OIT Address Mapping for navigation, commands, and status variables. Key visible elements include OIT Address Mapping, Hexadecimal Memory Addresses, PLC Status Variables, Faceplate Commands.",
+  "replacement_text": "Hazens SCADA Standards Appendix A page detailing OIT Address Mapping for navigation, commands, and status variables. Key visible elements include OIT Address Mapping, Hexadecimal Memory Addresses, PLC Status Variables, Faceplate Commands.",
+  "normalized_text": "Hazens SCADA Standards Appendix A page detailing OIT Address Mapping for navigation, commands, and status variables. Key visible elements include OIT Address Mapping, Hexadecimal Memory Addresses, PLC Status Variables, Faceplate Commands.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:55:37.599139+00:00"
+}

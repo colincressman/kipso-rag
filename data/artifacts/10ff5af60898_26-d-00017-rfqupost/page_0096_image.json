@@ -1,0 +1,34 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 95,
+  "page_number": 96,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "plant plc listing",
+    "hfc awtp master plan"
+  ],
+  "text_length": 140,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "  \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nPLC Hardware Evaluation \nAppendix B: \nPlant PLC Listing \nHFC AWTP Master Plan \nHoward F. Curren AWTP - SCADA System \nPLC Hardware Evaluation \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0096_image.png",
+  "artifact_type_inferred": "title block",
+  "artifact_summary": "This document page serves as the title header for Appendix B, introducing the Plant PLC Listing section within the PLC Hardware Evaluation report.",
+  "artifact_key_elements": [
+    "Hazen logo",
+    "Reliable Tampa Partners logo",
+    "Appendix B title",
+    "Plant PLC Listing subtitle",
+    "HFC AWTP Master Plan footer",
+    "SCADA System footer text"
+  ],
+  "artifact_blurb": "This page acts as the title header for Appendix B, specifically for the Plant PLC Listing section. It belongs to the PLC Hardware Evaluation document for the Howard F. Curren AWTP SCADA System and features logos for Hazen and Reliable Tampa Partners.",
+  "replacement_text": "This page acts as the title header for Appendix B, specifically for the Plant PLC Listing section. It belongs to the PLC Hardware Evaluation document for the Howard F. Curren AWTP SCADA System and features logos for Hazen and Reliable Tampa Partners.",
+  "normalized_text": "This page acts as the title header for Appendix B, specifically for the Plant PLC Listing section. It belongs to the PLC Hardware Evaluation document for the Howard F. Curren AWTP SCADA System and features logos for Hazen and Reliable Tampa Partners.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:32:46.018626+00:00"
+}

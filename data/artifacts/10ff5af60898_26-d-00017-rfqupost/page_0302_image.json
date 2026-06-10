@@ -1,0 +1,35 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 301,
+  "page_number": 302,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "scada standards volume 3 of 3",
+    "figure 59 removing an existing user",
+    "hfc awtp master plan"
+  ],
+  "text_length": 176,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n  \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Volume 3 of 3 \nFigure 59 Removing an Existing User \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards - HMI and OIT \nVolume 3 of 3 \nFebruary 2025 \n82 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0302_image.png",
+  "artifact_type_inferred": "software screenshot",
+  "artifact_summary": "This document page features a screenshot of a software interface titled 'Security Settings' used for managing user accounts. It specifically illustrates the 'Deleting User' function within the User Security Settings window.",
+  "artifact_key_elements": [
+    "Security Settings window",
+    "User Security Settings header",
+    "Deleting User section",
+    "User dropdown list (Manager, Operator1, Operator2, admin)",
+    "Delete button",
+    "Figure 59 caption"
+  ],
+  "artifact_blurb": "The image displays a software interface for 'Security Settings' focused on the 'Deleting User' task. A dropdown menu lists available accounts including Manager, Operator1, Operator2, and admin, with Operator1 currently selected next to a Delete button. This visual aid, labeled Figure 59 Removing an Existing User, demonstrates the steps to remove a specific user account from the system.",
+  "replacement_text": "The image displays a software interface for 'Security Settings' focused on the 'Deleting User' task. A dropdown menu lists available accounts including Manager, Operator1, Operator2, and admin, with Operator1 currently selected next to a Delete button. This visual aid, labeled Figure 59 Removing an Existing User, demonstrates the steps to remove a specific user account from the system.",
+  "normalized_text": "The image displays a software interface for 'Security Settings' focused on the 'Deleting User' task. A dropdown menu lists available accounts including Manager, Operator1, Operator2, and admin, with Operator1 currently selected next to a Delete button. This visual aid, labeled Figure 59 Removing an Existing User, demonstrates the steps to remove a specific user account from the system.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:54:42.571914+00:00"
+}

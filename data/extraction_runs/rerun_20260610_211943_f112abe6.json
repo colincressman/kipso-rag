@@ -1,0 +1,16 @@
+{
+  "run_id": "rerun_20260610_211943_f112abe6",
+  "project_slug": "test",
+  "project_name": "test",
+  "kind": "second_pass_rerun",
+  "status": "done",
+  "started_at": "2026-06-10T21:19:43.379194+00:00",
+  "updated_at": "2026-06-10T21:53:05.075995+00:00",
+  "last_seq": 160,
+  "checkpoint_path": "data\\extraction_checkpoints\\test_20260610_211943_reports.jsonl",
+  "report_path": "data\\extraction_reports\\test_20260610_215302.md",
+  "error": null,
+  "cancel_requested": false,
+  "cancel_requested_at": null,
+  "last_event_type": "result"
+}

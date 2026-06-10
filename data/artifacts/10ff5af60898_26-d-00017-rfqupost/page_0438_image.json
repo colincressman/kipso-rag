@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 437,
+  "page_number": 438,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n131 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0438_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "Screenshot of a SCADA system showing a Level PID loop configuration faceplate with control parameters.",
+  "artifact_key_elements": [
+    "Level PID loop configuration",
+    "Process variable limits",
+    "Control action settings",
+    "Deadband values",
+    "Loop ID display",
+    "SCADA faceplate UI"
+  ],
+  "artifact_blurb": "A screenshot of a Supervisory Control and Data Acquisition (SCADA) system interface displaying a Level PID loop configuration faceplate. The view details specific control parameters including process variable limits, control action settings, and deadband values for a designated loop ID.",
+  "replacement_text": "A screenshot of a Supervisory Control and Data Acquisition (SCADA) system interface displaying a Level PID loop configuration faceplate. The view details specific control parameters including process variable limits, control action settings, and deadband values for a designated loop ID.",
+  "normalized_text": "A screenshot of a Supervisory Control and Data Acquisition (SCADA) system interface displaying a Level PID loop configuration faceplate. The view details specific control parameters including process variable limits, control action settings, and deadband values for a designated loop ID.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:33:47.133425+00:00"
+}

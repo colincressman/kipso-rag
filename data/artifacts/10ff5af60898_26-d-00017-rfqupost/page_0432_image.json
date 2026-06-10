@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 431,
+  "page_number": 432,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n125 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0432_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "Screenshot of a SCADA 'Open/Close Valve Faceplate' for 'Knife Gate No.1' displaying control source, valve status, and control status sections.",
+  "artifact_key_elements": [
+    "Open/Close Valve Faceplate",
+    "Knife Gate No.1",
+    "Control Source",
+    "Valve Status",
+    "Control Status"
+  ],
+  "artifact_blurb": "A SCADA system interface screenshot depicting the operational faceplate for 'Knife Gate No.1'. The display includes dedicated sections for 'Control Source', 'Valve Status', and 'Control Status', accompanied by relevant status icons and actuation buttons.",
+  "replacement_text": "A SCADA system interface screenshot depicting the operational faceplate for 'Knife Gate No.1'. The display includes dedicated sections for 'Control Source', 'Valve Status', and 'Control Status', accompanied by relevant status icons and actuation buttons.",
+  "normalized_text": "A SCADA system interface screenshot depicting the operational faceplate for 'Knife Gate No.1'. The display includes dedicated sections for 'Control Source', 'Valve Status', and 'Control Status', accompanied by relevant status icons and actuation buttons.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:25:41.405969+00:00"
+}

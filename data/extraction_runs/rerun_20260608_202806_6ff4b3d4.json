@@ -1,0 +1,14 @@
+{
+  "run_id": "rerun_20260608_202806_6ff4b3d4",
+  "project_slug": "test",
+  "project_name": "test",
+  "kind": "second_pass_rerun",
+  "status": "error",
+  "started_at": "2026-06-08T20:28:06.096992+00:00",
+  "updated_at": "2026-06-09T20:16:17.287839+00:00",
+  "last_seq": 20,
+  "checkpoint_path": null,
+  "report_path": null,
+  "error": "Server restarted during extraction run",
+  "last_event_type": "error"
+}

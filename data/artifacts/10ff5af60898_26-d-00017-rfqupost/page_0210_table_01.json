@@ -1,0 +1,28 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 209,
+  "page_number": 210,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.47827194171225773,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "scada standards volume 2 of 3",
+    "function blocks contain a listing of the supplied function blocks for use in"
+  ],
+  "text_length": 2242,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": "SCADA Standards Volume 2 of 3 \nFunction blocks contain a listing of the supplied function blocks for use in \nprogramming. There is a corresponding graphical component discussed in Volume 3, \nHMI Standards. These function blocks are not to be modified without first submitting the \nsuggested changes to the City for review and approval. \nBlock Name \nDescription \n \n \n \n \n \n \n \n \n \n   \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nP_AIN \nProvides a standard representation of an analog \nproce",
+  "bbox": [
+    64.26399993896484,
+    137.4600067138672,
+    547.3800048828125,
+    649.739990234375
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0210_table_01.png"
+}

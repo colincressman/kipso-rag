@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 446,
+  "page_number": 447,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n140 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0447_image.png",
+  "artifact_type_inferred": "SCADA Variable Speed Drive Faceplate",
+  "artifact_summary": "Screenshot of a SCADA interface showing the Variable Speed Drive Faceplate for High Serv. Pump No.1, displaying configuration parameters and an empty alarms section.",
+  "artifact_key_elements": [
+    "Variable Speed Drive Faceplate",
+    "High Serv. Pump No.1",
+    "Cold and hot restart time frames",
+    "Fault restart delays",
+    "Failure delays",
+    "Empty alarms section"
+  ],
+  "artifact_blurb": "A SCADA system screenshot presenting the Variable Speed Drive Faceplate for High Serv. Pump No.1. The interface details specific operational configuration parameters, including defined cold and hot restart time frames, fault restart delays, and failure delays, while the alarms section remains currently empty.",
+  "replacement_text": "A SCADA system screenshot presenting the Variable Speed Drive Faceplate for High Serv. Pump No.1. The interface details specific operational configuration parameters, including defined cold and hot restart time frames, fault restart delays, and failure delays, while the alarms section remains currently empty.",
+  "normalized_text": "A SCADA system screenshot presenting the Variable Speed Drive Faceplate for High Serv. Pump No.1. The interface details specific operational configuration parameters, including defined cold and hot restart time frames, fault restart delays, and failure delays, while the alarms section remains currently empty.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:48:07.322105+00:00"
+}

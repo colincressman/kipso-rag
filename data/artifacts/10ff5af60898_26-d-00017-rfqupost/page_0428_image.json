@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 427,
+  "page_number": 428,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n121 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0428_image.png",
+  "artifact_type_inferred": "SCADA interface screenshot",
+  "artifact_summary": "This artifact displays a screenshot of a SCADA system interface titled 'HSP Motor Group LLS Manager'. It shows two panels: one displaying active alarms for motor group failures and another detailing configuration parameters like timers, motor counts, and rotation settings.",
+  "artifact_key_elements": [
+    "HSP Motor Group LLS Manager interface",
+    "Alarms section (Motor Group Fail to Start/Stop)",
+    "Date-Time Alternation Mode settings",
+    "Timer Based Alternation Mode settings",
+    "Motor Group Configuration parameters",
+    "Hazen and Reliable Tampa Partners logos"
+  ],
+  "artifact_blurb": "This document page presents a screenshot of the 'HSP Motor Group LLS Manager' interface from a SCADA system. The left panel displays active alarms indicating a 'Motor Group Fail to Start' and 'Motor Group Fail to Stop'. The right panel details configuration settings including date-time alternation modes, timer-based delays, and specific motor group parameters such as the number of motors in the group, max/min run counts, and rotation settings.",
+  "replacement_text": "This document page presents a screenshot of the 'HSP Motor Group LLS Manager' interface from a SCADA system. The left panel displays active alarms indicating a 'Motor Group Fail to Start' and 'Motor Group Fail to Stop'. The right panel details configuration settings including date-time alternation modes, timer-based delays, and specific motor group parameters such as the number of motors in the group, max/min run counts, and rotation settings.",
+  "normalized_text": "This document page presents a screenshot of the 'HSP Motor Group LLS Manager' interface from a SCADA system. The left panel displays active alarms indicating a 'Motor Group Fail to Start' and 'Motor Group Fail to Stop'. The right panel details configuration settings including date-time alternation modes, timer-based delays, and specific motor group parameters such as the number of motors in the group, max/min run counts, and rotation settings.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:20:01.547833+00:00"
+}

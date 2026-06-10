@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 34,
+  "page_number": 35,
+  "artifact_kind": "image",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 2845,
+  "reasons": [
+    "page_classifier:table_heavy",
+    "table_override:page_spanning_table_bbox"
+  ],
+  "text_preview": "120/1\n*\nM\n120/1\nES\nPBU087 065-01\n0\n1\"\n1/2\"\nPST065 065-01\n120/1\nLP\nM\nM\n480V\nPTP067 066-01\nPTP067 066-02\nPST065 065-02\nPBU087 065-02\nPBU087 065-03\nEEWS322 065-01\n120/1\nES\nO\nO\nO \nO\nO\nO\nO \nO\nO\nO \nO\nO \nO\nO \nO\nO\nO \nO\nO \nO\nO \nO\nO\nO \nO\nO \nO\nO \nO\nO\nO \nO\nO \nO\nO \nO\nO \nO\nO \nO\nO\nO \nO\nO \nO\nO\nO \nO \nO\nO\nO \nO\nO \nO\nO \nO\nO\nO \nO\nO \nO\nO\nO\nO \nO\nO\nO \nO\nO \nO\nO \nO\nO\nO \nO\nO \nO\nO\nO\nO \nO\nO\nO \nO\nO \nO\nO \nO\nO \nO\nO\nO\nO \nO\nO\nO\nO\nO\nO \nO\nO \nO\nO\nO\nO\nO\nO \nO\nO \nDWB-23-01 \nDWB-26-01 \nDWB-26-01 DWB-26-01 DWB-26-01 DWB-26-01 \n(3) \n(3) \n(3) \n(3) \nDWB-23-01 \nDWB-23-01 \n(2) \n05-1 \nDWB-24-01 \n(2) \nDWB-24-01 \n(2) \nDWB-24-01 \n(2) \nDWB-25-0",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0035_image.png",
+  "artifact_type_inferred": "Piping and Instrumentation Diagram (P&ID)",
+  "artifact_summary": "Instrumentation and control logic for a polymer feed system in a dewatering facility, covering flow from bulk storage to feeders.",
+  "artifact_key_elements": [
+    "Polymer bulk storage tanks",
+    "Mixing and metering pumps",
+    "Polymer feeders",
+    "PLC control connections",
+    "Electrical instrumentation loops",
+    "Process flow paths"
+  ],
+  "artifact_blurb": "A detailed Piping and Instrumentation Diagram (P&ID) defining the instrumentation architecture and control logic for a polymer feed subsystem within a dewatering operation. The schematic maps the material transport trajectory from polymer bulk storage tanks, through mixing and metering pump stations, to the final polymer feeders, while explicitly documenting associated electrical wiring and Programmable Logic Controller (PLC) interconnections.",
+  "replacement_text": "A detailed Piping and Instrumentation Diagram (P&ID) defining the instrumentation architecture and control logic for a polymer feed subsystem within a dewatering operation. The schematic maps the material transport trajectory from polymer bulk storage tanks, through mixing and metering pump stations, to the final polymer feeders, while explicitly documenting associated electrical wiring and Programmable Logic Controller (PLC) interconnections.",
+  "normalized_text": "A detailed Piping and Instrumentation Diagram (P&ID) defining the instrumentation architecture and control logic for a polymer feed subsystem within a dewatering operation. The schematic maps the material transport trajectory from polymer bulk storage tanks, through mixing and metering pump stations, to the final polymer feeders, while explicitly documenting associated electrical wiring and Programmable Logic Controller (PLC) interconnections.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:18:20.725180+00:00"
+}

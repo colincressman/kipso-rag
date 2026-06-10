@@ -28,6 +28,7 @@ from server.shared import (
     _conv_retention_days,
     _gpu_state,
     _raw_ingest_state,
+    reconcile_ingest_jobs_on_startup,
 )
 from db.client import archive_stale_conversations
 
@@ -92,6 +93,21 @@ async def _lifespan(app: FastAPI):
         logging.getLogger(__name__).info("Background job worker started.")
     except Exception as exc:
         logging.getLogger(__name__).warning("Job worker failed to start (non-fatal): %s", exc)
+
+    # Reconcile persisted in-flight jobs/runs after an unclean shutdown.
+    try:
+        from server.routes.extraction import reconcile_extraction_runs_on_startup
+
+        recovered_ingest = reconcile_ingest_jobs_on_startup()
+        recovered_extract = reconcile_extraction_runs_on_startup()
+        if recovered_ingest or recovered_extract:
+            logging.getLogger(__name__).warning(
+                "Recovered interrupted jobs on startup (ingest=%d, extraction=%d).",
+                recovered_ingest,
+                recovered_extract,
+            )
+    except Exception as exc:
+        logging.getLogger(__name__).warning("Run reconciliation failed (non-fatal): %s", exc)
 
     # Prune stale conversations.
     try:

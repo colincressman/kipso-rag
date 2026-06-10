@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 439,
+  "page_number": 440,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n133 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0440_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "Screenshot from Hazen SCADA Standards Appendix A showing a level PID loop and level transmitter monitoring interface.",
+  "artifact_key_elements": [
+    "Level PID Loop Window",
+    "Level Transmitter Window",
+    "Water Level Graphical Charts",
+    "Control Status Indicators",
+    "Numerical Readouts"
+  ],
+  "artifact_blurb": "A detailed screenshot from the Hazen SCADA Standards Appendix A illustrating a dual-window SCADA interface designed for monitoring a level PID loop and a level transmitter, featuring real-time water level charts, active control status indicators, and precise numerical readouts.",
+  "replacement_text": "A detailed screenshot from the Hazen SCADA Standards Appendix A illustrating a dual-window SCADA interface designed for monitoring a level PID loop and a level transmitter, featuring real-time water level charts, active control status indicators, and precise numerical readouts.",
+  "normalized_text": "A detailed screenshot from the Hazen SCADA Standards Appendix A illustrating a dual-window SCADA interface designed for monitoring a level PID loop and a level transmitter, featuring real-time water level charts, active control status indicators, and precise numerical readouts.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:36:06.737100+00:00"
+}

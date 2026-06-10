@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 413,
+  "page_number": 414,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 12,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 178,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \n20.3\u0003Open/Close Valves\u0003\nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n107 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0414_image.png",
+  "artifact_type_inferred": "SCADA Icon Library",
+  "artifact_summary": "Visual guide for Knife Gate and Knife Valve states in industrial control systems.",
+  "artifact_key_elements": [
+    "Knife Gate Open Icon",
+    "Knife Gate Closed Icon",
+    "Knife Valve Open Icon",
+    "Knife Valve Closed Icon",
+    "Status Indicators",
+    "Visual Style Variants"
+  ],
+  "artifact_blurb": "A technical reference sheet for SCADA interface design, displaying distinct graphical representations for Knife Gate and Knife Valve actuators. The grid categorizes components by operational state (Open/Closed) and offers multiple visual style options to ensure clear status indication in industrial monitoring dashboards.",
+  "replacement_text": "A technical reference sheet for SCADA interface design, displaying distinct graphical representations for Knife Gate and Knife Valve actuators. The grid categorizes components by operational state (Open/Closed) and offers multiple visual style options to ensure clear status indication in industrial monitoring dashboards.",
+  "normalized_text": "A technical reference sheet for SCADA interface design, displaying distinct graphical representations for Knife Gate and Knife Valve actuators. The grid categorizes components by operational state (Open/Closed) and offers multiple visual style options to ensure clear status indication in industrial monitoring dashboards.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:59:33.696697+00:00"
+}

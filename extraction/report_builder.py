@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from extraction.branch_config import BranchResult, ExtractionItem, PostBranchPassResult, ProjectConfig
+from extraction.branch_config import BranchResult, ExtractionItem, ProjectConfig
 from extraction.dedup import dedup_cross_branch
 from utils.text_utils import slugify_anchor as _slugify_anchor
 
@@ -28,7 +28,6 @@ def _slugify(text: str) -> str:
 
 def _make_toc(
     branch_results: List[BranchResult],
-    post_pass_results: Optional[List[PostBranchPassResult]],
 ) -> str:
     """Build a markdown Table of Contents for all report sections."""
     lines = ["## Table of Contents", ""]
@@ -39,11 +38,6 @@ def _make_toc(
         suffix = f" ({count} items)" if count else " _(empty)_"
         lines.append(f"{n}. [{br.output_heading}](#{anchor}){suffix}")
         n += 1
-    if post_pass_results:
-        for ppr in post_pass_results:
-            anchor = _slugify(ppr.output_heading)
-            lines.append(f"{n}. [{ppr.output_heading}](#{anchor})")
-            n += 1
     lines += ["", "---", ""]
     return "\n".join(lines)
 
@@ -94,7 +88,6 @@ def assemble_report(
     project: ProjectConfig,
     branch_results: List[BranchResult],
     *,
-    post_pass_results: Optional[List[PostBranchPassResult]] = None,
     addendum_marker: str = "⚑",
     cross_branch_marker: str = "⚠",
     include_page_citations: bool = True,
@@ -133,7 +126,7 @@ def assemble_report(
     ]
 
     # Table of Contents
-    lines.append(_make_toc(branch_results, post_pass_results))
+    lines.append(_make_toc(branch_results))
 
     # Summary table
     if include_branch_stats:
@@ -234,27 +227,6 @@ def assemble_report(
             )
         lines += ["", "---", ""]
 
-    # Post-branch pass sections
-    if post_pass_results:
-        for ppr in post_pass_results:
-            if ppr.status == "error":
-                lines += [
-                    f"## {ppr.output_heading}",
-                    f"_⚠ Pass failed: {ppr.error}_",
-                    "",
-                    "---",
-                    "",
-                ]
-            else:
-                lines += [
-                    f"## {ppr.output_heading}",
-                    "",
-                    ppr.response_text.strip(),
-                    "",
-                    "---",
-                    "",
-                ]
-
     return "\n".join(lines)
 
 
@@ -268,6 +240,17 @@ def save_report(markdown: str, project: ProjectConfig) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     filename = f"{project.slug}_{timestamp}.md"
+    path = out_dir / filename
+    path.write_text(markdown, encoding="utf-8")
+    return path
+
+
+def save_report_variant(markdown: str, project: ProjectConfig, *, suffix: str) -> Path:
+    """Write a variant report beside the main report using a deterministic suffix."""
+    out_dir = Path(project.report_output_path)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    filename = f"{project.slug}_{timestamp}_{suffix}.md"
     path = out_dir / filename
     path.write_text(markdown, encoding="utf-8")
     return path

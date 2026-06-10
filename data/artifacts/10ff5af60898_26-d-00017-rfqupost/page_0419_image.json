@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 418,
+  "page_number": 419,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n112 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0419_image.png",
+  "artifact_type_inferred": "SCADA Interface Faceplate",
+  "artifact_summary": "Screenshot of a SCADA faceplate for Sump Pump No.1 constant speed motor showing configurable time delay parameters.",
+  "artifact_key_elements": [
+    "Sump Pump No.1",
+    "Constant Speed Motor",
+    "Cold Restart Time Frame",
+    "First Fault Restart Delay",
+    "Time Delay Parameters"
+  ],
+  "artifact_blurb": "A SCADA system interface faceplate monitoring a constant speed motor designated as 'Sump Pump No.1', featuring a configuration panel for critical operational time delays including 'Cold Restart Time Frame' and 'First Fault Restart Delay', with values specified in minutes and seconds.",
+  "replacement_text": "A SCADA system interface faceplate monitoring a constant speed motor designated as 'Sump Pump No.1', featuring a configuration panel for critical operational time delays including 'Cold Restart Time Frame' and 'First Fault Restart Delay', with values specified in minutes and seconds.",
+  "normalized_text": "A SCADA system interface faceplate monitoring a constant speed motor designated as 'Sump Pump No.1', featuring a configuration panel for critical operational time delays including 'Cold Restart Time Frame' and 'First Fault Restart Delay', with values specified in minutes and seconds.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:06:49.534912+00:00"
+}

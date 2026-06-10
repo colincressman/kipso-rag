@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 97,
+  "page_number": 98,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan",
+    "howard f. curren awtp - scada system"
+  ],
+  "text_length": 144,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "  \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \nPLC Hardware Evaluation \nAppendix C: \nPLC Evaluation Matrix \nHFC AWTP Master Plan \nHoward F. Curren AWTP - SCADA System \nPLC Hardware Evaluation \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0098_image.png",
+  "artifact_type_inferred": "Technical Report Title Page",
+  "artifact_summary": "Header page for Appendix C of a Hazen PLC Hardware Evaluation report detailing the Howard F. Curren AWTP SCADA system.",
+  "artifact_key_elements": [
+    "Hazen PLC Hardware Evaluation Report",
+    "Appendix C: PLC Evaluation Matrix",
+    "Howard F. Curren AWTP SCADA System",
+    "Hazen and Reliable Tampa Partners Logos"
+  ],
+  "artifact_blurb": "This document serves as the introductory title page for Appendix C within the Hazen PLC Hardware Evaluation report. It specifically addresses the Howard F. Curren Advanced Water Treatment Plant (AWTP) SCADA system and functions as the header for the subsequent 'PLC Evaluation Matrix' section. The page features official branding logos for both Hazen and Reliable Tampa Partners.",
+  "replacement_text": "This document serves as the introductory title page for Appendix C within the Hazen PLC Hardware Evaluation report. It specifically addresses the Howard F. Curren Advanced Water Treatment Plant (AWTP) SCADA system and functions as the header for the subsequent 'PLC Evaluation Matrix' section. The page features official branding logos for both Hazen and Reliable Tampa Partners.",
+  "normalized_text": "This document serves as the introductory title page for Appendix C within the Hazen PLC Hardware Evaluation report. It specifically addresses the Howard F. Curren Advanced Water Treatment Plant (AWTP) SCADA system and functions as the header for the subsequent 'PLC Evaluation Matrix' section. The page features official branding logos for both Hazen and Reliable Tampa Partners.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:34:18.559448+00:00"
+}

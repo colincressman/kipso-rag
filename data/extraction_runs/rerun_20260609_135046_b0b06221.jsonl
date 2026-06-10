@@ -1,0 +1,91 @@
+{"seq": 1, "type": "run_started", "run_id": "rerun_20260609_135046_b0b06221", "kind": "second_pass_rerun", "project_slug": "test"}
+{"seq": 2, "type": "progress", "message": "Starting report-only rerun: test"}
+{"seq": 3, "type": "progress", "message": "Source checkpoint: data\\extraction_checkpoints\\test_20260609_011738_reports.jsonl"}
+{"seq": 4, "type": "progress", "message": "Checkpoint: data\\extraction_checkpoints\\test_20260609_135046_reports.jsonl"}
+{"seq": 5, "type": "progress", "message": "Loaded 10 branch result(s) from checkpoint"}
+{"seq": 6, "type": "progress", "message": "\nSecond-pass plan: 6 step(s)"}
+{"seq": 7, "type": "progress", "message": "\nSecond pass 1/6: Organized Evidence by Category"}
+{"seq": 8, "type": "progress", "message": "    category routing batch 1/124"}
+{"seq": 9, "type": "progress", "message": "    category routing batch 2/124"}
+{"seq": 10, "type": "progress", "message": "    category routing batch 3/124"}
+{"seq": 11, "type": "progress", "message": "    category routing batch 4/124"}
+{"seq": 12, "type": "progress", "message": "    category routing batch 5/124"}
+{"seq": 13, "type": "progress", "message": "    category routing batch 6/124"}
+{"seq": 14, "type": "progress", "message": "    category routing batch 7/124"}
+{"seq": 15, "type": "progress", "message": "    category routing batch 8/124"}
+{"seq": 16, "type": "progress", "message": "    category routing batch 9/124"}
+{"seq": 17, "type": "progress", "message": "    category routing batch 10/124"}
+{"seq": 18, "type": "progress", "message": "    category routing batch 11/124"}
+{"seq": 19, "type": "progress", "message": "    category routing batch 12/124"}
+{"seq": 20, "type": "progress", "message": "    category routing batch 13/124"}
+{"seq": 21, "type": "progress", "message": "    category routing batch 14/124"}
+{"seq": 22, "type": "progress", "message": "    category routing batch 15/124"}
+{"seq": 23, "type": "progress", "message": "    category routing batch 16/124"}
+{"seq": 24, "type": "progress", "message": "    category routing batch 17/124"}
+{"seq": 25, "type": "progress", "message": "    category routing batch 18/124"}
+{"seq": 26, "type": "progress", "message": "    category routing batch 19/124"}
+{"seq": 27, "type": "progress", "message": "    category routing batch 20/124"}
+{"seq": 28, "type": "progress", "message": "    category routing batch 21/124"}
+{"seq": 29, "type": "progress", "message": "    category routing batch 22/124"}
+{"seq": 30, "type": "progress", "message": "    category routing batch 23/124"}
+{"seq": 31, "type": "progress", "message": "    category routing batch 24/124"}
+{"seq": 32, "type": "progress", "message": "    category routing batch 25/124"}
+{"seq": 33, "type": "progress", "message": "    category routing batch 26/124"}
+{"seq": 34, "type": "progress", "message": "    category routing batch 27/124"}
+{"seq": 35, "type": "progress", "message": "    category routing batch 28/124"}
+{"seq": 36, "type": "progress", "message": "    category routing batch 29/124"}
+{"seq": 37, "type": "progress", "message": "    category routing batch 30/124"}
+{"seq": 38, "type": "progress", "message": "    category routing batch 31/124"}
+{"seq": 39, "type": "progress", "message": "    category routing batch 32/124"}
+{"seq": 40, "type": "progress", "message": "    category routing batch 33/124"}
+{"seq": 41, "type": "progress", "message": "    category routing batch 34/124"}
+{"seq": 42, "type": "progress", "message": "    category routing batch 35/124"}
+{"seq": 43, "type": "progress", "message": "    category routing batch 36/124"}
+{"seq": 44, "type": "progress", "message": "    category routing batch 37/124"}
+{"seq": 45, "type": "progress", "message": "    category routing batch 38/124"}
+{"seq": 46, "type": "progress", "message": "    category routing batch 39/124"}
+{"seq": 47, "type": "progress", "message": "    category routing batch 40/124"}
+{"seq": 48, "type": "progress", "message": "    category routing batch 41/124"}
+{"seq": 49, "type": "progress", "message": "    category routing batch 42/124"}
+{"seq": 50, "type": "progress", "message": "    category routing batch 43/124"}
+{"seq": 51, "type": "progress", "message": "    category routing batch 44/124"}
+{"seq": 52, "type": "progress", "message": "    category routing batch 45/124"}
+{"seq": 53, "type": "progress", "message": "    category routing batch 46/124"}
+{"seq": 54, "type": "progress", "message": "    category routing batch 47/124"}
+{"seq": 55, "type": "progress", "message": "    category routing batch 48/124"}
+{"seq": 56, "type": "progress", "message": "    category routing batch 49/124"}
+{"seq": 57, "type": "progress", "message": "    category routing batch 50/124"}
+{"seq": 58, "type": "progress", "message": "    category routing batch 51/124"}
+{"seq": 59, "type": "progress", "message": "    category routing batch 52/124"}
+{"seq": 60, "type": "progress", "message": "    category routing batch 53/124"}
+{"seq": 61, "type": "progress", "message": "    category routing batch 54/124"}
+{"seq": 62, "type": "progress", "message": "    category routing batch 55/124"}
+{"seq": 63, "type": "progress", "message": "    category routing batch 56/124"}
+{"seq": 64, "type": "progress", "message": "    category routing batch 57/124"}
+{"seq": 65, "type": "progress", "message": "    category routing batch 58/124"}
+{"seq": 66, "type": "progress", "message": "    category routing batch 59/124"}
+{"seq": 67, "type": "progress", "message": "    category routing batch 60/124"}
+{"seq": 68, "type": "progress", "message": "    category routing batch 61/124"}
+{"seq": 69, "type": "progress", "message": "    category routing batch 62/124"}
+{"seq": 70, "type": "progress", "message": "    category routing batch 63/124"}
+{"seq": 71, "type": "progress", "message": "    category routing batch 64/124"}
+{"seq": 72, "type": "progress", "message": "    category routing batch 65/124"}
+{"seq": 73, "type": "progress", "message": "    category routing batch 66/124"}
+{"seq": 74, "type": "progress", "message": "    category routing batch 67/124"}
+{"seq": 75, "type": "progress", "message": "    category routing batch 68/124"}
+{"seq": 76, "type": "progress", "message": "    category routing batch 69/124"}
+{"seq": 77, "type": "progress", "message": "    category routing batch 70/124"}
+{"seq": 78, "type": "progress", "message": "    category routing batch 71/124"}
+{"seq": 79, "type": "progress", "message": "    category routing batch 72/124"}
+{"seq": 80, "type": "progress", "message": "    category routing batch 73/124"}
+{"seq": 81, "type": "progress", "message": "    category routing batch 74/124"}
+{"seq": 82, "type": "progress", "message": "    category routing batch 75/124"}
+{"seq": 83, "type": "progress", "message": "    category routing batch 76/124"}
+{"seq": 84, "type": "progress", "message": "    category routing batch 77/124"}
+{"seq": 85, "type": "progress", "message": "    category routing batch 78/124"}
+{"seq": 86, "type": "progress", "message": "    category routing batch 79/124"}
+{"seq": 87, "type": "progress", "message": "    category routing batch 80/124"}
+{"seq": 88, "type": "progress", "message": "    category routing batch 81/124"}
+{"seq": 89, "type": "progress", "message": "    category routing batch 82/124"}
+{"seq": 90, "type": "abort_requested", "message": "Abort requested by user."}
+{"seq": 91, "type": "error", "message": "Server restarted during extraction run", "phase": "error", "stage": "interrupted", "percent_hint": null}

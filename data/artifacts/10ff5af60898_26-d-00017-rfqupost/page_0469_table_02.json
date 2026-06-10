@@ -1,0 +1,27 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 468,
+  "page_number": 469,
+  "artifact_kind": "table",
+  "artifact_index": 2,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.44658632321399894,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "change request form attachment a back-out plan"
+  ],
+  "text_length": 777,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n  \n \n  \n \n  \n \n   \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n             \n \n \n \n \n \nSCADA Standards Appendix B \nChange Request Form Attachment A Back-Out Plan \nForm \nDate of Request: \nProject Number: \nName of Requester: \nName of Firm: \nPhone Number: \nE-mail address: \nAttach additional sheets as needed to provide the information required below. \nOutage and/or Testing Time \nRequested: \nMaximum Allowable Time before acceptance or back-out: \nBack-out Plan (describe the specific steps to rest",
+  "bbox": [
+    64.50672912597656,
+    186.5399932861328,
+    547.7526245117188,
+    665.8125
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0469_table_02.png"
+}

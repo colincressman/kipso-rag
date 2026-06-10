@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 412,
+  "page_number": 413,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 12,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 185,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \n20.2\u0003Variable Speed Equipment\u0003\nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n106 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0413_image.png",
+  "artifact_type_inferred": "SCADA Interface Icon Gallery",
+  "artifact_summary": "Visual representation of variable speed pump states including running percentages, alarm statuses, and stopped conditions for High Serv. Pump No.1 and No.2.",
+  "artifact_key_elements": [
+    "Variable speed pump icons",
+    "Running percentage indicators",
+    "Alarm status flags",
+    "Stopped condition markers",
+    "High Serv. Pump No.1 display",
+    "High Serv. Pump No.2 display"
+  ],
+  "artifact_blurb": "A collection of graphical user interface elements from the Hazen SCADA Standards Appendix A, specifically depicting variable speed pump controls. The gallery details distinct visual states for 'High Serv. Pump No.1' and 'No.2', featuring dynamic indicators for operational load percentages, active alarm conditions, and system stoppage events.",
+  "replacement_text": "A collection of graphical user interface elements from the Hazen SCADA Standards Appendix A, specifically depicting variable speed pump controls. The gallery details distinct visual states for 'High Serv. Pump No.1' and 'No.2', featuring dynamic indicators for operational load percentages, active alarm conditions, and system stoppage events.",
+  "normalized_text": "A collection of graphical user interface elements from the Hazen SCADA Standards Appendix A, specifically depicting variable speed pump controls. The gallery details distinct visual states for 'High Serv. Pump No.1' and 'No.2', featuring dynamic indicators for operational load percentages, active alarm conditions, and system stoppage events.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:58:02.612314+00:00"
+}

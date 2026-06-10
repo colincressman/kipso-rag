@@ -1,0 +1,14 @@
+{
+  "run_id": "extract_20260608_133448_8094e245",
+  "project_slug": "test",
+  "project_name": "test",
+  "kind": "full_run",
+  "status": "error",
+  "started_at": "2026-06-08T13:34:48.464014+00:00",
+  "updated_at": "2026-06-09T20:16:17.282513+00:00",
+  "last_seq": 84,
+  "checkpoint_path": null,
+  "report_path": null,
+  "error": "Server restarted during extraction run",
+  "last_event_type": "error"
+}

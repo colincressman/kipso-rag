@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 141,
+  "page_number": 142,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "figure 14 pi system quote",
+    "hfc awtp master plan"
+  ],
+  "text_length": 186,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nReport Creator Software \n6.6 \nPIVision Quote \nFigure 14 PI System quote \nHFC AWTP Master Plan \nDecember 2024 \nHoward F. Curren AWTP - SCADA System \nReport Creator Software Evaluation \n42 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0142_image.png",
+  "artifact_type_inferred": "Commercial Quotation",
+  "artifact_summary": "OSIsoft quotation for Carahsoft Technology Corp totaling $174,126.62, valid in late 2024.",
+  "artifact_key_elements": [
+    "Vendor: OSIsoft, LLC",
+    "Client: Carahsoft Technology Corp",
+    "Total Price: $174,126.62",
+    "Validity Period: Late 2024",
+    "Document Type: Screenshot"
+  ],
+  "artifact_blurb": "A redacted screenshot of a formal financial quotation issued by OSIsoft, LLC to Carahsoft Technology Corp. The document outlines a transaction value of $174,126.62 with an expiration window scheduled for late 2024. Specific line items and project identifiers have been obscured to protect sensitive commercial data.",
+  "replacement_text": "A redacted screenshot of a formal financial quotation issued by OSIsoft, LLC to Carahsoft Technology Corp. The document outlines a transaction value of $174,126.62 with an expiration window scheduled for late 2024. Specific line items and project identifiers have been obscured to protect sensitive commercial data.",
+  "normalized_text": "A redacted screenshot of a formal financial quotation issued by OSIsoft, LLC to Carahsoft Technology Corp. The document outlines a transaction value of $174,126.62 with an expiration window scheduled for late 2024. Specific line items and project identifiers have been obscured to protect sensitive commercial data.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:49:01.518015+00:00"
+}

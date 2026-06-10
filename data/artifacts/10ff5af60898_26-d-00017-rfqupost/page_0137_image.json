@@ -1,0 +1,34 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 136,
+  "page_number": 137,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "figure 8 ignition sample report",
+    "hfc awtp master plan"
+  ],
+  "text_length": 171,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nReport Creator Software \nFigure 8 Ignition Sample Report \nHFC AWTP Master Plan \nDecember 2024 \nHoward F. Curren AWTP - SCADA System \nReport Creator Software Evaluation \n37 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0137_image.png",
+  "artifact_type_inferred": "Technical Report Page: Backwash Report Table",
+  "artifact_summary": "Operational log for Filter Train 1 detailing backwash events, timestamps, duration, type, and water quality metrics including turbidity and flow levels.",
+  "artifact_key_elements": [
+    "Filter Train 1 Identification",
+    "Backwash Timestamps",
+    "Backwash Duration and Type",
+    "Pre-Backwash Turbidity",
+    "Post-Backwash Turbidity",
+    "Flow Level Metrics"
+  ],
+  "artifact_blurb": "This technical report page presents a comprehensive Backwash Report table for Filter Train 1. The dataset captures granular operational logs, recording precise timestamps, backwash duration, and classification types for each event. Additionally, it tracks critical water quality parameters, specifically comparing turbidity and flow levels recorded immediately before and after every backwash cycle to assess filtration efficiency.",
+  "replacement_text": "This technical report page presents a comprehensive Backwash Report table for Filter Train 1. The dataset captures granular operational logs, recording precise timestamps, backwash duration, and classification types for each event. Additionally, it tracks critical water quality parameters, specifically comparing turbidity and flow levels recorded immediately before and after every backwash cycle to assess filtration efficiency.",
+  "normalized_text": "This technical report page presents a comprehensive Backwash Report table for Filter Train 1. The dataset captures granular operational logs, recording precise timestamps, backwash duration, and classification types for each event. Additionally, it tracks critical water quality parameters, specifically comparing turbidity and flow levels recorded immediately before and after every backwash cycle to assess filtration efficiency.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:42:09.832318+00:00"
+}

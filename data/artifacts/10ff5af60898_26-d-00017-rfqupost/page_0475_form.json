@@ -1,0 +1,36 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 474,
+  "page_number": 475,
+  "artifact_kind": "form",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 52,
+  "form_packet_signature": [
+    "failure to complete, sign and submit forms 10, 20, & 50 may render the bid or proposal non-responsive",
+    "dmi solicited/utilized schedules",
+    "city of tampa - schedule of all solicited sub-(contractors/consultants/suppliers",
+    "dmi 10 form"
+  ],
+  "text_length": 1452,
+  "reasons": [
+    "native:pdf_form_widgets"
+  ],
+  "text_preview": " \nFailure to Complete, Sign and Submit Forms 10, 20, & 50 MAY render the Bid or Proposal Non-Responsive \nPage 1 of 2 – DMI Solicited/Utilized Schedules \nCity of Tampa – Schedule of All Solicited Sub-(Contractors/Consultants/Suppliers) \n(DMI 10 Form) \nContract No.: \nContract Name: \nCompany Name: \nAddress: \nFederal ID: \nPhone: \nFax: \nEmail: \nCheck applicable box(es). Detailed Instructions for completing this form are on page 2 of 4. \n[] No Firms were contacted or solicited for this contract. \n[] No Firms were contacted because: \n[] See attached list of additional Firms solicited and all suppleme",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0475_form.png",
+  "artifact_type_inferred": "City of Tampa DMI 10 Subcontractor Solicitation Form",
+  "artifact_summary": "Official City of Tampa document for tracking solicited subcontractors, consultants, and suppliers, including contact details, NIGP codes, and solicitation status.",
+  "artifact_key_elements": [
+    "Company contact information fields",
+    "NIGP classification codes",
+    "Solicitation method tracking table",
+    "Response status indicators",
+    "Contract-specific identification",
+    "Supplier/consultant listing section"
+  ],
+  "artifact_blurb": "This is a City of Tampa DMI 10 form designed to formally document and track all solicited subcontractors, consultants, or suppliers associated with a specific municipal contract. The document features dedicated sections for company contact information, NIGP classification codes, and a structured table to record solicitation methods alongside response status indicators.",
+  "replacement_text": "This is a City of Tampa DMI 10 form designed to formally document and track all solicited subcontractors, consultants, or suppliers associated with a specific municipal contract. The document features dedicated sections for company contact information, NIGP classification codes, and a structured table to record solicitation methods alongside response status indicators.",
+  "normalized_text": "This is a City of Tampa DMI 10 form designed to formally document and track all solicited subcontractors, consultants, or suppliers associated with a specific municipal contract. The document features dedicated sections for company contact information, NIGP classification codes, and a structured table to record solicitation methods alongside response status indicators.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T01:02:48.912398+00:00"
+}

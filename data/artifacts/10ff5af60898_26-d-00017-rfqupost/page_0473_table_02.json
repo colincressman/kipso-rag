@@ -1,0 +1,27 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 472,
+  "page_number": 473,
+  "artifact_kind": "table",
+  "artifact_index": 2,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.47789976595103456,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "standards deviation request form"
+  ],
+  "text_length": 755,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n  \n \n  \n \n  \n \n   \n \n  \n \n \n \n \n \n \n \n \n \n  \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n                \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n             \n \n \n \n \n \nSCADA Standards Appendix B \nStandards Deviation Request Form \nDate of Request: \nProject Number: \nName of Requester: \nName of Firm: \nPhone Number: \nE-mail address: \nAttach additional sheets as needed to provide the information required below. \nStandard(s) for which a deviation is requested \n(List document name, section(s), subsection(s): \nFully explain reasons for deviation request: \nProposed alte",
+  "bbox": [
+    59.73699951171875,
+    161.33999633789062,
+    547.7466430664062,
+    668.092529296875
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0473_table_02.png"
+}

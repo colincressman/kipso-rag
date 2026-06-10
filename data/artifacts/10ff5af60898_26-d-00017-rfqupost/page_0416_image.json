@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 415,
+  "page_number": 416,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 6,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 175,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \n20.5\u0003Misc Equipment\u0003\nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n109 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0416_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "Hazens SCADA Standards Appendix A page displaying generator and MCC panel states, contrasting normal operation with fault conditions via red borders and alarm icons.",
+  "artifact_key_elements": [
+    "Generator graphical representation",
+    "MCC panel graphical representation",
+    "Red border fault indicators",
+    "Alarm icon overlays",
+    "Normal operational status views",
+    "Hazens SCADA Standards Appendix A"
+  ],
+  "artifact_blurb": "This Hazens SCADA Standards Appendix A documentation page features four screenshots depicting SCADA interface states for miscellaneous equipment. The visualizations include graphical representations of a generator and an MCC panel, explicitly contrasting standard operational statuses with fault conditions highlighted by red borders and alarm icons.",
+  "replacement_text": "This Hazens SCADA Standards Appendix A documentation page features four screenshots depicting SCADA interface states for miscellaneous equipment. The visualizations include graphical representations of a generator and an MCC panel, explicitly contrasting standard operational statuses with fault conditions highlighted by red borders and alarm icons.",
+  "normalized_text": "This Hazens SCADA Standards Appendix A documentation page features four screenshots depicting SCADA interface states for miscellaneous equipment. The visualizations include graphical representations of a generator and an MCC panel, explicitly contrasting standard operational statuses with fault conditions highlighted by red borders and alarm icons.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:02:58.809536+00:00"
+}

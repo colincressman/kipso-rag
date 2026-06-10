@@ -1,0 +1,34 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 143,
+  "page_number": 144,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "figure 16 xlreport sample report",
+    "hfc awtp master plan"
+  ],
+  "text_length": 172,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nReport Creator Software \nFigure 16 XLReport Sample Report \nHFC AWTP Master Plan \nDecember 2024 \nHoward F. Curren AWTP - SCADA System \nReport Creator Software Evaluation \n44 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0144_image.png",
+  "artifact_type_inferred": "Software Output Report",
+  "artifact_summary": "Sample report from Hazen Report Creator Software showing daily numerical values and chemical dosages for the Howard F. Curren AWTP SCADA System evaluation in October 2022.",
+  "artifact_key_elements": [
+    "Hazen Report Creator Software interface",
+    "October 2022 data tracking tables",
+    "Daily numerical value metrics",
+    "Chemical dosage specifications",
+    "Figure 16 XLReport caption",
+    "Howard F. Curren AWTP SCADA System context"
+  ],
+  "artifact_blurb": "Figure 16 XLReport Sample Report: A generated output from Hazen Report Creator Software illustrating the data visualization capabilities for the Howard F. Curren AWTP SCADA System evaluation. The document features two distinct data tables tracking daily numerical metrics and specific chemical dosages recorded throughout October 2022.",
+  "replacement_text": "Figure 16 XLReport Sample Report: A generated output from Hazen Report Creator Software illustrating the data visualization capabilities for the Howard F. Curren AWTP SCADA System evaluation. The document features two distinct data tables tracking daily numerical metrics and specific chemical dosages recorded throughout October 2022.",
+  "normalized_text": "Figure 16 XLReport Sample Report: A generated output from Hazen Report Creator Software illustrating the data visualization capabilities for the Howard F. Curren AWTP SCADA System evaluation. The document features two distinct data tables tracking daily numerical metrics and specific chemical dosages recorded throughout October 2022.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:50:45.987071+00:00"
+}

@@ -1,12 +1,14 @@
 # Branched extraction — tuning knobs.
 # All defaults below are overridden by values found in this file.
 
+report_output_path: data/extraction_reports
+
 batching:
   batch_max_chars: 10000         # fits inside rag-llm's 4096-token context (4096-1024 out-200 framing)*4 chars/tok ≈ 11k
   scan_chunk_preview_chars: 0  # 0 = full chunk text in scan pass; set >0 (e.g. 80) for abbreviated directory mode
   max_candidate_chunks: 500       # hard cap on retrieval pool per branch
-  synthesis_max_chars: 10000     # same budget as scan — keeps synthesis inside context window
-  synthesis_overlap: true         # run multiple synthesis passes if context exceeds limit
+  synthesis_max_chars: 10000     # same budget as scan — keeps full-text selection inside context window
+  synthesis_overlap: true         # run multiple full-text selection passes if context exceeds limit
   id_prefix: ""                   # prefix for short IDs (e.g. "B1-") — leave blank for plain numbers
 
 retrieval:
@@ -21,7 +23,7 @@ deduplication:
 
 llm:
   scan_pass_temperature: 0.05       # near-deterministic — scan is a binary yes/no task
-  synthesis_pass_temperature: 0.15  # slightly warmer for bullet generation
+  synthesis_pass_temperature: 0.15  # slightly warmer for second-pass chunk selection
   scan_pass_timeout_seconds: 60
   synthesis_pass_timeout_seconds: 120
   max_retries: 2                    # retry failed LLM calls before failing branch

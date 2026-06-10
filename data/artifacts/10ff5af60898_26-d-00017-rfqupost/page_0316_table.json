@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 315,
+  "page_number": 316,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1901,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nDSN000 \nDOWNSPOUT NOZZLE \nDSP085 \nDIGESTED SLUDGE PUMP \nDSP245 \nDUCT SCRUBBER PUMP \nDST256 \nDRIED SLUDGE PRODUCT STORAGE TANK (PELLETS) \nDSW \nDISCONNECT SWITCH \nDT133 \nDRIP TRAPS \nDTR000 \nDEAERATOR \nDU323 \nDEMISTER UNIT \nDWH000 \nDOMESTIC WATER HEATER, TANKLESS WATER HEATER \nEBB191 \nEMERGENCY BATTERY BANKS \nECP000 \nELECTRICAL CATHODIC P",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0316_table.png"
+}

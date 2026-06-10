@@ -1,0 +1,25 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 42,
+  "page_number": 43,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.6082887700534759,
+  "classified_page_type": "table_heavy",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1000,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \nID \nDescription \nOCFM335 \nOPEN CHANNEL FLOW METER \nOFH079 \nOIL FIRED HEATING UNIT \nOP253 \nOIL PUMP \nOPA043 \nOXYGEN PURITY ANALYZER \nOS276 \nOIL SEPERATOR \nOSM555 \nOUTSIDE SEWER MAINTENANCE \nOZ027 \nOZONE GENERATOR \nPA045 \nPHOSPHATE ANALYZER \nPAM199 \nPORTABLE GAS MONITOR \nPAT155 \nPNEUMATIC AIR TANK \nPAU066 \nPOLYMER ACTIVATION UNIT MIXER \nPAV111 \nPURGE AIR VALVE \nPBU087 \nPOLYMER BLENDING UNIT \nPBX345 \nTELEPHONE SYSTEM \nPC338 \nPELLET COOLER \nPCU113 \nPEPCON CELL UNIT \nPDP480 \nPANEL, POWER DISTRIBUTION \nPE121 \nPOTS & EJECTORS \nPE234 \nPORTABLE EQUIPMENT \nPE307 \nPORTABLE EQUIPMENT \nPF041 \nPAR",
+  "bbox": [
+    64.0,
+    64.0,
+    548.0,
+    710.0
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0043_table_01.png"
+}

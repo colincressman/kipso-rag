@@ -1,0 +1,16 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 322,
+  "page_number": 323,
+  "artifact_kind": "table",
+  "classified_page_type": "table_heavy",
+  "image_count": 1,
+  "widget_count": 0,
+  "form_packet_signature": "",
+  "text_length": 1628,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nSCADA Standards Appendix A \nSLM078 \nSLUDGE BLANKET LEVEL METER \nSMP000 \nSUMP PIT \nSO000 \nSIPHON OUTLET \nSP008 \nSUMP PUMP \nSP032 \nSAMPLE PUMP \nSP255 \nSLUDGE PLOW \nSP402 \nSAMPLING PUMP \nSPR000 \nSEPARATOR (AIR, FOAM, MECHANICAL, OIL/WATER) \nSRP035 \nSLUDGE RECIRCULATION PUMP \nSS042 \nSAMPLER STATION \nSS276 \nSOFTSTART \nSSB256 \nSLUDGE STORAGE BIN \nSSH000 \nSPEED/FREQUENCY SWIT",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0323_table.png"
+}

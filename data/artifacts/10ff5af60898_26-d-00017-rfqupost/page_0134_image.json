@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 133,
+  "page_number": 134,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 4,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "figure 5 dreamreport sample dashboard",
+    "hfc awtp master plan"
+  ],
+  "text_length": 177,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nReport Creator Software \nFigure 5 DreamReport Sample Dashboard \nHFC AWTP Master Plan \nDecember 2024 \nHoward F. Curren AWTP - SCADA System \nReport Creator Software Evaluation \n34 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0134_image.png",
+  "artifact_type_inferred": "Screenshot",
+  "artifact_summary": "Disinfection Dashboard monitoring water quality metrics including E. coli, chlorine residual, pH, and turbidity.",
+  "artifact_key_elements": [
+    "E. coli concentration trends",
+    "Chlorine residual levels",
+    "pH balance indicators",
+    "Turbidity measurements",
+    "Real-time data grid layout"
+  ],
+  "artifact_blurb": "A screenshot of a Disinfection Dashboard interface featuring a 3x3 grid of analytical charts tracking critical water quality parameters: E. coli counts, chlorine residual concentrations, pH levels, and turbidity readings.",
+  "replacement_text": "A screenshot of a Disinfection Dashboard interface featuring a 3x3 grid of analytical charts tracking critical water quality parameters: E. coli counts, chlorine residual concentrations, pH levels, and turbidity readings.",
+  "normalized_text": "A screenshot of a Disinfection Dashboard interface featuring a 3x3 grid of analytical charts tracking critical water quality parameters: E. coli counts, chlorine residual concentrations, pH levels, and turbidity readings.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:39:06.081146+00:00"
+}

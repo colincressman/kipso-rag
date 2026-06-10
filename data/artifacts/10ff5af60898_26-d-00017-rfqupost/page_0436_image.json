@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 435,
+  "page_number": 436,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n129 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0436_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "Screenshot of a SCADA system showing the Modulating Valve Faceplate for Reactor Gate No.3 with a position feedback graph.",
+  "artifact_key_elements": [
+    "Modulating Valve Faceplate",
+    "Reactor Gate No.3",
+    "Position Feedback Graph",
+    "0% to 100% Scale",
+    "SCADA System Interface"
+  ],
+  "artifact_blurb": "A detailed screenshot of a Supervisory Control and Data Acquisition (SCADA) interface displaying the operational status of a Modulating Valve Faceplate designated for Reactor Gate No.3. The view includes a real-time position feedback graph calibrated from 0% to 100%, illustrating the valve's current actuation state within the industrial control environment.",
+  "replacement_text": "A detailed screenshot of a Supervisory Control and Data Acquisition (SCADA) interface displaying the operational status of a Modulating Valve Faceplate designated for Reactor Gate No.3. The view includes a real-time position feedback graph calibrated from 0% to 100%, illustrating the valve's current actuation state within the industrial control environment.",
+  "normalized_text": "A detailed screenshot of a Supervisory Control and Data Acquisition (SCADA) interface displaying the operational status of a Modulating Valve Faceplate designated for Reactor Gate No.3. The view includes a real-time position feedback graph calibrated from 0% to 100%, illustrating the valve's current actuation state within the industrial control environment.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:30:15.837658+00:00"
+}

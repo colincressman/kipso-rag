@@ -1,0 +1,36 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 480,
+  "page_number": 481,
+  "artifact_kind": "form",
+  "classified_page_type": "standard",
+  "image_count": 0,
+  "widget_count": 13,
+  "form_packet_signature": [
+    "failure to complete, sign, and submit all forms 10,20, & 50 may render the bid or proposal non-responsive",
+    "own forces/organization. a bidder/proposer who desires to self-perform the sub-tasks of a contract must demonstrate",
+    "and were solicited on work typically self-performed by the prime. □ qualifying remarks w/documents",
+    "segmented the portions of the work to be performed by slbes in order to increase the likelihood that the goals will be met"
+  ],
+  "text_length": 2125,
+  "reasons": [
+    "native:pdf_form_widgets"
+  ],
+  "text_preview": " \n \n \n \n \n  \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n   \n \n \n \n \n \n  \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n  \n \n \n \n \n \n \n  \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n  \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n   \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n  \n \n \n  \n \n \n  \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n  \n \n \n \n  \n \n \n \n \n  \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0481_form.png",
+  "artifact_type_inferred": "Compliance Form (GFECP –DMI 50)",
+  "artifact_summary": "Page 2 of the GFECP –DMI 50 form detailing SLBE participation requirements, including work segmentation, bonding assistance, and recruitment protocols.",
+  "artifact_key_elements": [
+    "Work Segmentation",
+    "Bonding Assistance",
+    "Recruitment Protocols",
+    "Compliance Checkboxes",
+    "Supporting Documentation",
+    "SLBE Participation"
+  ],
+  "artifact_blurb": "This section of the GFECP –DMI 50 compliance form (Page 2) mandates specific actions for Small Local Business Enterprise (SLBE) engagement. Bidders must confirm adherence to work segmentation strategies, provide evidence of bonding assistance, and outline recruitment efforts via designated checkboxes, attaching all requisite supporting documentation to validate compliance.",
+  "replacement_text": "This section of the GFECP –DMI 50 compliance form (Page 2) mandates specific actions for Small Local Business Enterprise (SLBE) engagement. Bidders must confirm adherence to work segmentation strategies, provide evidence of bonding assistance, and outline recruitment efforts via designated checkboxes, attaching all requisite supporting documentation to validate compliance.",
+  "normalized_text": "This section of the GFECP –DMI 50 compliance form (Page 2) mandates specific actions for Small Local Business Enterprise (SLBE) engagement. Bidders must confirm adherence to work segmentation strategies, provide evidence of bonding assistance, and outline recruitment efforts via designated checkboxes, attaching all requisite supporting documentation to validate compliance.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T01:10:40.495571+00:00"
+}

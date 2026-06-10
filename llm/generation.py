@@ -20,8 +20,6 @@ from utils.runtime_defaults import (
 # Module-level cache for load_llm_config() — keyed by resolved path string.
 # Eliminates repeated YAML reads on every request in steady-state operation.
 _llm_config_cache: dict[str, Any] = {}
-
-
 def _reload_after_llm(base_url: str = DEFAULT_LLM_BASE_URL) -> None:
 	"""
 	Non-blocking. Delegates to VRAMManager.after_llm_complete() which reloads
@@ -37,6 +35,19 @@ def _reload_after_llm(base_url: str = DEFAULT_LLM_BASE_URL) -> None:
 		pass
 
 
+def unload_llm_model(
+	*,
+	model: str = DEFAULT_LLM_MODEL,
+	base_url: str = DEFAULT_LLM_BASE_URL,
+) -> None:
+	"""Explicitly evict the main Ollama LLM after a run finishes."""
+	try:
+		from utils.vram_manager import VRAMManager  # noqa: PLC0415
+		VRAMManager.evict_ollama_model(model, base_url)
+	except Exception:
+		pass
+
+
 def ollama_chat(
 	*,
 	model: str,
@@ -47,19 +58,22 @@ def ollama_chat(
 	temperature: float = DEFAULT_LLM_TEMPERATURE,
 	think: bool = False,
 	num_predict: int = -1,
+	keep_alive: int = 0,
+	manage_vram: bool = True,
 ) -> str:
-	# Free the intent classifier from VRAM before the LLM loads.
-	try:
-		from retrieval.intent_classifier import unload as _unload_classifier
-		_unload_classifier()
-	except Exception:
-		pass
+	if manage_vram:
+		# Free the intent classifier from VRAM before the LLM loads.
+		try:
+			from retrieval.intent_classifier import unload as _unload_classifier
+			_unload_classifier()
+		except Exception:
+			pass
 	url = f"{base_url.rstrip('/')}/api/chat"
 	payload = {
 		"model": model,
 		"stream": False,
 		"think": think,
-		"keep_alive": 0,
+		"keep_alive": keep_alive,
 		"options": {
 			"temperature": temperature,
 			**(({"num_predict": num_predict}) if num_predict > 0 else {}),
@@ -78,7 +92,8 @@ def ollama_chat(
 	)
 	with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
 		body = json.loads(resp.read().decode("utf-8"))
-	_reload_after_llm(base_url=base_url)
+	if manage_vram:
+		_reload_after_llm(base_url=base_url)
 	return ((body.get("message") or {}).get("content") or "").strip()
 
 
@@ -91,20 +106,23 @@ def ollama_stream(
 	timeout_seconds: float = DEFAULT_LLM_TIMEOUT_SECONDS,
 	temperature: float = DEFAULT_LLM_TEMPERATURE,
 	think: bool = False,
+	keep_alive: int = 0,
+	manage_vram: bool = True,
 ) -> Iterator[str]:
 	"""Stream tokens from Ollama's /api/chat endpoint. Yields content chunks."""
-	# Free the intent classifier from VRAM before the LLM loads.
-	try:
-		from retrieval.intent_classifier import unload as _unload_classifier
-		_unload_classifier()
-	except Exception:
-		pass
+	if manage_vram:
+		# Free the intent classifier from VRAM before the LLM loads.
+		try:
+			from retrieval.intent_classifier import unload as _unload_classifier
+			_unload_classifier()
+		except Exception:
+			pass
 	url = f"{base_url.rstrip('/')}/api/chat"
 	payload = {
 		"model": model,
 		"stream": True,
 		"think": think,
-		"keep_alive": 0,
+		"keep_alive": keep_alive,
 		"options": {"temperature": temperature},
 		"messages": [
 			{"role": "system", "content": system_prompt},
@@ -132,7 +150,8 @@ def ollama_stream(
 				if content:
 					yield content
 				if obj.get("done"):
-					_reload_after_llm(base_url=base_url)
+					if manage_vram:
+						_reload_after_llm(base_url=base_url)
 					break
 	except Exception:
 		return

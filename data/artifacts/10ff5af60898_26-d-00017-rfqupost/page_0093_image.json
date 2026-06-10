@@ -1,0 +1,35 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 92,
+  "page_number": 93,
+  "artifact_kind": "image",
+  "classified_page_type": "table_heavy",
+  "image_count": 37,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "025 - dar diffused air reactor building",
+    "070 - daf dissolved air floatation"
+  ],
+  "text_length": 2862,
+  "reasons": [
+    "page_classifier:table_heavy",
+    "table_override:page_spanning_table_bbox"
+  ],
+  "text_preview": "I-202 \nI-312 \n0\n1\"\n1/2\"\n025 - DAR Diffused Air Reactor Building \n070 - DAF Dissolved Air Floatation \n056 - BTB Belt Thickener Building \n025-FPP-01 - Dissolved Air Reactor (Control Room Fiber Enclosure) \nPLC-38 (BTB) \n192.0.39.138\n025-FPP-02 - Reactor Deck \n070-FPP-01 - MCC Room (Control Panel) \n056-FPP-01 - Control Room (Fiber Enclosure) \nSlot 1 \nSlot 2 \nSlot 3 \nSlot 1 \nSlot 1 \nSlot 1 \nBlue \nBlue \nRed \nBlue \nWhite \nWhite \nOrange \nOrange \nBlack \nOrange \nSlate \nSlate \nGreen \nGreen \nYellow \nGreen \nBrown \nBrown \nBrown \nBrown \nViolet \nBrown \nGreen \nGreen \nSlate \nSlate \nOrange \nOrange \nWhite \nSlate ",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0093_image.png",
+  "artifact_type_inferred": "Network Infrastructure Schematic",
+  "artifact_summary": "Fiber optic cabling and network hardware layout for the City of Tampa Wastewater Department facilities.",
+  "artifact_key_elements": [
+    "Dissolved Air Reactor Station",
+    "Return Sludge Pump Stations",
+    "PLC Connections",
+    "Media Converters",
+    "Network Switches",
+    "Enclosure Mapping"
+  ],
+  "artifact_blurb": "A detailed network topology diagram illustrating the fiber optic infrastructure and hardware deployment for the City of Tampa Wastewater Department. The schematic specifically documents interconnections between Programmable Logic Controllers (PLCs), media converters, and switches housed within designated enclosures at the Dissolved Air Reactor and Return Sludge Pump Stations.",
+  "replacement_text": "A detailed network topology diagram illustrating the fiber optic infrastructure and hardware deployment for the City of Tampa Wastewater Department. The schematic specifically documents interconnections between Programmable Logic Controllers (PLCs), media converters, and switches housed within designated enclosures at the Dissolved Air Reactor and Return Sludge Pump Stations.",
+  "normalized_text": "A detailed network topology diagram illustrating the fiber optic infrastructure and hardware deployment for the City of Tampa Wastewater Department. The schematic specifically documents interconnections between Programmable Logic Controllers (PLCs), media converters, and switches housed within designated enclosures at the Dissolved Air Reactor and Return Sludge Pump Stations.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:30:30.036667+00:00"
+}

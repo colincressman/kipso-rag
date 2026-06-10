@@ -9,6 +9,8 @@ Covers:
 
 from __future__ import annotations
 
+import json
+
 import pytest
 
 from extraction.batch import (
@@ -19,8 +21,17 @@ from extraction.batch import (
     parse_scan_response,
     rehydrate,
 )
-from extraction.branch_config import ExtractionItem
+from extraction.branch_config import (
+    BranchResult,
+    BranchStats,
+    ExtractionItem,
+    ProjectConfig,
+    SecondPassConfig,
+)
 from extraction.dedup import dedup_items, jaccard
+import extraction.project_runner as project_runner
+from extraction.project_runner import _run_post_passes
+from extraction.project_runner import rerun_reports_from_checkpoint
 
 
 # ---------------------------------------------------------------------------
@@ -627,5 +638,201 @@ class TestRunBranch:
             result = run_branch(branch, corpus=self._corpus(), config=config, llm_fn=always_raises)
         assert result.status == "error"
         assert result.stats.error is not None
+
+
+class TestSecondPassPipeline:
+    def _write_branch_checkpoint(self, tmp_path) -> object:
+        ckpt_path = tmp_path / "checkpoint.jsonl"
+        branch_results = [
+            BranchResult(
+                branch_name="Scope",
+                output_heading="Scope",
+                items=[
+                    ExtractionItem(
+                        text="PLC cabinet required",
+                        branch_name="Scope",
+                        source_chunk_id="doc-c000001",
+                        source_filename="spec.pdf",
+                        source_page=12,
+                    )
+                ],
+                stats=BranchStats(),
+                status="ok",
+            ),
+            BranchResult(
+                branch_name="Requirements",
+                output_heading="Requirements",
+                items=[
+                    ExtractionItem(
+                        text="SCADA integration required",
+                        branch_name="Requirements",
+                        source_chunk_id="doc-c000002",
+                        source_filename="spec.pdf",
+                        source_page=14,
+                    )
+                ],
+                stats=BranchStats(),
+                status="ok",
+            ),
+        ]
+        ckpt_path.write_text(
+            "\n".join(json.dumps({"type": "branch_result", "data": result.to_dict()}) for result in branch_results) + "\n",
+            encoding="utf-8",
+        )
+        return ckpt_path
+
+    def test_report_plan_is_created_before_configured_second_passes(self, tmp_path):
+        ckpt_path = self._write_branch_checkpoint(tmp_path)
+        project = ProjectConfig(
+            slug="second-pass-plan",
+            name="Second Pass Plan",
+            second_passes=[
+                SecondPassConfig(name="Organize by Category", pass_type="organize_by_category"),
+            ],
+        )
+
+        results = _run_post_passes(project, ckpt_path, lambda **_kw: "unused", lambda _: None)
+        assert [result.pass_name for result in results] == [
+            "report_plan",
+            "Organize by Category",
+            "Assemble Report",
+        ]
+        assert results[0].artifact_type == "report_plan_v1"
+        assert results[0].artifact_data["sections"][0]["heading"] == "Organize by Category"
+
+    def test_organize_by_category_builds_category_artifact(self, tmp_path):
+        ckpt_path = self._write_branch_checkpoint(tmp_path)
+        project = ProjectConfig(
+            slug="organize-pass-test",
+            name="Organize Pass Test",
+            second_passes=[
+                SecondPassConfig(name="Organize by Category", pass_type="organize_by_category"),
+            ],
+        )
+
+        results = _run_post_passes(project, ckpt_path, lambda **_kw: "unused", lambda _: None)
+        organized = results[1]
+        assert organized.artifact_type == "category_organizer_v1"
+        categories = organized.artifact_data["categories"]
+        assert [cat["name"] for cat in categories] == ["Scope", "Requirements"]
+        assert any("[chunk:doc-c000001]" in line for line in categories[0]["evidence_lines"])
+        assert "### Scope" in organized.response_text
+        assert "### Requirements" in organized.response_text
+
+    def test_summarize_by_category_auto_organizes_when_needed(self, tmp_path):
+        ckpt_path = self._write_branch_checkpoint(tmp_path)
+        project = ProjectConfig(
+            slug="summarize-pass-test",
+            name="Summarize Pass Test",
+            second_passes=[
+                SecondPassConfig(name="Summarize by Category", pass_type="summarize_by_category"),
+            ],
+        )
+        prompts = []
+
+        def fake_llm(**kw):
+            prompts.append(kw["user_prompt"])
+            if "Category: Scope" in kw["user_prompt"]:
+                return "Scope summary. [chunk:doc-c000001]"
+            return "Requirements summary. [chunk:doc-c000002]"
+
+        results = _run_post_passes(project, ckpt_path, fake_llm, lambda _: None)
+        summarized = results[1]
+        assert summarized.artifact_type == "category_summaries_v1"
+        assert any("Category: Scope" in prompt for prompt in prompts)
+        assert any("Category: Requirements" in prompt for prompt in prompts)
+        assert "### Scope" in summarized.response_text
+        assert "### Requirements" in summarized.response_text
+
+    def test_assemble_report_follows_planned_block_order(self, tmp_path):
+        ckpt_path = self._write_branch_checkpoint(tmp_path)
+        project = ProjectConfig(
+            slug="assemble-pass-test",
+            name="Assemble Pass Test",
+            second_passes=[
+                SecondPassConfig(name="Executive Summary", pass_type="executive_summary"),
+                SecondPassConfig(name="Summarize by Category", pass_type="summarize_by_category"),
+                SecondPassConfig(name="Organize by Category", pass_type="organize_by_category"),
+                SecondPassConfig(name="Assemble Report", pass_type="assemble_report"),
+            ],
+        )
+
+        def fake_llm(**kw):
+            prompt = kw["user_prompt"]
+            if "Category: Scope" in prompt:
+                return "Scope summary. [chunk:doc-c000001]"
+            if "Category: Requirements" in prompt:
+                return "Requirements summary. [chunk:doc-c000002]"
+            if "executive summary" in prompt.lower():
+                return "Top-line summary."
+            return "Unexpected"
+
+        results = _run_post_passes(project, ckpt_path, fake_llm, lambda _: None)
+        assembled = results[-1]
+        assert assembled.artifact_type == "assembled_report_v1"
+        text = assembled.response_text
+        assert text.startswith("# Assemble Pass Test Report")
+        assert text.index("### Executive Summary") < text.index("### Scope")
+        assert text.index("### Scope") < text.index("## Organized Evidence by Category")
+
+    def test_key_findings_and_next_actions_use_prior_outputs(self, tmp_path):
+        ckpt_path = self._write_branch_checkpoint(tmp_path)
+        project = ProjectConfig(
+            slug="findings-actions",
+            name="Findings and Actions",
+            second_passes=[
+                SecondPassConfig(name="Summarize by Category", pass_type="summarize_by_category"),
+                SecondPassConfig(name="Key Findings", pass_type="key_findings"),
+                SecondPassConfig(name="Next Actions", pass_type="next_actions"),
+                SecondPassConfig(name="Assemble Report", pass_type="assemble_report"),
+            ],
+        )
+        prompts = []
+
+        def fake_llm(**kw):
+            prompts.append(kw["user_prompt"])
+            prompt = kw["user_prompt"]
+            if "Category: Scope" in prompt:
+                return "Scope summary. [chunk:doc-c000001]"
+            if "Category: Requirements" in prompt:
+                return "Requirements summary. [chunk:doc-c000002]"
+            if "Key Findings" in prompt:
+                return "- Finding one\n- Finding two"
+            if "Next Actions" in prompt:
+                return "- Review PLC cabinet scope\n- Confirm SCADA interfaces"
+            return "Fallback"
+
+        results = _run_post_passes(project, ckpt_path, fake_llm, lambda _: None)
+        key_findings = next(result for result in results if result.pass_name == "Key Findings")
+        next_actions = next(result for result in results if result.pass_name == "Next Actions")
+        assert key_findings.artifact_type == "key_findings_v1"
+        assert next_actions.artifact_type == "next_actions_v1"
+        assert any("Scope summary." in prompt for prompt in prompts if "Key Findings" in prompt)
+        assert any("Finding one" in prompt for prompt in prompts if "Next Actions" in prompt)
+
+    def test_rerun_reports_from_checkpoint_reuses_branch_outputs(self, tmp_path, monkeypatch):
+        ckpt_path = self._write_branch_checkpoint(tmp_path)
+        project = ProjectConfig(
+            slug="rerun-second-passes",
+            name="Rerun Second Passes",
+            second_passes=[
+                SecondPassConfig(name="Executive Summary", pass_type="executive_summary"),
+            ],
+        )
+
+        monkeypatch.setattr(project_runner, "_make_llm_fn", lambda: (lambda **_kw: "checkpoint-based summary"))
+
+        result = rerun_reports_from_checkpoint(
+            project,
+            checkpoint_path=str(ckpt_path),
+            emit=lambda _: None,
+        )
+
+        assert result.second_pass_results[1].status == "ok"
+        assert result.second_pass_results[1].response_text == "### Executive Summary\ncheckpoint-based summary"
+        assert len(result.branch_results) == 2
+        assert result.branch_results[0].items[0].text == "PLC cabinet required"
+        assert result.checkpoint_path
+        assert "checkpoint-based summary" in result.report_markdown
 
 

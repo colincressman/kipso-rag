@@ -1,0 +1,32 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 441,
+  "page_number": 442,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 3,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 154,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \nSCADA Standards Appendix A \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n135 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0442_image.png",
+  "artifact_type_inferred": "SCADA Interface Screenshot",
+  "artifact_summary": "Screenshot of a SCADA system showing the 'Level transmitter No.1' analog tag faceplate with configuration parameters.",
+  "artifact_key_elements": [
+    "Level transmitter No.1 tag",
+    "PV status indicator",
+    "Filter time constant setting",
+    "Simulated PV setpoint",
+    "Analog faceplate layout"
+  ],
+  "artifact_blurb": "Visual documentation of a SCADA system interface displaying the 'Level transmitter No.1' analog tag faceplate. The image details specific configuration parameters including the Process Variable (PV) status, filter time constant, and simulated PV setpoint, serving as a reference for SCADA standards appendix compliance.",
+  "replacement_text": "Visual documentation of a SCADA system interface displaying the 'Level transmitter No.1' analog tag faceplate. The image details specific configuration parameters including the Process Variable (PV) status, filter time constant, and simulated PV setpoint, serving as a reference for SCADA standards appendix compliance.",
+  "normalized_text": "Visual documentation of a SCADA system interface displaying the 'Level transmitter No.1' analog tag faceplate. The image details specific configuration parameters including the Process Variable (PV) status, filter time constant, and simulated PV setpoint, serving as a reference for SCADA standards appendix compliance.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-10T00:39:15.683980+00:00"
+}

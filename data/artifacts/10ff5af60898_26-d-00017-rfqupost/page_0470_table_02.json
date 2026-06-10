@@ -1,0 +1,28 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 469,
+  "page_number": 470,
+  "artifact_kind": "table",
+  "artifact_index": 2,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.44924692274322264,
+  "classified_page_type": "table_heavy",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "change request form attachment a back-out plan",
+    "form example"
+  ],
+  "text_length": 1115,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n             \n \n \n \n \n \nSCADA Standards Appendix B \nChange Request Form Attachment A Back-Out Plan \nForm Example \nDate of Request: 1/20/2025 \nProject Number: 1234 \nName of Requester: J. Bond \nName of Firm: MI6 \nPhone Number: 123-456-7890 \nE-mail address: JBond@MI6.com \nAttach additional sheets as needed to provide the information required below. \nOutage and/or ",
+  "bbox": [
+    64.50672912597656,
+    186.5399932861328,
+    547.7526245117188,
+    668.572509765625
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0470_table_02.png"
+}

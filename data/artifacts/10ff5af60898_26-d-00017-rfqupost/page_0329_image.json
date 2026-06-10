@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 328,
+  "page_number": 329,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 180,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": " \n \n \n \n \n \n \n \n  \n \n \n \n \n \n \n \n \n \n \n6 \nSCADA Standards Appendix A \nISA Naming Conventions \nHFC AWTP Master Plan \nHoward F. Curren AWTP \nSCADA Standards Appendix A ­\nDefinitions and General Reference \nJanuary 2025 \n22 \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0329_image.png",
+  "artifact_type_inferred": "SCADA ISA-5.5 Reference Table",
+  "artifact_summary": "Document page mapping ISA alphabetical characters to engineering variables, modifiers, and functions for SCADA systems.",
+  "artifact_key_elements": [
+    "ISA-5.5 Naming Convention",
+    "Alphabetical Character Mapping",
+    "Engineering Variable Definitions",
+    "Function Modifiers",
+    "Alarm Logic Indicators",
+    "Process Parameter Codes"
+  ],
+  "artifact_blurb": "This document page presents a structured reference table adhering to ISA-5.5 standards, detailing the nomenclature for SCADA system variables. It systematically maps alphabetical characters (A-Z) to specific engineering parameters such as pressure and temperature, alongside associated modifiers and functional indicators including alarm states.",
+  "replacement_text": "This document page presents a structured reference table adhering to ISA-5.5 standards, detailing the nomenclature for SCADA system variables. It systematically maps alphabetical characters (A-Z) to specific engineering parameters such as pressure and temperature, alongside associated modifiers and functional indicators including alarm states.",
+  "normalized_text": "This document page presents a structured reference table adhering to ISA-5.5 standards, detailing the nomenclature for SCADA system variables. It systematically maps alphabetical characters (A-Z) to specific engineering parameters such as pressure and temperature, alongside associated modifiers and functional indicators including alarm states.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:56:22.228790+00:00"
+}

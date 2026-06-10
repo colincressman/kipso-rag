@@ -1,0 +1,33 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 63,
+  "page_number": 64,
+  "artifact_kind": "image",
+  "classified_page_type": "standard",
+  "image_count": 2,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "hfc awtp master plan"
+  ],
+  "text_length": 125,
+  "reasons": [
+    "heuristic:image_heavy_sparse_text"
+  ],
+  "text_preview": "Appendix G: \nExisting Surveillance Equipment \nHFC AWTP Master Plan \nImprovements: SCADA Design Criteria \nTechnical Memorandum \n",
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0064_image.png",
+  "artifact_type_inferred": "Technical Memorandum Title Page",
+  "artifact_summary": "Title page for Appendix G of the HFC AWTP Master Plan Improvements SCADA Design Criteria Technical Memorandum, detailing existing surveillance equipment.",
+  "artifact_key_elements": [
+    "Appendix G",
+    "Existing Surveillance Equipment",
+    "HFC AWTP Master Plan",
+    "SCADA Design Criteria",
+    "Technical Memorandum",
+    "Improvements"
+  ],
+  "artifact_blurb": "This document serves as the title page for Appendix G, titled 'Existing Surveillance Equipment,' which is a component of the broader HFC AWTP Master Plan Improvements: SCADA Design Criteria Technical Memorandum.",
+  "replacement_text": "This document serves as the title page for Appendix G, titled 'Existing Surveillance Equipment,' which is a component of the broader HFC AWTP Master Plan Improvements: SCADA Design Criteria Technical Memorandum.",
+  "normalized_text": "This document serves as the title page for Appendix G, titled 'Existing Surveillance Equipment,' which is a component of the broader HFC AWTP Master Plan Improvements: SCADA Design Criteria Technical Memorandum.",
+  "artifact_blurb_model": "rag-llm",
+  "artifact_blurb_generated_at": "2026-06-09T23:24:15.094052+00:00"
+}

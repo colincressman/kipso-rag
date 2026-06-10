@@ -1,0 +1,28 @@
+{
+  "doc_id": "10ff5af60898cc8fc7132d04848454db2b5827dbd43a994f0b603208ee2c6b07",
+  "page_index": 265,
+  "page_number": 266,
+  "artifact_kind": "table",
+  "artifact_index": 1,
+  "table_count_on_page": 1,
+  "table_area_ratio": 0.15294241417851906,
+  "classified_page_type": "table_heavy",
+  "image_count": 6,
+  "widget_count": 0,
+  "form_packet_signature": [
+    "scada standards volume 3 of 3",
+    "alarms of different priorities are displayed on the alarm footer and alarm summary using"
+  ],
+  "text_length": 1795,
+  "reasons": [
+    "page_classifier:table_heavy"
+  ],
+  "text_preview": "9 \nSCADA Standards Volume 3 of 3 \nAlarm Graphics \n9.1\u0003Colors\u0003\nAlarms of different priorities are displayed on the alarm footer and alarm summary using \ndifferent colors and animations to aid in their identification. Alarm color configuration is \nshown in the table below. \nUnacknowledged Alarms \nAcknowledged Alarms \nUnacknowledged \nalarms that have \ncleared \n \n \n \n \n \n \n \n \n \n \n  \n  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n",
+  "bbox": [
+    64.4011459350586,
+    199.25999450683594,
+    547.962158203125,
+    373.80999755859375
+  ],
+  "image_path": "C:\\Users\\colin\\OneDrive\\Desktop\\RAG\\data\\artifacts\\10ff5af60898_26-d-00017-rfqupost\\page_0266_table_01.png"
+}

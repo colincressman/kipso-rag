@@ -1,0 +1,1173 @@
+{"seq": 1, "type": "run_started", "run_id": "extract_20260610_011846_6a850095", "kind": "full_run", "project_slug": "test"}
+{"seq": 2, "type": "progress", "phase": "running", "stage": "initializing", "message": "Starting extraction project: test", "percent_hint": 2}
+{"seq": 3, "type": "progress", "phase": "running", "stage": "progress", "message": "Checkpoint: data\\extraction_checkpoints\\test_20260610_011846.jsonl", "percent_hint": null}
+{"seq": 4, "type": "progress", "phase": "running", "stage": "collection_ready", "message": "Collection: Tampa", "percent_hint": 4}
+{"seq": 5, "type": "progress", "phase": "running", "stage": "progress", "message": "\u00e2\u0153\u201c Already ingested: 26-d-00017-rfqupost.pdf", "percent_hint": null}
+{"seq": 6, "type": "progress", "phase": "running", "stage": "building_corpus", "message": "Building corpus index\u00e2\u20ac\u00a6", "percent_hint": 18}
+{"seq": 7, "type": "progress", "phase": "running", "stage": "progress", "message": "\u00e2\u2020\u2019 450 chunks loaded for collection 'Tampa'", "percent_hint": null}
+{"seq": 8, "type": "progress", "phase": "running", "stage": "progress", "message": "Running 10 branch(es)\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 9, "type": "progress", "phase": "running", "stage": "warming_llm", "message": "Warming LLM\u00e2\u20ac\u00a6", "percent_hint": 24}
+{"seq": 10, "type": "progress", "phase": "running", "stage": "progress", "message": "\u00e2\u0153\u201c LLM ready", "percent_hint": null}
+{"seq": 11, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 1/10: Project Identification / Executive Summary", "percent_hint": 30}
+{"seq": 12, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Project Identification / Executive Summary'\u2026", "percent_hint": 36}
+{"seq": 13, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 HyDE: generating passage\u2026", "percent_hint": null}
+{"seq": 14, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 15, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 16, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 17, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 438 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 18, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 438 chunks across 93 batch(es)", "percent_hint": null}
+{"seq": 19, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/93\u2026", "percent_hint": 46}
+{"seq": 20, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/93\u2026", "percent_hint": 46}
+{"seq": 21, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/93\u2026", "percent_hint": 46}
+{"seq": 22, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/93\u2026", "percent_hint": 46}
+{"seq": 23, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/93\u2026", "percent_hint": 46}
+{"seq": 24, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/93\u2026", "percent_hint": 46}
+{"seq": 25, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/93\u2026", "percent_hint": 46}
+{"seq": 26, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/93\u2026", "percent_hint": 46}
+{"seq": 27, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/93\u2026", "percent_hint": 46}
+{"seq": 28, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/93\u2026", "percent_hint": 46}
+{"seq": 29, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/93\u2026", "percent_hint": 46}
+{"seq": 30, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/93\u2026", "percent_hint": 46}
+{"seq": 31, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/93\u2026", "percent_hint": 46}
+{"seq": 32, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/93\u2026", "percent_hint": 46}
+{"seq": 33, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/93\u2026", "percent_hint": 46}
+{"seq": 34, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/93\u2026", "percent_hint": 46}
+{"seq": 35, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/93\u2026", "percent_hint": 46}
+{"seq": 36, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/93\u2026", "percent_hint": 46}
+{"seq": 37, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/93\u2026", "percent_hint": 46}
+{"seq": 38, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/93\u2026", "percent_hint": 46}
+{"seq": 39, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/93\u2026", "percent_hint": 46}
+{"seq": 40, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/93\u2026", "percent_hint": 46}
+{"seq": 41, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/93\u2026", "percent_hint": 46}
+{"seq": 42, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/93\u2026", "percent_hint": 46}
+{"seq": 43, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/93\u2026", "percent_hint": 46}
+{"seq": 44, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/93\u2026", "percent_hint": 46}
+{"seq": 45, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/93\u2026", "percent_hint": 46}
+{"seq": 46, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/93\u2026", "percent_hint": 46}
+{"seq": 47, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/93\u2026", "percent_hint": 46}
+{"seq": 48, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 30/93\u2026", "percent_hint": 46}
+{"seq": 49, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 31/93\u2026", "percent_hint": 46}
+{"seq": 50, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 32/93\u2026", "percent_hint": 46}
+{"seq": 51, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 33/93\u2026", "percent_hint": 46}
+{"seq": 52, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 34/93\u2026", "percent_hint": 46}
+{"seq": 53, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 35/93\u2026", "percent_hint": 46}
+{"seq": 54, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 36/93\u2026", "percent_hint": 46}
+{"seq": 55, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 37/93\u2026", "percent_hint": 46}
+{"seq": 56, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 38/93\u2026", "percent_hint": 46}
+{"seq": 57, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 39/93\u2026", "percent_hint": 46}
+{"seq": 58, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 40/93\u2026", "percent_hint": 46}
+{"seq": 59, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 41/93\u2026", "percent_hint": 46}
+{"seq": 60, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 42/93\u2026", "percent_hint": 46}
+{"seq": 61, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 43/93\u2026", "percent_hint": 46}
+{"seq": 62, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 44/93\u2026", "percent_hint": 46}
+{"seq": 63, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 45/93\u2026", "percent_hint": 46}
+{"seq": 64, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 46/93\u2026", "percent_hint": 46}
+{"seq": 65, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 47/93\u2026", "percent_hint": 46}
+{"seq": 66, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 48/93\u2026", "percent_hint": 46}
+{"seq": 67, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 49/93\u2026", "percent_hint": 46}
+{"seq": 68, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 50/93\u2026", "percent_hint": 46}
+{"seq": 69, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 51/93\u2026", "percent_hint": 46}
+{"seq": 70, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 52/93\u2026", "percent_hint": 46}
+{"seq": 71, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 53/93\u2026", "percent_hint": 46}
+{"seq": 72, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 54/93\u2026", "percent_hint": 46}
+{"seq": 73, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 55/93\u2026", "percent_hint": 46}
+{"seq": 74, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 56/93\u2026", "percent_hint": 46}
+{"seq": 75, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 57/93\u2026", "percent_hint": 46}
+{"seq": 76, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 58/93\u2026", "percent_hint": 46}
+{"seq": 77, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 59/93\u2026", "percent_hint": 46}
+{"seq": 78, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 60/93\u2026", "percent_hint": 46}
+{"seq": 79, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 61/93\u2026", "percent_hint": 46}
+{"seq": 80, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 62/93\u2026", "percent_hint": 46}
+{"seq": 81, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 63/93\u2026", "percent_hint": 46}
+{"seq": 82, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 64/93\u2026", "percent_hint": 46}
+{"seq": 83, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 65/93\u2026", "percent_hint": 46}
+{"seq": 84, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 66/93\u2026", "percent_hint": 46}
+{"seq": 85, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 67/93\u2026", "percent_hint": 46}
+{"seq": 86, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 68/93\u2026", "percent_hint": 46}
+{"seq": 87, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 69/93\u2026", "percent_hint": 46}
+{"seq": 88, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 70/93\u2026", "percent_hint": 46}
+{"seq": 89, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 71/93\u2026", "percent_hint": 46}
+{"seq": 90, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 72/93\u2026", "percent_hint": 46}
+{"seq": 91, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 73/93\u2026", "percent_hint": 46}
+{"seq": 92, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 74/93\u2026", "percent_hint": 46}
+{"seq": 93, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 75/93\u2026", "percent_hint": 46}
+{"seq": 94, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 76/93\u2026", "percent_hint": 46}
+{"seq": 95, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 77/93\u2026", "percent_hint": 46}
+{"seq": 96, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 78/93\u2026", "percent_hint": 46}
+{"seq": 97, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 79/93\u2026", "percent_hint": 46}
+{"seq": 98, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 80/93\u2026", "percent_hint": 46}
+{"seq": 99, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 81/93\u2026", "percent_hint": 46}
+{"seq": 100, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 82/93\u2026", "percent_hint": 46}
+{"seq": 101, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 83/93\u2026", "percent_hint": 46}
+{"seq": 102, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 84/93\u2026", "percent_hint": 46}
+{"seq": 103, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 85/93\u2026", "percent_hint": 46}
+{"seq": 104, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 86/93\u2026", "percent_hint": 46}
+{"seq": 105, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 87/93\u2026", "percent_hint": 46}
+{"seq": 106, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 88/93\u2026", "percent_hint": 46}
+{"seq": 107, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 89/93\u2026", "percent_hint": 46}
+{"seq": 108, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 90/93\u2026", "percent_hint": 46}
+{"seq": 109, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 91/93\u2026", "percent_hint": 46}
+{"seq": 110, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 92/93\u2026", "percent_hint": 46}
+{"seq": 111, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 93/93\u2026", "percent_hint": 46}
+{"seq": 112, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 95 chunk(s)", "percent_hint": null}
+{"seq": 113, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/23\u2026", "percent_hint": 60}
+{"seq": 114, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/23\u2026", "percent_hint": 60}
+{"seq": 115, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/23\u2026", "percent_hint": 60}
+{"seq": 116, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/23\u2026", "percent_hint": 60}
+{"seq": 117, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/23\u2026", "percent_hint": 60}
+{"seq": 118, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 6/23\u2026", "percent_hint": 60}
+{"seq": 119, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 7/23\u2026", "percent_hint": 60}
+{"seq": 120, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 8/23\u2026", "percent_hint": 60}
+{"seq": 121, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 9/23\u2026", "percent_hint": 60}
+{"seq": 122, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 10/23\u2026", "percent_hint": 60}
+{"seq": 123, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 11/23\u2026", "percent_hint": 60}
+{"seq": 124, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 12/23\u2026", "percent_hint": 60}
+{"seq": 125, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 13/23\u2026", "percent_hint": 60}
+{"seq": 126, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 14/23\u2026", "percent_hint": 60}
+{"seq": 127, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 15/23\u2026", "percent_hint": 60}
+{"seq": 128, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 16/23\u2026", "percent_hint": 60}
+{"seq": 129, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 17/23\u2026", "percent_hint": 60}
+{"seq": 130, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 18/23\u2026", "percent_hint": 60}
+{"seq": 131, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 19/23\u2026", "percent_hint": 60}
+{"seq": 132, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 20/23\u2026", "percent_hint": 60}
+{"seq": 133, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 21/23\u2026", "percent_hint": 60}
+{"seq": 134, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 22/23\u2026", "percent_hint": 60}
+{"seq": 135, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 23/23\u2026", "percent_hint": 60}
+{"seq": 136, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Project Identification / Executive Summary': 66 item(s) extracted (1168.16s)", "percent_hint": null}
+{"seq": 137, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 66 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 138, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 2/10: Proposal / Procurement Requirements", "percent_hint": 30}
+{"seq": 139, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Proposal / Procurement Requirements'\u2026", "percent_hint": 36}
+{"seq": 140, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 141, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 142, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 143, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 113 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 144, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 113 chunks across 29 batch(es)", "percent_hint": null}
+{"seq": 145, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/29\u2026", "percent_hint": 46}
+{"seq": 146, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/29\u2026", "percent_hint": 46}
+{"seq": 147, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/29\u2026", "percent_hint": 46}
+{"seq": 148, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/29\u2026", "percent_hint": 46}
+{"seq": 149, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/29\u2026", "percent_hint": 46}
+{"seq": 150, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/29\u2026", "percent_hint": 46}
+{"seq": 151, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/29\u2026", "percent_hint": 46}
+{"seq": 152, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/29\u2026", "percent_hint": 46}
+{"seq": 153, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/29\u2026", "percent_hint": 46}
+{"seq": 154, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/29\u2026", "percent_hint": 46}
+{"seq": 155, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/29\u2026", "percent_hint": 46}
+{"seq": 156, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/29\u2026", "percent_hint": 46}
+{"seq": 157, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/29\u2026", "percent_hint": 46}
+{"seq": 158, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/29\u2026", "percent_hint": 46}
+{"seq": 159, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/29\u2026", "percent_hint": 46}
+{"seq": 160, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/29\u2026", "percent_hint": 46}
+{"seq": 161, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/29\u2026", "percent_hint": 46}
+{"seq": 162, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/29\u2026", "percent_hint": 46}
+{"seq": 163, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/29\u2026", "percent_hint": 46}
+{"seq": 164, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/29\u2026", "percent_hint": 46}
+{"seq": 165, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/29\u2026", "percent_hint": 46}
+{"seq": 166, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/29\u2026", "percent_hint": 46}
+{"seq": 167, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/29\u2026", "percent_hint": 46}
+{"seq": 168, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/29\u2026", "percent_hint": 46}
+{"seq": 169, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/29\u2026", "percent_hint": 46}
+{"seq": 170, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/29\u2026", "percent_hint": 46}
+{"seq": 171, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/29\u2026", "percent_hint": 46}
+{"seq": 172, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/29\u2026", "percent_hint": 46}
+{"seq": 173, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/29\u2026", "percent_hint": 46}
+{"seq": 174, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 16 chunk(s)", "percent_hint": null}
+{"seq": 175, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/5\u2026", "percent_hint": 60}
+{"seq": 176, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/5\u2026", "percent_hint": 60}
+{"seq": 177, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/5\u2026", "percent_hint": 60}
+{"seq": 178, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/5\u2026", "percent_hint": 60}
+{"seq": 179, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/5\u2026", "percent_hint": 60}
+{"seq": 180, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Proposal / Procurement Requirements': 16 item(s) extracted (326.12s)", "percent_hint": null}
+{"seq": 181, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 16 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 182, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 3/10: Scope of Work", "percent_hint": 30}
+{"seq": 183, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Scope of Work'\u2026", "percent_hint": 36}
+{"seq": 184, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 HyDE: generating passage\u2026", "percent_hint": null}
+{"seq": 185, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 186, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 187, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 188, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 438 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 189, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 438 chunks across 95 batch(es)", "percent_hint": null}
+{"seq": 190, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/95\u2026", "percent_hint": 46}
+{"seq": 191, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/95\u2026", "percent_hint": 46}
+{"seq": 192, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/95\u2026", "percent_hint": 46}
+{"seq": 193, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/95\u2026", "percent_hint": 46}
+{"seq": 194, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/95\u2026", "percent_hint": 46}
+{"seq": 195, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/95\u2026", "percent_hint": 46}
+{"seq": 196, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/95\u2026", "percent_hint": 46}
+{"seq": 197, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/95\u2026", "percent_hint": 46}
+{"seq": 198, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/95\u2026", "percent_hint": 46}
+{"seq": 199, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/95\u2026", "percent_hint": 46}
+{"seq": 200, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/95\u2026", "percent_hint": 46}
+{"seq": 201, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/95\u2026", "percent_hint": 46}
+{"seq": 202, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/95\u2026", "percent_hint": 46}
+{"seq": 203, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/95\u2026", "percent_hint": 46}
+{"seq": 204, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/95\u2026", "percent_hint": 46}
+{"seq": 205, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/95\u2026", "percent_hint": 46}
+{"seq": 206, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/95\u2026", "percent_hint": 46}
+{"seq": 207, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/95\u2026", "percent_hint": 46}
+{"seq": 208, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/95\u2026", "percent_hint": 46}
+{"seq": 209, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/95\u2026", "percent_hint": 46}
+{"seq": 210, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/95\u2026", "percent_hint": 46}
+{"seq": 211, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/95\u2026", "percent_hint": 46}
+{"seq": 212, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/95\u2026", "percent_hint": 46}
+{"seq": 213, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/95\u2026", "percent_hint": 46}
+{"seq": 214, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/95\u2026", "percent_hint": 46}
+{"seq": 215, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/95\u2026", "percent_hint": 46}
+{"seq": 216, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/95\u2026", "percent_hint": 46}
+{"seq": 217, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/95\u2026", "percent_hint": 46}
+{"seq": 218, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/95\u2026", "percent_hint": 46}
+{"seq": 219, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 30/95\u2026", "percent_hint": 46}
+{"seq": 220, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 31/95\u2026", "percent_hint": 46}
+{"seq": 221, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 32/95\u2026", "percent_hint": 46}
+{"seq": 222, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 33/95\u2026", "percent_hint": 46}
+{"seq": 223, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 34/95\u2026", "percent_hint": 46}
+{"seq": 224, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 35/95\u2026", "percent_hint": 46}
+{"seq": 225, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 36/95\u2026", "percent_hint": 46}
+{"seq": 226, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 37/95\u2026", "percent_hint": 46}
+{"seq": 227, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 38/95\u2026", "percent_hint": 46}
+{"seq": 228, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 39/95\u2026", "percent_hint": 46}
+{"seq": 229, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 40/95\u2026", "percent_hint": 46}
+{"seq": 230, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 41/95\u2026", "percent_hint": 46}
+{"seq": 231, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 42/95\u2026", "percent_hint": 46}
+{"seq": 232, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 43/95\u2026", "percent_hint": 46}
+{"seq": 233, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 44/95\u2026", "percent_hint": 46}
+{"seq": 234, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 45/95\u2026", "percent_hint": 46}
+{"seq": 235, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 46/95\u2026", "percent_hint": 46}
+{"seq": 236, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 47/95\u2026", "percent_hint": 46}
+{"seq": 237, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 48/95\u2026", "percent_hint": 46}
+{"seq": 238, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 49/95\u2026", "percent_hint": 46}
+{"seq": 239, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 50/95\u2026", "percent_hint": 46}
+{"seq": 240, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 51/95\u2026", "percent_hint": 46}
+{"seq": 241, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 52/95\u2026", "percent_hint": 46}
+{"seq": 242, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 53/95\u2026", "percent_hint": 46}
+{"seq": 243, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 54/95\u2026", "percent_hint": 46}
+{"seq": 244, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 55/95\u2026", "percent_hint": 46}
+{"seq": 245, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 56/95\u2026", "percent_hint": 46}
+{"seq": 246, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 57/95\u2026", "percent_hint": 46}
+{"seq": 247, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 58/95\u2026", "percent_hint": 46}
+{"seq": 248, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 59/95\u2026", "percent_hint": 46}
+{"seq": 249, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 60/95\u2026", "percent_hint": 46}
+{"seq": 250, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 61/95\u2026", "percent_hint": 46}
+{"seq": 251, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 62/95\u2026", "percent_hint": 46}
+{"seq": 252, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 63/95\u2026", "percent_hint": 46}
+{"seq": 253, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 64/95\u2026", "percent_hint": 46}
+{"seq": 254, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 65/95\u2026", "percent_hint": 46}
+{"seq": 255, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 66/95\u2026", "percent_hint": 46}
+{"seq": 256, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 67/95\u2026", "percent_hint": 46}
+{"seq": 257, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 68/95\u2026", "percent_hint": 46}
+{"seq": 258, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 69/95\u2026", "percent_hint": 46}
+{"seq": 259, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 70/95\u2026", "percent_hint": 46}
+{"seq": 260, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 71/95\u2026", "percent_hint": 46}
+{"seq": 261, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 72/95\u2026", "percent_hint": 46}
+{"seq": 262, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 73/95\u2026", "percent_hint": 46}
+{"seq": 263, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 74/95\u2026", "percent_hint": 46}
+{"seq": 264, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 75/95\u2026", "percent_hint": 46}
+{"seq": 265, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 76/95\u2026", "percent_hint": 46}
+{"seq": 266, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 77/95\u2026", "percent_hint": 46}
+{"seq": 267, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 78/95\u2026", "percent_hint": 46}
+{"seq": 268, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 79/95\u2026", "percent_hint": 46}
+{"seq": 269, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 80/95\u2026", "percent_hint": 46}
+{"seq": 270, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 81/95\u2026", "percent_hint": 46}
+{"seq": 271, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 82/95\u2026", "percent_hint": 46}
+{"seq": 272, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 83/95\u2026", "percent_hint": 46}
+{"seq": 273, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 84/95\u2026", "percent_hint": 46}
+{"seq": 274, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 85/95\u2026", "percent_hint": 46}
+{"seq": 275, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 86/95\u2026", "percent_hint": 46}
+{"seq": 276, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 87/95\u2026", "percent_hint": 46}
+{"seq": 277, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 88/95\u2026", "percent_hint": 46}
+{"seq": 278, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 89/95\u2026", "percent_hint": 46}
+{"seq": 279, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 90/95\u2026", "percent_hint": 46}
+{"seq": 280, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 91/95\u2026", "percent_hint": 46}
+{"seq": 281, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 92/95\u2026", "percent_hint": 46}
+{"seq": 282, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 93/95\u2026", "percent_hint": 46}
+{"seq": 283, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 94/95\u2026", "percent_hint": 46}
+{"seq": 284, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 95/95\u2026", "percent_hint": 46}
+{"seq": 285, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 115 chunk(s)", "percent_hint": null}
+{"seq": 286, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/28\u2026", "percent_hint": 60}
+{"seq": 287, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/28\u2026", "percent_hint": 60}
+{"seq": 288, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/28\u2026", "percent_hint": 60}
+{"seq": 289, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/28\u2026", "percent_hint": 60}
+{"seq": 290, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/28\u2026", "percent_hint": 60}
+{"seq": 291, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 6/28\u2026", "percent_hint": 60}
+{"seq": 292, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 7/28\u2026", "percent_hint": 60}
+{"seq": 293, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 8/28\u2026", "percent_hint": 60}
+{"seq": 294, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 9/28\u2026", "percent_hint": 60}
+{"seq": 295, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 10/28\u2026", "percent_hint": 60}
+{"seq": 296, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 11/28\u2026", "percent_hint": 60}
+{"seq": 297, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 12/28\u2026", "percent_hint": 60}
+{"seq": 298, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 13/28\u2026", "percent_hint": 60}
+{"seq": 299, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 14/28\u2026", "percent_hint": 60}
+{"seq": 300, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 15/28\u2026", "percent_hint": 60}
+{"seq": 301, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 16/28\u2026", "percent_hint": 60}
+{"seq": 302, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 17/28\u2026", "percent_hint": 60}
+{"seq": 303, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 18/28\u2026", "percent_hint": 60}
+{"seq": 304, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 19/28\u2026", "percent_hint": 60}
+{"seq": 305, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 20/28\u2026", "percent_hint": 60}
+{"seq": 306, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 21/28\u2026", "percent_hint": 60}
+{"seq": 307, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 22/28\u2026", "percent_hint": 60}
+{"seq": 308, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 23/28\u2026", "percent_hint": 60}
+{"seq": 309, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 24/28\u2026", "percent_hint": 60}
+{"seq": 310, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 25/28\u2026", "percent_hint": 60}
+{"seq": 311, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 26/28\u2026", "percent_hint": 60}
+{"seq": 312, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 27/28\u2026", "percent_hint": 60}
+{"seq": 313, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 28/28\u2026", "percent_hint": 60}
+{"seq": 314, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Scope of Work': 82 item(s) extracted (1285.2s)", "percent_hint": null}
+{"seq": 315, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 82 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 316, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 4/10: SCADA / Control System Requirements", "percent_hint": 30}
+{"seq": 317, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'SCADA / Control System Requirements'\u2026", "percent_hint": 36}
+{"seq": 318, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 319, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 320, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 321, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 369 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 322, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 369 chunks across 85 batch(es)", "percent_hint": null}
+{"seq": 323, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/85\u2026", "percent_hint": 46}
+{"seq": 324, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/85\u2026", "percent_hint": 46}
+{"seq": 325, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/85\u2026", "percent_hint": 46}
+{"seq": 326, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/85\u2026", "percent_hint": 46}
+{"seq": 327, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/85\u2026", "percent_hint": 46}
+{"seq": 328, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/85\u2026", "percent_hint": 46}
+{"seq": 329, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/85\u2026", "percent_hint": 46}
+{"seq": 330, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/85\u2026", "percent_hint": 46}
+{"seq": 331, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/85\u2026", "percent_hint": 46}
+{"seq": 332, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/85\u2026", "percent_hint": 46}
+{"seq": 333, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/85\u2026", "percent_hint": 46}
+{"seq": 334, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/85\u2026", "percent_hint": 46}
+{"seq": 335, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/85\u2026", "percent_hint": 46}
+{"seq": 336, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/85\u2026", "percent_hint": 46}
+{"seq": 337, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/85\u2026", "percent_hint": 46}
+{"seq": 338, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/85\u2026", "percent_hint": 46}
+{"seq": 339, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/85\u2026", "percent_hint": 46}
+{"seq": 340, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/85\u2026", "percent_hint": 46}
+{"seq": 341, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/85\u2026", "percent_hint": 46}
+{"seq": 342, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/85\u2026", "percent_hint": 46}
+{"seq": 343, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/85\u2026", "percent_hint": 46}
+{"seq": 344, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/85\u2026", "percent_hint": 46}
+{"seq": 345, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/85\u2026", "percent_hint": 46}
+{"seq": 346, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/85\u2026", "percent_hint": 46}
+{"seq": 347, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/85\u2026", "percent_hint": 46}
+{"seq": 348, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/85\u2026", "percent_hint": 46}
+{"seq": 349, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/85\u2026", "percent_hint": 46}
+{"seq": 350, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/85\u2026", "percent_hint": 46}
+{"seq": 351, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/85\u2026", "percent_hint": 46}
+{"seq": 352, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 30/85\u2026", "percent_hint": 46}
+{"seq": 353, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 31/85\u2026", "percent_hint": 46}
+{"seq": 354, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 32/85\u2026", "percent_hint": 46}
+{"seq": 355, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 33/85\u2026", "percent_hint": 46}
+{"seq": 356, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 34/85\u2026", "percent_hint": 46}
+{"seq": 357, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 35/85\u2026", "percent_hint": 46}
+{"seq": 358, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 36/85\u2026", "percent_hint": 46}
+{"seq": 359, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 37/85\u2026", "percent_hint": 46}
+{"seq": 360, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 38/85\u2026", "percent_hint": 46}
+{"seq": 361, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 39/85\u2026", "percent_hint": 46}
+{"seq": 362, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 40/85\u2026", "percent_hint": 46}
+{"seq": 363, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 41/85\u2026", "percent_hint": 46}
+{"seq": 364, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 42/85\u2026", "percent_hint": 46}
+{"seq": 365, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 43/85\u2026", "percent_hint": 46}
+{"seq": 366, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 44/85\u2026", "percent_hint": 46}
+{"seq": 367, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 45/85\u2026", "percent_hint": 46}
+{"seq": 368, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 46/85\u2026", "percent_hint": 46}
+{"seq": 369, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 47/85\u2026", "percent_hint": 46}
+{"seq": 370, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 48/85\u2026", "percent_hint": 46}
+{"seq": 371, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 49/85\u2026", "percent_hint": 46}
+{"seq": 372, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 50/85\u2026", "percent_hint": 46}
+{"seq": 373, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 51/85\u2026", "percent_hint": 46}
+{"seq": 374, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 52/85\u2026", "percent_hint": 46}
+{"seq": 375, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 53/85\u2026", "percent_hint": 46}
+{"seq": 376, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 54/85\u2026", "percent_hint": 46}
+{"seq": 377, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 55/85\u2026", "percent_hint": 46}
+{"seq": 378, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 56/85\u2026", "percent_hint": 46}
+{"seq": 379, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 57/85\u2026", "percent_hint": 46}
+{"seq": 380, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 58/85\u2026", "percent_hint": 46}
+{"seq": 381, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 59/85\u2026", "percent_hint": 46}
+{"seq": 382, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 60/85\u2026", "percent_hint": 46}
+{"seq": 383, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 61/85\u2026", "percent_hint": 46}
+{"seq": 384, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 62/85\u2026", "percent_hint": 46}
+{"seq": 385, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 63/85\u2026", "percent_hint": 46}
+{"seq": 386, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 64/85\u2026", "percent_hint": 46}
+{"seq": 387, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 65/85\u2026", "percent_hint": 46}
+{"seq": 388, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 66/85\u2026", "percent_hint": 46}
+{"seq": 389, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 67/85\u2026", "percent_hint": 46}
+{"seq": 390, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 68/85\u2026", "percent_hint": 46}
+{"seq": 391, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 69/85\u2026", "percent_hint": 46}
+{"seq": 392, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 70/85\u2026", "percent_hint": 46}
+{"seq": 393, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 71/85\u2026", "percent_hint": 46}
+{"seq": 394, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 72/85\u2026", "percent_hint": 46}
+{"seq": 395, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 73/85\u2026", "percent_hint": 46}
+{"seq": 396, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 74/85\u2026", "percent_hint": 46}
+{"seq": 397, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 75/85\u2026", "percent_hint": 46}
+{"seq": 398, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 76/85\u2026", "percent_hint": 46}
+{"seq": 399, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 77/85\u2026", "percent_hint": 46}
+{"seq": 400, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 78/85\u2026", "percent_hint": 46}
+{"seq": 401, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 79/85\u2026", "percent_hint": 46}
+{"seq": 402, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 80/85\u2026", "percent_hint": 46}
+{"seq": 403, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 81/85\u2026", "percent_hint": 46}
+{"seq": 404, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 82/85\u2026", "percent_hint": 46}
+{"seq": 405, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 83/85\u2026", "percent_hint": 46}
+{"seq": 406, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 84/85\u2026", "percent_hint": 46}
+{"seq": 407, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 85/85\u2026", "percent_hint": 46}
+{"seq": 408, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 337 chunk(s)", "percent_hint": null}
+{"seq": 409, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/76\u2026", "percent_hint": 60}
+{"seq": 410, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/76\u2026", "percent_hint": 60}
+{"seq": 411, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/76\u2026", "percent_hint": 60}
+{"seq": 412, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/76\u2026", "percent_hint": 60}
+{"seq": 413, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/76\u2026", "percent_hint": 60}
+{"seq": 414, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 6/76\u2026", "percent_hint": 60}
+{"seq": 415, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 7/76\u2026", "percent_hint": 60}
+{"seq": 416, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 8/76\u2026", "percent_hint": 60}
+{"seq": 417, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 9/76\u2026", "percent_hint": 60}
+{"seq": 418, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 10/76\u2026", "percent_hint": 60}
+{"seq": 419, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 11/76\u2026", "percent_hint": 60}
+{"seq": 420, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 12/76\u2026", "percent_hint": 60}
+{"seq": 421, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 13/76\u2026", "percent_hint": 60}
+{"seq": 422, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 14/76\u2026", "percent_hint": 60}
+{"seq": 423, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 15/76\u2026", "percent_hint": 60}
+{"seq": 424, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 16/76\u2026", "percent_hint": 60}
+{"seq": 425, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 17/76\u2026", "percent_hint": 60}
+{"seq": 426, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 18/76\u2026", "percent_hint": 60}
+{"seq": 427, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 19/76\u2026", "percent_hint": 60}
+{"seq": 428, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 20/76\u2026", "percent_hint": 60}
+{"seq": 429, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 21/76\u2026", "percent_hint": 60}
+{"seq": 430, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 22/76\u2026", "percent_hint": 60}
+{"seq": 431, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 23/76\u2026", "percent_hint": 60}
+{"seq": 432, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 24/76\u2026", "percent_hint": 60}
+{"seq": 433, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 25/76\u2026", "percent_hint": 60}
+{"seq": 434, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 26/76\u2026", "percent_hint": 60}
+{"seq": 435, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 27/76\u2026", "percent_hint": 60}
+{"seq": 436, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 28/76\u2026", "percent_hint": 60}
+{"seq": 437, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 29/76\u2026", "percent_hint": 60}
+{"seq": 438, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 30/76\u2026", "percent_hint": 60}
+{"seq": 439, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 31/76\u2026", "percent_hint": 60}
+{"seq": 440, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 32/76\u2026", "percent_hint": 60}
+{"seq": 441, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 33/76\u2026", "percent_hint": 60}
+{"seq": 442, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 34/76\u2026", "percent_hint": 60}
+{"seq": 443, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 35/76\u2026", "percent_hint": 60}
+{"seq": 444, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 36/76\u2026", "percent_hint": 60}
+{"seq": 445, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 37/76\u2026", "percent_hint": 60}
+{"seq": 446, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 38/76\u2026", "percent_hint": 60}
+{"seq": 447, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 39/76\u2026", "percent_hint": 60}
+{"seq": 448, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 40/76\u2026", "percent_hint": 60}
+{"seq": 449, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 41/76\u2026", "percent_hint": 60}
+{"seq": 450, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 42/76\u2026", "percent_hint": 60}
+{"seq": 451, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 43/76\u2026", "percent_hint": 60}
+{"seq": 452, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 44/76\u2026", "percent_hint": 60}
+{"seq": 453, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 45/76\u2026", "percent_hint": 60}
+{"seq": 454, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 46/76\u2026", "percent_hint": 60}
+{"seq": 455, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 47/76\u2026", "percent_hint": 60}
+{"seq": 456, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 48/76\u2026", "percent_hint": 60}
+{"seq": 457, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 49/76\u2026", "percent_hint": 60}
+{"seq": 458, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 50/76\u2026", "percent_hint": 60}
+{"seq": 459, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 51/76\u2026", "percent_hint": 60}
+{"seq": 460, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 52/76\u2026", "percent_hint": 60}
+{"seq": 461, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 53/76\u2026", "percent_hint": 60}
+{"seq": 462, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 54/76\u2026", "percent_hint": 60}
+{"seq": 463, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 55/76\u2026", "percent_hint": 60}
+{"seq": 464, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 56/76\u2026", "percent_hint": 60}
+{"seq": 465, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 57/76\u2026", "percent_hint": 60}
+{"seq": 466, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 58/76\u2026", "percent_hint": 60}
+{"seq": 467, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 59/76\u2026", "percent_hint": 60}
+{"seq": 468, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 60/76\u2026", "percent_hint": 60}
+{"seq": 469, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 61/76\u2026", "percent_hint": 60}
+{"seq": 470, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 62/76\u2026", "percent_hint": 60}
+{"seq": 471, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 63/76\u2026", "percent_hint": 60}
+{"seq": 472, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 64/76\u2026", "percent_hint": 60}
+{"seq": 473, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 65/76\u2026", "percent_hint": 60}
+{"seq": 474, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 66/76\u2026", "percent_hint": 60}
+{"seq": 475, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 67/76\u2026", "percent_hint": 60}
+{"seq": 476, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 68/76\u2026", "percent_hint": 60}
+{"seq": 477, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 69/76\u2026", "percent_hint": 60}
+{"seq": 478, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 70/76\u2026", "percent_hint": 60}
+{"seq": 479, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 71/76\u2026", "percent_hint": 60}
+{"seq": 480, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 72/76\u2026", "percent_hint": 60}
+{"seq": 481, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 73/76\u2026", "percent_hint": 60}
+{"seq": 482, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 74/76\u2026", "percent_hint": 60}
+{"seq": 483, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 75/76\u2026", "percent_hint": 60}
+{"seq": 484, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 76/76\u2026", "percent_hint": 60}
+{"seq": 485, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'SCADA / Control System Requirements': 200 item(s) extracted (1791.33s)", "percent_hint": null}
+{"seq": 486, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 200 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 487, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 5/10: Network / Fiber / Communications Requirements", "percent_hint": 30}
+{"seq": 488, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Network / Fiber / Communications Requirements'\u2026", "percent_hint": 36}
+{"seq": 489, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 490, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 491, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 492, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 230 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 493, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 230 chunks across 60 batch(es)", "percent_hint": null}
+{"seq": 494, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/60\u2026", "percent_hint": 46}
+{"seq": 495, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/60\u2026", "percent_hint": 46}
+{"seq": 496, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/60\u2026", "percent_hint": 46}
+{"seq": 497, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/60\u2026", "percent_hint": 46}
+{"seq": 498, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/60\u2026", "percent_hint": 46}
+{"seq": 499, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/60\u2026", "percent_hint": 46}
+{"seq": 500, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/60\u2026", "percent_hint": 46}
+{"seq": 501, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/60\u2026", "percent_hint": 46}
+{"seq": 502, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/60\u2026", "percent_hint": 46}
+{"seq": 503, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/60\u2026", "percent_hint": 46}
+{"seq": 504, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/60\u2026", "percent_hint": 46}
+{"seq": 505, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/60\u2026", "percent_hint": 46}
+{"seq": 506, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/60\u2026", "percent_hint": 46}
+{"seq": 507, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/60\u2026", "percent_hint": 46}
+{"seq": 508, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/60\u2026", "percent_hint": 46}
+{"seq": 509, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/60\u2026", "percent_hint": 46}
+{"seq": 510, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/60\u2026", "percent_hint": 46}
+{"seq": 511, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/60\u2026", "percent_hint": 46}
+{"seq": 512, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/60\u2026", "percent_hint": 46}
+{"seq": 513, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/60\u2026", "percent_hint": 46}
+{"seq": 514, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/60\u2026", "percent_hint": 46}
+{"seq": 515, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/60\u2026", "percent_hint": 46}
+{"seq": 516, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/60\u2026", "percent_hint": 46}
+{"seq": 517, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/60\u2026", "percent_hint": 46}
+{"seq": 518, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/60\u2026", "percent_hint": 46}
+{"seq": 519, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/60\u2026", "percent_hint": 46}
+{"seq": 520, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/60\u2026", "percent_hint": 46}
+{"seq": 521, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/60\u2026", "percent_hint": 46}
+{"seq": 522, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/60\u2026", "percent_hint": 46}
+{"seq": 523, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 30/60\u2026", "percent_hint": 46}
+{"seq": 524, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 31/60\u2026", "percent_hint": 46}
+{"seq": 525, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 32/60\u2026", "percent_hint": 46}
+{"seq": 526, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 33/60\u2026", "percent_hint": 46}
+{"seq": 527, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 34/60\u2026", "percent_hint": 46}
+{"seq": 528, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 35/60\u2026", "percent_hint": 46}
+{"seq": 529, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 36/60\u2026", "percent_hint": 46}
+{"seq": 530, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 37/60\u2026", "percent_hint": 46}
+{"seq": 531, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 38/60\u2026", "percent_hint": 46}
+{"seq": 532, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 39/60\u2026", "percent_hint": 46}
+{"seq": 533, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 40/60\u2026", "percent_hint": 46}
+{"seq": 534, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 41/60\u2026", "percent_hint": 46}
+{"seq": 535, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 42/60\u2026", "percent_hint": 46}
+{"seq": 536, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 43/60\u2026", "percent_hint": 46}
+{"seq": 537, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 44/60\u2026", "percent_hint": 46}
+{"seq": 538, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 45/60\u2026", "percent_hint": 46}
+{"seq": 539, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 46/60\u2026", "percent_hint": 46}
+{"seq": 540, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 47/60\u2026", "percent_hint": 46}
+{"seq": 541, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 48/60\u2026", "percent_hint": 46}
+{"seq": 542, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 49/60\u2026", "percent_hint": 46}
+{"seq": 543, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 50/60\u2026", "percent_hint": 46}
+{"seq": 544, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 51/60\u2026", "percent_hint": 46}
+{"seq": 545, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 52/60\u2026", "percent_hint": 46}
+{"seq": 546, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 53/60\u2026", "percent_hint": 46}
+{"seq": 547, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 54/60\u2026", "percent_hint": 46}
+{"seq": 548, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 55/60\u2026", "percent_hint": 46}
+{"seq": 549, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 56/60\u2026", "percent_hint": 46}
+{"seq": 550, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 57/60\u2026", "percent_hint": 46}
+{"seq": 551, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 58/60\u2026", "percent_hint": 46}
+{"seq": 552, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 59/60\u2026", "percent_hint": 46}
+{"seq": 553, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 60/60\u2026", "percent_hint": 46}
+{"seq": 554, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 76 chunk(s)", "percent_hint": null}
+{"seq": 555, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/22\u2026", "percent_hint": 60}
+{"seq": 556, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/22\u2026", "percent_hint": 60}
+{"seq": 557, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/22\u2026", "percent_hint": 60}
+{"seq": 558, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/22\u2026", "percent_hint": 60}
+{"seq": 559, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/22\u2026", "percent_hint": 60}
+{"seq": 560, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 6/22\u2026", "percent_hint": 60}
+{"seq": 561, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 7/22\u2026", "percent_hint": 60}
+{"seq": 562, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 8/22\u2026", "percent_hint": 60}
+{"seq": 563, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 9/22\u2026", "percent_hint": 60}
+{"seq": 564, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 10/22\u2026", "percent_hint": 60}
+{"seq": 565, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 11/22\u2026", "percent_hint": 60}
+{"seq": 566, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 12/22\u2026", "percent_hint": 60}
+{"seq": 567, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 13/22\u2026", "percent_hint": 60}
+{"seq": 568, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 14/22\u2026", "percent_hint": 60}
+{"seq": 569, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 15/22\u2026", "percent_hint": 60}
+{"seq": 570, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 16/22\u2026", "percent_hint": 60}
+{"seq": 571, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 17/22\u2026", "percent_hint": 60}
+{"seq": 572, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 18/22\u2026", "percent_hint": 60}
+{"seq": 573, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 19/22\u2026", "percent_hint": 60}
+{"seq": 574, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 20/22\u2026", "percent_hint": 60}
+{"seq": 575, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 21/22\u2026", "percent_hint": 60}
+{"seq": 576, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 22/22\u2026", "percent_hint": 60}
+{"seq": 577, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Network / Fiber / Communications Requirements': 53 item(s) extracted (900.22s)", "percent_hint": null}
+{"seq": 578, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 53 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 579, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 6/10: Electrical / Power / Control Panels", "percent_hint": 30}
+{"seq": 580, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Electrical / Power / Control Panels'\u2026", "percent_hint": 36}
+{"seq": 581, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 582, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 583, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 584, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 115 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 585, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 115 chunks across 30 batch(es)", "percent_hint": null}
+{"seq": 586, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/30\u2026", "percent_hint": 46}
+{"seq": 587, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/30\u2026", "percent_hint": 46}
+{"seq": 588, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/30\u2026", "percent_hint": 46}
+{"seq": 589, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/30\u2026", "percent_hint": 46}
+{"seq": 590, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/30\u2026", "percent_hint": 46}
+{"seq": 591, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/30\u2026", "percent_hint": 46}
+{"seq": 592, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/30\u2026", "percent_hint": 46}
+{"seq": 593, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/30\u2026", "percent_hint": 46}
+{"seq": 594, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/30\u2026", "percent_hint": 46}
+{"seq": 595, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/30\u2026", "percent_hint": 46}
+{"seq": 596, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/30\u2026", "percent_hint": 46}
+{"seq": 597, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/30\u2026", "percent_hint": 46}
+{"seq": 598, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/30\u2026", "percent_hint": 46}
+{"seq": 599, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/30\u2026", "percent_hint": 46}
+{"seq": 600, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/30\u2026", "percent_hint": 46}
+{"seq": 601, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/30\u2026", "percent_hint": 46}
+{"seq": 602, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/30\u2026", "percent_hint": 46}
+{"seq": 603, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/30\u2026", "percent_hint": 46}
+{"seq": 604, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/30\u2026", "percent_hint": 46}
+{"seq": 605, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/30\u2026", "percent_hint": 46}
+{"seq": 606, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/30\u2026", "percent_hint": 46}
+{"seq": 607, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/30\u2026", "percent_hint": 46}
+{"seq": 608, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/30\u2026", "percent_hint": 46}
+{"seq": 609, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/30\u2026", "percent_hint": 46}
+{"seq": 610, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/30\u2026", "percent_hint": 46}
+{"seq": 611, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/30\u2026", "percent_hint": 46}
+{"seq": 612, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/30\u2026", "percent_hint": 46}
+{"seq": 613, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/30\u2026", "percent_hint": 46}
+{"seq": 614, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/30\u2026", "percent_hint": 46}
+{"seq": 615, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 30/30\u2026", "percent_hint": 46}
+{"seq": 616, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 59 chunk(s)", "percent_hint": null}
+{"seq": 617, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/15\u2026", "percent_hint": 60}
+{"seq": 618, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/15\u2026", "percent_hint": 60}
+{"seq": 619, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/15\u2026", "percent_hint": 60}
+{"seq": 620, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/15\u2026", "percent_hint": 60}
+{"seq": 621, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/15\u2026", "percent_hint": 60}
+{"seq": 622, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 6/15\u2026", "percent_hint": 60}
+{"seq": 623, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 7/15\u2026", "percent_hint": 60}
+{"seq": 624, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 8/15\u2026", "percent_hint": 60}
+{"seq": 625, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 9/15\u2026", "percent_hint": 60}
+{"seq": 626, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 10/15\u2026", "percent_hint": 60}
+{"seq": 627, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 11/15\u2026", "percent_hint": 60}
+{"seq": 628, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 12/15\u2026", "percent_hint": 60}
+{"seq": 629, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 13/15\u2026", "percent_hint": 60}
+{"seq": 630, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 14/15\u2026", "percent_hint": 60}
+{"seq": 631, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 15/15\u2026", "percent_hint": 60}
+{"seq": 632, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Electrical / Power / Control Panels': 33 item(s) extracted (541.81s)", "percent_hint": null}
+{"seq": 633, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 33 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 634, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 7/10: Deliverables / Submittals / Documentation", "percent_hint": 30}
+{"seq": 635, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Deliverables / Submittals / Documentation'\u2026", "percent_hint": 36}
+{"seq": 636, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 637, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 638, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 639, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 131 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 640, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 131 chunks across 34 batch(es)", "percent_hint": null}
+{"seq": 641, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/34\u2026", "percent_hint": 46}
+{"seq": 642, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/34\u2026", "percent_hint": 46}
+{"seq": 643, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/34\u2026", "percent_hint": 46}
+{"seq": 644, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/34\u2026", "percent_hint": 46}
+{"seq": 645, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/34\u2026", "percent_hint": 46}
+{"seq": 646, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/34\u2026", "percent_hint": 46}
+{"seq": 647, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/34\u2026", "percent_hint": 46}
+{"seq": 648, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/34\u2026", "percent_hint": 46}
+{"seq": 649, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/34\u2026", "percent_hint": 46}
+{"seq": 650, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/34\u2026", "percent_hint": 46}
+{"seq": 651, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/34\u2026", "percent_hint": 46}
+{"seq": 652, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/34\u2026", "percent_hint": 46}
+{"seq": 653, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/34\u2026", "percent_hint": 46}
+{"seq": 654, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/34\u2026", "percent_hint": 46}
+{"seq": 655, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/34\u2026", "percent_hint": 46}
+{"seq": 656, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/34\u2026", "percent_hint": 46}
+{"seq": 657, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/34\u2026", "percent_hint": 46}
+{"seq": 658, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/34\u2026", "percent_hint": 46}
+{"seq": 659, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/34\u2026", "percent_hint": 46}
+{"seq": 660, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/34\u2026", "percent_hint": 46}
+{"seq": 661, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/34\u2026", "percent_hint": 46}
+{"seq": 662, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/34\u2026", "percent_hint": 46}
+{"seq": 663, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/34\u2026", "percent_hint": 46}
+{"seq": 664, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/34\u2026", "percent_hint": 46}
+{"seq": 665, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/34\u2026", "percent_hint": 46}
+{"seq": 666, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/34\u2026", "percent_hint": 46}
+{"seq": 667, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/34\u2026", "percent_hint": 46}
+{"seq": 668, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/34\u2026", "percent_hint": 46}
+{"seq": 669, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/34\u2026", "percent_hint": 46}
+{"seq": 670, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 30/34\u2026", "percent_hint": 46}
+{"seq": 671, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 31/34\u2026", "percent_hint": 46}
+{"seq": 672, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 32/34\u2026", "percent_hint": 46}
+{"seq": 673, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 33/34\u2026", "percent_hint": 46}
+{"seq": 674, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 34/34\u2026", "percent_hint": 46}
+{"seq": 675, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 42 chunk(s)", "percent_hint": null}
+{"seq": 676, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/11\u2026", "percent_hint": 60}
+{"seq": 677, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/11\u2026", "percent_hint": 60}
+{"seq": 678, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/11\u2026", "percent_hint": 60}
+{"seq": 679, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/11\u2026", "percent_hint": 60}
+{"seq": 680, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/11\u2026", "percent_hint": 60}
+{"seq": 681, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 6/11\u2026", "percent_hint": 60}
+{"seq": 682, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 7/11\u2026", "percent_hint": 60}
+{"seq": 683, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 8/11\u2026", "percent_hint": 60}
+{"seq": 684, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 9/11\u2026", "percent_hint": 60}
+{"seq": 685, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 10/11\u2026", "percent_hint": 60}
+{"seq": 686, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 11/11\u2026", "percent_hint": 60}
+{"seq": 687, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Deliverables / Submittals / Documentation': 15 item(s) extracted (517.98s)", "percent_hint": null}
+{"seq": 688, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 15 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 689, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 8/10: Testing / Startup / Commissioning", "percent_hint": 30}
+{"seq": 690, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Testing / Startup / Commissioning'\u2026", "percent_hint": 36}
+{"seq": 691, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 692, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 693, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 694, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 75 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 695, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 75 chunks across 20 batch(es)", "percent_hint": null}
+{"seq": 696, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/20\u2026", "percent_hint": 46}
+{"seq": 697, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/20\u2026", "percent_hint": 46}
+{"seq": 698, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/20\u2026", "percent_hint": 46}
+{"seq": 699, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/20\u2026", "percent_hint": 46}
+{"seq": 700, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/20\u2026", "percent_hint": 46}
+{"seq": 701, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/20\u2026", "percent_hint": 46}
+{"seq": 702, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/20\u2026", "percent_hint": 46}
+{"seq": 703, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/20\u2026", "percent_hint": 46}
+{"seq": 704, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/20\u2026", "percent_hint": 46}
+{"seq": 705, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/20\u2026", "percent_hint": 46}
+{"seq": 706, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/20\u2026", "percent_hint": 46}
+{"seq": 707, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/20\u2026", "percent_hint": 46}
+{"seq": 708, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/20\u2026", "percent_hint": 46}
+{"seq": 709, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/20\u2026", "percent_hint": 46}
+{"seq": 710, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/20\u2026", "percent_hint": 46}
+{"seq": 711, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/20\u2026", "percent_hint": 46}
+{"seq": 712, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/20\u2026", "percent_hint": 46}
+{"seq": 713, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/20\u2026", "percent_hint": 46}
+{"seq": 714, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/20\u2026", "percent_hint": 46}
+{"seq": 715, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/20\u2026", "percent_hint": 46}
+{"seq": 716, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 20 chunk(s)", "percent_hint": null}
+{"seq": 717, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/5\u2026", "percent_hint": 60}
+{"seq": 718, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/5\u2026", "percent_hint": 60}
+{"seq": 719, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/5\u2026", "percent_hint": 60}
+{"seq": 720, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/5\u2026", "percent_hint": 60}
+{"seq": 721, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/5\u2026", "percent_hint": 60}
+{"seq": 722, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Testing / Startup / Commissioning': 14 item(s) extracted (278.37s)", "percent_hint": null}
+{"seq": 723, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 14 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 724, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 9/10: Qualifications / Experience / Staffing", "percent_hint": 30}
+{"seq": 725, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Qualifications / Experience / Staffing'\u2026", "percent_hint": 36}
+{"seq": 726, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 727, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 728, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 729, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 374 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 730, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 374 chunks across 86 batch(es)", "percent_hint": null}
+{"seq": 731, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/86\u2026", "percent_hint": 46}
+{"seq": 732, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/86\u2026", "percent_hint": 46}
+{"seq": 733, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/86\u2026", "percent_hint": 46}
+{"seq": 734, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/86\u2026", "percent_hint": 46}
+{"seq": 735, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/86\u2026", "percent_hint": 46}
+{"seq": 736, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/86\u2026", "percent_hint": 46}
+{"seq": 737, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/86\u2026", "percent_hint": 46}
+{"seq": 738, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/86\u2026", "percent_hint": 46}
+{"seq": 739, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/86\u2026", "percent_hint": 46}
+{"seq": 740, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/86\u2026", "percent_hint": 46}
+{"seq": 741, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/86\u2026", "percent_hint": 46}
+{"seq": 742, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/86\u2026", "percent_hint": 46}
+{"seq": 743, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/86\u2026", "percent_hint": 46}
+{"seq": 744, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/86\u2026", "percent_hint": 46}
+{"seq": 745, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/86\u2026", "percent_hint": 46}
+{"seq": 746, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/86\u2026", "percent_hint": 46}
+{"seq": 747, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/86\u2026", "percent_hint": 46}
+{"seq": 748, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/86\u2026", "percent_hint": 46}
+{"seq": 749, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/86\u2026", "percent_hint": 46}
+{"seq": 750, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/86\u2026", "percent_hint": 46}
+{"seq": 751, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/86\u2026", "percent_hint": 46}
+{"seq": 752, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/86\u2026", "percent_hint": 46}
+{"seq": 753, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/86\u2026", "percent_hint": 46}
+{"seq": 754, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/86\u2026", "percent_hint": 46}
+{"seq": 755, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/86\u2026", "percent_hint": 46}
+{"seq": 756, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/86\u2026", "percent_hint": 46}
+{"seq": 757, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/86\u2026", "percent_hint": 46}
+{"seq": 758, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/86\u2026", "percent_hint": 46}
+{"seq": 759, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/86\u2026", "percent_hint": 46}
+{"seq": 760, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 30/86\u2026", "percent_hint": 46}
+{"seq": 761, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 31/86\u2026", "percent_hint": 46}
+{"seq": 762, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 32/86\u2026", "percent_hint": 46}
+{"seq": 763, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 33/86\u2026", "percent_hint": 46}
+{"seq": 764, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 34/86\u2026", "percent_hint": 46}
+{"seq": 765, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 35/86\u2026", "percent_hint": 46}
+{"seq": 766, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 36/86\u2026", "percent_hint": 46}
+{"seq": 767, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 37/86\u2026", "percent_hint": 46}
+{"seq": 768, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 38/86\u2026", "percent_hint": 46}
+{"seq": 769, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 39/86\u2026", "percent_hint": 46}
+{"seq": 770, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 40/86\u2026", "percent_hint": 46}
+{"seq": 771, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 41/86\u2026", "percent_hint": 46}
+{"seq": 772, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 42/86\u2026", "percent_hint": 46}
+{"seq": 773, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 43/86\u2026", "percent_hint": 46}
+{"seq": 774, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 44/86\u2026", "percent_hint": 46}
+{"seq": 775, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 45/86\u2026", "percent_hint": 46}
+{"seq": 776, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 46/86\u2026", "percent_hint": 46}
+{"seq": 777, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 47/86\u2026", "percent_hint": 46}
+{"seq": 778, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 48/86\u2026", "percent_hint": 46}
+{"seq": 779, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 49/86\u2026", "percent_hint": 46}
+{"seq": 780, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 50/86\u2026", "percent_hint": 46}
+{"seq": 781, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 51/86\u2026", "percent_hint": 46}
+{"seq": 782, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 52/86\u2026", "percent_hint": 46}
+{"seq": 783, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 53/86\u2026", "percent_hint": 46}
+{"seq": 784, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 54/86\u2026", "percent_hint": 46}
+{"seq": 785, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 55/86\u2026", "percent_hint": 46}
+{"seq": 786, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 56/86\u2026", "percent_hint": 46}
+{"seq": 787, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 57/86\u2026", "percent_hint": 46}
+{"seq": 788, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 58/86\u2026", "percent_hint": 46}
+{"seq": 789, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 59/86\u2026", "percent_hint": 46}
+{"seq": 790, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 60/86\u2026", "percent_hint": 46}
+{"seq": 791, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 61/86\u2026", "percent_hint": 46}
+{"seq": 792, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 62/86\u2026", "percent_hint": 46}
+{"seq": 793, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 63/86\u2026", "percent_hint": 46}
+{"seq": 794, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 64/86\u2026", "percent_hint": 46}
+{"seq": 795, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 65/86\u2026", "percent_hint": 46}
+{"seq": 796, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 66/86\u2026", "percent_hint": 46}
+{"seq": 797, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 67/86\u2026", "percent_hint": 46}
+{"seq": 798, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 68/86\u2026", "percent_hint": 46}
+{"seq": 799, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 69/86\u2026", "percent_hint": 46}
+{"seq": 800, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 70/86\u2026", "percent_hint": 46}
+{"seq": 801, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 71/86\u2026", "percent_hint": 46}
+{"seq": 802, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 72/86\u2026", "percent_hint": 46}
+{"seq": 803, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 73/86\u2026", "percent_hint": 46}
+{"seq": 804, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 74/86\u2026", "percent_hint": 46}
+{"seq": 805, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 75/86\u2026", "percent_hint": 46}
+{"seq": 806, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 76/86\u2026", "percent_hint": 46}
+{"seq": 807, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 77/86\u2026", "percent_hint": 46}
+{"seq": 808, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 78/86\u2026", "percent_hint": 46}
+{"seq": 809, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 79/86\u2026", "percent_hint": 46}
+{"seq": 810, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 80/86\u2026", "percent_hint": 46}
+{"seq": 811, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 81/86\u2026", "percent_hint": 46}
+{"seq": 812, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 82/86\u2026", "percent_hint": 46}
+{"seq": 813, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 83/86\u2026", "percent_hint": 46}
+{"seq": 814, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 84/86\u2026", "percent_hint": 46}
+{"seq": 815, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 85/86\u2026", "percent_hint": 46}
+{"seq": 816, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 86/86\u2026", "percent_hint": 46}
+{"seq": 817, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 4 chunk(s)", "percent_hint": null}
+{"seq": 818, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/2\u2026", "percent_hint": 60}
+{"seq": 819, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/2\u2026", "percent_hint": 60}
+{"seq": 820, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Qualifications / Experience / Staffing': 4 item(s) extracted (911.74s)", "percent_hint": null}
+{"seq": 821, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 4 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 822, "type": "progress", "phase": "running", "stage": "branch_start", "message": "Branch 10/10: Risks / Red Flags / Ambiguities", "percent_hint": 30}
+{"seq": 823, "type": "progress", "phase": "running", "stage": "retrieval", "message": "Retrieving chunks for branch 'Risks / Red Flags / Ambiguities'\u2026", "percent_hint": 36}
+{"seq": 824, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 HyDE: generating passage\u2026", "percent_hint": null}
+{"seq": 825, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Step-back: broadening query\u2026", "percent_hint": null}
+{"seq": 826, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Embedding query\u2026", "percent_hint": null}
+{"seq": 827, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scoring 450 candidates\u2026", "percent_hint": null}
+{"seq": 828, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 438 chunks after filter (from 452 retrieved)", "percent_hint": null}
+{"seq": 829, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan: 438 chunks across 95 batch(es)", "percent_hint": null}
+{"seq": 830, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 1/95\u2026", "percent_hint": 46}
+{"seq": 831, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 2/95\u2026", "percent_hint": 46}
+{"seq": 832, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 3/95\u2026", "percent_hint": 46}
+{"seq": 833, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 4/95\u2026", "percent_hint": 46}
+{"seq": 834, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 5/95\u2026", "percent_hint": 46}
+{"seq": 835, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 6/95\u2026", "percent_hint": 46}
+{"seq": 836, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 7/95\u2026", "percent_hint": 46}
+{"seq": 837, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 8/95\u2026", "percent_hint": 46}
+{"seq": 838, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 9/95\u2026", "percent_hint": 46}
+{"seq": 839, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 10/95\u2026", "percent_hint": 46}
+{"seq": 840, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 11/95\u2026", "percent_hint": 46}
+{"seq": 841, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 12/95\u2026", "percent_hint": 46}
+{"seq": 842, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 13/95\u2026", "percent_hint": 46}
+{"seq": 843, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 14/95\u2026", "percent_hint": 46}
+{"seq": 844, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 15/95\u2026", "percent_hint": 46}
+{"seq": 845, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 16/95\u2026", "percent_hint": 46}
+{"seq": 846, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 17/95\u2026", "percent_hint": 46}
+{"seq": 847, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 18/95\u2026", "percent_hint": 46}
+{"seq": 848, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 19/95\u2026", "percent_hint": 46}
+{"seq": 849, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 20/95\u2026", "percent_hint": 46}
+{"seq": 850, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 21/95\u2026", "percent_hint": 46}
+{"seq": 851, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 22/95\u2026", "percent_hint": 46}
+{"seq": 852, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 23/95\u2026", "percent_hint": 46}
+{"seq": 853, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 24/95\u2026", "percent_hint": 46}
+{"seq": 854, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 25/95\u2026", "percent_hint": 46}
+{"seq": 855, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 26/95\u2026", "percent_hint": 46}
+{"seq": 856, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 27/95\u2026", "percent_hint": 46}
+{"seq": 857, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 28/95\u2026", "percent_hint": 46}
+{"seq": 858, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 29/95\u2026", "percent_hint": 46}
+{"seq": 859, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 30/95\u2026", "percent_hint": 46}
+{"seq": 860, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 31/95\u2026", "percent_hint": 46}
+{"seq": 861, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 32/95\u2026", "percent_hint": 46}
+{"seq": 862, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 33/95\u2026", "percent_hint": 46}
+{"seq": 863, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 34/95\u2026", "percent_hint": 46}
+{"seq": 864, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 35/95\u2026", "percent_hint": 46}
+{"seq": 865, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 36/95\u2026", "percent_hint": 46}
+{"seq": 866, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 37/95\u2026", "percent_hint": 46}
+{"seq": 867, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 38/95\u2026", "percent_hint": 46}
+{"seq": 868, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 39/95\u2026", "percent_hint": 46}
+{"seq": 869, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 40/95\u2026", "percent_hint": 46}
+{"seq": 870, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 41/95\u2026", "percent_hint": 46}
+{"seq": 871, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 42/95\u2026", "percent_hint": 46}
+{"seq": 872, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 43/95\u2026", "percent_hint": 46}
+{"seq": 873, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 44/95\u2026", "percent_hint": 46}
+{"seq": 874, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 45/95\u2026", "percent_hint": 46}
+{"seq": 875, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 46/95\u2026", "percent_hint": 46}
+{"seq": 876, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 47/95\u2026", "percent_hint": 46}
+{"seq": 877, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 48/95\u2026", "percent_hint": 46}
+{"seq": 878, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 49/95\u2026", "percent_hint": 46}
+{"seq": 879, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 50/95\u2026", "percent_hint": 46}
+{"seq": 880, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 51/95\u2026", "percent_hint": 46}
+{"seq": 881, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 52/95\u2026", "percent_hint": 46}
+{"seq": 882, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 53/95\u2026", "percent_hint": 46}
+{"seq": 883, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 54/95\u2026", "percent_hint": 46}
+{"seq": 884, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 55/95\u2026", "percent_hint": 46}
+{"seq": 885, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 56/95\u2026", "percent_hint": 46}
+{"seq": 886, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 57/95\u2026", "percent_hint": 46}
+{"seq": 887, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 58/95\u2026", "percent_hint": 46}
+{"seq": 888, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 59/95\u2026", "percent_hint": 46}
+{"seq": 889, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 60/95\u2026", "percent_hint": 46}
+{"seq": 890, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 61/95\u2026", "percent_hint": 46}
+{"seq": 891, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 62/95\u2026", "percent_hint": 46}
+{"seq": 892, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 63/95\u2026", "percent_hint": 46}
+{"seq": 893, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 64/95\u2026", "percent_hint": 46}
+{"seq": 894, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 65/95\u2026", "percent_hint": 46}
+{"seq": 895, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 66/95\u2026", "percent_hint": 46}
+{"seq": 896, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 67/95\u2026", "percent_hint": 46}
+{"seq": 897, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 68/95\u2026", "percent_hint": 46}
+{"seq": 898, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 69/95\u2026", "percent_hint": 46}
+{"seq": 899, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 70/95\u2026", "percent_hint": 46}
+{"seq": 900, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 71/95\u2026", "percent_hint": 46}
+{"seq": 901, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 72/95\u2026", "percent_hint": 46}
+{"seq": 902, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 73/95\u2026", "percent_hint": 46}
+{"seq": 903, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 74/95\u2026", "percent_hint": 46}
+{"seq": 904, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 75/95\u2026", "percent_hint": 46}
+{"seq": 905, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 76/95\u2026", "percent_hint": 46}
+{"seq": 906, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 77/95\u2026", "percent_hint": 46}
+{"seq": 907, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 78/95\u2026", "percent_hint": 46}
+{"seq": 908, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 79/95\u2026", "percent_hint": 46}
+{"seq": 909, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 80/95\u2026", "percent_hint": 46}
+{"seq": 910, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 81/95\u2026", "percent_hint": 46}
+{"seq": 911, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 82/95\u2026", "percent_hint": 46}
+{"seq": 912, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 83/95\u2026", "percent_hint": 46}
+{"seq": 913, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 84/95\u2026", "percent_hint": 46}
+{"seq": 914, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 85/95\u2026", "percent_hint": 46}
+{"seq": 915, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 86/95\u2026", "percent_hint": 46}
+{"seq": 916, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 87/95\u2026", "percent_hint": 46}
+{"seq": 917, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 88/95\u2026", "percent_hint": 46}
+{"seq": 918, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 89/95\u2026", "percent_hint": 46}
+{"seq": 919, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 90/95\u2026", "percent_hint": 46}
+{"seq": 920, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 91/95\u2026", "percent_hint": 46}
+{"seq": 921, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 92/95\u2026", "percent_hint": 46}
+{"seq": 922, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 93/95\u2026", "percent_hint": 46}
+{"seq": 923, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 94/95\u2026", "percent_hint": 46}
+{"seq": 924, "type": "progress", "phase": "running", "stage": "scan", "message": "\u2192 Scan batch 95/95\u2026", "percent_hint": 46}
+{"seq": 925, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Scan selected 206 chunk(s)", "percent_hint": null}
+{"seq": 926, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 1/50\u2026", "percent_hint": 60}
+{"seq": 927, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 2/50\u2026", "percent_hint": 60}
+{"seq": 928, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 3/50\u2026", "percent_hint": 60}
+{"seq": 929, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 4/50\u2026", "percent_hint": 60}
+{"seq": 930, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 5/50\u2026", "percent_hint": 60}
+{"seq": 931, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 6/50\u2026", "percent_hint": 60}
+{"seq": 932, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 7/50\u2026", "percent_hint": 60}
+{"seq": 933, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 8/50\u2026", "percent_hint": 60}
+{"seq": 934, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 9/50\u2026", "percent_hint": 60}
+{"seq": 935, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 10/50\u2026", "percent_hint": 60}
+{"seq": 936, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 11/50\u2026", "percent_hint": 60}
+{"seq": 937, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 12/50\u2026", "percent_hint": 60}
+{"seq": 938, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 13/50\u2026", "percent_hint": 60}
+{"seq": 939, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 14/50\u2026", "percent_hint": 60}
+{"seq": 940, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 15/50\u2026", "percent_hint": 60}
+{"seq": 941, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 16/50\u2026", "percent_hint": 60}
+{"seq": 942, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 17/50\u2026", "percent_hint": 60}
+{"seq": 943, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 18/50\u2026", "percent_hint": 60}
+{"seq": 944, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 19/50\u2026", "percent_hint": 60}
+{"seq": 945, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 20/50\u2026", "percent_hint": 60}
+{"seq": 946, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 21/50\u2026", "percent_hint": 60}
+{"seq": 947, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 22/50\u2026", "percent_hint": 60}
+{"seq": 948, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 23/50\u2026", "percent_hint": 60}
+{"seq": 949, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 24/50\u2026", "percent_hint": 60}
+{"seq": 950, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 25/50\u2026", "percent_hint": 60}
+{"seq": 951, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 26/50\u2026", "percent_hint": 60}
+{"seq": 952, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 27/50\u2026", "percent_hint": 60}
+{"seq": 953, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 28/50\u2026", "percent_hint": 60}
+{"seq": 954, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 29/50\u2026", "percent_hint": 60}
+{"seq": 955, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 30/50\u2026", "percent_hint": 60}
+{"seq": 956, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 31/50\u2026", "percent_hint": 60}
+{"seq": 957, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 32/50\u2026", "percent_hint": 60}
+{"seq": 958, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 33/50\u2026", "percent_hint": 60}
+{"seq": 959, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 34/50\u2026", "percent_hint": 60}
+{"seq": 960, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 35/50\u2026", "percent_hint": 60}
+{"seq": 961, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 36/50\u2026", "percent_hint": 60}
+{"seq": 962, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 37/50\u2026", "percent_hint": 60}
+{"seq": 963, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 38/50\u2026", "percent_hint": 60}
+{"seq": 964, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 39/50\u2026", "percent_hint": 60}
+{"seq": 965, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 40/50\u2026", "percent_hint": 60}
+{"seq": 966, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 41/50\u2026", "percent_hint": 60}
+{"seq": 967, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 42/50\u2026", "percent_hint": 60}
+{"seq": 968, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 43/50\u2026", "percent_hint": 60}
+{"seq": 969, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 44/50\u2026", "percent_hint": 60}
+{"seq": 970, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 45/50\u2026", "percent_hint": 60}
+{"seq": 971, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 46/50\u2026", "percent_hint": 60}
+{"seq": 972, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 47/50\u2026", "percent_hint": 60}
+{"seq": 973, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 48/50\u2026", "percent_hint": 60}
+{"seq": 974, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 49/50\u2026", "percent_hint": 60}
+{"seq": 975, "type": "progress", "phase": "running", "stage": "synthesis", "message": "\u2192 Synthesis sub-batch 50/50\u2026", "percent_hint": 60}
+{"seq": 976, "type": "progress", "phase": "running", "stage": "progress", "message": "\u2192 Branch 'Risks / Red Flags / Ambiguities': 148 item(s) extracted (1448.73s)", "percent_hint": null}
+{"seq": 977, "type": "progress", "phase": "running", "stage": "checkpointing", "message": "\u00e2\u2020\u2019 Saved 148 item(s) to checkpoint", "percent_hint": 68}
+{"seq": 978, "type": "progress", "phase": "report", "stage": "building_report", "message": "Building report\u00e2\u20ac\u00a6", "percent_hint": 88}
+{"seq": 979, "type": "progress", "phase": "running", "stage": "progress", "message": "Second-pass plan: 6 step(s)", "percent_hint": null}
+{"seq": 980, "type": "progress", "phase": "post", "stage": "second_pass", "message": "Second pass 1/6: Organized Evidence by Category", "percent_hint": 78}
+{"seq": 981, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing reused exact branch/category matches for 77 item(s)", "percent_hint": null}
+{"seq": 982, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 1/88", "percent_hint": null}
+{"seq": 983, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 2/88", "percent_hint": null}
+{"seq": 984, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 3/88", "percent_hint": null}
+{"seq": 985, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 4/88", "percent_hint": null}
+{"seq": 986, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 5/88", "percent_hint": null}
+{"seq": 987, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 6/88", "percent_hint": null}
+{"seq": 988, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 7/88", "percent_hint": null}
+{"seq": 989, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 8/88", "percent_hint": null}
+{"seq": 990, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 9/88", "percent_hint": null}
+{"seq": 991, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 10/88", "percent_hint": null}
+{"seq": 992, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 11/88", "percent_hint": null}
+{"seq": 993, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 12/88", "percent_hint": null}
+{"seq": 994, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 13/88", "percent_hint": null}
+{"seq": 995, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 14/88", "percent_hint": null}
+{"seq": 996, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 15/88", "percent_hint": null}
+{"seq": 997, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 16/88", "percent_hint": null}
+{"seq": 998, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 17/88", "percent_hint": null}
+{"seq": 999, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 18/88", "percent_hint": null}
+{"seq": 1000, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 19/88", "percent_hint": null}
+{"seq": 1001, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 20/88", "percent_hint": null}
+{"seq": 1002, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 21/88", "percent_hint": null}
+{"seq": 1003, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 22/88", "percent_hint": null}
+{"seq": 1004, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 23/88", "percent_hint": null}
+{"seq": 1005, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 24/88", "percent_hint": null}
+{"seq": 1006, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 25/88", "percent_hint": null}
+{"seq": 1007, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 26/88", "percent_hint": null}
+{"seq": 1008, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 27/88", "percent_hint": null}
+{"seq": 1009, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 28/88", "percent_hint": null}
+{"seq": 1010, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 29/88", "percent_hint": null}
+{"seq": 1011, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 30/88", "percent_hint": null}
+{"seq": 1012, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 31/88", "percent_hint": null}
+{"seq": 1013, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 32/88", "percent_hint": null}
+{"seq": 1014, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 33/88", "percent_hint": null}
+{"seq": 1015, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 34/88", "percent_hint": null}
+{"seq": 1016, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 35/88", "percent_hint": null}
+{"seq": 1017, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 36/88", "percent_hint": null}
+{"seq": 1018, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 37/88", "percent_hint": null}
+{"seq": 1019, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 38/88", "percent_hint": null}
+{"seq": 1020, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 39/88", "percent_hint": null}
+{"seq": 1021, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 40/88", "percent_hint": null}
+{"seq": 1022, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 41/88", "percent_hint": null}
+{"seq": 1023, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 42/88", "percent_hint": null}
+{"seq": 1024, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 43/88", "percent_hint": null}
+{"seq": 1025, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 44/88", "percent_hint": null}
+{"seq": 1026, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 45/88", "percent_hint": null}
+{"seq": 1027, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 46/88", "percent_hint": null}
+{"seq": 1028, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 47/88", "percent_hint": null}
+{"seq": 1029, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 48/88", "percent_hint": null}
+{"seq": 1030, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 49/88", "percent_hint": null}
+{"seq": 1031, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 50/88", "percent_hint": null}
+{"seq": 1032, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 51/88", "percent_hint": null}
+{"seq": 1033, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 52/88", "percent_hint": null}
+{"seq": 1034, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 53/88", "percent_hint": null}
+{"seq": 1035, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 54/88", "percent_hint": null}
+{"seq": 1036, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 55/88", "percent_hint": null}
+{"seq": 1037, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 56/88", "percent_hint": null}
+{"seq": 1038, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 57/88", "percent_hint": null}
+{"seq": 1039, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 58/88", "percent_hint": null}
+{"seq": 1040, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 59/88", "percent_hint": null}
+{"seq": 1041, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 60/88", "percent_hint": null}
+{"seq": 1042, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 61/88", "percent_hint": null}
+{"seq": 1043, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 62/88", "percent_hint": null}
+{"seq": 1044, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 63/88", "percent_hint": null}
+{"seq": 1045, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 64/88", "percent_hint": null}
+{"seq": 1046, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 65/88", "percent_hint": null}
+{"seq": 1047, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 66/88", "percent_hint": null}
+{"seq": 1048, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 67/88", "percent_hint": null}
+{"seq": 1049, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 68/88", "percent_hint": null}
+{"seq": 1050, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 69/88", "percent_hint": null}
+{"seq": 1051, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 70/88", "percent_hint": null}
+{"seq": 1052, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 71/88", "percent_hint": null}
+{"seq": 1053, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 72/88", "percent_hint": null}
+{"seq": 1054, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 73/88", "percent_hint": null}
+{"seq": 1055, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 74/88", "percent_hint": null}
+{"seq": 1056, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 75/88", "percent_hint": null}
+{"seq": 1057, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 76/88", "percent_hint": null}
+{"seq": 1058, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 77/88", "percent_hint": null}
+{"seq": 1059, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 78/88", "percent_hint": null}
+{"seq": 1060, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 79/88", "percent_hint": null}
+{"seq": 1061, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 80/88", "percent_hint": null}
+{"seq": 1062, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 81/88", "percent_hint": null}
+{"seq": 1063, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 82/88", "percent_hint": null}
+{"seq": 1064, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 83/88", "percent_hint": null}
+{"seq": 1065, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 84/88", "percent_hint": null}
+{"seq": 1066, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 85/88", "percent_hint": null}
+{"seq": 1067, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 86/88", "percent_hint": null}
+{"seq": 1068, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 87/88", "percent_hint": null}
+{"seq": 1069, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 88/88", "percent_hint": null}
+{"seq": 1070, "type": "progress", "phase": "post", "stage": "second_pass", "message": "OK Second pass complete (1121.07s)", "percent_hint": 78}
+{"seq": 1071, "type": "progress", "phase": "post", "stage": "second_pass", "message": "Second pass 2/6: Category Summaries", "percent_hint": 78}
+{"seq": 1072, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 1/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1073, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 2/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1074, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 3/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1075, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 4/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1076, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 5/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1077, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 6/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1078, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 7/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1079, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 8/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1080, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 9/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1081, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 10/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1082, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 11/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1083, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 12/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1084, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 13/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1085, "type": "progress", "phase": "running", "stage": "progress", "message": "Project Overview summary batch 14/14\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1086, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 1 (14 partials)...", "percent_hint": null}
+{"seq": 1087, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 2 (3 partials)...", "percent_hint": null}
+{"seq": 1088, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 3 (2 partials)...", "percent_hint": null}
+{"seq": 1089, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 1/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1090, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 2/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1091, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 3/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1092, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 4/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1093, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 5/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1094, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 6/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1095, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 7/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1096, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 8/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1097, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 9/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1098, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 10/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1099, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 11/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1100, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 12/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1101, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 13/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1102, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 14/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1103, "type": "progress", "phase": "running", "stage": "progress", "message": "Procurement And Commercial Requirements summary batch 15/15\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1104, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 1 (15 partials)...", "percent_hint": null}
+{"seq": 1105, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 2 (4 partials)...", "percent_hint": null}
+{"seq": 1106, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 3 (2 partials)...", "percent_hint": null}
+{"seq": 1107, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 1/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1108, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 2/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1109, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 3/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1110, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 4/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1111, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 5/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1112, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 6/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1113, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 7/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1114, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 8/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1115, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 9/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1116, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 10/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1117, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 11/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1118, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 12/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1119, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 13/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1120, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 14/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1121, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 15/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1122, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 16/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1123, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 17/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1124, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 18/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1125, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 19/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1126, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 20/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1127, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 21/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1128, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 22/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1129, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 23/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1130, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 24/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1131, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 25/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1132, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 26/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1133, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 27/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1134, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 28/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1135, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 29/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1136, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 30/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1137, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 31/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1138, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 32/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1139, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 33/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1140, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 34/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1141, "type": "progress", "phase": "running", "stage": "progress", "message": "Scope Of Work summary batch 35/35\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1142, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 1 (35 partials)...", "percent_hint": null}
+{"seq": 1143, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 2 (9 partials)...", "percent_hint": null}
+{"seq": 1144, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 3 (4 partials)...", "percent_hint": null}
+{"seq": 1145, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 4 (2 partials)...", "percent_hint": null}
+{"seq": 1146, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 1/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1147, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 2/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1148, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 3/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1149, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 4/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1150, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 5/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1151, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 6/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1152, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 7/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1153, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 8/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1154, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 9/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1155, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 10/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1156, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 11/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1157, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 12/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1158, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 13/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1159, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 14/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1160, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 15/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1161, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 16/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1162, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 17/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1163, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 18/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1164, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 19/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1165, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 20/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1166, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 21/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1167, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 22/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1168, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 23/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1169, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 24/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1170, "type": "progress", "phase": "running", "stage": "progress", "message": "Controls And Integration Requirements summary batch 25/25\u00e2\u20ac\u00a6", "percent_hint": null}
+{"seq": 1171, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 1 (25 partials)...", "percent_hint": null}
+{"seq": 1172, "type": "progress", "phase": "running", "stage": "progress", "message": "reduce step round 2 (8 partials)...", "percent_hint": null}
+{"seq": 1173, "type": "error", "message": "Server restarted during extraction run", "phase": "error", "stage": "interrupted", "percent_hint": null}

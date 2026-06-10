@@ -3,11 +3,11 @@
 run_branch(branch, corpus, config, llm_fn, emit) -> BranchResult
 
 Executes all 5 stages described in Section 5 of LargeDocIngest.md:
-  1. Retrieval — dense + BM25 + keyword filtering
-  2. Batching  — assign short IDs, split into scan batches
-  3. Scan pass — LLM identifies relevant chunk IDs
-  4. Synthesis — LLM writes bullet output from rehydrated chunks
-  5. Deduplication — Jaccard near-duplicate removal
+  1. Retrieval - dense + BM25 + keyword filtering
+  2. Batching  - assign short IDs, split into scan batches
+  3. Scan pass - LLM identifies relevant chunk IDs
+  4. Full-text selection - LLM selects which rehydrated chunks become items
+  5. Deduplication - Jaccard near-duplicate removal
 
 The caller owns the LLM callable and the progress emitter, keeping this
 module free of I/O side effects other than the LLM calls.
@@ -28,6 +28,7 @@ from extraction.batch import (
     parse_scan_response,
     rehydrate,
 )
+from extraction.cancel import CancelCheck, ExtractionCancelled, raise_if_cancelled
 from extraction.branch_config import (
     BranchConfig,
     BranchResult,
@@ -36,6 +37,12 @@ from extraction.branch_config import (
     resolve_priority,
 )
 from extraction.dedup import dedup_items
+from extraction.evidence_quality import (
+    classify_evidence_text,
+    is_appendix_or_toc_chunk,
+    strip_leading_reference_noise,
+    strip_html,
+)
 from extraction.prompts import build_scan_prompts, build_synthesis_prompts
 
 
@@ -257,8 +264,21 @@ def _apply_keyword_filter_and_boost(
         for chunk in chunks:
             chunk.setdefault("priority_weight", 1.0)
 
+    # Drop obviously non-substantive appendix / TOC / admin chunks early so
+    # they do not dominate scan and synthesis passes. Keep the original pool as
+    # a fallback if everything matched the filter.
+    original_chunks = list(chunks)
+    filtered_chunks = [
+        chunk for chunk in chunks
+        if not is_appendix_or_toc_chunk(chunk.get("text", ""))
+    ]
+    if filtered_chunks:
+        chunks = filtered_chunks
+
     # Sort descending and cap
     chunks.sort(key=lambda c: c.get("score", 0.0), reverse=True)
+    if not chunks:
+        chunks = original_chunks
     return chunks[:config.max_candidate_chunks]
 
 
@@ -273,10 +293,12 @@ def _call_llm_with_retry(
     temperature: float,
     timeout_seconds: float,
     max_retries: int,
+    cancel_check: CancelCheck = None,
 ) -> str:
     """Call the LLM, retrying up to max_retries on exception."""
     last_exc: Optional[Exception] = None
     for attempt in range(max_retries + 1):
+        raise_if_cancelled(cancel_check)
         try:
             return llm_fn(
                 system_prompt=system_prompt,
@@ -296,6 +318,7 @@ def _scan_batch(
     branch: BranchConfig,
     config: ExtractionConfig,
     llm_fn: Callable,
+    cancel_check: CancelCheck = None,
 ) -> Tuple[List[int], str, str, str]:
     """Run one scan-pass batch.
 
@@ -309,6 +332,7 @@ def _scan_batch(
         temperature=config.scan_pass_temperature,
         timeout_seconds=config.scan_pass_timeout_seconds,
         max_retries=config.max_retries,
+        cancel_check=cancel_check,
     )
     return parse_scan_response(response), system, user, response
 
@@ -318,6 +342,7 @@ def _synthesis_batch(
     branch: BranchConfig,
     config: ExtractionConfig,
     llm_fn: Callable,
+    cancel_check: CancelCheck = None,
 ) -> Tuple[List[int], str, str, str]:
     """Run one synthesis pass.
 
@@ -331,6 +356,7 @@ def _synthesis_batch(
         temperature=config.synthesis_pass_temperature,
         timeout_seconds=config.synthesis_pass_timeout_seconds,
         max_retries=config.max_retries,
+        cancel_check=cancel_check,
     )
     return parse_scan_response(response), system, user, response
 
@@ -346,6 +372,7 @@ def run_branch(
     llm_fn: Callable,
     emit: Optional[Callable[[str], None]] = None,
     verbose_dir: Optional[Path] = None,
+    cancel_check: CancelCheck = None,
 ) -> BranchResult:
     """Execute one extraction branch end-to-end.
 
@@ -381,6 +408,7 @@ def run_branch(
     vdir = verbose_dir  # shorthand; None means verbose is off
 
     try:
+        raise_if_cancelled(cancel_check)
         # ── Stage 1: Retrieval ───────────────────────────────────────────
         raw_chunks = _retrieve_candidates(branch, corpus, config, emit)
         stats.chunks_retrieved = len(raw_chunks)
@@ -424,8 +452,11 @@ def run_branch(
         # ── Stage 3: Scan pass ───────────────────────────────────────────
         all_selected_ids: List[int] = []
         for batch_idx, batch in enumerate(scan_batches, start=1):
+            raise_if_cancelled(cancel_check)
             emit(f"  → Scan batch {batch_idx}/{len(scan_batches)}…")
-            selected, sys_p, usr_p, raw_resp = _scan_batch(batch, branch, config, llm_fn)
+            selected, sys_p, usr_p, raw_resp = _scan_batch(
+                batch, branch, config, llm_fn, cancel_check=cancel_check
+            )
             all_selected_ids.extend(selected)
             if vdir:
                 tag = f"03_scan_{batch_idx:02d}"
@@ -452,17 +483,20 @@ def run_branch(
                 stats=stats,
             )
 
-        # ── Stage 4: Synthesis ───────────────────────────────────────────
+        # ── Stage 4: Full-text selection ────────────────────────────────
         synth_id_map, synthesis_batches = assign_ids_for_synthesis(
             rehydrated, config.synthesis_max_chars
         )
         selected_synth_ids: List[int] = []
         for sb_idx, sub_batch in enumerate(synthesis_batches, start=1):
+            raise_if_cancelled(cancel_check)
             if len(synthesis_batches) > 1:
                 emit(f"  → Synthesis sub-batch {sb_idx}/{len(synthesis_batches)}…")
             else:
                 emit(f"  → Synthesis pass ({len(rehydrated)} chunk(s))…")
-            ids, sys_p, usr_p, raw_resp = _synthesis_batch(sub_batch, branch, config, llm_fn)
+            ids, sys_p, usr_p, raw_resp = _synthesis_batch(
+                sub_batch, branch, config, llm_fn, cancel_check=cancel_check
+            )
             selected_synth_ids.extend(ids)
             if vdir:
                 tag = f"05_synth_{sb_idx:02d}"
@@ -489,12 +523,13 @@ def run_branch(
             ])
             emit(f"  [verbose] 06_final_chunks.json ({len(final_chunks)} chunks)")
 
-        # Build ExtractionItem objects with verbatim source text
+        # Build ExtractionItem objects directly from source chunk text.
         items: List[ExtractionItem] = []
         for chunk in final_chunks:
             priority = float(chunk.get("priority_weight", 1.0) or 1.0)
+            clean_text = strip_leading_reference_noise(chunk.get("text", ""))
             items.append(ExtractionItem(
-                text=chunk.get("text", "").strip(),
+                text=clean_text,
                 branch_name=branch.name,
                 source_chunk_id=chunk.get("chunk_id", ""),
                 source_filename=chunk.get("source_filename", ""),
@@ -503,10 +538,32 @@ def run_branch(
                 addendum_override=priority > 1.0,
             ))
 
+        substantive_items = [
+            item for item in items
+            if classify_evidence_text(item.text) == "substantive"
+        ]
+        if substantive_items:
+            filtered_out = len(items) - len(substantive_items)
+            if filtered_out:
+                emit(f"  -> Filtered {filtered_out} low-information item(s)")
+            items = substantive_items
+
         # ── Stage 5: Deduplication ───────────────────────────────────────
         items = dedup_items(items, threshold=config.item_jaccard_threshold)
         # Enforce max_items cap
         items = items[:branch.max_items]
+        kept_chunk_ids = {item.source_chunk_id for item in items if item.source_chunk_id}
+        evidence_chunks = [
+            {
+                "chunk_id": chunk.get("chunk_id", ""),
+                "text": strip_leading_reference_noise(chunk.get("text", "")),
+                "source_filename": chunk.get("source_filename", ""),
+                "page_start": int(chunk.get("page_start", 0) or 0),
+                "priority_weight": float(chunk.get("priority_weight", 1.0) or 1.0),
+            }
+            for chunk in final_chunks
+            if not kept_chunk_ids or chunk.get("chunk_id", "") in kept_chunk_ids
+        ]
         stats.items_after_dedup = len(items)
         stats.elapsed_seconds = round(time.perf_counter() - t0, 2)
 
@@ -520,10 +577,13 @@ def run_branch(
             branch_name=branch.name,
             output_heading=branch.effective_heading(),
             items=items,
+            evidence_chunks=evidence_chunks,
             stats=stats,
             status="ok" if items else "empty",
         )
 
+    except ExtractionCancelled:
+        raise
     except Exception as exc:
         stats.error = str(exc)
         stats.elapsed_seconds = round(time.perf_counter() - t0, 2)
