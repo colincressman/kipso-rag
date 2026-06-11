@@ -38,6 +38,7 @@ const citationsList   = $("citationsList");
 const closeCitations  = $("closeCitations");
 const statusDot       = $("statusDot");
 const sidebarToggle   = $("sidebarToggle");
+const sidebarRailToggle = $("sidebarRailToggle");
 const sidebar         = $("sidebar");
 const newChatBtn      = $("newChatBtn");
 const historyList     = $("historyList");
@@ -735,6 +736,9 @@ async function switchConversation(conversationId) {
   if (conversationId === state.conversationId) return;
   const ok = await loadConversation(conversationId);
   if (ok) {
+    if (window.innerWidth <= 680) {
+      sidebar.classList.remove("mobile-open");
+    }
     citationsPanel.style.display = "none";
     await loadConversationList();
   }
@@ -747,6 +751,9 @@ async function startNewChat() {
   messages.innerHTML = "";
   state.conversationId = null;
   localStorage.removeItem("rag_conv_id");
+  if (window.innerWidth <= 680) {
+    sidebar.classList.remove("mobile-open");
+  }
 
   // Re-insert welcome
   const w = document.createElement("div");
@@ -783,7 +790,7 @@ newChatBtn.addEventListener("click", () => startNewChat());
 
 // ── Sidebar toggle ─────────────────────────────────────────────────────────
 
-sidebarToggle.addEventListener("click", (e) => {
+function handleSidebarToggle(e) {
   e.stopPropagation();
   const isMobile = window.innerWidth <= 680;
   if (isMobile) {
@@ -791,14 +798,18 @@ sidebarToggle.addEventListener("click", (e) => {
   } else {
     sidebar.classList.toggle("collapsed");
   }
-});
+}
+
+sidebarToggle.addEventListener("click", handleSidebarToggle);
+if (sidebarRailToggle) sidebarRailToggle.addEventListener("click", handleSidebarToggle);
 
 // Close mobile sidebar when clicking outside
 document.addEventListener("click", e => {
+  const clickedToggle = e.target.closest("#sidebarToggle, #sidebarRailToggle");
   if (window.innerWidth <= 680
       && sidebar.classList.contains("mobile-open")
       && !sidebar.contains(e.target)
-      && e.target !== sidebarToggle) {
+      && !clickedToggle) {
     sidebar.classList.remove("mobile-open");
   }
 });

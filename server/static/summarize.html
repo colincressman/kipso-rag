@@ -33,24 +33,27 @@
     body { font-family: var(--font-body); background: var(--bg); color: var(--text); min-height: 100vh; }
 
     /* ── Topbar ─────────────────────────────────────────────────────────── */
-    .topbar {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; gap: 10px;
-      height: 50px; padding: 0 16px;
-      background: var(--surface); border-bottom: 1px solid var(--border);
+    .refresh { display: inline-flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); padding: 5px 12px; border-radius: var(--radius); font-size: 12px; cursor: pointer; transition: color .15s; }
+    .refresh:hover { color: var(--text); }
+    .refresh-label { }
+    .app-shell-orb {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      flex: 0 0 auto;
     }
-    .topbar a.back { display: inline-flex; align-items: center; gap: 4px; color: var(--text-muted); text-decoration: none; font-size: 13px; padding: 4px 8px; border-radius: var(--radius); transition: color .15s, background .15s; }
-    .topbar a.back:hover { color: var(--text); background: var(--surface2); }
-    .topbar .nav-icon { display: inline-flex; align-items: center; color: var(--text-muted); text-decoration: none; padding: 6px; border-radius: var(--radius); transition: color .15s, background .15s; }
-    .topbar .nav-icon:hover { color: var(--text); background: var(--surface2); }
-    .topbar .logo { font-weight: 600; font-size: 15px; color: var(--accent); margin-left: 4px; }
-    .topbar .spacer { flex: 1; }
-    .topbar button.refresh { display: inline-flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); padding: 5px 12px; border-radius: var(--radius); font-size: 12px; cursor: pointer; transition: color .15s; }
-    .topbar button.refresh:hover { color: var(--text); }
-    .topbar .refresh-label { }
+    .app-shell-orb svg { display: block; }
+    .summaries-shell-label {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      white-space: nowrap;
+    }
 
     /* ── Main content ───────────────────────────────────────────────────── */
-    .container { max-width: 960px; margin: 32px auto; padding: 0 20px; }
     h2 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
     .subtitle { color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
 
@@ -166,14 +169,9 @@
     /* ── Mobile (≤ 640px) ────────────────────────────────────────────────── */
     @media (max-width: 640px) {
       /* Topbar: hide text labels, tighten spacing */
-      .topbar { padding: 0 12px; gap: 8px; }
-      .topbar .back-label  { display: none; }
-      .topbar .refresh-label { display: none; }
-      .topbar .logo { font-size: 14px; }
-      .topbar button.refresh { padding: 8px 10px; }
+      .refresh-label { display: none; }
+      .refresh { padding: 8px 10px; }
 
-      /* Container: edge-to-edge with smaller padding */
-      .container { margin: 16px auto; padding: 0 14px; }
       section + section { margin-top: 32px; }
       .section-divider { margin: 32px 0 0; }
 
@@ -210,31 +208,209 @@
       .modal-overlay { padding: 0; align-items: flex-end; }
       .modal-box { max-width: 100%; max-height: 90dvh; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-left: none; border-right: none; border-bottom: none; }
     }
+    .summaries-page.app-shell-scroll {
+      display: block;
+      flex: 1 1 auto;
+      align-self: stretch;
+      width: 100%;
+      max-width: none;
+      height: calc(100dvh - var(--shell-h));
+      overflow-y: auto;
+    }
+    .summaries-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+    body.app-shell-frame {
+      background: var(--bg);
+    }
+    .hero-card {
+      display: grid;
+      gap: 14px;
+      padding: 24px 24px 18px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(28,32,48,0.92), rgba(21,24,32,0.97));
+      box-shadow: 0 18px 42px rgba(0,0,0,0.25);
+    }
+    .hero-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .hero-top-copy {
+      display: grid;
+      gap: 14px;
+    }
+    .hero-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent-sky);
+    }
+    .hero-title {
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+    .hero-copy {
+      max-width: 62ch;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(13,15,20,0.45);
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .hero-refresh {
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+    .job-log-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .job-log-head h3 {
+      margin-bottom: 0 !important;
+    }
+    #worker-toggle-btn {
+      margin-left: 0 !important;
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+    #status-bar { margin-bottom: 0; }
+    #summaries-section,
+    #range-section,
+    #queue-section,
+    #job-log-section {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(21,24,32,0.96), rgba(13,15,20,0.98));
+      box-shadow: 0 16px 34px rgba(0,0,0,0.18);
+    }
+    #summaries-section,
+    #range-section,
+    #queue-section {
+      margin-bottom: 20px;
+    }
+    .section-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent-sky);
+      margin-bottom: 10px;
+    }
+    @media (max-width: 700px) {
+      body.app-shell-page {
+        --shell-mobile-pad-top: 14px;
+        --shell-mobile-pad-bottom: 4px;
+        --shell-mobile-row-gap: 6px;
+      }
+      .app-shell-orb {
+        transform: translateY(-3px);
+      }
+      .summaries-shell-label {
+        display: none;
+      }
+      .summaries-inner { padding: 16px 14px 28px; }
+      .hero-card {
+        padding: 18px;
+      }
+      .hero-top {
+        flex-direction: column;
+      }
+      .hero-title {
+        max-width: none;
+      }
+      .hero-refresh {
+        align-self: stretch;
+      }
+      .hero-meta {
+        gap: 8px;
+      }
+      .hero-pill {
+        width: 100%;
+        justify-content: center;
+      }
+      #summaries-section,
+      #range-section,
+      #queue-section,
+      #job-log-section {
+        padding: 18px 16px;
+        border-radius: 16px;
+      }
+      #job-log-list,
+      #range-list {
+        max-height: none;
+      }
+      #worker-toggle-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
+  <link rel="stylesheet" href="/static/shell.css" />
+  <link rel="stylesheet" href="/static/header-shell.css" />
 </head>
-<body>
+<body class="app-shell-page app-shell-frame">
 
 <!-- ── Topbar ─────────────────────────────────────────────────────────── -->
-<header class="topbar">
-  <a href="/" class="back" title="Back to chat">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"/>
-    </svg>
-    <span class="back-label">Chat</span>
-  </a>
-  <span class="logo">Book Summarizer</span>
-  <div class="spacer"></div>
-  <a href="/library" class="nav-icon" title="Library">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-    </svg>
-  </a>
-  <button class="refresh" onclick="loadAll()">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-    </svg>
-    <span class="refresh-label">Refresh</span>
-  </button>
+<header class="app-shell-bar">
+  <div class="app-shell-left">
+    <span class="app-shell-orb" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="13" stroke="url(#grad-shell-summaries)" stroke-width="2"/>
+        <circle cx="14" cy="14" r="6" fill="url(#grad-shell-summaries)" opacity="0.82"/>
+        <defs>
+          <linearGradient id="grad-shell-summaries" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#818cf8"/>
+            <stop offset="1" stop-color="#38bdf8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </span>
+    <span class="summaries-shell-label">Summaries</span>
+  </div>
+  <div class="app-shell-center">
+    <nav class="app-shell-nav" aria-label="Primary">
+      <a href="/" class="app-shell-link">Chat</a>
+      <a href="/library" class="app-shell-link">Library</a>
+      <a href="/extraction" class="app-shell-link">Extraction</a>
+      <a href="/summarize" class="app-shell-link" aria-current="page">Summaries</a>
+    </nav>
+  </div>
+  <div class="app-shell-right app-shell-actions">
+  </div>
 </header>
 
 <!-- ── Summary modal ──────────────────────────────────────────────────── -->
@@ -249,12 +425,34 @@
 </div>
 
 <!-- ── Main ───────────────────────────────────────────────────────────── -->
-<main class="container">
+<main class="summaries-page app-shell-scroll">
+  <div class="summaries-inner">
 
-  <div id="status-bar"></div>
+  <section class="hero-card">
+    <div class="hero-top">
+      <div class="hero-top-copy">
+        <div class="hero-kicker">Summary Workspace</div>
+        <h1 class="hero-title">Generate, review, and rerun summaries without leaving the queue.</h1>
+        <p class="hero-copy">This page is tuned for operators working through a pile of documents. Finished summaries, page-range pulls, full-document jobs, and worker activity all stay visible in one place.</p>
+      </div>
+      <button class="refresh hero-refresh" onclick="loadAll()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+        </svg>
+        <span class="refresh-label">Refresh</span>
+      </button>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-pill">Completed summaries</span>
+      <span class="hero-pill">Range pulls</span>
+      <span class="hero-pill">Worker monitoring</span>
+    </div>
+    <div id="status-bar"></div>
+  </section>
 
   <!-- ── 1. Completed summaries ──────────────────────────────────────── -->
   <section id="summaries-section">
+    <div class="section-kicker">Completed Output</div>
     <h2 class="section-heading">Summaries</h2>
     <p class="subtitle">Click a card to read. Hover for re-generate.</p>
     <div class="cards-wrapper collapsed" id="cards-wrapper">
@@ -264,10 +462,10 @@
     <button class="cards-toggle" id="cards-toggle" onclick="toggleCards()"></button>
   </section>
 
-  <hr class="section-divider" />
 
   <!-- ── 2. Page range summaries ─────────────────────────────────────── -->
   <section id="range-section">
+    <div class="section-kicker">Targeted Pulls</div>
     <h2 class="section-heading">Page Range Summaries</h2>
     <p class="subtitle">Summarize pages 40–60, a chapter span, or any range from any document.</p>
     <form id="range-form" onsubmit="submitRange(event)">
@@ -285,10 +483,10 @@
     <div id="range-list"><p class="no-data">No page-range summaries yet.</p></div>
   </section>
 
-  <hr class="section-divider" />
 
   <!-- ── 3. Full document summaries (compact queue) ──────────────────── -->
   <section id="queue-section">
+    <div class="section-kicker">Batch Queue</div>
     <h2 class="section-heading">Full Document Summaries</h2>
     <p class="subtitle">Generate or re-generate a map-reduce summary for any document. Summaries are embedded for summary-intent chat queries.</p>
     <div style="max-height:340px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);margin-top:14px">
@@ -308,14 +506,18 @@
     </div>
   </section>
 
-  <hr class="section-divider" />
 
   <!-- ── 4. Job log ──────────────────────────────────────────────────── -->
-  <section id="job-log-section" style="margin-bottom:60px">
-    <h3>Recent Jobs <button id="worker-toggle-btn" onclick="toggleWorker()" style="margin-left:10px;font-size:11px;padding:2px 10px;border-radius:4px;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text-dim)">⏸ Pause Worker</button></h3>
+  <section id="job-log-section" style="margin-bottom:20px">
+    <div class="job-log-head">
+      <h3>Recent Jobs</h3>
+      <button id="worker-toggle-btn" onclick="toggleWorker()">⏸ Pause Worker</button>
+    </div>
+    <div class="section-kicker">Worker Activity</div>
     <div id="job-log-list"><p class="no-data">No jobs yet.</p></div>
   </section>
 
+  </div>
 </main>
 
 <script>
@@ -787,3 +989,6 @@
 </script>
 </body>
 </html>
+
+
+

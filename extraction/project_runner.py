@@ -34,6 +34,7 @@ from extraction.branch_runner import CorpusHandle, ExtractionConfig, run_branch
 from extraction.batch import format_scan_batch_text, parse_scan_response
 from extraction.evidence_quality import strip_html
 from extraction.report_builder import assemble_report, save_report, save_report_variant
+from extraction.source_kinds import infer_source_kind, source_kind_label
 from utils.text_utils import slugify_path as _slugify
 
 
@@ -285,6 +286,11 @@ def _format_item_for_pass(item: Any) -> str:
     if getattr(item, "source_chunk_id", ""):
         parts.append(f"[chunk:{item.source_chunk_id}]")
     parts.append(f"[{item.branch_name}]")
+    source_kind = str(getattr(item, "source_kind", "") or infer_source_kind(
+        text=clean_text,
+        filename=str(getattr(item, "source_filename", "") or ""),
+    ))
+    parts.append(f"[source:{source_kind}]")
     parts.append(clean_text)
     cite_parts = []
     if getattr(item, "source_page", 0):
@@ -303,6 +309,11 @@ def _format_evidence_chunk_for_pass(branch_name: str, chunk: Dict[str, Any]) -> 
     if chunk.get("chunk_id"):
         parts.append(f"[chunk:{chunk.get('chunk_id')}]")
     parts.append(f"[{branch_name}]")
+    source_kind = str(chunk.get("source_kind") or infer_source_kind(
+        text=text,
+        filename=str(chunk.get("source_filename", "") or ""),
+    ))
+    parts.append(f"[source:{source_kind}]")
     parts.append(text)
     cite_parts = []
     if int(chunk.get("page_start", 0) or 0):
@@ -454,7 +465,7 @@ def _render_pass_line_for_llm(raw_line: str) -> str:
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     if len(clean_text) > 650:
         clean_text = clean_text[:647].rstrip(" ,;:-") + "..."
-    parts = [f"[{parsed['branch_name']}]", clean_text]
+    parts = [f"[{parsed['branch_name']}]", f"[{source_kind_label(parsed['source_kind'])}]", clean_text]
     if parsed["citation_suffix"]:
         parts.append(parsed["citation_suffix"])
     return " ".join(part for part in parts if part).strip()
@@ -680,10 +691,10 @@ def _render_post_pass_user_prompt(template: str, branch_names: str, items_text: 
 
 def _parse_formatted_pass_item(line: str) -> Optional[Dict[str, Any]]:
     """Parse one formatted evidence line into structured fields."""
-    match = re.match(r"^\[chunk:([^\]]+)\]\s+\[([^\]]+)\]\s+(.*)$", line.strip())
+    match = re.match(r"^\[chunk:([^\]]+)\]\s+\[([^\]]+)\](?:\s+\[source:([^\]]+)\])?\s+(.*)$", line.strip())
     if not match:
         return None
-    chunk_id, branch_name, remainder = match.groups()
+    chunk_id, branch_name, source_kind, remainder = match.groups()
     citation_suffix = ""
     text = remainder.strip()
     cite_match = re.search(r"\s+(\([^()]+\))$", text)
@@ -693,6 +704,7 @@ def _parse_formatted_pass_item(line: str) -> Optional[Dict[str, Any]]:
     return {
         "chunk_id": chunk_id.strip(),
         "branch_name": branch_name.strip(),
+        "source_kind": str(source_kind or "unknown").strip() or "unknown",
         "text": text.strip(),
         "citation_suffix": citation_suffix.strip(),
         "formatted_line": line.strip(),
@@ -727,12 +739,13 @@ def _merge_category_artifact(artifact: Dict[str, Any]) -> Dict[str, Any]:
                 "item_count": 0,
                 "selected_ids": [],
                 "chunk_ids": [],
+                "source_kinds": [],
                 "evidence_lines": [],
             }
             merged_order.append(key)
         dest = merged_map[key]
 
-        for field in ("selected_ids", "chunk_ids", "evidence_lines"):
+        for field in ("selected_ids", "chunk_ids", "source_kinds", "evidence_lines"):
             for value in raw_category.get(field, []) or []:
                 if value not in dest[field]:
                     dest[field].append(value)
@@ -765,6 +778,7 @@ def _organize_items_text_by_category(
             "name": clean,
             "item_count": 0,
             "chunk_ids": [],
+            "source_kinds": [],
             "evidence_lines": [],
         }
         order.append(clean)
@@ -779,6 +793,7 @@ def _organize_items_text_by_category(
                 "name": name,
                 "item_count": 0,
                 "chunk_ids": [],
+                "source_kinds": [],
                 "evidence_lines": [],
             }
             order.append(name)
@@ -789,6 +804,9 @@ def _organize_items_text_by_category(
         chunk_id = parsed["chunk_id"]
         if chunk_id and chunk_id not in entry["chunk_ids"]:
             entry["chunk_ids"].append(chunk_id)
+        source_kind = parsed["source_kind"]
+        if source_kind and source_kind not in entry["source_kinds"]:
+            entry["source_kinds"].append(source_kind)
         entry["item_count"] = len(entry["evidence_lines"])
 
     return _merge_category_artifact({
@@ -850,6 +868,10 @@ def _organize_items_text_into_report_categories(
                 "item_count": len(evidence_lines),
                 "selected_ids": [nid for nid, _line in numbered_lines],
                 "chunk_ids": chunk_ids,
+                "source_kinds": sorted({
+                    str((_parse_formatted_pass_item(line) or {}).get("source_kind") or "unknown")
+                    for line in evidence_lines
+                }),
                 "evidence_lines": evidence_lines,
             }],
         })
@@ -861,6 +883,7 @@ def _organize_items_text_into_report_categories(
             "item_count": 0,
             "selected_ids": [],
             "chunk_ids": [],
+            "source_kinds": [],
             "evidence_lines": [],
         }
         for category_name in clean_categories
@@ -880,6 +903,9 @@ def _organize_items_text_into_report_categories(
         chunk_id = numeric_to_chunk.get(nid)
         if chunk_id and chunk_id not in state["chunk_ids"]:
             state["chunk_ids"].append(chunk_id)
+        source_kind = str((parsed or {}).get("source_kind") or "unknown")
+        if source_kind not in state["source_kinds"]:
+            state["source_kinds"].append(source_kind)
 
     if remaining_numbered_lines and len(remaining_numbered_lines) != len(numbered_lines):
         emit(
@@ -968,6 +994,10 @@ def _organize_items_text_into_report_categories(
                 chunk_id = numeric_to_chunk.get(nid)
                 if chunk_id and chunk_id not in state["chunk_ids"]:
                     state["chunk_ids"].append(chunk_id)
+                parsed_line = _parse_formatted_pass_item(line)
+                source_kind = str((parsed_line or {}).get("source_kind") or "unknown")
+                if source_kind not in state["source_kinds"]:
+                    state["source_kinds"].append(source_kind)
 
     categories: List[Dict[str, Any]] = []
     for category_name in clean_categories:
@@ -997,7 +1027,13 @@ def _render_category_organizer_markdown(
         if not evidence_lines:
             continue
         body = "\n".join(f"- {_render_pass_line_for_llm(line)}" for line in evidence_lines)
-        sections.append(f"### {name}\n{body}")
+        source_kinds = [source_kind_label(kind) for kind in category.get("source_kinds", []) if str(kind).strip()]
+        source_note = (
+            f"_Source types: {', '.join(source_kinds)}_\n"
+            if source_kinds
+            else ""
+        )
+        sections.append(f"### {name}\n{source_note}{body}")
     return "\n\n".join(sections)
 
 
@@ -1108,6 +1144,7 @@ def _render_category_summary_prompt(
     *,
     category_name: str,
     category_evidence: str,
+    source_types: Optional[List[str]] = None,
 ) -> str:
     """Build the category-summary user prompt."""
     template = (pp.user_prompt_template or "").strip()
@@ -1119,11 +1156,22 @@ def _render_category_summary_prompt(
             .replace("{items_text}", category_evidence)
             .replace("{branch_names}", category_name)
         )
+    source_note = ""
+    if source_types:
+        source_note = (
+            "Source types represented in this category: "
+            + ", ".join(source_types)
+            + ". Keep current RFQ requirements distinct from workshop notes, standards, evaluations, or background material.\n\n"
+        )
     return (
         f"Category: {category_name}\n\n"
+        f"{source_note}"
         f"Evidence:\n{category_evidence}\n\n"
         "Write a grounded summary for this category using only the evidence above. "
-        "Preserve human-readable source references where they are useful."
+        "Preserve human-readable source references where they are useful. "
+        "Cite substantive claims, requirements, constraints, decisions, or risks with lightweight source references when available, preferably using the page/file citation already present in the evidence line. "
+        "Do not invent citations or cite material that is not present in the provided evidence. "
+        "Do not present workshop notes, standards references, or evaluation material as binding RFQ requirements unless the evidence explicitly says so."
     )
 
 
@@ -1181,6 +1229,7 @@ def _run_summarize_by_category_pass(
         if not evidence_lines:
             continue
         evidence_text = "\n".join(f"- {_render_pass_line_for_llm(line)}" for line in evidence_lines)
+        source_types = [source_kind_label(kind) for kind in category.get("source_kinds", []) if str(kind).strip()]
         evidence_batches = _split_items_text(evidence_text, pp.max_chars_per_batch)
         partials: List[str] = []
         for b_idx, batch_text in enumerate(evidence_batches, start=1):
@@ -1198,6 +1247,7 @@ def _run_summarize_by_category_pass(
                         pp,
                         category_name=name,
                         category_evidence=batch_text,
+                        source_types=source_types,
                     ),
                     temperature=pp.temperature,
                     timeout_seconds=pp.timeout_seconds,
@@ -1237,6 +1287,7 @@ def _run_summarize_by_category_pass(
         category_payloads.append({
             "name": name,
             "item_count": int(category.get("item_count") or len(evidence_lines)),
+            "source_kinds": list(category.get("source_kinds", []) or []),
             "summary_markdown": summary_text,
             "chunk_ids": list(category.get("chunk_ids", [])),
         })
@@ -1314,7 +1365,8 @@ def _run_executive_summary_pass(
                 "Category summaries for executive summary:\n\n"
                 f"{batch_text}\n\n"
                 "Write a concise executive summary that introduces the report. "
-                "Stay grounded in the supplied material only."
+                "Stay grounded in the supplied material only. Distinguish RFQ requirements from standards, workshop notes, evaluations, and background references when the source material mixes them. "
+                "Use citations sparingly here: include them only for the most material claims when they improve trust or clarity."
             )
         ),
         pp=pp,
@@ -1378,7 +1430,8 @@ def _run_key_findings_pass(
         prompt_builder=lambda batch_text: (
             f"Source material:\n\n{batch_text}\n\n"
             "Write a short 'Key Findings' section using only the source material above. "
-            "Prefer 3 to 7 bullets. Stay grounded."
+            "Prefer 3 to 7 bullets. Stay grounded. Separate binding RFQ requirements from standards guidance, workshop notes, evaluation memos, and background references when they differ. "
+            "Each bullet should include at least one lightweight source citation when available. Prefer existing page/file references from the provided material. Do not invent citations."
             + (f"\n\nAdditional instructions:\n{pp.instructions.strip()}" if getattr(pp, "instructions", "").strip() else "")
         ),
         pp=pp,
@@ -1439,7 +1492,8 @@ def _run_next_actions_pass(
         prompt_builder=lambda batch_text: (
             f"Source material:\n\n{batch_text}\n\n"
             "Write a short 'Next Actions' section using only the source material above. "
-            "Focus on practical follow-up actions that are directly supported by the evidence."
+            "Focus on practical follow-up actions that are directly supported by the evidence. When evidence comes from mixed source types, prefer actions tied to RFQ requirements and clearly frame standards/workshop/evaluation items as validation or clarification tasks. "
+            "Each action should include a lightweight source citation when available so the reader can trace why the action exists. Do not invent citations."
             + (f"\n\nAdditional instructions:\n{pp.instructions.strip()}" if getattr(pp, "instructions", "").strip() else "")
         ),
         pp=pp,
@@ -1683,7 +1737,7 @@ def _reduce_post_pass_outputs(
                 "The following partial outputs were produced from the same instruction over different batches.\n\n"
                 f"{batch_text}\n\n"
                 "Combine them into one coherent final section. Deduplicate overlap, preserve the intended structure, "
-                "and do not mention batching, partials, or intermediate steps. Preserve human-readable source references when present."
+                "and do not mention batching, partials, or intermediate steps. Preserve human-readable source references when present, and keep citations attached to the claims they support."
             )
             reduced = _run_post_pass_llm_with_retry(
                 llm_fn,

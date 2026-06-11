@@ -1,0 +1,221 @@
+:root {
+  --shell-h: 52px;
+  --shell-gap: 14px;
+  --shell-pad-x: 18px;
+  --shell-bg: var(--surface, #151820);
+  --shell-border: var(--border, #2a2f45);
+  --shell-text: var(--text, #e2e8f0);
+  --shell-text-muted: var(--text-muted, #8892a8);
+  --shell-text-dim: var(--text-dim, #505878);
+  --shell-accent: var(--accent, #818cf8);
+  --shell-surface-2: var(--surface2, #1c2030);
+  --shell-radius: var(--radius-sm, 8px);
+}
+
+.app-shell-bar {
+  height: var(--shell-h);
+  min-height: var(--shell-h);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--shell-gap);
+  padding: 0 var(--shell-pad-x);
+  background: var(--shell-bg);
+  border-bottom: 1px solid var(--shell-border);
+  flex-shrink: 0;
+  z-index: 40;
+}
+
+.app-shell-left,
+.app-shell-center,
+.app-shell-right,
+.app-shell-actions,
+.app-shell-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-shell-nav,
+.app-shell-actions {
+  flex-wrap: nowrap;
+}
+
+.app-shell-left,
+.app-shell-right {
+  min-width: 0;
+}
+
+.app-shell-right,
+.app-shell-actions {
+  flex-shrink: 0;
+}
+
+.app-shell-left {
+  justify-self: start;
+}
+
+.app-shell-center {
+  justify-self: center;
+  min-width: 0;
+}
+
+.app-shell-right {
+  justify-self: end;
+  justify-content: flex-end;
+}
+
+.app-shell-title {
+  color: var(--shell-text);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.app-shell-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.app-shell-title-group .app-shell-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-shell-link,
+.app-shell-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  border: 1px solid transparent;
+  border-radius: var(--shell-radius);
+  color: var(--shell-text-muted);
+  text-decoration: none;
+  background: transparent;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.app-shell-icon-btn {
+  padding: 7px;
+  cursor: pointer;
+}
+
+.app-shell-link:hover,
+.app-shell-icon-btn:hover {
+  color: var(--shell-text);
+  background: var(--shell-surface-2);
+  text-decoration: none;
+}
+
+.app-shell-link[aria-current="page"] {
+  color: var(--shell-text);
+  background: rgba(129, 140, 248, 0.12);
+  border-color: rgba(129, 140, 248, 0.26);
+}
+
+.app-shell-status {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--shell-text-dim);
+  box-shadow: 0 0 0 3px rgba(80, 88, 120, 0.16);
+  flex-shrink: 0;
+}
+
+.app-shell-status.ok {
+  background: var(--green, #4ade80);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+}
+
+.app-shell-status.error,
+.app-shell-status.err {
+  background: var(--red, #f87171);
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15);
+}
+
+.app-shell-status.running {
+  background: var(--accent, #818cf8);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.18);
+}
+
+body.app-shell-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+body.app-shell-frame {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+body.app-shell-frame #app {
+  flex: 1;
+  min-height: 0;
+}
+
+body.app-shell-frame .app-shell-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 900px) {
+  .app-shell-bar {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .app-shell-nav {
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: min(100%, 54vw);
+  }
+
+  .app-shell-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .app-shell-link {
+    padding: 7px 9px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell-bar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .app-shell-center {
+    justify-self: stretch;
+  }
+
+  .app-shell-title {
+    font-size: 13px;
+  }
+
+  .app-shell-link {
+    font-size: 12px;
+    padding: 7px 8px;
+  }
+
+  .app-shell-link-label.optional-mobile,
+  .app-shell-action-label.optional-mobile {
+    display: none;
+  }
+}

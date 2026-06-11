@@ -1,0 +1,11 @@
+{"seq": 1, "type": "run_started", "run_id": "rerun_20260611_023629_2fabacb3", "kind": "second_pass_rerun", "project_slug": "test"}
+{"seq": 2, "type": "progress", "phase": "running", "stage": "progress", "message": "Starting report-only rerun: test", "percent_hint": null}
+{"seq": 3, "type": "progress", "phase": "running", "stage": "progress", "message": "Source checkpoint: data\\extraction_checkpoints\\test_20260611_022932_reports.jsonl", "percent_hint": null}
+{"seq": 4, "type": "progress", "phase": "running", "stage": "progress", "message": "Checkpoint: data\\extraction_checkpoints\\test_20260611_023629_reports.jsonl", "percent_hint": null}
+{"seq": 5, "type": "progress", "phase": "running", "stage": "progress", "message": "Loaded 10 branch result(s) from checkpoint", "percent_hint": null}
+{"seq": 6, "type": "progress", "phase": "running", "stage": "progress", "message": "Second-pass plan: 6 step(s)", "percent_hint": null}
+{"seq": 7, "type": "progress", "phase": "post", "stage": "second_pass", "message": "Second pass 1/6: Organized Evidence by Category", "percent_hint": 78}
+{"seq": 8, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing reused exact branch/category matches for 77 item(s)", "percent_hint": null}
+{"seq": 9, "type": "progress", "phase": "running", "stage": "progress", "message": "category routing batch 1/89", "percent_hint": null}
+{"seq": 10, "type": "abort_requested", "message": "Abort requested by user.", "phase": "error", "stage": "abort_requested", "percent_hint": null}
+{"seq": 11, "type": "error", "message": "Server restarted during extraction run", "phase": "error", "stage": "interrupted", "percent_hint": null}

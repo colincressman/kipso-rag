@@ -1194,6 +1194,10 @@ document.getElementById('sidebarToggle').addEventListener('click', () => {
   if (sidebar.classList.contains('open')) closeSidebar();
   else openSidebar();
 });
+const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+if (sidebarCloseBtn) {
+  sidebarCloseBtn.addEventListener('click', closeSidebar);
+}
 
 // Close sidebar when a collection is tapped on mobile
 const _origSelectCollection = selectCollection;

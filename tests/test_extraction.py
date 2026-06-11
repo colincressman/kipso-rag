@@ -32,6 +32,7 @@ from extraction.dedup import dedup_items, jaccard
 import extraction.project_runner as project_runner
 from extraction.project_runner import _run_post_passes
 from extraction.project_runner import rerun_reports_from_checkpoint
+from extraction.source_kinds import infer_source_kind
 
 
 # ---------------------------------------------------------------------------
@@ -743,6 +744,8 @@ class TestSecondPassPipeline:
         assert any("Category: Requirements" in prompt for prompt in prompts)
         assert "### Scope" in summarized.response_text
         assert "### Requirements" in summarized.response_text
+        assert any("Source types represented in this category:" in prompt for prompt in prompts)
+        assert any("Cite substantive claims" in prompt for prompt in prompts)
 
     def test_assemble_report_follows_planned_block_order(self, tmp_path):
         ckpt_path = self._write_branch_checkpoint(tmp_path)
@@ -774,6 +777,26 @@ class TestSecondPassPipeline:
         assert text.startswith("# Assemble Pass Test Report")
         assert text.index("### Executive Summary") < text.index("### Scope")
         assert text.index("### Scope") < text.index("## Organized Evidence by Category")
+
+
+class TestSourceKinds:
+    def test_detects_rfq(self):
+        assert infer_source_kind(text="Request for Qualifications for SCADA migration", filename="spec.pdf") == "rfq"
+
+    def test_detects_workshop_note(self):
+        assert infer_source_kind(text="Workshop No. 2\nAttendees:\nDiscussion Items:", filename="notes.pdf") == "workshop_note"
+
+    def test_detects_standard_without_overmatching_appendix(self):
+        assert infer_source_kind(
+            text="SCADA Standards Volume 3 HMI software display definitions and ChangeSet files.",
+            filename="reference.pdf",
+        ) == "scada_standard"
+
+    def test_detects_appendix_form_from_form_signals(self):
+        assert infer_source_kind(
+            text="Respondent Certification\nSignature of Respondent\nNotary Public",
+            filename="appendix.pdf",
+        ) == "appendix_form"
 
     def test_key_findings_and_next_actions_use_prior_outputs(self, tmp_path):
         ckpt_path = self._write_branch_checkpoint(tmp_path)
@@ -809,6 +832,8 @@ class TestSecondPassPipeline:
         assert next_actions.artifact_type == "next_actions_v1"
         assert any("Scope summary." in prompt for prompt in prompts if "Key Findings" in prompt)
         assert any("Finding one" in prompt for prompt in prompts if "Next Actions" in prompt)
+        assert any("Each bullet should include at least one lightweight source citation" in prompt for prompt in prompts if "Key Findings" in prompt)
+        assert any("Each action should include a lightweight source citation" in prompt for prompt in prompts if "Next Actions" in prompt)
 
     def test_rerun_reports_from_checkpoint_reuses_branch_outputs(self, tmp_path, monkeypatch):
         ckpt_path = self._write_branch_checkpoint(tmp_path)

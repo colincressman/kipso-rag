@@ -314,6 +314,9 @@ class ExtractionItem:
     source_page: int = 0
     """Page number from chunk metadata (0 = unknown)."""
 
+    source_kind: str = "unknown"
+    """Broad source context label such as rfq, scada_standard, workshop_note, or evaluation_memo."""
+
     confidence: float = 0.0
     """Synthesis pass confidence estimate (0–1).  May be 0 if not available."""
 

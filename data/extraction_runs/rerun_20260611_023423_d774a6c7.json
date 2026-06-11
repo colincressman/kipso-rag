@@ -1,0 +1,16 @@
+{
+  "run_id": "rerun_20260611_023423_d774a6c7",
+  "project_slug": "test",
+  "project_name": "test",
+  "kind": "second_pass_rerun",
+  "status": "error",
+  "started_at": "2026-06-11T02:34:23.171774+00:00",
+  "updated_at": "2026-06-11T02:34:23.186661+00:00",
+  "last_seq": 2,
+  "checkpoint_path": null,
+  "report_path": null,
+  "error": "[WinError 5] Access is denied: 'data\\\\extraction_runs\\\\rerun_20260611_023423_d774a6c7.json.tmp' -> 'data\\\\extraction_runs\\\\rerun_20260611_023423_d774a6c7.json'",
+  "cancel_requested": false,
+  "cancel_requested_at": null,
+  "last_event_type": "error"
+}

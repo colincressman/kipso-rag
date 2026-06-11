@@ -1,0 +1,16 @@
+{
+  "run_id": "rerun_20260611_024700_50425261",
+  "project_slug": "test",
+  "project_name": "test",
+  "kind": "second_pass_rerun",
+  "status": "canceled",
+  "started_at": "2026-06-11T02:47:00.737647+00:00",
+  "updated_at": "2026-06-11T02:47:19.040839+00:00",
+  "last_seq": 11,
+  "checkpoint_path": null,
+  "report_path": null,
+  "error": "Run aborted by user.",
+  "cancel_requested": true,
+  "cancel_requested_at": "2026-06-11T02:47:02.158796+00:00",
+  "last_event_type": "canceled"
+}

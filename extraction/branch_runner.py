@@ -44,6 +44,7 @@ from extraction.evidence_quality import (
     strip_html,
 )
 from extraction.prompts import build_scan_prompts, build_synthesis_prompts
+from extraction.source_kinds import infer_source_kind
 
 
 # ---------------------------------------------------------------------------
@@ -534,6 +535,10 @@ def run_branch(
                 source_chunk_id=chunk.get("chunk_id", ""),
                 source_filename=chunk.get("source_filename", ""),
                 source_page=int(chunk.get("page_start", 0) or 0),
+                source_kind=infer_source_kind(
+                    text=clean_text,
+                    filename=str(chunk.get("source_filename", "") or ""),
+                ),
                 priority_weight=priority,
                 addendum_override=priority > 1.0,
             ))
@@ -559,6 +564,10 @@ def run_branch(
                 "text": strip_leading_reference_noise(chunk.get("text", "")),
                 "source_filename": chunk.get("source_filename", ""),
                 "page_start": int(chunk.get("page_start", 0) or 0),
+                "source_kind": infer_source_kind(
+                    text=strip_leading_reference_noise(chunk.get("text", "")),
+                    filename=str(chunk.get("source_filename", "") or ""),
+                ),
                 "priority_weight": float(chunk.get("priority_weight", 1.0) or 1.0),
             }
             for chunk in final_chunks

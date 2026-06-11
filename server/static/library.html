@@ -7,57 +7,61 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/shell.css" />
   <link rel="stylesheet" href="/static/library.css" />
+  <link rel="stylesheet" href="/static/header-shell.css" />
 </head>
-<body>
+<body class="app-shell-page app-shell-frame">
 
 <!-- ═══════════════════ TOPBAR ═══════════════════ -->
-<header class="lib-topbar">
-  <div class="lib-topbar-left">
-    <button class="lib-btn-icon sidebar-toggle" id="sidebarToggle" aria-label="Toggle collections">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-    </button>
-    <a href="/" class="back-link" title="Back to chat">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
-      <span class="btn-label">Chat</span>
-    </a>
-    <div class="lib-logo">
-      <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-        <circle cx="14" cy="14" r="13" stroke="url(#grad2)" stroke-width="2"/>
-        <circle cx="14" cy="14" r="6" fill="url(#grad2)" opacity="0.8"/>
+<header class="app-shell-bar">
+  <div class="app-shell-left">
+    <span class="app-shell-orb" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="13" stroke="url(#grad-shell-library)" stroke-width="2"/>
+        <circle cx="14" cy="14" r="6" fill="url(#grad-shell-library)" opacity="0.82"/>
         <defs>
-          <linearGradient id="grad2" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#818cf8"/><stop offset="1" stop-color="#38bdf8"/>
+          <linearGradient id="grad-shell-library" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#818cf8"/>
+            <stop offset="1" stop-color="#38bdf8"/>
           </linearGradient>
         </defs>
       </svg>
-      <span>Library</span>
-    </div>
+    </span>
+    <button class="app-shell-icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Toggle collections">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
   </div>
-  <div class="lib-topbar-right">
+  <div class="app-shell-center">
+    <nav class="app-shell-nav" aria-label="Primary">
+      <a href="/" class="app-shell-link">Chat</a>
+      <a href="/library" class="app-shell-link" aria-current="page">Library</a>
+      <a href="/extraction" class="app-shell-link">Extraction</a>
+      <a href="/summarize" class="app-shell-link">Summaries</a>
+    </nav>
+  </div>
+  <div class="app-shell-right app-shell-actions">
     <button class="lib-btn lib-btn-secondary" id="refreshBtn" title="Refresh">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
         <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
       </svg>
-      <span class="btn-label">Refresh</span>
+      <span class="app-shell-action-label optional-mobile">Refresh</span>
     </button>
     <button class="lib-btn lib-btn-secondary" id="newCollectionBtn">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
       </svg>
-      <span class="btn-label">New Collection</span>
+      <span class="app-shell-action-label optional-mobile">New Collection</span>
     </button>
     <button class="lib-btn lib-btn-primary" id="uploadBtn">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
         <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
       </svg>
-      <span class="btn-label">Upload</span>
+      <span class="app-shell-action-label optional-mobile">Upload</span>
     </button>
   </div>
 </header>
@@ -71,7 +75,14 @@
   <!-- ─── LEFT SIDEBAR: collection tree ─── -->
   <aside class="lib-sidebar" id="libSidebar">
     <div class="lib-sidebar-inner">
-      <p class="lib-sidebar-label">Collections</p>
+      <div class="lib-sidebar-header">
+        <p class="lib-sidebar-label">Collections</p>
+        <button class="app-shell-icon-btn lib-sidebar-close" id="sidebarCloseBtn" aria-label="Close collections">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
 
       <!-- Unassigned (always first) -->
       <div class="tree-item tree-item--unassigned selected" data-id="__unassigned__"

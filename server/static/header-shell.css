@@ -1,0 +1,134 @@
+:root {
+  --shell-compact-breakpoint: 700px;
+  --shell-header-bg: #151820;
+  --shell-header-border: #2a2f45;
+  --shell-mobile-pad-x: 12px;
+  --shell-mobile-pad-top: 6px;
+  --shell-mobile-pad-bottom: 4px;
+  --shell-mobile-row-gap: 4px;
+  --shell-mobile-item-gap: 8px;
+  --shell-mobile-orb-size: 24px;
+  --shell-mobile-icon-size: 34px;
+  --shell-mobile-icon-pad: 6px;
+  --shell-mobile-link-font: 12px;
+  --shell-mobile-link-pad-y: 6px;
+  --shell-mobile-link-pad-x: 8px;
+}
+
+.app-shell-bar,
+.topbar.app-shell-bar,
+header.app-shell-bar {
+  background: var(--shell-header-bg) !important;
+  background-image: none !important;
+  border-bottom: 1px solid var(--shell-header-border) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.app-shell-orb,
+.chat-shell-orb,
+.extraction-shell-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+}
+
+.app-shell-orb svg,
+.chat-shell-orb svg,
+.extraction-shell-mark svg {
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .app-shell-bar,
+  .topbar.app-shell-bar,
+  header.app-shell-bar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "left left right"
+      "nav nav nav";
+    height: auto;
+    min-height: 0;
+    padding: var(--shell-mobile-pad-top) var(--shell-mobile-pad-x) var(--shell-mobile-pad-bottom);
+    row-gap: var(--shell-mobile-row-gap);
+  }
+
+  .app-shell-bar .app-shell-left,
+  .topbar.app-shell-bar .app-shell-left,
+  header.app-shell-bar .app-shell-left {
+    grid-area: left;
+    justify-self: start;
+    gap: var(--shell-mobile-item-gap);
+    overflow: visible;
+  }
+
+  .app-shell-bar .app-shell-center,
+  .topbar.app-shell-bar .app-shell-center,
+  header.app-shell-bar .app-shell-center {
+    grid-area: nav;
+    justify-self: stretch;
+    justify-content: center;
+    gap: var(--shell-mobile-item-gap);
+  }
+
+  .app-shell-bar .app-shell-right,
+  .topbar.app-shell-bar .app-shell-right,
+  header.app-shell-bar .app-shell-right,
+  .app-shell-bar .app-shell-actions {
+    grid-area: right;
+    justify-self: end;
+    gap: var(--shell-mobile-item-gap);
+  }
+
+  .app-shell-bar .app-shell-nav,
+  .topbar.app-shell-bar .app-shell-nav,
+  header.app-shell-bar .app-shell-nav {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    justify-content: center;
+    padding-bottom: 1px;
+  }
+
+  .app-shell-bar .app-shell-link,
+  .topbar.app-shell-bar .app-shell-link,
+  header.app-shell-bar .app-shell-link {
+    white-space: nowrap;
+    padding: var(--shell-mobile-link-pad-y) var(--shell-mobile-link-pad-x);
+    font-size: var(--shell-mobile-link-font);
+  }
+
+  .app-shell-orb,
+  .chat-shell-orb,
+  .extraction-shell-mark {
+    width: var(--shell-mobile-orb-size);
+    height: var(--shell-mobile-orb-size);
+  }
+
+  .mobile-sidebar-toggle,
+  .sidebar-toggle,
+  .sidebar-toggle-btn,
+  .sidebar-rail-toggle,
+  .lib-sidebar-close,
+  .app-shell-bar .app-shell-icon-btn,
+  .topbar.app-shell-bar .app-shell-icon-btn,
+  header.app-shell-bar .app-shell-icon-btn {
+    width: var(--shell-mobile-icon-size);
+    height: var(--shell-mobile-icon-size);
+    padding: var(--shell-mobile-icon-pad);
+  }
+
+  .mobile-sidebar-toggle {
+    display: inline-flex !important;
+  }
+
+  .app-shell-link-label.optional-mobile,
+  .app-shell-action-label.optional-mobile,
+  .refresh-label.optional-mobile {
+    display: none;
+  }
+}
