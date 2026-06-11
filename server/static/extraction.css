@@ -152,6 +152,9 @@ h3 { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transf
                 display: flex; align-items: center; gap: 12px; }
 .panel-header h1 { font-size: 1rem; font-weight: 600; flex: 1; }
 .panel-body { flex: 1; overflow: visible; padding: 20px; }
+#panel-setup .panel-body {
+  padding-bottom: 96px;
+}
 .report-panel-body,
 #panel-report .panel-body {
   display: flex;
