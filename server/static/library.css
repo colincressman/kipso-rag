@@ -559,8 +559,12 @@ body {
   border-radius: var(--radius);
   width: 100%;
   max-width: 460px;
+  max-height: min(90dvh, 760px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   animation: modalIn 0.18s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .modal--sm { max-width: 360px; }
 
@@ -588,7 +592,15 @@ body {
 }
 .modal-close:hover { color: var(--text); background: var(--surface2); }
 
-.modal-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .modal-footer {
   padding: 14px 20px;
   border-top: 1px solid var(--border);
@@ -914,11 +926,11 @@ body {
     to   { transform: translateY(0); }
   }
   .mobile-assign-bar-inner {
-    padding: 16px;
+    padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-height: 55vh;
+    max-height: min(62dvh, 560px);
     overflow-y: auto;
   }
   .mobile-assign-title {
@@ -949,16 +961,41 @@ body {
   .mobile-assign-cancel { width: 100%; justify-content: center; }
 
   /* Modals: full-width, slide up from bottom */
-  .modal-backdrop { align-items: flex-end; padding: 0; }
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: max(12px, env(safe-area-inset-top, 0px)) 0 0;
+  }
   .modal {
     max-width: 100%;
     border-radius: var(--radius) var(--radius) 0 0;
     border-bottom: none;
-    max-height: 90vh;
+    max-height: min(92dvh, 760px);
     display: flex;
     flex-direction: column;
   }
-  .modal-body { overflow-y: auto; }
+  .modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(28,32,48,0.98), rgba(21,24,32,0.96));
+    backdrop-filter: blur(10px);
+  }
+  .modal-body {
+    overflow-y: auto;
+    padding: 16px;
+  }
+  .modal-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    flex-wrap: wrap;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, rgba(28,32,48,0), rgba(21,24,32,0.98) 24%);
+  }
+  .modal-footer .lib-btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
 
   /* Toast: full-width on mobile */
   .toast {

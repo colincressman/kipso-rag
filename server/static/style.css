@@ -1020,9 +1020,11 @@ body.app-shell-page {
   width: 100%;
   max-width: 480px;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
   padding: 24px;
   box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
@@ -1182,6 +1184,11 @@ body.app-shell-page {
 .settings-tab.active { color: var(--accent, #818cf8); border-bottom-color: var(--accent, #818cf8); }
 .settings-panel { /* no special styles needed; panels swap display */ }
 
+#spanel-personal,
+#spanel-inference {
+  min-height: 0;
+}
+
 .settings-divider {
   border: none;
   border-top: 1px solid var(--border);
@@ -1245,6 +1252,7 @@ body.app-shell-page {
   width: 28px;
   height: 28px;
   flex: 0 0 auto;
+  margin-left: 2px;
 }
 
 .chat-shell-orb svg { display: block; }
@@ -1519,6 +1527,7 @@ body.app-shell-page {
     grid-area: left;
     justify-self: start;
     gap: 8px;
+    margin-left: 0;
     overflow: visible;
   }
 
@@ -1542,6 +1551,7 @@ body.app-shell-page {
   .chat-shell-orb {
     width: 24px;
     height: 24px;
+    margin-left: 4px;
   }
 
   .mobile-sidebar-toggle,
@@ -1620,6 +1630,94 @@ body.app-shell-page {
 
   .input-hint {
     display: none;
+  }
+
+  .citations-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 120;
+    max-height: min(72dvh, 560px);
+    border-top: 1px solid rgba(53,60,88,0.95);
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -18px 42px rgba(0,0,0,0.28);
+  }
+
+  .citations-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 12px 14px;
+    background: linear-gradient(180deg, rgba(21,24,32,0.98), rgba(21,24,32,0.94));
+    backdrop-filter: blur(10px);
+  }
+
+  .citations-list {
+    padding: 12px 14px calc(18px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: min(92dvh, 760px);
+    border-radius: 18px 18px 0 0;
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-bottom: 0;
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid rgba(53,60,88,0.95);
+    background: linear-gradient(180deg, rgba(28,32,48,0.98), rgba(21,24,32,0.96));
+    backdrop-filter: blur(10px);
+  }
+
+  .settings-tabs {
+    margin-bottom: 0;
+    padding: 0 12px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .settings-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding-inline: 14px;
+  }
+
+  .settings-panel {
+    overflow-y: auto;
+    padding: 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-description {
+    margin-bottom: 16px;
+  }
+
+  .modal-actions {
+    position: sticky;
+    bottom: 0;
+    margin-top: 14px;
+    padding-top: 12px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, rgba(28,32,48,0), rgba(28,32,48,0.98) 28%);
+    flex-wrap: wrap;
+  }
+
+  .modal-actions .btn-primary,
+  .modal-actions .btn-ghost {
+    flex: 1 1 100%;
+    justify-content: center;
   }
 }
 

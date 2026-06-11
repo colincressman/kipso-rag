@@ -205,8 +205,8 @@
 
     <!-- Report panel -->
     <div id="panel-report" style="display:none">
-      <div class="panel-body" style="display:flex; flex-direction:column; height:100%;">
-        <div style="display:flex; gap:10px; margin-bottom:12px; align-items:center; flex-wrap:wrap;">
+      <div class="panel-body report-panel-body">
+        <div class="report-toolbar">
           <div style="flex:1;"></div>
           <select id="report-history-select" style="background:#12141e; border:1px solid var(--border); color:var(--text); border-radius:6px; padding:5px 8px; font-size:0.82rem; max-width:260px; cursor:pointer;" onchange="loadHistoryReport(this.value)" title="Load a saved report">
             <option value="">- History -</option>
@@ -1870,8 +1870,27 @@ function setStatus(state_, msg) {
 }
 
 // â”€â”€ Modal helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-function openModal(id)  { document.getElementById(id).classList.add("open"); }
-function closeModal(id) { document.getElementById(id).classList.remove("open"); }
+function openModal(id)  {
+  document.getElementById(id).classList.add("open");
+  document.body.classList.add("modal-open");
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove("open");
+  if (!document.querySelector(".modal-overlay.open")) {
+    document.body.classList.remove("modal-open");
+  }
+}
+
+document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) closeModal(overlay.id);
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  document.querySelectorAll(".modal-overlay.open").forEach((overlay) => closeModal(overlay.id));
+});
 
 // â”€â”€ Utils â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function esc(s) {

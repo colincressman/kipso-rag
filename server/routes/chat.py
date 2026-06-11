@@ -72,6 +72,9 @@ def _stream_unified(
         force_web=req.force_web,
         history_available=bool(history),
         clarification_pending=req.clarification_pending,
+        collection_id=req.collection_id,
+        doc_ids=req.doc_ids or None,
+        prior_sources=req.prior_sources or None,
     )
 
     yield _sse({
@@ -294,6 +297,9 @@ def _handle_unified(
         force_web=req.force_web,
         history_available=bool(history),
         clarification_pending=req.clarification_pending,
+        collection_id=req.collection_id,
+        doc_ids=req.doc_ids or None,
+        prior_sources=req.prior_sources or None,
     )
 
     rag_result: Optional[Dict[str, Any]] = None

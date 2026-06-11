@@ -388,6 +388,7 @@ class ChatRequest(BaseModel):
     mode: str = "chat"
     web_search: bool = False
     prior_intents: List[str] = []
+    prior_sources: List[str] = []
     clarification_pending: bool = False
 
 

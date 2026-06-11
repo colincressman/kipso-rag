@@ -1064,9 +1064,13 @@ function _resumePendingJobPollers() {
 // ── Modals ─────────────────────────────────────────────────────────────────
 function openModal(id) {
   document.getElementById(id).classList.remove('hidden');
+  document.body.classList.add('modal-open');
 }
 function closeModal(id) {
   document.getElementById(id).classList.add('hidden');
+  if (!document.querySelector('.modal-backdrop:not(.hidden)')) {
+    document.body.classList.remove('modal-open');
+  }
 }
 
 function showConfirm(title, text, onOk) {

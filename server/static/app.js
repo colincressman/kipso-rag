@@ -18,6 +18,7 @@ const state = {
   pendingCitations: [],       // citations from latest response
   conversationId: null,       // persistent conversation ID (server-side)
   priorIntents: [],           // rolling list of recent intent labels (last 6)
+  priorSources: [],           // rolling list of resolved sources (rag/web/chat)
   clarificationPending: false, // true when last assistant turn was a clarify question
 };
 
@@ -49,6 +50,10 @@ const docFilterList    = $("docFilterList");
 const docFilterCount   = $("docFilterCount");
 const docFilterClear   = $("docFilterClear");
 const docSearch        = $("docSearch");
+
+function _setOverlayState(className, isOpen) {
+  document.body.classList.toggle(className, !!isOpen);
+}
 
 // ── Utilities ─────────────────────────────────────────────────────────────
 
@@ -396,11 +401,13 @@ function showCitations(citations) {
 
   citationsPanel.style.display = "flex";
   citationsPanel.style.flexDirection = "column";
+  _setOverlayState("citations-open", true);
   messages.scrollTop = messages.scrollHeight;
 }
 
 closeCitations.addEventListener("click", () => {
   citationsPanel.style.display = "none";
+  _setOverlayState("citations-open", false);
 });
 
 // ── Send message ───────────────────────────────────────────────────────────
@@ -437,6 +444,7 @@ async function sendMessage(text) {
     stream: true,
     conversation_id: state.conversationId || null,
     prior_intents: state.priorIntents.length ? state.priorIntents : undefined,
+    prior_sources: state.priorSources.length ? state.priorSources : undefined,
     clarification_pending: state.clarificationPending || undefined,
   };
 
@@ -595,6 +603,12 @@ async function sendMessage(text) {
             if (state.priorIntents.length > 6) state.priorIntents.shift();
           }
 
+          const resolvedSource = event.mode === "rag"
+            ? "rag"
+            : (event.internet_used || webSources.length > 0 ? "web" : "chat");
+          state.priorSources.push(resolvedSource);
+          if (state.priorSources.length > 6) state.priorSources.shift();
+
           // Track whether last turn was a clarification question
           state.clarificationPending = event.clarification_asked === true;
 
@@ -649,6 +663,7 @@ async function createNewConversation() {
     state.conversationId = data.conversation_id;
     localStorage.setItem("rag_conv_id", state.conversationId);
     state.priorIntents = [];
+    state.priorSources = [];
     state.clarificationPending = false;
   } catch (e) {
     state.conversationId = null;
@@ -664,6 +679,7 @@ async function loadConversation(conversationId) {
     state.conversationId = conversationId;
     state.history = [];
     state.priorIntents = [];
+    state.priorSources = [];
     state.clarificationPending = false;
     localStorage.setItem("rag_conv_id", conversationId);
 
@@ -679,6 +695,9 @@ async function loadConversation(conversationId) {
         appendMessage("user", msg.content);
       } else {
         appendMessage("ai", msg.content, { mode: msg.mode });
+        const restoredSource = msg.mode === "rag" ? "rag" : "chat";
+        state.priorSources.push(restoredSource);
+        if (state.priorSources.length > 6) state.priorSources.shift();
       }
       state.history.push({ role: msg.role === "user" ? "user" : "assistant", content: msg.content });
       if (state.history.length > 20) state.history.splice(0, 2);
@@ -740,6 +759,7 @@ async function switchConversation(conversationId) {
       sidebar.classList.remove("mobile-open");
     }
     citationsPanel.style.display = "none";
+    _setOverlayState("citations-open", false);
     await loadConversationList();
   }
 }
@@ -748,6 +768,9 @@ async function switchConversation(conversationId) {
 
 async function startNewChat() {
   state.history = [];
+  state.priorIntents = [];
+  state.priorSources = [];
+  state.clarificationPending = false;
   messages.innerHTML = "";
   state.conversationId = null;
   localStorage.removeItem("rag_conv_id");
@@ -781,6 +804,7 @@ async function startNewChat() {
   await loadWelcomeChips();
 
   citationsPanel.style.display = "none";
+  _setOverlayState("citations-open", false);
   inputBox.focus();
 
   await loadConversationList();
@@ -961,11 +985,13 @@ async function openSettings() {
     }
   } catch { /* ignore */ }
   settingsOverlay.style.display = "flex";
+  _setOverlayState("modal-open", true);
   ctxName.focus();
 }
 
 function closeSettings() {
   settingsOverlay.style.display = "none";
+  _setOverlayState("modal-open", false);
 }
 
 settingsBtn.addEventListener("click", openSettings);
@@ -975,6 +1001,10 @@ settingsOverlay.addEventListener("click", e => {
 });
 document.addEventListener("keydown", e => {
   if (e.key === "Escape" && settingsOverlay.style.display !== "none") closeSettings();
+  if (e.key === "Escape" && citationsPanel.style.display !== "none") {
+    citationsPanel.style.display = "none";
+    _setOverlayState("citations-open", false);
+  }
 });
 
 settingsClear.addEventListener("click", async () => {
